@@ -1,8 +1,8 @@
 :root {
   --bg-color: #f9f6f2;
   --text-color: #333;
-  --accent-color: #e67e22;    /* Cieplejszy pomarańczowo-brązowy */
-  --secondary-color: #d35400;  /* Ciemniejszy pomarańczowo-brązowy */
+  --accent-color: #e3963e;
+  --secondary-color: #d3801f;
   --light-color: #fff;
   --dark-color: #222;
   --shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
@@ -102,13 +102,12 @@ nav a:hover {
   color: #555;
 }
 
-/* Przyciski - bardziej prostokątne */
 .btn {
   display: inline-block;
   background-color: var(--accent-color);
   color: var(--light-color);
   padding: 0.8rem 1.5rem;
-  border-radius: 3px;  /* Mniejszy border-radius dla bardziej prostokątnego wyglądu */
+  border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.3s;
@@ -146,11 +145,6 @@ nav a:hover {
   transform: translateX(-50%);
 }
 
-/* Dodanie obramowania do wszystkich div */
-div {
-  border: 1px solid #333;
-}
-
 /* Skills Section */
 .skills-container {
   display: flex;
@@ -164,7 +158,7 @@ div {
   min-width: 250px;
   background-color: var(--light-color);
   padding: 2rem;
-  border-radius: 4px;  /* Mniejszy border-radius */
+  border-radius: 8px;
   box-shadow: var(--shadow);
   text-align: center;
   transition: transform 0.3s;
@@ -194,7 +188,7 @@ div {
 
 .project-card {
   background-color: var(--light-color);
-  border-radius: 4px;  /* Mniejszy border-radius */
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: transform 0.3s;
@@ -223,10 +217,10 @@ div {
 }
 
 .project-tech span {
-  background-color: rgba(230, 126, 34, 0.15);  /* Dostosowany do nowego koloru akcentu */
+  background-color: rgba(227, 150, 62, 0.15);
   color: var(--accent-color);
   padding: 0.3rem 0.8rem;
-  border-radius: 3px;  /* Mniejszy border-radius */
+  border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -269,7 +263,7 @@ div {
   height: 40px;
   background-color: var(--accent-color);
   color: var(--light-color);
-  border-radius: 4px;  /* Bardziej kwadratowy kształt */
+  border-radius: 50%;
   transition: background-color 0.3s;
 }
 
@@ -289,7 +283,7 @@ div {
 .contact-form textarea {
   padding: 0.8rem;
   border: 1px solid #ddd;
-  border-radius: 3px;  /* Mniejszy border-radius */
+  border-radius: 4px;
   font-family: inherit;
 }
 
