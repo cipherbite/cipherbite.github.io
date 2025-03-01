@@ -146,6 +146,11 @@ nav a:hover {
   transform: translateX(-50%);
 }
 
+/* Dodanie obramowania do wszystkich div */
+div {
+  border: 1px solid #333;
+}
+
 /* Skills Section */
 .skills-container {
   display: flex;
