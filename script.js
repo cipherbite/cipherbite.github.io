@@ -1,22 +1,22 @@
-// Funkcja uruchamiana po załadowaniu DOM
+// Function executed on DOM load
 document.addEventListener('DOMContentLoaded', function() {
-    // Animacja pojawiania się elementów po załadowaniu strony
+    // Animate elements on scroll
     animateOnScroll();
     
-    // Obsługa płynnego przewijania dla linków nawigacyjnych
+    // Smooth scrolling for navigation links
     setupSmoothScrolling();
     
-    // Dynamiczny licznik umiejętności
+    // Dynamic skills counter
     setupSkillsCounter();
     
-    // Walidacja formularza kontaktowego
+    // Contact form validation
     setupContactForm();
 
-    // Przełączanie trybu ciemnego/jasnego
+    // Dark/light mode toggle
     setupDarkModeToggle();
 });
 
-// Funkcja animacji elementów podczas przewijania
+// Animate elements on scroll
 function animateOnScroll() {
     const elements = document.querySelectorAll('.section, .skill-category, .project-card');
     
@@ -34,7 +34,7 @@ function animateOnScroll() {
         observer.observe(element);
     });
     
-    // Dodaj style CSS dla animacji
+    // Add CSS for animations
     const style = document.createElement('style');
     style.innerHTML = `
         .hidden {
@@ -51,7 +51,7 @@ function animateOnScroll() {
     document.head.appendChild(style);
 }
 
-// Funkcja płynnego przewijania dla linków nawigacyjnych
+// Set up smooth scrolling for navigation links
 function setupSmoothScrolling() {
     const navLinks = document.querySelectorAll('nav a');
     
@@ -72,16 +72,16 @@ function setupSmoothScrolling() {
     });
 }
 
-// Funkcja licznika umiejętności
+// Set up skills counter with progress bars
 function setupSkillsCounter() {
-    // Dodajemy atrybuty data-percent do elementów umiejętności
+    // Add percentage data attributes to skill elements
     const skillCategories = document.querySelectorAll('.skill-category');
     
     skillCategories.forEach((category, index) => {
-        // Przykładowe wartości procentowe dla umiejętności
+        // Sample percentage values for skills
         const percentValues = [95, 85, 75];
         
-        // Tworzymy pasek postępu dla każdej kategorii
+        // Create progress bar for each category
         const progressBar = document.createElement('div');
         progressBar.className = 'progress-bar';
         
@@ -97,12 +97,12 @@ function setupSkillsCounter() {
         progressBar.appendChild(progressText);
         category.appendChild(progressBar);
         
-        // Ustaw atrybut data-percent
+        // Set data-percent attribute
         const percent = percentValues[index % percentValues.length];
         category.setAttribute('data-percent', percent);
     });
     
-    // Dodajemy style CSS dla pasków postępu
+    // Add CSS for progress bars
     const style = document.createElement('style');
     style.innerHTML = `
         .progress-bar {
@@ -112,6 +112,7 @@ function setupSkillsCounter() {
             border-radius: 4px;
             margin-top: 15px;
             position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .progress-indicator {
@@ -131,7 +132,7 @@ function setupSkillsCounter() {
     `;
     document.head.appendChild(style);
     
-    // Animujemy paski postępu przy przewijaniu
+    // Animate progress bars on scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -153,7 +154,7 @@ function setupSkillsCounter() {
     });
 }
 
-// Funkcja walidacji formularza kontaktowego
+// Set up contact form validation
 function setupContactForm() {
     const contactForm = document.querySelector('.contact-form');
     
@@ -161,33 +162,33 @@ function setupContactForm() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Zbieranie danych z formularza
+            // Collect form data
             const formData = new FormData(this);
             const formValues = Object.fromEntries(formData.entries());
             
-            // Walidacja formularza
+            // Validate form
             let valid = true;
             let errorMessage = '';
             
             if (!formValues.name || formValues.name.trim() === '') {
                 valid = false;
-                errorMessage += 'Imię jest wymagane. ';
+                errorMessage += 'Name is required. ';
             }
             
             if (!formValues.email || !isValidEmail(formValues.email)) {
                 valid = false;
-                errorMessage += 'Podaj poprawny adres email. ';
+                errorMessage += 'Valid email is required. ';
             }
             
             if (!formValues.message || formValues.message.trim() === '') {
                 valid = false;
-                errorMessage += 'Wiadomość jest wymagana.';
+                errorMessage += 'Message is required.';
             }
             
-            // Wyświetlanie wiadomości o błędach lub potwierdzenia
+            // Display error or confirmation
             if (valid) {
-                // Tutaj można dodać kod do wysyłania formularza
-                showNotification('Dziękujemy za wiadomość! Skontaktujemy się wkrótce.', 'success');
+                // Here you would add code to send the form
+                showNotification('Thank you for your message! We will be in touch soon.', 'success');
                 contactForm.reset();
             } else {
                 showNotification(errorMessage, 'error');
@@ -195,29 +196,29 @@ function setupContactForm() {
         });
     }
     
-    // Funkcja pomocnicza do walidacji e-mail
+    // Helper function for email validation
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
     
-    // Funkcja wyświetlająca powiadomienia
+    // Function to display notifications
     function showNotification(message, type) {
-        // Sprawdź, czy istnieje już powiadomienie i usuń je
+        // Remove existing notification if present
         const existingNotification = document.querySelector('.notification');
         if (existingNotification) {
             existingNotification.remove();
         }
         
-        // Stwórz nowe powiadomienie
+        // Create new notification
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
         notification.textContent = message;
         
-        // Dodaj do DOM
+        // Add to DOM
         document.body.appendChild(notification);
         
-        // Dodaj style CSS dla powiadomień
+        // Add CSS for notifications
         const style = document.createElement('style');
         style.innerHTML = `
             .notification {
@@ -230,6 +231,7 @@ function setupContactForm() {
                 font-weight: 500;
                 z-index: 1000;
                 animation: slideIn 0.3s forwards, fadeOut 0.5s 3.5s forwards;
+                border: 1px solid rgba(0, 0, 0, 0.2);
             }
             
             .success {
@@ -252,27 +254,27 @@ function setupContactForm() {
         `;
         document.head.appendChild(style);
         
-        // Usuń powiadomienie po 4 sekundach
+        // Remove notification after 4 seconds
         setTimeout(() => {
             notification.remove();
         }, 4000);
     }
 }
 
-// Funkcja przełączania trybu ciemnego/jasnego
+// Set up dark/light mode toggle
 function setupDarkModeToggle() {
-    // Dodaj przełącznik do interfejsu
+    // Add toggle switch to interface
     const header = document.querySelector('header .container');
     
     if (header) {
         const darkModeToggle = document.createElement('button');
         darkModeToggle.className = 'dark-mode-toggle';
         darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        darkModeToggle.title = 'Przełącz tryb ciemny';
+        darkModeToggle.title = 'Toggle Dark Mode';
         
         header.appendChild(darkModeToggle);
         
-        // Dodaj style CSS dla przełącznika
+        // Add CSS for toggle
         const style = document.createElement('style');
         style.innerHTML = `
             .dark-mode-toggle {
@@ -308,16 +310,16 @@ function setupDarkModeToggle() {
             }
             
             body.dark-mode .dark-mode-toggle i {
-                content: '\\f185'; /* Ikona słońca */
+                content: '\\f185'; /* Sun icon */
             }
         `;
         document.head.appendChild(style);
         
-        // Obsługa kliknięcia przełącznika
+        // Handle toggle click
         darkModeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
             
-            // Zmień ikonę w zależności od trybu
+            // Change icon based on mode
             const icon = this.querySelector('i');
             if (document.body.classList.contains('dark-mode')) {
                 icon.classList.remove('fa-moon');
@@ -330,7 +332,7 @@ function setupDarkModeToggle() {
             }
         });
         
-        // Sprawdź zapisane preferencje użytkownika
+        // Check user's saved preference
         if (localStorage.getItem('darkMode') === 'enabled') {
             document.body.classList.add('dark-mode');
             const icon = darkModeToggle.querySelector('i');
