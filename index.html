@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analyst Portfolio</title>
+    <title>Analityk Danych - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Header -->
     <header>
         <div class="container">
-            <h1 class="logo">Analyst<span>Hub</span></h1>
+            <div class="logo">Analyst<span>Hub</span></div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#intro">Wprowadzenie</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -34,6 +35,76 @@
         </div>
     </section>
 
+    <!-- Intro Section -->
+    <section id="intro" class="section intro-section">
+        <div class="container">
+            <h2 class="section-title">Wprowadzenie do Analizy Danych</h2>
+            
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>Witaj w kursie Podstawy Analizy Danych! W tym wprowadzającym module poznamy technologie i metodologie analizy danych oraz dowiemy się, dlaczego są one niezbędne w naszym życiu.</p>
+                    
+                    <h3>Czym jest Analiza Danych?</h3>
+                    <p>Analiza danych to proces badania, czyszczenia, przekształcania i modelowania danych w celu odkrycia użytecznych informacji, wyciągnięcia wniosków i wsparcia procesu decyzyjnego.</p>
+                    
+                    <div class="info-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pojęcia</th>
+                                    <th>Opis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Zbiory Danych</td>
+                                    <td>Kolekcje punktów danych lub obserwacji.</td>
+                                </tr>
+                                <tr>
+                                    <td>Narzędzia</td>
+                                    <td>Oprogramowanie i aplikacje używane do przetwarzania i analizy danych.</td>
+                                </tr>
+                                <tr>
+                                    <td>Ekstrakcja Informacji</td>
+                                    <td>Głównym celem analizy danych jest wydobycie wartościowych informacji.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h3>Rodzaje Analizy Danych</h3>
+                    <p>Podejścia do analizy danych różnią się złożonością i celem. Dwa podstawowe rodzaje to:</p>
+                    
+                    <div class="analysis-types">
+                        <div class="analysis-card">
+                            <h4>Analiza Opisowa</h4>
+                            <p>Bada to, co wydarzyło się w przeszłości i teraźniejszości.</p>
+                            <ul>
+                                <li>Analizuje dane historyczne</li>
+                                <li>Generuje raporty i dashboardy</li>
+                                <li>Wykorzystuje proste miary statystyczne</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h4>Analiza Predykcyjna</h4>
+                            <p>Próbuje przewidzieć, co może się wydarzyć w przyszłości.</p>
+                            <ul>
+                                <li>Koncentruje się na przyszłych trendach</li>
+                                <li>Wykorzystuje modele uczenia maszynowego</li>
+                                <li>Generuje prognozy i rekomendacje</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-container">
+                        <a href="#skills" class="btn">Poznaj Umiejętności</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Skills Section -->
     <section id="skills" class="section">
         <div class="container">
@@ -44,13 +115,11 @@
                     <h3>Data Management</h3>
                     <p>SQL, Database Design, ETL</p>
                 </div>
-
                 <div class="skill-category">
                     <i class="fas fa-chart-line"></i>
                     <h3>Analysis</h3>
                     <p>Python, R, Tableau, Statistics</p>
                 </div>
-
                 <div class="skill-category">
                     <i class="fas fa-brain"></i>
                     <h3>Advanced</h3>
@@ -73,22 +142,22 @@
                         <span>SQL</span>
                     </div>
                 </div>
-
                 <div class="project-card">
                     <h3>Churn Prediction</h3>
-                    <p>ML model to identify at-risk customers</p>
+                    <p>Machine learning model to predict customer churn</p>
                     <div class="project-tech">
                         <span>Python</span>
                         <span>Scikit-learn</span>
+                        <span>Pandas</span>
                     </div>
                 </div>
-
                 <div class="project-card">
-                    <h3>Market Analysis</h3>
-                    <p>Association rule mining for product relationships</p>
+                    <h3>Market Segmentation</h3>
+                    <p>Customer segmentation analysis using clustering algorithms</p>
                     <div class="project-tech">
                         <span>R</span>
-                        <span>arules</span>
+                        <span>K-means</span>
+                        <span>Data Visualization</span>
                     </div>
                 </div>
             </div>
@@ -101,29 +170,31 @@
             <h2 class="section-title">Contact</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <p><i class="fas fa-envelope"></i> email@example.com</p>
-                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
-                    
+                    <h3>Get In Touch</h3>
+                    <p><i class="fas fa-envelope"></i> analyst@example.com</p>
+                    <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Warsaw, Poland</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                
                 <form class="contact-form">
-                    <input type="text" placeholder="Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Message" required></textarea>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="subject" placeholder="Subject">
+                    <textarea name="message" placeholder="Your Message" required></textarea>
                     <button type="submit" class="btn">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Data Analyst Portfolio. All rights reserved.</p>
+            <p>&copy; 2025 AnalystHub. All Rights Reserved.</p>
         </div>
     </footer>
 
