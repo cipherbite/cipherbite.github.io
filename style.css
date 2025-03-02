@@ -11,6 +11,22 @@
   --hover-transition: all 0.3s ease; /* Płynniejsze przejścia */
 }
 
+/* Keyframes dla animacji */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.98); opacity: 0.9; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
 /* Reset stylów z zachowaniem prostoty */
 * {
   margin: 0;
@@ -24,13 +40,13 @@ body {
   line-height: 1.7;
   color: var(--text-color);
   background-color: var(--bg-color);
-  font-size: 16px; /* Standardowa wielkość dla czytelności */
+  font-size: 16px;
 }
 
 /* Kontener z delikatnym wyśrodkowaniem */
 .container {
   width: 90%;
-  max-width: 1200px; /* Nieco szerszy dla elegancji */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -43,9 +59,10 @@ header {
   width: 100%;
   top: 0;
   z-index: 100;
-  height: 80px; /* Lżejsza, bardziej wyrafinowana wysokość */
+  height: 80px;
   display: flex;
   align-items: center;
+  animation: fadeIn 0.5s ease-out;
 }
 
 header .container {
@@ -57,7 +74,7 @@ header .container {
 .logo {
   font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: 0.5px; /* Subtelne rozstrzelenie dla klasy */
+  letter-spacing: 0.5px;
   color: var(--text-color);
 }
 
@@ -72,7 +89,7 @@ nav ul {
 }
 
 nav li {
-  margin-left: 2rem; /* Więcej przestrzeni dla elegancji */
+  margin-left: 2rem;
 }
 
 nav a {
@@ -85,7 +102,7 @@ nav a {
 
 nav a:hover {
   color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color); /* Subtelny akcent */
+  border-bottom: 2px solid var(--accent-color);
 }
 
 /* Hero Section */
@@ -94,11 +111,12 @@ nav a:hover {
   display: flex;
   align-items: center;
   background-color: var(--light-color);
-  margin-top: 80px; /* Dopasowanie do wysokości headera */
+  margin-top: 80px;
 }
 
 .hero-content {
-  max-width: 650px; /* Lekko szerszy dla balansu */
+  max-width: 650px;
+  animation: slideUp 0.7s ease-out;
 }
 
 .hero h1 {
@@ -106,13 +124,13 @@ nav a:hover {
   margin-bottom: 1.2rem;
   color: var(--text-color);
   line-height: 1.3;
-  font-weight: 600; /* Mniej ciężki niż 700 */
+  font-weight: 600;
 }
 
 .hero p {
   font-size: 1.15rem;
   margin-bottom: 2.5rem;
-  color: #64748b; /* Delikatniejszy szary dla kontrastu */
+  color: #64748b;
 }
 
 /* Przyciski */
@@ -120,8 +138,8 @@ nav a:hover {
   display: inline-block;
   background-color: var(--accent-color);
   color: var(--light-color);
-  padding: 0.9rem 2rem; /* Więcej przestrzeni dla elegancji */
-  border-radius: 6px; /* Lżejsze zaokrąglenie */
+  padding: 0.9rem 2rem;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
@@ -131,15 +149,16 @@ nav a:hover {
 
 .btn:hover {
   background-color: var(--secondary-color);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02); /* Subtelne powiększenie */
   box-shadow: var(--shadow);
 }
 
 /* Sekcje */
 .section {
-  padding: 6rem 0; /* Więcej oddechu */
+  padding: 6rem 0;
 }
 
+/* Animacja sekcji przy wchodzeniu w widok */
 .section-title {
   text-align: center;
   margin-bottom: 3.5rem;
@@ -147,6 +166,7 @@ nav a:hover {
   color: var(--text-color);
   position: relative;
   font-weight: 600;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .section-title::after {
@@ -158,7 +178,9 @@ nav a:hover {
   bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 2px; /* Subtelne zaokrąglenie */
+  border-radius: 2px;
+  animation: scaleIn 0.5s ease-out 0.2s forwards;
+  transform-origin: center;
 }
 
 /* Intro Section */
@@ -173,6 +195,7 @@ nav a:hover {
   border-radius: 10px;
   padding: 3rem;
   box-shadow: var(--shadow);
+  animation: slideUp 0.7s ease-out;
 }
 
 .intro-text h3 {
@@ -192,6 +215,7 @@ nav a:hover {
 .info-table {
   margin: 2rem 0;
   overflow-x: auto;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .info-table table {
@@ -214,7 +238,7 @@ nav a:hover {
 }
 
 .info-table tr:nth-child(even) {
-  background-color: rgba(248, 250, 252, 0.5); /* Lżejszy kontrast */
+  background-color: rgba(248, 250, 252, 0.5);
 }
 
 /* Analysis Types Cards */
@@ -231,7 +255,12 @@ nav a:hover {
   padding: 2rem;
   box-shadow: var(--shadow);
   transition: var(--hover-transition);
+  animation: slideUp 0.7s ease-out;
+  animation-fill-mode: backwards;
 }
+
+.analysis-card:nth-child(2) { animation-delay: 0.1s; }
+.analysis-card:nth-child(3) { animation-delay: 0.2s; }
 
 .analysis-card:hover {
   transform: translateY(-5px);
@@ -263,157 +292,4 @@ nav a:hover {
 /* Skills Section */
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-
-.skill-category {
-  background-color: var(--light-color);
-  padding: 2.5rem;
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-  text-align: center;
-  transition: var(--hover-transition);
-}
-
-.skill-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-
-.skill-category i {
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 1.2rem;
-}
-
-.skill-category h3 {
-  margin-bottom: 1.2rem;
-  color: var(--text-color);
-  font-weight: 500;
-}
-
-/* Projects Section */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 2rem;
-}
-
-.project-card {
-  background-color: var(--light-color);
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: var(--shadow);
-  transition: var(--hover-transition);
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-
-.project-card h3 {
-  color: var(--text-color);
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.project-card p {
-  color: #64748b;
-  margin-bottom: 1.2rem;
-}
-
-.project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-}
-
-.project-tech span {
-  background-color: rgba(230, 126, 34, 0.15);
-  color: var(--accent-color);
-  padding: 0.4rem 1rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
-/* Contact Section */
-.contact-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-}
-
-.contact-info {
-  flex: 1;
-  min-width: 320px;
-}
-
-.contact-info p {
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  color: #64748b;
-}
-
-.contact-info i {
-  margin-right: 1rem;
-  color: var(--accent-color);
-  font-size: 1.3rem;
-}
-
-.social-links {
-  display: flex;
-  gap: 1.2rem;
-  margin-top: 2.5rem;
-}
-
-.social-links a {
-  width: 44px;
-  height: 44px;
-  background-color: var(--accent-color);
-  color: var(--light-color);
-  border-radius: 6px;
-  transition: var(--hover-transition);
-}
-
-.social-links a:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-3px);
-}
-
-.contact-form {
-  flex: 1;
-  min-width: 320px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2); /* Elegancki fokus */
-}
-
-.contact-form textarea {
-  min-height: 160px;
-  resize: vertical;
-}
-
-/* Footer */
-footer
+  grid-template-columns: repeat(auto-fit, minmax(260
