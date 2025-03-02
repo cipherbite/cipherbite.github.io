@@ -1,9 +1,9 @@
 :root {
-    --bg-color: #f9fafb; /* Jasne tło */
-    --text-color: #1f2a44; /* Głęboki granat tekstu */
-    --accent-color: #e67e22; /* Matowy pomarańczowy akcent */
-    --secondary-color: #64748b; /* Szary odcień dla detali */
-    --light-color: #ffffff; /* Biały dla kart i nagłówka */
+    --bg-color: #F5E8C7; /* Jasno-brązowe, kremowe tło */
+    --text-color: #4A3C2F; /* Głęboki, czekoladowo-brązowy tekst */
+    --accent-color: #A0522D; /* Ciepły, rudawy brązowy akcent dla przycisków */
+    --secondary-color: #6B4E31; /* Średni brąz dla detali i tekstu pomocniczego */
+    --light-color: #EAD8A0; /* Jasny, piaskowy brąz dla kart i nagłówka */
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtelny cień */
 }
 
@@ -87,7 +87,7 @@ nav ul li a:hover {
     display: inline-block;
     padding: 12px 30px;
     background: var(--accent-color);
-    color: var(--light-color);
+    color: #FFFFFF; /* Biały tekst dla kontrastu */
     text-decoration: none;
     border-radius: 5px;
     margin-top: 20px;
