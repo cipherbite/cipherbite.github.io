@@ -1,203 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analyst Portfolio</title>
+    <title>Twoje Imię - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
-            <div class="logo">Analyst<span>Hub</span></div>
+            <div class="logo">Twoje Imię</div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#intro">Introduction</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">O mnie</a></li>
+                    <li><a href="#projects">Projekty</a></li>
+                    <li><a href="#skills">Umiejętności</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Data Insights Specialist</h1>
-                <p>Turning complex data into actionable business intelligence</p>
-                <a href="#projects" class="btn">View Projects</a>
-            </div>
+            <h1>Data Engineer & Analyst</h1>
+            <p>Tworzę skalowalne rozwiązania danych z pasją do detali.</p>
+            <a href="#projects" class="btn">Zobacz moje projekty</a>
         </div>
     </section>
-
-    <!-- Intro Section -->
-    <section id="intro" class="section intro-section">
+    <section id="about" class="section about">
         <div class="container">
-            <h2 class="section-title">Introduction to Data Analysis</h2>
-            
-            <div class="intro-content">
-                <div class="intro-text">
-                    <p>Welcome to my data analytics portfolio! This introduction covers the technologies and methodologies of data analysis and why they are essential in today's data-driven world.</p>
-                    
-                    <h3>What is Data Analysis?</h3>
-                    <p>Data analysis is the process of examining, cleaning, transforming, and modeling data to discover useful information, draw conclusions, and support decision-making.</p>
-                    
-                    <div class="info-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Concepts</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Data Sets</td>
-                                    <td>Collections of data points or observations.</td>
-                                </tr>
-                                <tr>
-                                    <td>Tools</td>
-                                    <td>Software and applications used to process and analyze data.</td>
-                                </tr>
-                                <tr>
-                                    <td>Information Extraction</td>
-                                    <td>The main goal of data analysis is to extract valuable insights.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <h3>Types of Data Analysis</h3>
-                    <p>Approaches to data analysis vary in complexity and purpose. Two basic types are:</p>
-                    
-                    <div class="analysis-types">
-                        <div class="analysis-card">
-                            <h4>Descriptive Analysis</h4>
-                            <p>Examines what happened in the past and present.</p>
-                            <ul>
-                                <li>Analyzes historical data</li>
-                                <li>Generates reports and dashboards</li>
-                                <li>Uses simple statistical measures</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="analysis-card">
-                            <h4>Predictive Analysis</h4>
-                            <p>Attempts to predict what might happen in the future.</p>
-                            <ul>
-                                <li>Focuses on future trends</li>
-                                <li>Uses machine learning models</li>
-                                <li>Generates forecasts and recommendations</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="cta-container">
-                        <a href="#skills" class="btn">Explore Skills</a>
-                    </div>
+            <h2 class="section-title">O mnie</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Cześć! Jestem [Twoje Imię], inżynierem danych z doświadczeniem w Google Cloud, Pythonie i wizualizacji danych. Uwielbiam przekształcać surowe dane w użyteczne historie.</p>
+                </div>
+                <div class="about-image">
+                    <img src="twoje-zdjecie.jpg" alt="Twoje zdjęcie">
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section id="projects" class="section projects">
         <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <i class="fas fa-database"></i>
-                    <h3>Data Management</h3>
-                    <p>SQL, Database Design, ETL</p>
-                </div>
-                <div class="skill-category">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Analysis</h3>
-                    <p>Python, R, Tableau, Statistics</p>
-                </div>
-                <div class="skill-category">
-                    <i class="fas fa-brain"></i>
-                    <h3>Advanced</h3>
-                    <p>Machine Learning, Forecasting</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title">Projekty</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>Sales Dashboard</h3>
-                    <p>Interactive visualization of retail sales data</p>
-                    <div class="project-tech">
-                        <span>Tableau</span>
-                        <span>SQL</span>
-                    </div>
+                    <h3>Projekt 1</h3>
+                    <p>Opis projektu. Technologie: Python, SQL.</p>
                 </div>
                 <div class="project-card">
-                    <h3>Churn Prediction</h3>
-                    <p>Machine learning model to predict customer churn</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Scikit-learn</span>
-                        <span>Pandas</span>
-                    </div>
+                    <h3>Projekt 2</h3>
+                    <p>Opis projektu. Technologie: Google Cloud, Tableau.</p>
                 </div>
-                <div class="project-card">
-                    <h3>Market Segmentation</h3>
-                    <p>Customer segmentation analysis using clustering algorithms</p>
-                    <div class="project-tech">
-                        <span>R</span>
-                        <span>K-means</span>
-                        <span>Data Visualization</span>
-                    </div>
-                </div>
+                <!-- Dodaj więcej kart z Twoimi projektami -->
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="skills" class="section skills">
         <div class="container">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p><i class="fas fa-envelope"></i> analyst@example.com</p>
-                    <p><i class="fas fa-phone"></i> +123 456 7890</p>
-                    <p><i class="fas fa-map-marker-alt"></i> London, UK</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="text" name="subject" placeholder="Subject">
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+            <h2 class="section-title">Umiejętności</h2>
+            <div class="skills-grid">
+                <div class="skill">Python</div>
+                <div class="skill">Google Cloud</div>
+                <div class="skill">Wizualizacja danych</div>
+                <!-- Dodaj swoje umiejętności -->
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Kontakt</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Twoje imię" required>
+                <input type="email" placeholder="Twój email" required>
+                <textarea placeholder="Twoja wiadomość" required></textarea>
+                <button type="submit" class="btn">Wyślij</button>
+            </form>
+        </div>
+    </section>
     <footer>
-        <div class="container">
-            <p>&copy; 2025 AnalystHub. All Rights Reserved.</p>
-        </div>
+        <p>© 2023 Twoje Imię. Wszystkie prawa zastrzeżone.</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
