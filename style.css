@@ -1,36 +1,31 @@
 :root {
-    --header-footer-color: #8B4513; /* Ciemny brąz dla headera i footera */
-    --bg-color: #E8D8C3; /* Jasno brązowe tło dla body */
-    --text-color: #3C2F2F; /* Ciemny brąz dla tekstu */
-    --button-color: #B8860B; /* Oliwkowo-pomarańczowy dla przycisków */
-    --button-text-color: #FFFFFF; /* Biały tekst na przyciskach */
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtelny cień */
+    --bg-color: #f5f7fa; /* Jaśniejsze tło */
+    --text-color: #2c3e50; /* Ciemniejszy granat tekstu */
+    --accent-color: #3498db; /* Niebieski akcent */
+    --secondary-color: #7f8c8d; /* Ciemniejszy szary dla detali */
+    --light-color: #ffffff; /* Biały dla kart i nagłówka */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Bardziej wyrazisty cień */
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.8;
     color: var(--text-color);
     background-color: var(--bg-color);
 }
-
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
-
 /* Header */
 header {
-    background: var(--header-footer-color);
-    color: var(--button-text-color);
+    background: var(--light-color);
     box-shadow: var(--shadow);
     position: fixed;
     width: 100%;
@@ -38,74 +33,131 @@ header {
     z-index: 100;
     padding: 20px 0;
 }
-
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 nav ul {
     display: flex;
     list-style: none;
 }
-
 nav ul li {
     margin-left: 30px;
 }
-
 nav ul li a {
     text-decoration: none;
-    color: var(--button-text-color);
+    color: var(--text-color);
     font-weight: 600;
     transition: color 0.3s;
 }
-
 nav ul li a:hover {
-    color: var(--button-color);
+    color: var(--accent-color);
 }
-
-/* Body (Hero Section) */
+/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     text-align: center;
-    background-color: var(--bg-color);
 }
-
 .hero h1 {
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: var(--text-color);
 }
-
 .hero p {
     font-size: 1.2rem;
-    color: var(--text-color);
+    color: var(--secondary-color);
 }
-
-/* Przyciski */
 .btn {
     display: inline-block;
     padding: 12px 30px;
-    background: var(--button-color);
-    color: var(--button-text-color);
+    background: var(--accent-color);
+    color: var(--light-color);
     text-decoration: none;
-    border-radius: 15px 15px 0 0; /* Półprostokątny kształt - zaokrąglone rogi u góry */
+    border-radius: 5px;
     margin-top: 20px;
     transition: transform 0.2s;
 }
-
 .btn:hover {
     transform: translateY(-2px);
 }
-
+/* Ogólne style sekcji */
+.section {
+    padding: 80px 0;
+}
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+}
+/* Sekcja O mnie */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.about-text {
+    flex: 1;
+}
+.about-image img {
+    max-width: 300px;
+    border-radius: 10px;
+}
+/* Sekcja Projekty */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.project-card {
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+.project-card:hover {
+    transform: scale(1.05);
+}
+/* Sekcja Umiejętności */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+.skill {
+    padding: 20px;
+    background: var(--light-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+/* Sekcja Kontakt */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+}
+.contact-form textarea {
+    height: 150px;
+    resize: none;
+}
 /* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: var(--header-footer-color);
-    color: var(--button-text-color);
+    background: var(--light-color);
+    color: var(--secondary-color);
 }
