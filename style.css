@@ -1,10 +1,10 @@
 :root {
-    --bg-color: #F5E8C7; /* Jasno-brązowe, kremowe tło */
-    --text-color: #4A3C2F; /* Głęboki, czekoladowo-brązowy tekst */
-    --accent-color: #A0522D; /* Ciepły, rudawy brązowy akcent dla przycisków */
-    --secondary-color: #6B4E31; /* Średni brąz dla detali i tekstu pomocniczego */
-    --light-color: #EAD8A0; /* Jasny, piaskowy brąz dla kart i nagłówka */
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtelny cień */
+    --header-footer-color: #8B4513; /* Ciemny brąz dla headera i footera */
+    --bg-color: #E8D8C3; /* Jasno brązowe tło dla body */
+    --text-color: #3C2F2F; /* Ciemny brąz dla tekstu */
+    --button-color: #B8860B; /* Oliwkowo-pomarańczowy dla przycisków */
+    --button-text-color: #FFFFFF; /* Biały tekst na przyciskach */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtelny cień */
 }
 
 * {
@@ -29,7 +29,8 @@ body {
 
 /* Header */
 header {
-    background: var(--light-color);
+    background: var(--header-footer-color);
+    color: var(--button-text-color);
     box-shadow: var(--shadow);
     position: fixed;
     width: 100%;
@@ -55,41 +56,44 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--button-text-color);
     font-weight: 600;
     transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: var(--accent-color);
+    color: var(--button-color);
 }
 
-/* Hero Section */
+/* Body (Hero Section) */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     text-align: center;
+    background-color: var(--bg-color);
 }
 
 .hero h1 {
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 20px;
+    color: var(--text-color);
 }
 
 .hero p {
     font-size: 1.2rem;
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
+/* Przyciski */
 .btn {
     display: inline-block;
     padding: 12px 30px;
-    background: var(--accent-color);
-    color: #FFFFFF; /* Biały tekst dla kontrastu */
+    background: var(--button-color);
+    color: var(--button-text-color);
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 15px 15px 0 0; /* Półprostokątny kształt - zaokrąglone rogi u góry */
     margin-top: 20px;
     transition: transform 0.2s;
 }
@@ -98,94 +102,10 @@ nav ul li a:hover {
     transform: translateY(-2px);
 }
 
-/* Ogólne style sekcji */
-.section {
-    padding: 80px 0;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-/* Sekcja O mnie */
-.about-content {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.about-text {
-    flex: 1;
-}
-
-.about-image img {
-    max-width: 300px;
-    border-radius: 10px;
-}
-
-/* Sekcja Projekty */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.project-card {
-    background: var(--light-color);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s;
-}
-
-.project-card:hover {
-    transform: scale(1.05);
-}
-
-/* Sekcja Umiejętności */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    text-align: center;
-}
-
-.skill {
-    padding: 20px;
-    background: var(--light-color);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-}
-
-/* Sekcja Kontakt */
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 15px;
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
-    font-family: 'Inter', sans-serif;
-}
-
-.contact-form textarea {
-    height: 150px;
-    resize: none;
-}
-
 /* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: var(--light-color);
-    color: var(--secondary-color);
+    background: var(--header-footer-color);
+    color: var(--button-text-color);
 }
