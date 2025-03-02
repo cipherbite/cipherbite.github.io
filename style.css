@@ -1,10 +1,10 @@
 :root {
-    --bg-color: #f5f7fa; /* Jaśniejsze tło */
-    --text-color: #2c3e50; /* Ciemniejszy granat tekstu */
-    --accent-color: #3498db; /* Niebieski akcent */
-    --secondary-color: #7f8c8d; /* Ciemniejszy szary dla detali */
+    --bg-color: #f5f1eb; /* Jasnobrązowe tło */
+    --text-color: #33251f; /* Ciemnobrązowy dla tekstu */
+    --accent-color: #c06c44; /* Łososiowy/ceglany akcent */
+    --secondary-color: #8a6e63; /* Średni brąz dla detali */
     --light-color: #ffffff; /* Biały dla kart i nagłówka */
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Bardziej wyrazisty cień */
+    --shadow: 0 4px 12px rgba(131, 100, 78, 0.1); /* Cień w tonacji brązowej */
 }
 * {
     margin: 0;
