@@ -1,13 +1,16 @@
+/* Zmienne kolorystyczne – ciemniejszy, elegancki styl */
 :root {
-    --bg-color: #f5f7f5; /* Bardzo jasny szary z zielonym odcieniem - subtelne tło */
-    --text-color: #2a2f35; /* Ciemnoszary z nutą niebieskiego - czytelny i elegancki */
-    --accent-color: #6b8296; /* Zgaszony niebiesko-szary - profesjonalny akcent */
-    --secondary-color: #8c9aa5; /* Jasny szaro-niebieski dla detali */
-    --light-color: #ffffff; /* Czysta biel dla kart i nagłówków */
-    --shadow: 0 4px 16px rgba(0, 0, 0, 0.05); /* Bardzo delikatny cień */
-    --hover-transition: all 0.3s ease-in-out; /* Płynne przejścia */
+    --bg-color: #1a202c; /* Głęboki szaro-granatowy – tło strony */
+    --text-color: #e2e8f0; /* Jasny szary z delikatnym niebieskim odcieniem – tekst */
+    --accent-color: #4a90e2; /* Żywy, ale stonowany niebieski – akcenty */
+    --secondary-color: #718096; /* Średni szary z nutą niebieskiego – detale */
+    --card-bg: #2d3748; /* Ciemniejszy szary – tło kart i sekcji */
+    --light-color: #ffffff; /* Czysta biel – używana oszczędnie */
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Głębszy, ale subtelny cień */
+    --hover-transition: all 0.3s ease-in-out; /* Płynne animacje */
 }
 
+/* Reset i podstawy */
 * {
     margin: 0;
     padding: 0;
@@ -22,6 +25,7 @@ body {
     font-size: 16px;
 }
 
+/* Kontener */
 .container {
     width: 90%;
     max-width: 1280px;
@@ -31,7 +35,7 @@ body {
 
 /* Header */
 header {
-    background: var(--light-color);
+    background: var(--card-bg);
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
@@ -71,7 +75,7 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--accent-color);
-    border-bottom: 1px solid var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
 }
 
 /* Hero Section */
@@ -80,7 +84,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, var(--bg-color) 70%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--bg-color) 60%, var(--secondary-color) 100%);
 }
 
 .hero h1 {
@@ -88,6 +92,7 @@ nav ul li a:hover {
     font-weight: 600;
     margin-bottom: 16px;
     letter-spacing: 0.5px;
+    color: var(--light-color);
 }
 
 .hero p {
@@ -99,7 +104,7 @@ nav ul li a:hover {
 
 .btn {
     display: inline-block;
-    padding: 10px 28px;
+    padding: 12px 32px;
     background: var(--accent-color);
     color: var(--light-color);
     text-decoration: none;
@@ -125,7 +130,7 @@ nav ul li a:hover {
     font-weight: 600;
     margin-bottom: 48px;
     text-align: center;
-    color: var(--text-color);
+    color: var(--light-color);
     position: relative;
 }
 
@@ -150,12 +155,14 @@ nav ul li a:hover {
 .about-text {
     flex: 1;
     font-size: 1rem;
+    color: var(--text-color);
 }
 
 .about-image img {
     max-width: 320px;
     border-radius: 12px;
     box-shadow: var(--shadow);
+    border: 1px solid var(--secondary-color);
 }
 
 /* Sekcja Projekty */
@@ -166,7 +173,7 @@ nav ul li a:hover {
 }
 
 .project-card {
-    background: var(--light-color);
+    background: var(--card-bg);
     padding: 24px;
     border-radius: 12px;
     box-shadow: var(--shadow);
@@ -175,11 +182,11 @@ nav ul li a:hover {
 
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
 .project-card h3 {
-    color: var(--text-color);
+    color: var(--light-color);
     font-size: 1.3rem;
     margin-bottom: 12px;
 }
@@ -199,7 +206,7 @@ nav ul li a:hover {
 
 .skill {
     padding: 24px;
-    background: var(--light-color);
+    background: var(--card-bg);
     border-radius: 12px;
     box-shadow: var(--shadow);
     color: var(--text-color);
@@ -207,7 +214,9 @@ nav ul li a:hover {
 }
 
 .skill:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
+    background: var(--accent-color);
+    color: var(--light-color);
 }
 
 /* Sekcja Kontakt */
@@ -225,7 +234,7 @@ nav ul li a:hover {
     border: 1px solid var(--secondary-color);
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
-    background-color: var(--light-color);
+    background-color: var(--card-bg);
     color: var(--text-color);
     transition: var(--hover-transition);
 }
@@ -234,7 +243,7 @@ nav ul li a:hover {
 .contact-form textarea:focus {
     border-color: var(--accent-color);
     outline: none;
-    box-shadow: 0 0 8px rgba(107, 130, 150, 0.2);
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
 }
 
 .contact-form textarea {
@@ -246,8 +255,32 @@ nav ul li a:hover {
 footer {
     text-align: center;
     padding: 24px;
-    background: var(--light-color);
+    background: var(--card-bg);
     color: var(--text-color);
     font-size: 0.9rem;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-image img {
+        max-width: 250px;
+    }
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
 }
