@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio inżyniera danych specjalizującego się w IoT, Google Cloud i analizie danych.">
-    <meta name="keywords" content="inżynier danych, IoT, Google Cloud, Python, Grafana, portfolio, analiza danych">
+    <meta name="description" content="Portfolio inżyniera danych – IoT, Google Cloud, analiza danych.">
+    <meta name="keywords" content="inżynier danych, IoT, Google Cloud, Python, portfolio">
     <meta name="author" content="Twoje Imię">
-    <title>Twoje Imię | Inżynier Danych z Pasją</title>
+    <title>Twoje Imię | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Nawigacja -->
-    <header class="header">
+    <header>
         <div class="container">
-            <div class="logo">
-                <span class="logo-highlight">T</span>woje Imię
-            </div>
-            <nav class="nav">
+            <div class="logo">Twoje Imię</div>
+            <nav>
                 <ul>
                     <li><a href="#about" class="nav-link">O mnie</a></li>
                     <li><a href="#projects" class="nav-link">Projekty</a></li>
@@ -31,119 +29,88 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <h1 class="hero-title animate-fade-in">Inżynier Danych & Analityk</h1>
-            <p class="hero-subtitle animate-fade-in">Tworzę przyszłość danych – skalowalnie, precyzyjnie, z pasją.</p>
-            <a href="#projects" class="btn btn-primary animate-fade-in">Odkryj moje projekty</a>
+            <h1 class="animate-fade-in">Inżynier Danych</h1>
+            <p class="animate-fade-in">Tworzę rozwiązania oparte na danych z elegancją i precyzją.</p>
+            <a href="#projects" class="btn animate-fade-in">Moje Projekty</a>
         </div>
     </section>
 
     <!-- O mnie -->
-    <section id="about" class="section about">
+    <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">Kim jestem?</h2>
+            <h2 class="section-title">O mnie</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Cześć! Jestem [Twoje Imię], inżynierem danych z doświadczeniem w Google Cloud, Pythonie i wizualizacji danych. Moja misja? Przekształcać chaos danych w klarowne historie i rozwiązania, które działają.</p>
-                    <p>Kocham technologię, precyzję i wyzwania – od IoT po predykcyjne analizy. Zapraszam do poznania mojej pracy!</p>
+                    <p>Jestem [Twoje Imię], inżynierem danych z pasją do analizy i technologii. Specjalizuję się w IoT, Google Cloud i wizualizacji danych.</p>
                 </div>
                 <div class="about-image">
-                    <img src="twoje-zdjecie.jpg" alt="Zdjęcie [Twoje Imię]" class="profile-img" loading="lazy">
+                    <img src="twoje-zdjecie.jpg" alt="Twoje Imię" class="profile-img" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projekty -->
-    <section id="projects" class="section projects">
+    <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title">Moje Projekty</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3 class="project-title">Analiza Danych Sprzedaży</h3>
-                    <p class="project-desc">Interaktywny dashboard do analizy sprzedaży w Pythonie i SQL.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>SQL</span>
-                        <span>Pandas</span>
-                    </div>
+                    <h3>Analiza Danych Sprzedaży</h3>
+                    <p>Interaktywny dashboard w Pythonie i SQL.</p>
+                    <div class="project-tech">Python | SQL | Pandas</div>
                 </div>
                 <div class="project-card">
-                    <h3 class="project-title">Pipeline ETL w Google Cloud</h3>
-                    <p class="project-desc">Automatyczne przetwarzanie danych z użyciem BigQuery i Dataflow.</p>
-                    <div class="project-tech">
-                        <span>Google Cloud</span>
-                        <span>BigQuery</span>
-                        <span>Dataflow</span>
-                    </div>
+                    <h3>Pipeline ETL w Google Cloud</h3>
+                    <p>Automatyczne przetwarzanie danych z BigQuery.</p>
+                    <div class="project-tech">Google Cloud | BigQuery | Dataflow</div>
                 </div>
-                <div class="project-card highlight">
-                    <h3 class="project-title"><a href="projects/iot-predictive-maintenance.html">IoT: Predykcja Awarii</a></h3>
-                    <p class="project-desc">System IoT z symulacją czujników, MQTT, InfluxDB, Grafaną i predykcją w Jupyterze.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>MQTT</span>
-                        <span>InfluxDB</span>
-                        <span>Grafana</span>
-                        <span>Jupyter</span>
-                    </div>
+                <div class="project-card">
+                    <h3><a href="#">IoT: Predykcja Awarii</a></h3>
+                    <p>System IoT z MQTT, InfluxDB i Grafaną.</p>
+                    <div class="project-tech">Python | MQTT | InfluxDB | Grafana</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Umiejętności -->
-    <section id="skills" class="section skills">
+    <section id="skills" class="section">
         <div class="container">
             <h2 class="section-title">Umiejętności</h2>
             <div class="skills-grid">
                 <div class="skill-item">
-                    <span class="skill-name">Python</span>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-bar" data-width="90%"></div>
-                    </div>
+                    <span>Python</span>
+                    <div class="skill-bar" data-width="90%"></div>
                 </div>
                 <div class="skill-item">
-                    <span class="skill-name">Google Cloud</span>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-bar" data-width="85%"></div>
-                    </div>
+                    <span>Google Cloud</span>
+                    <div class="skill-bar" data-width="85%"></div>
                 </div>
                 <div class="skill-item">
-                    <span class="skill-name">Wizualizacja Danych</span>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-bar" data-width="80%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">SQL</span>
-                    <div class="skill-bar-wrapper">
-                        <div class="skill-bar" data-width="75%"></div>
-                    </div>
+                    <span>SQL</span>
+                    <div class="skill-bar" data-width="80%"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Kontakt -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title">Napisz do mnie</h2>
-            <form class="contact-form" id="contactForm">
-                <label for="name" class="sr-only">Twoje imię</label>
-                <input type="text" id="name" name="name" placeholder="Twoje imię" required aria-label="Twoje imię">
-                <label for="email" class="sr-only">Twój email</label>
-                <input type="email" id="email" name="email" placeholder="Twój email" required aria-label="Twój email">
-                <label for="message" class="sr-only">Twoja wiadomość</label>
-                <textarea id="message" name="message" placeholder="Twoja wiadomość" required aria-label="Twoja wiadomość"></textarea>
-                <button type="submit" class="btn btn-secondary">Wyślij Wiadomość</button>
+            <h2 class="section-title">Kontakt</h2>
+            <form id="contact-form" class="contact-form">
+                <input type="text" id="name" placeholder="Twoje imię" required>
+                <input type="email" id="email" placeholder="Twój email" required>
+                <textarea id="message" placeholder="Wiadomość" required></textarea>
+                <button type="submit" class="btn">Wyślij Wiadomość</button>
             </form>
-            <p class="contact-alt">lub skontaktuj się via <a href="https://linkedin.com/in/twoj-profil" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
         </div>
     </section>
 
     <!-- Stopka -->
-    <footer class="footer">
-        <p>© 2025 Twoje Imię | Zaprojektowane z pasją</p>
+    <footer>
+        <p>© <span id="year"></span> Twoje Imię</p>
     </footer>
 
     <script src="script.js"></script>
