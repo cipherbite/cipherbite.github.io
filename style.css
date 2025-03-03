@@ -1,28 +1,32 @@
 :root {
-    --bg-color: #f5f1eb; /* Jasnobrązowe tło */
-    --text-color: #33251f; /* Ciemnobrązowy dla tekstu */
+    --bg-color: #33251f; /* Ciemnobrązowe tło */
+    --text-color: #f5f1eb; /* Jasnobrązowy dla tekstu */
     --accent-color: #c06c44; /* Łososiowy/ceglany akcent */
     --secondary-color: #8a6e63; /* Średni brąz dla detali */
-    --light-color: #ffffff; /* Biały dla kart i nagłówka */
-    --shadow: 0 4px 12px rgba(131, 100, 78, 0.1); /* Cień w tonacji brązowej */
+    --light-color: #4d3932; /* Ciemniejszy brąz dla kart i nagłówka */
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Cień */
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.8;
     color: var(--text-color);
     background-color: var(--bg-color);
 }
+
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
+
 /* Header */
 header {
     background: var(--light-color);
@@ -33,85 +37,111 @@ header {
     z-index: 100;
     padding: 20px 0;
 }
+
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+.logo {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
 nav ul {
     display: flex;
     list-style: none;
 }
+
 nav ul li {
     margin-left: 30px;
 }
+
 nav ul li a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 600;
     transition: color 0.3s;
 }
+
 nav ul li a:hover {
     color: var(--accent-color);
 }
+
 /* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     text-align: center;
+    background-color: var(--bg-color); /* Tło sekcji hero w kolorze tła strony */
 }
+
 .hero h1 {
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 20px;
+    color: var(--text-color); /* Kolor tekstu nagłówka w sekcji hero */
 }
+
 .hero p {
     font-size: 1.2rem;
     color: var(--secondary-color);
 }
+
 .btn {
     display: inline-block;
     padding: 12px 30px;
     background: var(--accent-color);
-    color: var(--light-color);
+    color: var(--light-color); /* Kolor tekstu przycisku */
     text-decoration: none;
     border-radius: 5px;
     margin-top: 20px;
     transition: transform 0.2s;
 }
+
 .btn:hover {
     transform: translateY(-2px);
 }
+
 /* Ogólne style sekcji */
 .section {
     padding: 80px 0;
 }
+
 .section-title {
     font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 40px;
     text-align: center;
+    color: var(--text-color); /* Kolor tekstu tytułów sekcji */
 }
+
 /* Sekcja O mnie */
 .about-content {
     display: flex;
     align-items: center;
     gap: 40px;
 }
+
 .about-text {
     flex: 1;
 }
+
 .about-image img {
     max-width: 300px;
     border-radius: 10px;
 }
+
 /* Sekcja Projekty */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
+
 .project-card {
     background: var(--light-color);
     padding: 20px;
@@ -119,9 +149,19 @@ nav ul li a:hover {
     box-shadow: var(--shadow);
     transition: transform 0.3s;
 }
+
 .project-card:hover {
     transform: scale(1.05);
 }
+
+.project-card h3 {
+    color: var(--text-color);
+}
+
+.project-card p {
+    color: var(--secondary-color);
+}
+
 /* Sekcja Umiejętności */
 .skills-grid {
     display: grid;
@@ -129,12 +169,15 @@ nav ul li a:hover {
     gap: 20px;
     text-align: center;
 }
+
 .skill {
     padding: 20px;
     background: var(--light-color);
     border-radius: 10px;
     box-shadow: var(--shadow);
+    color: var(--text-color); /* Kolor tekstu umiejętności */
 }
+
 /* Sekcja Kontakt */
 .contact-form {
     max-width: 600px;
@@ -143,21 +186,26 @@ nav ul li a:hover {
     flex-direction: column;
     gap: 20px;
 }
+
 .contact-form input,
 .contact-form textarea {
     padding: 15px;
     border: 1px solid var(--secondary-color);
     border-radius: 5px;
     font-family: 'Inter', sans-serif;
+    background-color: var(--light-color); /* Kolor tła pól formularza */
+    color: var(--text-color); /* Kolor tekstu w polach formularza */
 }
+
 .contact-form textarea {
     height: 150px;
     resize: none;
 }
+
 /* Footer */
 footer {
     text-align: center;
     padding: 20px;
     background: var(--light-color);
-    color: var(--secondary-color);
+    color: var(--text-color); /* Kolor tekstu w stopce */
 }
