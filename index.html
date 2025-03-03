@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio inżyniera danych specjalizującego się w IoT, Google Cloud i analizie danych">
-    <meta name="keywords" content="data engineer, IoT, Google Cloud, Python, Grafana, portfolio">
-    <meta name="author" content="David Dylag">
+    <meta name="description" content="Portfolio inżyniera danych specjalizującego się w IoT, Google Cloud i analizie danych.">
+    <meta name="keywords" content="inżynier danych, IoT, Google Cloud, Python, Grafana, portfolio, analiza danych">
+    <meta name="author" content="Twoje Imię">
     <title>Twoje Imię | Inżynier Danych z Pasją</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Nawigacja z subtelnym efektem -->
+    <!-- Nawigacja -->
     <header class="header">
         <div class="container">
             <div class="logo">
@@ -28,16 +28,16 @@
         </div>
     </header>
 
-    <!-- Sekcja Hero z elegancją i energią -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <h1 class="hero-title">Inżynier Danych & Analityk</h1>
-            <p class="hero-subtitle">Tworzę przyszłość danych – skalowalnie, precyzyjnie, z pasją.</p>
-            <a href="#projects" class="btn btn-primary">Odkryj moje projekty</a>
+            <h1 class="hero-title animate-fade-in">Inżynier Danych & Analityk</h1>
+            <p class="hero-subtitle animate-fade-in">Tworzę przyszłość danych – skalowalnie, precyzyjnie, z pasją.</p>
+            <a href="#projects" class="btn btn-primary animate-fade-in">Odkryj moje projekty</a>
         </div>
     </section>
 
-    <!-- O mnie – minimalistyczne i osobiste -->
+    <!-- O mnie -->
     <section id="about" class="section about">
         <div class="container">
             <h2 class="section-title">Kim jestem?</h2>
@@ -47,13 +47,13 @@
                     <p>Kocham technologię, precyzję i wyzwania – od IoT po predykcyjne analizy. Zapraszam do poznania mojej pracy!</p>
                 </div>
                 <div class="about-image">
-                    <img src="twoje-zdjecie.jpg" alt="Twoje zdjęcie" class="profile-img">
+                    <img src="twoje-zdjecie.jpg" alt="Zdjęcie [Twoje Imię]" class="profile-img" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projekty – efektowne i zorganizowane -->
+    <!-- Projekty -->
     <section id="projects" class="section projects">
         <div class="container">
             <h2 class="section-title">Moje Projekty</h2>
@@ -91,48 +91,59 @@
         </div>
     </section>
 
-    <!-- Umiejętności – wizualnie atrakcyjne -->
+    <!-- Umiejętności -->
     <section id="skills" class="section skills">
         <div class="container">
             <h2 class="section-title">Umiejętności</h2>
             <div class="skills-grid">
                 <div class="skill-item">
                     <span class="skill-name">Python</span>
-                    <div class="skill-bar" style="width: 90%;"></div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar" data-width="90%"></div>
+                    </div>
                 </div>
                 <div class="skill-item">
                     <span class="skill-name">Google Cloud</span>
-                    <div class="skill-bar" style="width: 85%;"></div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar" data-width="85%"></div>
+                    </div>
                 </div>
                 <div class="skill-item">
                     <span class="skill-name">Wizualizacja Danych</span>
-                    <div class="skill-bar" style="width: 80%;"></div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar" data-width="80%"></div>
+                    </div>
                 </div>
                 <div class="skill-item">
                     <span class="skill-name">SQL</span>
-                    <div class="skill-bar" style="width: 75%;"></div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar" data-width="75%"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Kontakt – prosty i elegancki -->
+    <!-- Kontakt -->
     <section id="contact" class="section contact">
         <div class="container">
             <h2 class="section-title">Napisz do mnie</h2>
-            <form class="contact-form" action="mailto:twoj.email@example.com" method="post" enctype="text/plain">
-                <input type="text" name="name" placeholder="Twoje imię" required>
-                <input type="email" name="email" placeholder="Twój email" required>
-                <textarea name="message" placeholder="Twoja wiadomość" required></textarea>
+            <form class="contact-form" id="contactForm">
+                <label for="name" class="sr-only">Twoje imię</label>
+                <input type="text" id="name" name="name" placeholder="Twoje imię" required aria-label="Twoje imię">
+                <label for="email" class="sr-only">Twój email</label>
+                <input type="email" id="email" name="email" placeholder="Twój email" required aria-label="Twój email">
+                <label for="message" class="sr-only">Twoja wiadomość</label>
+                <textarea id="message" name="message" placeholder="Twoja wiadomość" required aria-label="Twoja wiadomość"></textarea>
                 <button type="submit" class="btn btn-secondary">Wyślij Wiadomość</button>
             </form>
-            <p class="contact-alt">lub skontaktuj się via <a href="https://linkedin.com/in/twoj-profil">LinkedIn</a></p>
+            <p class="contact-alt">lub skontaktuj się via <a href="https://linkedin.com/in/twoj-profil" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
         </div>
     </section>
 
-    <!-- Stopka – subtelna i profesjonalna -->
+    <!-- Stopka -->
     <footer class="footer">
-        <p>&copy; 2025 Twoje Imię | Zaprojektowane z pasją</p>
+        <p>© 2025 Twoje Imię | Zaprojektowane z pasją</p>
     </footer>
 
     <script src="script.js"></script>
