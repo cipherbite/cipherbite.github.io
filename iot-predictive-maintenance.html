@@ -1,277 +1,303 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System IoT do Predykcji Awarii</title>
+    <title>IoT Predictive Maintenance System</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #34495e;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #3498db;
+            color: #fff;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        a {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>System IoT do Predykcji Awarii</h1>
+        <h1>IoT Predictive Maintenance System</h1>
 
-        <p>W ramach tego projektu stworzyłem zaawansowany system IoT, który symuluje dane z czujników temperatury, przesyła je za pomocą protokołu MQTT, zapisuje w bazie danych InfluxDB, wizualizuje w czasie rzeczywistym w Grafanie oraz przewiduje potencjalne awarie przy użyciu analizy danych w Jupyter Notebook. Projekt ten demonstruje moje umiejętności w pracy z technologiami IoT, bazami danych czasu rzeczywistego, wizualizacją danych oraz analizą predykcyjną.</p>
+        <p>Welcome to my advanced IoT Predictive Maintenance System! In this project, I engineered a cutting-edge solution that simulates temperature sensor data, transmits it via the MQTT protocol, stores it in InfluxDB, visualizes it in real-time using Grafana, and predicts potential failures with data analysis in Jupyter Notebook. This project highlights my expertise in IoT technologies, real-time data management, visualization, and predictive analytics—perfect for a modern data engineering portfolio.</p>
 
-        <h2>1. Instalacja Środowiska</h2>
+        ## 1. Environment Setup
 
-        <p>Aby rozpocząć, skonfigurowałem środowisko programistyczne i uruchomieniowe na systemie Windows, instalując kluczowe komponenty niezbędne do działania systemu.</p>
+        <p>I kicked off the project by setting up a robust development environment on Windows, installing all critical components to bring the system to life.</p>
 
-        <h3>Windows</h3>
+        ### Windows Configuration
 
-        <ul>
-            <li><strong>Mosquitto MQTT:</strong> Pobrałem i zainstalowałem Mosquitto z oficjalnej strony <a href="https://mosquitto.org/download/">https://mosquitto.org/download/</a>. Uruchomiłem usługę przez menu Start > Mosquitto > mosquitto i zweryfikowałem działanie, używając komendy <code>netstat -an | find "1883"</code> w wierszu polecenia, co potwierdziło, że port 1883 jest aktywny.</li>
-            <li><strong>Node-RED:</strong> Zainstalowałem Node.js z <a href="https://nodejs.org/">https://nodejs.org/</a>, a następnie zainstalowałem Node-RED globalnie komendą <code>npm install -g --unsafe-perm node-red</code>. Uruchomiłem Node-RED poleceniem <code>node-red</code> i sprawdziłem dostępność pod adresem <code>http://localhost:1880</code>.</li>
-            <li><strong>InfluxDB:</strong> Pobrałem i zainstalowałem InfluxDB z <a href="https://portal.influxdata.com/downloads/">https://portal.influxdata.com/downloads/</a>, uruchamiając go jako usługę Windows. Sprawdziłem działanie, wchodząc do konsoli InfluxDB poleceniem <code>influx</code>.</li>
-            <li><strong>Grafana:</strong> Pobrałem i zainstalowałem Grafanę z <a href="https://grafana.com/grafana/download">https://grafana.com/grafana/download</a>, uruchamiając ją jako usługę Windows. Dostęp do interfejsu webowego sprawdziłem pod adresem <code>http://localhost:3000</code>.</li>
-            <li><strong>Jupyter i Biblioteki Python:</strong> Użyłem <code>pip install jupyter paho-mqtt influxdb pandas matplotlib statsmodels</code>, aby zainstalować Jupyter Notebook oraz niezbędne biblioteki do generowania, przesyłania i analizy danych.</li>
-        </ul>
+        - **Mosquitto MQTT**: Downloaded from <a href="https://mosquitto.org/download/">mosquitto.org</a>. Launched via Start Menu > Mosquitto > mosquitto. Verified port 1883 was active with `netstat -an | find "1883"`.
+        - **Node-RED**: Installed Node.js from <a href="https://nodejs.org/">nodejs.org</a>, followed by a global Node-RED install using `npm install -g --unsafe-perm node-red`. Started with `node-red` and accessed at `http://localhost:1880`.
+        - **InfluxDB**: Installed from <a href="https://portal.influxdata.com/downloads/">influxdata.com</a> as a Windows service. Confirmed functionality via `influx` in the terminal.
+        - **Grafana**: Downloaded from <a href="https://grafana.com/grafana/download">grafana.com</a>, set up as a service, and accessed at `http://localhost:3000`.
+        - **Jupyter & Python Libraries**: Installed with `pip install jupyter paho-mqtt influxdb pandas matplotlib statsmodels` for data generation, transmission, and analysis.
 
-        <img src="../images/zrzut_ekranu_uslugi.png" alt="Zrzut ekranu z uruchomionych usług">
+        <img src="../images/screenshot_services.png" alt="Screenshot of active Windows services">
 
-        <h2>2. Konfiguracja Bazy Danych</h2>
+        ## 2. Database Configuration
 
-        <p>Skonfigurowałem bazę danych w InfluxDB, aby przechowywać dane z czujników temperatury.</p>
+        <p>I configured InfluxDB to securely store the temperature sensor data.</p>
 
-        <ul>
-            <li>Otworzyłem konsolę InfluxDB w terminalu za pomocą komendy <code>influx</code>.</li>
-            <li>Stworzyłem bazę danych poleceniem <code>CREATE DATABASE iot_data</code>.</li>
-            <li>Zweryfikowałem istnienie bazy, wykonując <code>SHOW DATABASES</code>, co potwierdziło obecność <code>iot_data</code>.</li>
-        </ul>
+        - Opened the InfluxDB console with `influx`.
+        - Created a database using `CREATE DATABASE iot_data`.
+        - Confirmed its existence with `SHOW DATABASES`.
 
-        <img src="../images/zrzut_ekranu_influxdb.png" alt="Zrzut ekranu z konsoli InfluxDB">
+        <img src="../images/screenshot_influxdb.png" alt="InfluxDB console screenshot">
 
-        <h2>3. Konfiguracja Node-RED</h2>
+        ## 3. Node-RED Configuration
 
-        <p>Zainstalowałem i skonfigurowałem Node-RED do obsługi przepływu danych z MQTT do InfluxDB.</p>
+        <p>Node-RED was set up to orchestrate the data pipeline from MQTT to InfluxDB.</p>
 
-        <ul>
-            <li><strong>Instalacja Modułów:</strong> W interfejsie Node-RED (<code>http://localhost:1880</code>) kliknąłem menu > <code>Manage palette</code> > <code>Install</code>, a następnie zainstalowałem moduły <code>node-red-contrib-influxdb</code> i <code>node-red-dashboard</code>.</li>
-            <li><strong>Utworzenie Przepływu:</strong>
-                <ol>
-                    <li>Dodałem węzeł <code>mqtt in</code> z sekcji "input", skonfigurowałem go z brokerem MQTT (Server: <code>localhost</code>, Port: <code>1883</code>, Topic: <code>sensor/data</code>).</li>
-                    <li>Dodałem węzeł <code>json</code> z sekcji "parser", pozostawiając domyślne ustawienia.</li>
-                    <li>Dodałem węzeł <code>influxdb out</code> z sekcji "storage", konfigurując połączenie z InfluxDB (Host: <code>localhost</code>, Port: <code>8086</code>, Database: <code>iot_data</code>, Measurement: <code>sensor_data</code>).</li>
-                    <li>Połączyłem węzły w kolejności <code>mqtt in</code> → <code>json</code> → <code>influxdb out</code>.</li>
-                    <li>Kliknąłem <code>Deploy</code> w prawym górnym rogu, aby aktywować przepływ.</li>
-                </ol>
-            </li>
-        </ul>
+        - **Module Installation**: In the Node-RED UI (`http://localhost:1880`), navigated to Menu > Manage Palette > Install, adding `node-red-contrib-influxdb` and `node-red-dashboard`.
+        - **Flow Creation**:
+            1. Added an `mqtt in` node (Server: `localhost`, Port: `1883`, Topic: `sensor/data`).
+            2. Added a `json` node with default settings.
+            3. Added an `influxdb out` node (Host: `localhost`, Port: `8086`, Database: `iot_data`, Measurement: `sensor_data`).
+            4. Connected nodes: `mqtt in` → `json` → `influxdb out`.
+            5. Hit `Deploy` to activate.
 
-        <img src="../images/zrzut_ekranu_node_red.png" alt="Zrzut ekranu z interfejsu Node-RED">
+        <img src="../images/screenshot_node_red.png" alt="Node-RED flow screenshot">
 
-        <h2>4. Generator Danych</h2>
+        ## 4. Data Generator
 
-        <p>Stworzyłem symulator danych czujników w Jupyter Notebook, generujący dane temperatury i przesyłający je przez MQTT.</p>
+        <p>I built a temperature data simulator in Jupyter Notebook to mimic a real IoT sensor.</p>
 
-        <p>Utworzyłem plik <code>1_data_generator.ipynb</code> w Jupyter Notebook i wkleiłem następujący kod:</p>
+        <p>File: `1_data_generator.ipynb`</p>
 
-        <pre><code>
-import paho.mqtt.client as mqtt
-import random
-import time
-import json
+        ```python
+        import paho.mqtt.client as mqtt
+        import random
+        import time
+        import json
 
-# Połączenie z brokerem MQTT
-client = mqtt.Client()
-client.connect("localhost", 1883)
+        # Connect to MQTT broker
+        client = mqtt.Client()
+        client.connect("localhost", 1883)
 
-# Generowanie i wysyłanie danych
-while True:
-    temp = round(random.uniform(20.0, 35.0), 2)  # Temperatura 20-35°C
-    data = {"temperature": temp, "timestamp": int(time.time())}
-    client.publish("sensor/data", json.dumps(data))
-    print(f"Wysłano: {data}")
-    time.sleep(2)  # Co 2 sekundy
-        </code></pre>
+        # Generate and send data
+        while True:
+            temp = round(random.uniform(20.0, 35.0), 2)  # Random temp 20-35°C
+            data = {"temperature": temp, "timestamp": int(time.time())}
+            client.publish("sensor/data", json.dumps(data))
+            print(f"Sent: {data}")
+            time.sleep(2)  # Every 2 seconds
+        ```
 
-        <p>Uruchomiłem kod, obserwując komunikaty o wysyłanych danych w konsoli Jupyter, co potwierdziło, że dane są przesyłane co 2 sekundy.</p>
+        <p>Running this code logged data transmission every 2 seconds in the Jupyter console.</p>
 
-        <img src="../images/zrzut_ekranu_jupyter_generator.png" alt="Zrzut ekranu z Jupyter Notebook z komunikatami o wysłanych danych">
+        <img src="../images/screenshot_jupyter_generator.png" alt="Jupyter data generator output">
 
-        <h2>5. Weryfikacja Danych</h2>
+        ## 5. Data Verification
 
-        <p>Zweryfikowałem, czy dane są poprawnie zapisywane w InfluxDB, używając Jupyter Notebook.</p>
+        <p>I ensured data integrity by querying InfluxDB from Jupyter Notebook.</p>
 
-        <p>Utworzyłem plik <code>2_data_verification.ipynb</code> z następującym kodem:</p>
+        <p>File: `2_data_verification.ipynb`</p>
 
-        <pre><code>
-from influxdb import InfluxDBClient
-import pandas as pd
+        ```python
+        from influxdb import InfluxDBClient
+        import pandas as pd
 
-# Połączenie z InfluxDB
-client = InfluxDBClient(host="localhost", port=8086, database="iot_data")
+        # Connect to InfluxDB
+        client = InfluxDBClient(host="localhost", port=8086, database="iot_data")
 
-# Zapytanie o dane
-result = client.query("SELECT * FROM sensor_data LIMIT 10")
-df = pd.DataFrame(result.get_points())
-print(df)
-        </code></pre>
+        # Query data
+        result = client.query("SELECT * FROM sensor_data LIMIT 10")
+        df = pd.DataFrame(result.get_points())
+        print(df)
+        ```
 
-        <p>Po uruchomieniu kodu w Jupyter, otrzymałem tabelę z danymi (np. temperature i timestamp), co potwierdziło, że dane są zapisywane w iot_data.</p>
+        <p>The output displayed a table with temperature and timestamp data, confirming storage in `iot_data`.</p>
 
-        <img src="../images/zrzut_ekranu_jupyter_verification.png" alt="Zrzut ekranu z Jupyter Notebook pokazujący wyniki zapytania w 2_data_verification.ipynb (tabela z danymi">
+        <img src="../images/screenshot_jupyter_verification.png" alt="Jupyter data verification table">
 
-        <h2>6. Konfiguracja Grafany</h2>
+        ## 6. Grafana Configuration
 
-        <p>Skonfigurowałem Grafanę do wizualizacji danych temperatury w czasie rzeczywistym i monitorowania alertów.</p>
+        <p>Grafana was configured for real-time visualization and alerting.</p>
 
-        <p><strong>Logowanie i Źródło Danych:</strong> Otworzyłem <a href="http://localhost:3000">http://localhost:3000</a>, zalogowałem się (admin/admin), zmieniłem hasło, a następnie dodałem źródło danych InfluxDB (URL: <a href="http://localhost:8086">http://localhost:8086</a>, Database: iot_data), klikając Save &amp; Test dla potwierdzenia.</p>
+        - **Login & Data Source**: Accessed at `http://localhost:3000` (admin/admin), set a new password, and added an InfluxDB source (URL: `http://localhost:8086`, Database: `iot_data`). Saved and tested successfully.
+        - **Dashboard & Panel**: Created a dashboard via + > Dashboard > Add Panel. Query settings:
+            - FROM: `sensor_data`
+            - SELECT: `mean(value:temperature)`
+            - GROUP BY: `time($__interval)`
+        - Panel title: "Temperature Over Time". Applied changes.
+        - **Alert**: In the Alert tab, added "High Temperature" alert: `WHEN mean() OF query(A, 5m, now) IS ABOVE 28`, evaluated every 1m for 0m. Saved.
 
-        <p><strong>Dashboard i Panel:</strong> Stworzyłem dashboard, klikając + &gt; Dashboard &gt; Add Panel. W zapytaniu ustawiłem:</p>
+        <img src="../images/screenshot_grafana_dashboard.png" alt="Grafana temperature dashboard">
+        <img src="../images/screenshot_grafana_alert.png" alt="Grafana High Temperature alert config">
 
-        <ul>
-            <li>FROM: sensor_data</li>
-            <li>SELECT: mean(value:temperature)</li>
-            <li>GROUP BY: time($__interval)</li>
-        </ul>
+        ## 7. System Launch & Testing
 
-        <p>Tytuł panelu: "Temperatura w czasie". Kliknąłem Apply, aby aktywować panel.</p>
+        <p>I launched all components and validated their integration.</p>
 
-        <p><strong>Alert:</strong> W trybie edycji panelu kliknąłem zakładkę Alert, dodałem alert o nazwie "Wysoka temperatura", ustawiłem warunek WHEN mean() OF query(A, 5m, now) IS ABOVE 28, ustawienie Evaluation: every 1m for 0m, i zapisałem zmiany.</p>
+        - Confirmed services were running: Mosquitto (1883), InfluxDB (8086), Node-RED (1880), Grafana (3000) via `netstat`.
+        - Ran `1_data_generator.ipynb` in Jupyter to send data.
+        - Verified storage with `2_data_verification.ipynb`.
+        - Viewed the real-time graph in Grafana at `http://localhost:3000`.
 
-        <img src="../images/zrzut_ekranu_grafana_dashboard.png" alt="Zrzut ekranu z dashboardu Grafany pokazujący wykres temperatury w czasie rzeczywistym">
-        <img src="../images/zrzut_ekranu_grafana_alert.png" alt="Zrzut ekranu z konfiguracji alertu w Grafanie (&quot;Wysoka temperatura&quot;)">
+        <img src="../images/screenshot_grafana_dashboard_2.png" alt="Active Grafana dashboard">
+        <img src="../images/screenshot_jupyter_generator_2.png" alt="Jupyter data send logs">
 
-        <h2>7. Uruchomienie i Testowanie Systemu</h2>
+        ## 8. Anomaly Testing
 
-        <p>Uruchomiłem wszystkie komponenty systemu i przetestowałem ich działanie.</p>
+        <p>I simulated an anomaly to test the alert system.</p>
 
-        <p>Upewniłem się, że wszystkie usługi są aktywne: Mosquitto (port 1883), InfluxDB (port 8086), Node-RED (port 1880), Grafana (port 3000). Sprawdziłem ich status komendami systemowymi (np. netstat na Windowsie).</p>
+        <p>Modified `1_data_generator.ipynb` from:</p>
 
-        <p>Uruchomiłem Jupyter Notebook komendą <code>jupyter notebook</code>, otworzyłem <code>1_data_generator.ipynb</code> i uruchomiłem kod, obserwując wysyłane dane.</p>
+        ```python
+        temp = round(random.uniform(20.0, 35.0), 2)
+        ```
 
-        <p>Otworzyłem <code>2_data_verification.ipynb</code>, aby potwierdzić zapis danych w InfluxDB.</p>
+        <p>to:</p>
 
-        <p>Otworzyłem dashboard Grafany (<a href="http://localhost:3000">http://localhost:3000</a>) i obserwowałem wykres temperatury w czasie rzeczywistym.</p>
+        ```python
+        temp = round(random.uniform(25.0, 35.0), 2)
+        ```
 
-        <img src="../images/zrzut_ekranu_grafana_dashboard_2.png" alt="Zrzut ekranu z dashboardu Grafany z aktywnym wykresem temperatury">
-        <img src="../images/zrzut_ekranu_jupyter_generator_2.png" alt="Zrzut ekranu z konsoli Jupyter z komunikatami o wysłanych danych z 1_data_generator.ipynb">
+        <p>Reran the script, triggering the "High Temperature" alert in Grafana when temperatures exceeded 28°C.</p>
 
-        <h2>8. Test Anomalii</h2>
+        <img src="../images/screenshot_grafana_alert_active.png" alt="Grafana alert triggered">
+        <img src="../images/screenshot_jupyter_generator_3.png" alt="Jupyter with updated temp range">
 
-        <p>Przetestowałem system, symulując anomalię w danych, aby upewnić się, że alerty w Grafanie działają poprawnie.</p>
+        ## 9. Failure Prediction
 
-        <p>W pliku <code>1_data_generator.ipynb</code> zmodyfikowałem linię:</p>
+        <p>I developed a predictive model to forecast potential failures.</p>
 
-        <pre><code>temp = round(random.uniform(20.0, 35.0), 2)</code></pre>
+        <p>File: `3_failure_prediction.ipynb`</p>
 
-        <p>na:</p>
+        ```python
+        from influxdb import InfluxDBClient
+        import pandas as pd
+        from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
-        <pre><code>temp = round(random.uniform(25.0, 35.0), 2)</code></pre>
+        # Connect to InfluxDB
+        client = InfluxDBClient(host="localhost", port=8086, database="iot_data")
 
-        <p>Uruchomiłem kod ponownie, obserwując, jak temperatura rośnie powyżej 28°C, co aktywowało alert "Wysoka temperatura" w Grafanie. Sprawdzałem powiadomienia w interfejsie Grafany i logi alertów.</p>
+        # Fetch data
+        result = client.query("SELECT * FROM sensor_data")
+        df = pd.DataFrame(result.get_points())
 
-        <img src="../images/zrzut_ekranu_grafana_alert_active.png" alt="Zrzut ekranu z dashboardu Grafany pokazujący aktywowany alert &quot;Wysoka temperatura&quot;">
-        <img src="../images/zrzut_ekranu_jupyter_generator_3.png" alt="Zrzut ekranu z 1_data_generator.ipynb po zmianie zakresu temperatury">
+        # Prepare data
+        df['time'] = pd.to_datetime(df['time'])
+        df.set_index('time', inplace=True)
+        temp_series = df['value'].apply(lambda x: float(x['temperature']))
 
-        <h2>9. Predykcja Awarii</h2>
+        # Predictive model
+        model = ExponentialSmoothing(temp_series, trend="add").fit()
+        forecast = model.forecast(10)  # 10 steps ahead
+        print("Forecasted values:", forecast)
 
-        <p>Zaimplementowałem moduł predykcji awarii w Jupyter Notebook, analizując dane z InfluxDB, aby przewidzieć potencjalne problemy z temperaturą.</p>
+        # Anomaly detection
+        threshold = 30
+        if any(forecast > threshold):
+            print("Warning: Potential failure ahead!")
+        ```
 
-        <p>Utworzyłem plik <code>3_failure_prediction.ipynb</code> z następującym kodem:</p>
+        <p>This model uses Exponential Smoothing to predict temperatures and flags values above 30°C.</p>
 
-        <pre><code>
-from influxdb import InfluxDBClient
-import pandas as pd
-from statsmodels.tsa.holtwinters import ExponentialSmoothing
+        <img src="../images/screenshot_jupyter_prediction.png" alt="Prediction output with warning">
 
-# Połączenie z InfluxDB
-client = InfluxDBClient(host="localhost", port=8086, database="iot_data")
+        ## 10. Troubleshooting
 
-# Pobierz dane
-result = client.query("SELECT * FROM sensor_data")
-df = pd.DataFrame(result.get_points())
+        <p>I tackled various challenges, sharpening my IoT troubleshooting skills.</p>
 
-# Przygotuj dane
-df['time'] = pd.to_datetime(df['time'])
-df.set_index('time', inplace=True)
-temp_series = df['value'].apply(lambda x: float(x['temperature']))  # Parsowanie JSON
+        | Problem                  | Solution                                      |
+        |--------------------------|-----------------------------------------------|
+        | Mosquitto not running    | Checked `netstat -an | findstr "1883"`        |
+        | No data in Node-RED      | Added debug node after `mqtt in`              |
+        | InfluxDB not storing     | Ran `SHOW MEASUREMENTS` in InfluxDB console   |
+        | Grafana no data          | Verified data source and query settings       |
+        | Jupyter InfluxDB connect | Confirmed host, port, and database details    |
 
-# Model predykcyjny
-model = ExponentialSmoothing(temp_series, trend="add").fit()
-forecast = model.forecast(10)  # Przewiduj na 10 kroków
-print("Przewidywane wartości:", forecast)
+        <img src="../images/screenshot_troubleshooting.png" alt="Troubleshooting log example">
 
-# Wykrywanie anomalii
-threshold = 30  # Próg awarii
-if any(forecast > threshold):
-    print("Uwaga: Możliwa awaria w przyszłości!")
-        </code></pre>
+        ## 11. Useful Commands
 
-        <p>Uruchomiłem kod, analizując dane historyczne i przewidując przyszłe wartości temperatury. Model używa wygładzania wykładniczego (ExponentialSmoothing) do predykcji i generuje ostrzeżenie, jeśli temperatura przekracza 30°C.</p>
+        <p>Key commands for system management on Windows:</p>
 
-        <img src="../images/zrzut_ekranu_jupyter_prediction.png" alt="Zrzut ekranu z 3_failure_prediction.ipynb pokazujący wyniki predykcji i ostrzeżenie o możliwej awarii">
+        ```bash
+        # Check open ports
+        netstat -an | findstr "1883 8086 3000 1880"
 
-        <h2>10. Rozwiązywanie Problemów</h2>
+        # Launch InfluxDB console
+        influx
 
-        <p>W trakcie realizacji projektu napotkałem i rozwiązałem kilka problemów, co pozwoliło mi lepiej zrozumieć technologię IoT i jej konfigurację. Oto tabela z przykładami:</p>
+        # Monitor services in Task Manager
+        ```
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Problem</th>
-                    <th>Rozwiązanie</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Mosquitto nie działa</td>
-                    <td>Sprawdziłem, czy usługa jest uruchomiona: <code>netstat -an | findstr "1883"</code></td>
-                </tr>
-                <tr>
-                    <td>Brak danych w Node-RED</td>
-                    <td>Dodałem węzeł debug po <code>mqtt in</code>, aby sprawdzić, czy wiadomości są odbierane.</td>
-                </tr>
-                <tr>
-                    <td>InfluxDB nie zapisuje danych</td>
-                    <td>Sprawdziłem konfigurację Node-RED, wykonując <code>SHOW MEASUREMENTS</code> w konsoli InfluxDB.</td>
-                </tr>
-                <tr>
-                    <td>Grafana nie wyświetla danych</td>
-                    <td>Zweryfikowałem konfigurację źródła danych, wykonując test połączenia i dostosowując zapytanie.</td>
-                </tr>
-                <tr>
-                    <td>Jupyter nie łączy się z InfluxDB</td>
-                    <td>Sprawdziłem dane połączenia (host, port, baza), upewniając się, że są poprawne.</td>
-                </tr>
-            </tbody>
-        </table>
+        <img src="../images/screenshot_netstat.png" alt="Netstat output screenshot">
 
-        <img src="../images/zrzut_ekranu_rozwiązywanie_problemów.png" alt="Zrzut ekranu z konsoli lub logów, pokazujący rozwiązanie jednego z problemów (np. logi Node-RED lub InfluxDB)">
+        ## Summary
 
-        <h2>11. Przydatne Komendy</h2>
+        <p>This IoT Predictive Maintenance System exemplifies my ability to design and implement sophisticated IoT solutions. It integrates MQTT for data transmission, InfluxDB for storage, Grafana for visualization, and Jupyter Notebook for predictive analytics. The system is practical, scalable, and ideal for real-world device monitoring.</p>
 
-        <p>Poniżej lista komend, które wykorzystałem do monitorowania i zarządzania systemem na Windowsie:</p>
-        <pre><code>
-# Sprawdzenie otwartych portów
-netstat -an | findstr "1883 8086 3000 1880"
+        <p>All code, configs, and screenshots are in this repository, ready for replication or enhancement. This project reflects meticulous testing and refinement to meet modern IoT demands.</p>
 
-# Uruchomienie konsoli InfluxDB
-influx
+        ## Contact
 
-# Sprawdzenie statusu usług w Menedżerze Zadań Windows
-# (Mosquitto, InfluxDB, Grafana jako usługi)
-</code></pre>
-
-        <img src="../images/zrzut_ekranu_netstat.png" alt="Zrzut ekranu z konsoli Windows pokazujący wyniki netstat lub status usług">
-
-        <h2>Podsumowanie</h2>
-
-        <p>Ten projekt jest przykładem moich umiejętności w projektowaniu i wdrażaniu systemów IoT, pracy z protokołami komunikacyjnymi (MQTT), bazami danych czasu rzeczywistego (InfluxDB), wizualizacją danych (Grafana) oraz analizą predykcyjną (Jupyter Notebook). System symuluje dane z czujników temperatury, przesyła je w czasie rzeczywistym, zapisuje do bazy, wizualizuje na dashboardzie i przewiduje awarie, co czyni go praktycznym rozwiązaniem dla monitorowania i utrzymania urządzeń IoT.</p>
-
-        <p>Cały kod projektu, konfiguracje i zrzuty ekranu są dostępne w tym repozytorium, co pozwala na łatwą replikację i dalsze rozwijanie systemu. Projekt był realizowany z dbałością o szczegóły, testowany w różnych scenariuszach i udoskonalany, aby sprostać wymaganiom nowoczesnych aplikacji IoT.</p>
-
-        <h2>Kontakt</h2>
-
-        <p>Jeśli chcesz dowiedzieć się więcej o tym projekcie lub współpracować, skontaktuj się ze mną przez [Twoje dane kontaktowe, np. email lub LinkedIn].</p>
-
-        <p><strong>Uwagi:</strong></p>
-
-        <p>Dokument został zaprojektowany tak, aby wyglądał naturalnie i profesjonalnie, z naciskiem na Twój wkład i umiejętności. Unikałem typowych cech tekstu AI, takich jak przesadna formalność czy powtarzalność.</p>
-
-        <p>Miejsce na zrzuty ekranu oznaczono jako <code>[screenshot of]</code>, co pozwala Ci wstawić odpowiednie obrazy, aby podkreślić każdy etap projektu.</p>
-
-        <p>Dokument jest gotowy do umieszczenia na GitHub Pages – możesz zapisać go jako plik .md (Markdown) w swoim repozytorium i stylizować za pomocą CSS, aby wyglądał jeszcze bardziej atrakcyjnie.</p>
+        <p>Interested in this project or collaboration? Reach me at [your email/LinkedIn].</p>
     </div>
 </body>
 </html>
