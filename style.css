@@ -16,15 +16,15 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    line-height: 1.6; /* Zmniejszono dla elegancji */
+    line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
-    font-size: 16px; /* Standardowa wielkość dla czytelności */
+    font-size: 16px;
 }
 
 .container {
     width: 90%;
-    max-width: 1280px; /* Szerszy dla nowoczesnego wyglądu */
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 24px;
 }
@@ -33,7 +33,7 @@ body {
 header {
     background: var(--light-color);
     box-shadow: var(--shadow);
-    position: sticky; /* Sticky zamiast fixed dla płynności */
+    position: sticky;
     top: 0;
     z-index: 100;
     padding: 16px 0;
@@ -47,9 +47,9 @@ header .container {
 
 .logo {
     color: var(--text-color);
-    font-size: 1.6rem; /* Mniejszy dla subtelności */
+    font-size: 1.6rem;
     font-weight: 700;
-    letter-spacing: 0.8px; /* Lekkie rozciągnięcie dla wyrafinowania */
+    letter-spacing: 0.8px;
 }
 
 nav ul {
@@ -58,7 +58,7 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 36px; /* Więcej przestrzeni dla elegancji */
+    margin-left: 36px;
 }
 
 nav ul li a {
@@ -71,7 +71,7 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--accent-color);
-    border-bottom: 1px solid var(--accent-color); /* Subtelny akcent przy hover */
+    border-bottom: 1px solid var(--accent-color);
 }
 
 /* Hero Section */
@@ -80,11 +80,11 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, var(--bg-color) 70%, var(--secondary-color) 100%); /* Subtelny gradient */
+    background: linear-gradient(135deg, var(--bg-color) 70%, var(--secondary-color) 100%);
 }
 
 .hero h1 {
-    font-size: 2.8rem; /* Nieco mniejszy dla elegancji */
+    font-size: 2.8rem;
     font-weight: 600;
     margin-bottom: 16px;
     letter-spacing: 0.5px;
@@ -99,11 +99,11 @@ nav ul li a:hover {
 
 .btn {
     display: inline-block;
-    padding: 10px 28px; /* Mniejszy dla subtelności */
+    padding: 10px 28px;
     background: var(--accent-color);
     color: var(--light-color);
     text-decoration: none;
-    border-radius: 8px; /* Większy promień dla miękkości */
+    border-radius: 8px;
     margin-top: 24px;
     font-weight: 500;
     transition: var(--hover-transition);
@@ -117,11 +117,11 @@ nav ul li a:hover {
 
 /* Ogólne style sekcji */
 .section {
-    padding: 100px 0; /* Więcej przestrzeni dla oddechu */
+    padding: 100px 0;
 }
 
 .section-title {
-    font-size: 2.2rem; /* Mniejszy i bardziej wyrafinowany */
+    font-size: 2.2rem;
     font-weight: 600;
     margin-bottom: 48px;
     text-align: center;
@@ -174,7 +174,7 @@ nav ul li a:hover {
 }
 
 .project-card:hover {
-    transform: translateY(-8px); /* Mniejszy ruch dla subtelności */
+    transform: translateY(-8px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
