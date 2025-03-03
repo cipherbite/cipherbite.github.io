@@ -1,1 +1,96 @@
 
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System IoT do Predykcji Awarii</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>System IoT do Predykcji Awarii</h1>
+
+        <p>W ramach tego projektu stworzyłem zaawansowany system IoT, który symuluje dane z czujników temperatury, przesyła je za pomocą protokołu MQTT, zapisuje w bazie danych InfluxDB, wizualizuje w czasie rzeczywistym w Grafanie oraz przewiduje potencjalne awarie przy użyciu analizy danych w Jupyter Notebook. Projekt ten demonstruje moje umiejętności w pracy z technologiami IoT, bazami danych czasu rzeczywistego, wizualizacją danych oraz analizą predykcyjną.</p>
+
+        <h2>1. Instalacja Środowiska</h2>
+
+        <p>Aby rozpocząć, skonfigurowałem środowisko programistyczne i uruchomieniowe na systemie Windows, instalując kluczowe komponenty niezbędne do działania systemu.</p>
+
+        <h3>Windows</h3>
+
+        <ul>
+            <li><strong>Mosquitto MQTT:</strong> Pobrałem i zainstalowałem Mosquitto z oficjalnej strony <a href="https://mosquitto.org/download/">https://mosquitto.org/download/</a>. Uruchomiłem usługę przez menu Start > Mosquitto > mosquitto i zweryfikowałem działanie, używając komendy <code>netstat -an | find "1883"</code> w wierszu polecenia, co potwierdziło, że port 1883 jest aktywny.</li>
+            <li><strong>Node-RED:</strong> Zainstalowałem Node.js z <a href="https://nodejs.org/">https://nodejs.org/</a>, a następnie zainstalowałem Node-RED globalnie komendą <code>npm install -g --unsafe-perm node-red</code>. Uruchomiłem Node-RED poleceniem <code>node-red</code> i sprawdziłem dostępność pod adresem <code>http://localhost:1880</code>.</li>
+            <li><strong>InfluxDB:</strong> Pobrałem i zainstalowałem InfluxDB z <a href="https://portal.influxdata.com/downloads/">https://portal.influxdata.com/downloads/</a>, uruchamiając go jako usługę Windows. Sprawdziłem działanie, wchodząc do konsoli InfluxDB poleceniem <code>influx</code>.</li>
+            <li><strong>Grafana:</strong> Pobrałem i zainstalowałem Grafanę z <a href="https://grafana.com/grafana/download">https://grafana.com/grafana/download</a>, uruchamiając ją jako usługę Windows. Dostęp do interfejsu webowego sprawdziłem pod adresem <code>http://localhost:3000</code>.</li>
+            <li><strong>Jupyter i Biblioteki Python:</strong> Użyłem <code>pip install jupyter paho-mqtt influxdb pandas matplotlib statsmodels</code>, aby zainstalować Jupyter Notebook oraz niezbędne biblioteki do generowania, przesyłania i analizy danych.</li>
+        </ul>
+
+        <img src="../images/zrzut_ekranu_uslugi.png" alt="Zrzut ekranu z uruchomionych usług">
+
+        <h2>2. Konfiguracja Bazy Danych</h2>
+
+        <p>Skonfigurowałem bazę danych w InfluxDB, aby przechowywać dane z czujników temperatury.</p>
+
+        <ul>
+            <li>Otworzyłem konsolę InfluxDB w terminalu za pomocą komendy <code>influx</code>.</li>
+            <li>Stworzyłem bazę danych poleceniem <code>CREATE DATABASE iot_data</code>.</li>
+            <li>Zweryfikowałem istnienie bazy, wykonując <code>SHOW DATABASES</code>, co potwierdziło obecność <code>iot_data</code>.</li>
+        </ul>
+
+        <img src="../images/zrzut_ekranu_influxdb.png" alt="Zrzut ekranu z konsoli InfluxDB">
+
+        <h2>3. Konfiguracja Node-RED</h2>
+
+        <p>Zainstalowałem i skonfigurowałem Node-RED do obsługi przepływu danych z MQTT do InfluxDB.</p>
+
+        <ul>
+            <li><strong>Instalacja Modułów:</strong> W interfejsie Node-RED (<code>http://localhost:1880</code>) kliknąłem menu > <code>Manage palette</code> > <code>Install</code>, a następnie zainstalowałem moduły <code>node-red-contrib-influxdb</code> i <code>node-red-dashboard</code>.</li>
+            <li><strong>Utworzenie Przepływu:</strong>
+                <ol>
+                    <li>Dodałem węzeł <code>mqtt in</code> z sekcji "input", skonfigurowałem go z brokerem MQTT (Server: <code>localhost</code>, Port: <code>1883</code>, Topic: <code>sensor/data</code>).</li>
+                    <li>Dodałem węzeł <code>json</code> z sekcji "parser", pozostawiając domyślne ustawienia.</li>
+                    <li>Dodałem węzeł <code>influxdb out</code> z sekcji "storage", konfigurując połączenie z InfluxDB (Host: <code>localhost</code>, Port: <code>8086</code>, Database: <code>iot_data</code>, Measurement: <code>sensor_data</code>).</li>
+                    <li>Połączyłem węzły w kolejności <code>mqtt in</code> → <code>json</code> → <code>influxdb out</code>.</li>
+                    <li>Kliknąłem <code>Deploy</code> w prawym górnym rogu, aby aktywować przepływ.</li>
+                </ol>
+            </li>
+        </ul>
+
+        <img src="../images/zrzut_ekranu_node_red.png" alt="Zrzut ekranu z interfejsu Node-RED">
+
+        <h2>4. Generator Danych</h2>
+
+        <p>Stworzyłem symulator danych czujników w Jupyter Notebook, generujący dane temperatury i przesyłający je przez MQTT.</p>
+
+        <p>Utworzyłem plik <code>1_data_generator.ipynb</code> w Jupyter Notebook i wkleiłem następujący kod:</p>
+
+        <pre><code>
+import paho.mqtt.client as mqtt
+import random
+import time
+import json
+
+# Połączenie z brokerem MQTT
+client = mqtt.Client()
+client.connect("localhost", 1883)
+
+# Generowanie i wysyłanie danych
+while True:
+    temp = round(random.uniform(20.0, 35.0), 2)  # Temperatura 20-35°C
+    data = {"temperature": temp, "timestamp": int(time.time())}
+    client.publish("sensor/data", json.dumps(data))
+    print(f"Wysłano: {data}")
+    time.sleep(2)  # Co 2 sekundy
+        </code></pre>
+
+    <p>Uruchomiłem kod, obserwując komunikaty o wysyłanych danych w konsoli Jupyter, co potwierdziło, że dane są przesyłane co 2 sekundy.</p>
+
+    <img src="../images/zrzut_ekranu_jupyter_generator.png" alt="Zrzut ekranu z Jupyter Notebook z komunikatami o wysłanych danych">
+
+    <h2>5. Weryfikacja Danych</h2>
+
+    <p>Zweryfikowałem, czy dane są poprawnie zapisywane w InfluxDB, używając Jupyter Notebook.</p>
+
+    <p>Utworzyłem plik <code>2_data_verification.ipynb</code> z następującym kodem:</p>
