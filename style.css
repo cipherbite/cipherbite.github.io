@@ -1,10 +1,11 @@
 :root {
-    --bg-color: #33251f; /* Ciemnobrązowe tło */
-    --text-color: #f5f1eb; /* Jasnobrązowy dla tekstu */
-    --accent-color: #c06c44; /* Łososiowy/ceglany akcent */
-    --secondary-color: #8a6e63; /* Średni brąz dla detali */
-    --light-color: #4d3932; /* Ciemniejszy brąz dla kart i nagłówka */
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Cień */
+    --bg-color: #f5f7f5; /* Bardzo jasny szary z zielonym odcieniem - subtelne tło */
+    --text-color: #2a2f35; /* Ciemnoszary z nutą niebieskiego - czytelny i elegancki */
+    --accent-color: #6b8296; /* Zgaszony niebiesko-szary - profesjonalny akcent */
+    --secondary-color: #8c9aa5; /* Jasny szaro-niebieski dla detali */
+    --light-color: #ffffff; /* Czysta biel dla kart i nagłówków */
+    --shadow: 0 4px 16px rgba(0, 0, 0, 0.05); /* Bardzo delikatny cień */
+    --hover-transition: all 0.3s ease-in-out; /* Płynne przejścia */
 }
 
 * {
@@ -15,27 +16,27 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    line-height: 1.8;
+    line-height: 1.6; /* Zmniejszono dla elegancji */
     color: var(--text-color);
     background-color: var(--bg-color);
+    font-size: 16px; /* Standardowa wielkość dla czytelności */
 }
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1280px; /* Szerszy dla nowoczesnego wyglądu */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
 /* Header */
 header {
     background: var(--light-color);
     box-shadow: var(--shadow);
-    position: fixed;
-    width: 100%;
+    position: sticky; /* Sticky zamiast fixed dla płynności */
     top: 0;
     z-index: 100;
-    padding: 20px 0;
+    padding: 16px 0;
 }
 
 header .container {
@@ -46,8 +47,9 @@ header .container {
 
 .logo {
     color: var(--text-color);
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 1.6rem; /* Mniejszy dla subtelności */
+    font-weight: 700;
+    letter-spacing: 0.8px; /* Lekkie rozciągnięcie dla wyrafinowania */
 }
 
 nav ul {
@@ -56,18 +58,20 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 36px; /* Więcej przestrzeni dla elegancji */
 }
 
 nav ul li a {
     text-decoration: none;
     color: var(--text-color);
-    font-weight: 600;
-    transition: color 0.3s;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--hover-transition);
 }
 
 nav ul li a:hover {
     color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color); /* Subtelny akcent przy hover */
 }
 
 /* Hero Section */
@@ -76,111 +80,139 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     text-align: center;
-    background-color: var(--bg-color); /* Tło sekcji hero w kolorze tła strony */
+    background: linear-gradient(135deg, var(--bg-color) 70%, var(--secondary-color) 100%); /* Subtelny gradient */
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 2.8rem; /* Nieco mniejszy dla elegancji */
     font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--text-color); /* Kolor tekstu nagłówka w sekcji hero */
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--secondary-color);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 10px 28px; /* Mniejszy dla subtelności */
     background: var(--accent-color);
-    color: var(--light-color); /* Kolor tekstu przycisku */
+    color: var(--light-color);
     text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: transform 0.2s;
+    border-radius: 8px; /* Większy promień dla miękkości */
+    margin-top: 24px;
+    font-weight: 500;
+    transition: var(--hover-transition);
 }
 
 .btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    background: var(--secondary-color);
+    box-shadow: var(--shadow);
 }
 
 /* Ogólne style sekcji */
 .section {
-    padding: 80px 0;
+    padding: 100px 0; /* Więcej przestrzeni dla oddechu */
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem; /* Mniejszy i bardziej wyrafinowany */
     font-weight: 600;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
     text-align: center;
-    color: var(--text-color); /* Kolor tekstu tytułów sekcji */
+    color: var(--text-color);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 50px;
+    height: 2px;
+    background: var(--accent-color);
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Sekcja O mnie */
 .about-content {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 48px;
 }
 
 .about-text {
     flex: 1;
+    font-size: 1rem;
 }
 
 .about-image img {
-    max-width: 300px;
-    border-radius: 10px;
+    max-width: 320px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
 }
 
 /* Sekcja Projekty */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
 }
 
 .project-card {
     background: var(--light-color);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 24px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
-    transition: transform 0.3s;
+    transition: var(--hover-transition);
 }
 
 .project-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-8px); /* Mniejszy ruch dla subtelności */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .project-card h3 {
     color: var(--text-color);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
 }
 
 .project-card p {
     color: var(--secondary-color);
+    font-size: 0.95rem;
 }
 
 /* Sekcja Umiejętności */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
     text-align: center;
 }
 
 .skill {
-    padding: 20px;
+    padding: 24px;
     background: var(--light-color);
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
-    color: var(--text-color); /* Kolor tekstu umiejętności */
+    color: var(--text-color);
+    transition: var(--hover-transition);
+}
+
+.skill:hover {
+    transform: scale(1.03);
 }
 
 /* Sekcja Kontakt */
 .contact-form {
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -189,23 +221,33 @@ nav ul li a:hover {
 
 .contact-form input,
 .contact-form textarea {
-    padding: 15px;
+    padding: 14px;
     border: 1px solid var(--secondary-color);
-    border-radius: 5px;
+    border-radius: 8px;
     font-family: 'Inter', sans-serif;
-    background-color: var(--light-color); /* Kolor tła pól formularza */
-    color: var(--text-color); /* Kolor tekstu w polach formularza */
+    background-color: var(--light-color);
+    color: var(--text-color);
+    transition: var(--hover-transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 8px rgba(107, 130, 150, 0.2);
 }
 
 .contact-form textarea {
-    height: 150px;
+    height: 160px;
     resize: none;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 24px;
     background: var(--light-color);
-    color: var(--text-color); /* Kolor tekstu w stopce */
+    color: var(--text-color);
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
 }
