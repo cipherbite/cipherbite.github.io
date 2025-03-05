@@ -1,15 +1,15 @@
 :root {
-    --bg-color: #1a202c;
-    --text-color: #e2e8f0;
-    --accent-color: #e67e22; /* Zmiana z niebieskiego na ciemny pomarańczowy */
-    --accent-light: #f39c12; /* Jaśniejszy pomarańczowy dla efektów hover */
-    --secondary-color: #a67c52; /* Jasnobrązowy */
-    --card-bg: #2d3748;
+    --bg-color: #f5f5dc; /* Jasnobrązowy */
+    --text-color: #333333; /* Ciemny szary dla kontrastu i czytelności */
+    --accent-color: #ffcc99; /* Delikatny pomarańczowy */
+    --accent-light: #ff9966; /* Jaśniejszy pomarańczowy dla efektów hover */
+    --secondary-color: #d2b48c; /* Jasnobrązowy dla akcentów */
+    --card-bg: #ffffff; /* Biały dla kart, aby wyróżniały się na tle */
     --light-color: #ffffff;
     --success-color: #68d391; /* Kolor dla "Expert" */
     --warning-color: #f6ad55; /* Kolor dla "Advanced" */
     --info-color: #63b3ed; /* Kolor dla "Intermediate" */
-    --shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtelniejszy cień */
     --transition: all 0.3s ease-in-out;
 }
 
@@ -20,7 +20,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif; /* Elegancka i profesjonalna czcionka */
     color: var(--text-color);
     background: var(--bg-color);
     scroll-behavior: smooth;
@@ -91,7 +91,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(26, 32, 44, 0.4) 0%, rgba(26, 32, 44, 0.8) 70%);
+    background: radial-gradient(circle at center, rgba(245, 245, 220, 0.3) 0%, rgba(245, 245, 220, 0.7) 70%);
     z-index: 1;
 }
 
@@ -104,7 +104,7 @@ body {
 
 .hero h1 {
     font-size: 3.5rem;
-    color: var(--light-color);
+    color: var(--text-color);
     margin-bottom: 20px;
     line-height: 1.2;
 }
@@ -127,7 +127,7 @@ body {
     background: var(--accent-color);
     color: var(--light-color);
     padding: 12px 32px;
-    border-radius: 8px;
+    border-radius: 0; /* Ostre kąty */
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
@@ -201,7 +201,7 @@ body {
 
 .section-title {
     font-size: 2.5rem;
-    color: var(--light-color);
+    color: var(--text-color);
     text-align: center;
     margin-bottom: 20px;
 }
@@ -270,7 +270,7 @@ body {
 .highlight {
     flex: 1;
     padding: 20px;
-    background: rgba(45, 55, 72, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 8px;
     transition: var(--transition);
 }
@@ -289,7 +289,7 @@ body {
 .highlight h4 {
     font-size: 1.2rem;
     margin-bottom: 10px;
-    color: var(--light-color);
+    color: var(--text-color);
 }
 
 .social-icons {
@@ -307,7 +307,7 @@ body {
     height: 40px;
     border-radius: 50%;
     background: var(--card-bg);
-    color: var(--light-color);
+    color: var(--text-color);
     transition: var(--transition);
 }
 
@@ -325,7 +325,7 @@ body {
 }
 
 .project-card {
-    background: var(--bg-color);
+    background: var(--card-bg);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -334,7 +334,7 @@ body {
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .project-img {
@@ -360,7 +360,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(26, 32, 44, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -377,7 +377,7 @@ body {
 }
 
 .project-content h3 {
-    color: var(--light-color);
+    color: var(--text-color);
     font-size: 1.4rem;
     margin-bottom: 12px;
 }
@@ -395,7 +395,7 @@ body {
 }
 
 .project-tags span {
-    background: var(--card-bg);
+    background: var(--bg-color);
     color: var(--accent-color);
     font-size: 0.8rem;
     padding: 4px 10px;
@@ -425,7 +425,7 @@ body {
 
 .skill-category:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
 .skill-category h3 {
@@ -451,7 +451,7 @@ body {
     align-items: center;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(113, 128, 150, 0.2);
+    border-bottom: 1px solid rgba(113, 128, 150, 0.1);
 }
 
 .skill-name {
@@ -489,7 +489,7 @@ body {
 }
 
 .additional-skills h3 {
-    color: var(--light-color);
+    color: var(--text-color);
     font-size: 1.4rem;
     margin-bottom: 25px;
 }
@@ -525,14 +525,14 @@ body {
 }
 
 .contact-info {
-    background: var(--bg-color);
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 30px;
     box-shadow: var(--shadow);
 }
 
 .contact-info h3 {
-    color: var(--light-color);
+    color: var(--text-color);
     font-size: 1.4rem;
     margin-bottom: 20px;
 }
@@ -560,7 +560,7 @@ body {
 .contact-link i {
     width: 40px;
     height: 40px;
-    background: var(--card-bg);
+    background: var(--bg-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -582,7 +582,7 @@ body {
 .availability {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 1px solid rgba(113, 128, 150, 0.2);
+    border-top: 1px solid rgba(113, 128, 150, 0.1);
 }
 
 .availability h4 {
@@ -592,7 +592,7 @@ body {
 }
 
 .contact-form-container {
-    background: var(--bg-color);
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 40px;
     box-shadow: var(--shadow);
@@ -612,15 +612,15 @@ body {
 
 .form-group label {
     font-weight: 600;
-    color: var(--light-color);
+    color: var(--text-color);
 }
 
 .contact-form input,
 .contact-form textarea {
     padding: 14px;
-    border: 1px solid rgba(113, 128, 150, 0.3);
+    border: 1px solid rgba(113, 128, 150, 0.2);
     border-radius: 8px;
-    background: var(--card-bg);
+    background: var(--bg-color);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     transition: var(--transition);
@@ -630,7 +630,7 @@ body {
 .contact-form textarea:focus {
     border-color: var(--accent-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+    box-shadow: 0 0 0 3px rgba(255, 204, 153, 0.2);
 }
 
 /* CTA Section */
@@ -694,7 +694,7 @@ body {
 
 .footer-nav h4,
 .footer-social h4 {
-    color: var(--light-color);
+    color: var(--text-color);
     font-size: 1.1rem;
     margin-bottom: 20px;
 }
@@ -729,8 +729,8 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(113, 128, 150, 0.2);
-    color: var(--light-color);
+    background: rgba(113, 128, 150, 0.1);
+    color: var(--text-color);
     transition: var(--transition);
 }
 
@@ -742,7 +742,7 @@ body {
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgba(113, 128, 150, 0.2);
+    border-top: 1px solid rgba(113, 128, 150, 0.1);
 }
 
 /* Scroll To Top Button */
@@ -752,7 +752,7 @@ body {
     right: 30px;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 0; /* Ostre kąty */
     background: var(--accent-color);
     color: var(--light-color);
     border: none;
@@ -826,9 +826,4 @@ body {
         flex-direction: column;
         gap: 30px;
     }
-}
-
-/* Uzupełnienie brakujących klas dla sekcji projektów */
-.project-tags {
-    margin-top: 15px;
 }
