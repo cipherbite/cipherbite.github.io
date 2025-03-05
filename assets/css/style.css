@@ -1,16 +1,17 @@
 :root {
     --bg-color: #f5f5dc; /* Jasnobrązowy */
-    --text-color: #333333; /* Ciemny szary dla kontrastu i czytelności */
+    --text-color: #333333; /* Ciemny szary dla kontrastu */
     --accent-color: #ffcc99; /* Delikatny pomarańczowy */
     --accent-light: #ff9966; /* Jaśniejszy pomarańczowy dla efektów hover */
     --secondary-color: #d2b48c; /* Jasnobrązowy dla akcentów */
-    --card-bg: #ffffff; /* Biały dla kart, aby wyróżniały się na tle */
+    --card-bg: #ffffff; /* Biały dla kart */
     --light-color: #ffffff;
     --success-color: #68d391; /* Kolor dla "Expert" */
     --warning-color: #f6ad55; /* Kolor dla "Advanced" */
     --info-color: #63b3ed; /* Kolor dla "Intermediate" */
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtelniejszy cień */
     --transition: all 0.3s ease-in-out;
+    --code-bg: #f9f9f9; /* Jasne tło dla kodu */
 }
 
 * {
@@ -20,11 +21,12 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif; /* Elegancka i profesjonalna czcionka */
+    font-family: 'Inter', sans-serif;
     color: var(--text-color);
     background: var(--bg-color);
     scroll-behavior: smooth;
     line-height: 1.6;
+    font-weight: 400;
 }
 
 .container {
@@ -53,6 +55,7 @@ body {
 .logo {
     font-size: 1.6rem;
     font-weight: 700;
+    color: var(--text-color);
 }
 
 .logo-highlight {
@@ -69,6 +72,7 @@ body {
     text-decoration: none;
     padding: 10px 15px;
     transition: var(--transition);
+    font-weight: 500;
 }
 
 .nav ul li a:hover {
@@ -104,6 +108,7 @@ body {
 
 .hero h1 {
     font-size: 3.5rem;
+    font-weight: 700;
     color: var(--text-color);
     margin-bottom: 20px;
     line-height: 1.2;
@@ -111,7 +116,7 @@ body {
 
 .hero p {
     font-size: 1.2rem;
-    color: var(--text-color);
+    color: var(--secondary-color);
     margin-bottom: 30px;
 }
 
@@ -201,7 +206,8 @@ body {
 
 .section-title {
     font-size: 2.5rem;
-    color: var(--text-color);
+    font-weight: 700;
+    color: var(--accent-color);
     text-align: center;
     margin-bottom: 20px;
 }
@@ -217,6 +223,7 @@ body {
 
 .section-subtitle {
     font-size: 1.2rem;
+    font-weight: 400;
     color: var(--secondary-color);
     text-align: center;
     max-width: 800px;
@@ -288,6 +295,7 @@ body {
 
 .highlight h4 {
     font-size: 1.2rem;
+    font-weight: 600;
     margin-bottom: 10px;
     color: var(--text-color);
 }
@@ -313,6 +321,7 @@ body {
 
 .social-icons a:hover {
     background: var(--accent-color);
+    color: var(--light-color);
     transform: translateY(-3px);
 }
 
@@ -377,8 +386,9 @@ body {
 }
 
 .project-content h3 {
-    color: var(--text-color);
     font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
     margin-bottom: 12px;
 }
 
@@ -431,6 +441,7 @@ body {
 .skill-category h3 {
     color: var(--accent-color);
     font-size: 1.3rem;
+    font-weight: 600;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -489,8 +500,9 @@ body {
 }
 
 .additional-skills h3 {
-    color: var(--text-color);
     font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
     margin-bottom: 25px;
 }
 
@@ -532,8 +544,9 @@ body {
 }
 
 .contact-info h3 {
-    color: var(--text-color);
     font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
@@ -588,6 +601,7 @@ body {
 .availability h4 {
     color: var(--accent-color);
     font-size: 1.1rem;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 
@@ -641,14 +655,15 @@ body {
 }
 
 .cta-section h2 {
-    color: var(--light-color);
     font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--light-color);
     margin-bottom: 15px;
 }
 
 .cta-section p {
-    color: rgba(255, 255, 255, 0.9);
     font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 30px;
 }
 
@@ -694,8 +709,9 @@ body {
 
 .footer-nav h4,
 .footer-social h4 {
-    color: var(--text-color);
     font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
@@ -736,6 +752,7 @@ body {
 
 .footer-social .social-links a:hover {
     background: var(--accent-color);
+    color: var(--light-color);
     transform: translateY(-3px);
 }
 
@@ -781,16 +798,16 @@ body {
     .hero h1 {
         font-size: 2.8rem;
     }
-    
+    .section-title {
+        font-size: 2rem;
+    }
     .contact-container {
         grid-template-columns: 1fr;
     }
-    
     .footer-content {
         flex-direction: column;
         gap: 40px;
     }
-    
     .footer-links {
         justify-content: space-between;
     }
@@ -800,30 +817,55 @@ body {
     .hero h1 {
         font-size: 2.4rem;
     }
-    
     .about-content {
         flex-direction: column-reverse;
     }
-    
     .about-image {
         flex: 0 0 100%;
         margin-bottom: 30px;
     }
-    
     .about-highlights {
         flex-direction: column;
     }
-    
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
     .skills-container {
         grid-template-columns: 1fr;
     }
-    
     .footer-links {
         flex-direction: column;
         gap: 30px;
     }
+}
+
+/* Additional Typography */
+blockquote {
+    font-style: italic;
+    color: var(--secondary-color);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+pre {
+    background: var(--code-bg);
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 25px 0;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent-color);
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    color: var(--text-color);
+}
+
+p code, li code {
+    background-color: var(--card-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--accent-light);
 }
