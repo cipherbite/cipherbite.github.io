@@ -1,16 +1,14 @@
-/* Style dla strony projektu IoT */
-
 :root {
-    --bg-color: #1a202c;
-    --text-color: #e2e8f0;
-    --accent-color: #e67e22; /* Ciemny pomarańczowy */
-    --accent-light: #f39c12; /* Jaśniejszy pomarańczowy */
-    --secondary-color: #a67c52; /* Jasnobrązowy */
-    --card-bg: #2d3748;
+    --bg-color: #f5f5dc; /* Jasnobrązowy */
+    --text-color: #333333; /* Ciemny szary dla kontrastu */
+    --accent-color: #ffcc99; /* Delikatny pomarańczowy */
+    --accent-light: #ff9966; /* Jaśniejszy pomarańczowy dla hover */
+    --secondary-color: #d2b48c; /* Jasnobrązowy dla akcentów */
+    --card-bg: #ffffff; /* Biały dla kart */
     --light-color: #ffffff;
-    --shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtelniejszy cień */
     --transition: all 0.3s ease-in-out;
-    --code-bg: #2a3040;
+    --code-bg: #f9f9f9; /* Jasne tło dla kodu */
 }
 
 * {
@@ -52,7 +50,7 @@ body {
 .logo {
     font-size: 1.6rem;
     font-weight: 700;
-    color: var(--light-color);
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -83,7 +81,7 @@ body {
 
 .section-title {
     font-size: 2.5rem;
-    color: var(--light-color);
+    color: var(--text-color);
     text-align: center;
     margin-bottom: 30px;
     position: relative;
@@ -150,7 +148,7 @@ body {
 
 .project-img:hover {
     transform: scale(1.02);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* Listy */
@@ -197,11 +195,7 @@ pre {
 
 code {
     font-family: 'Courier New', monospace;
-    color: var(--light-color);
-}
-
-code.language-python {
-    color: #a6e1fa;
+    color: var(--text-color);
 }
 
 /* Wyróżnienie inline code */
@@ -238,22 +232,16 @@ table th {
 
 table tr {
     background-color: var(--card-bg);
-    border-bottom: 1px solid rgba(166, 124, 82, 0.2);
+    border-bottom: 1px solid rgba(210, 180, 140, 0.2);
     transition: var(--transition);
 }
 
 table tr:nth-child(even) {
-    background-color: rgba(45, 55, 72, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 table tr:hover {
-    background-color: rgba(230, 126, 34, 0.1);
-}
-
-table td code {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 2px 6px;
-    border-radius: 4px;
+    background-color: rgba(255, 204, 153, 0.1);
 }
 
 /* Przyciski */
@@ -261,7 +249,7 @@ table td code {
     background: var(--accent-color);
     color: var(--light-color);
     padding: 12px 25px;
-    border-radius: 6px;
+    border-radius: 0; /* Ostre kąty */
     text-decoration: none;
     display: inline-block;
     font-weight: 600;
@@ -314,7 +302,7 @@ table td code {
     color: var(--light-color);
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 0; /* Ostre kąty */
     display: flex;
     justify-content: center;
     align-items: center;
