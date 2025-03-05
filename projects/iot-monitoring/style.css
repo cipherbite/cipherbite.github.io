@@ -1,0 +1,350 @@
+/* Style dla strony projektu IoT */
+
+:root {
+    --bg-color: #1a202c;
+    --text-color: #e2e8f0;
+    --accent-color: #e67e22; /* Ciemny pomarańczowy */
+    --accent-light: #f39c12; /* Jaśniejszy pomarańczowy */
+    --secondary-color: #a67c52; /* Jasnobrązowy */
+    --card-bg: #2d3748;
+    --light-color: #ffffff;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    --transition: all 0.3s ease-in-out;
+    --code-bg: #2a3040;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background: var(--bg-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--light-color);
+    text-decoration: none;
+}
+
+.logo-highlight {
+    color: var(--accent-color);
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: var(--transition);
+}
+
+.nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* Sekcja główna projektu */
+.section {
+    padding: 60px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--light-color);
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-color);
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin: 40px 0;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+/* Tytuły podsekcji */
+.subtitle {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin: 50px 0 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 15px;
+}
+
+.subtitle::before {
+    content: "";
+    width: 4px;
+    height: 25px;
+    background-color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    border-radius: 2px;
+}
+
+/* Paragraf tekstu */
+.section p {
+    margin: 20px 0;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+/* Obrazki */
+.project-img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin: 25px 0;
+    transition: var(--transition);
+}
+
+.project-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Listy */
+.section ul, 
+.section ol {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.section li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.section ul li {
+    list-style-type: none;
+    padding-left: 25px;
+}
+
+.section ul li::before {
+    content: "•";
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+}
+
+.section ul li strong {
+    color: var(--accent-light);
+}
+
+/* Kod */
+pre {
+    background: var(--code-bg);
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 25px 0;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent-color);
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    color: var(--light-color);
+}
+
+code.language-python {
+    color: #a6e1fa;
+}
+
+/* Wyróżnienie inline code */
+p code, li code {
+    background-color: var(--card-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--accent-light);
+}
+
+/* Tabele */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+table th, 
+table td {
+    padding: 15px;
+    text-align: left;
+}
+
+table th {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+table tr {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid rgba(166, 124, 82, 0.2);
+    transition: var(--transition);
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(45, 55, 72, 0.8);
+}
+
+table tr:hover {
+    background-color: rgba(230, 126, 34, 0.1);
+}
+
+table td code {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Przyciski */
+.btn {
+    background: var(--accent-color);
+    color: var(--light-color);
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+    transition: var(--transition);
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--accent-light);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+/* Footer */
+.footer {
+    background: var(--card-bg);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+}
+
+.footer p {
+    color: var(--secondary-color);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 99;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+}
+
+.back-to-top:hover {
+    background-color: var(--accent-light);
+    transform: translateY(-5px);
+}
+
+/* Animacje */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 0.8s ease forwards;
+}
