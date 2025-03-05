@@ -1,14 +1,14 @@
 :root {
     --bg-color: #f5f5dc; /* Jasnobrązowy */
-    --text-color: #1a1a1a; /* Zmiana z #333333 na ciemniejszy dla lepszego kontrastu */
-    --accent-color: #e67e22; /* Ciemniejszy pomarańczowy */
-    --accent-light: #d35400; /* Jaśniejszy pomarańczowy dla efektów hover */
-    --secondary-color: #b39a7c; /* Ciemniejszy jasnobrązowy dla akcentów */
+    --text-color: #333333; /* Ciemny szary dla kontrastu */
+    --accent-color: #ffcc99; /* Delikatny pomarańczowy */
+    --accent-light: #ff9966; /* Jaśniejszy pomarańczowy dla efektów hover */
+    --secondary-color: #d2b48c; /* Jasnobrązowy dla akcentów */
     --card-bg: #ffffff; /* Biały dla kart */
     --light-color: #ffffff;
-    --success-color: #2ecc71; /* Ciemniejszy kolor dla "Expert" */
-    --warning-color: #e67e22; /* Ciemniejszy kolor dla "Advanced" */
-    --info-color: #3498db; /* Ciemniejszy kolor dla "Intermediate" */
+    --success-color: #68d391; /* Kolor dla "Expert" */
+    --warning-color: #f6ad55; /* Kolor dla "Advanced" */
+    --info-color: #63b3ed; /* Kolor dla "Intermediate" */
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtelniejszy cień */
     --transition: all 0.3s ease-in-out;
     --code-bg: #f9f9f9; /* Jasne tło dla kodu */
@@ -26,8 +26,7 @@ body {
     background: var(--bg-color);
     scroll-behavior: smooth;
     line-height: 1.6;
-    font-weight: 500; /* Zmiana z 400 na 500 dla lepszej widoczności */
-    font-size: 1.05rem; /* Zwiększony rozmiar tekstu */
+    font-weight: 400;
 }
 
 .container {
@@ -73,7 +72,7 @@ body {
     text-decoration: none;
     padding: 10px 15px;
     transition: var(--transition);
-    font-weight: 600; /* Zmiana z 500 na 600 */
+    font-weight: 500;
 }
 
 .nav ul li a:hover {
@@ -109,17 +108,16 @@ body {
 
 .hero h1 {
     font-size: 3.5rem;
-    font-weight: 800; /* Zmiana z 700 na 800 */
+    font-weight: 700;
     color: var(--text-color);
     margin-bottom: 20px;
     line-height: 1.2;
 }
 
 .hero p {
-    font-size: 1.25rem; /* Zwiększony rozmiar */
-    color: #614c35; /* Ciemniejszy kolor zamiast var(--secondary-color) */
+    font-size: 1.2rem;
+    color: var(--secondary-color);
     margin-bottom: 30px;
-    font-weight: 500; /* Dodanie wagi czcionki */
 }
 
 .hero-buttons {
@@ -225,8 +223,8 @@ body {
 
 .section-subtitle {
     font-size: 1.2rem;
-    font-weight: 500; /* Zmiana z 400 na 500 */
-    color: #614c35; /* Ciemniejszy kolor zamiast var(--secondary-color) */
+    font-weight: 400;
+    color: var(--secondary-color);
     text-align: center;
     max-width: 800px;
     margin: 0 auto 60px;
@@ -251,8 +249,7 @@ body {
 
 .about-text p {
     margin-bottom: 20px;
-    font-size: 1.1rem; /* Zwiększony rozmiar z 1.05rem */
-    color: var(--text-color); /* Zapewnienie ciemnego koloru */
+    font-size: 1.05rem;
 }
 
 .about-image {
@@ -297,7 +294,7 @@ body {
 }
 
 .highlight h4 {
-    font-size: 1.25rem; /* Zwiększony z 1.2rem */
+    font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 10px;
     color: var(--text-color);
@@ -389,14 +386,14 @@ body {
 }
 
 .project-content h3 {
-    font-size: 1.5rem; /* Zwiększony z 1.4rem */
+    font-size: 1.4rem;
     font-weight: 600;
     color: var(--text-color);
     margin-bottom: 12px;
 }
 
 .project-content p {
-    color: #614c35; /* Ciemniejszy kolor zamiast var(--secondary-color) */
+    color: var(--secondary-color);
     margin-bottom: 20px;
 }
 
@@ -409,9 +406,8 @@ body {
 
 .project-tags span {
     background: var(--bg-color);
-    color: #b45a12; /* Ciemniejszy kolor dla lepszej widoczności */
-    font-size: 0.85rem; /* Zwiększony z 0.8rem */
-    font-weight: 600; /* Dodana waga czcionki */
+    color: var(--accent-color);
+    font-size: 0.8rem;
     padding: 4px 10px;
     border-radius: 20px;
 }
@@ -474,24 +470,24 @@ body {
 }
 
 .skill-level {
-    font-size: 0.85rem; /* Zwiększony z 0.8rem */
+    font-size: 0.8rem;
     padding: 3px 10px;
     border-radius: 20px;
     font-weight: 600;
 }
 
 .expert {
-    background: rgba(46, 204, 113, 0.15);
+    background: rgba(104, 211, 145, 0.15);
     color: var(--success-color);
 }
 
 .advanced {
-    background: rgba(230, 126, 34, 0.15);
+    background: rgba(246, 173, 85, 0.15);
     color: var(--warning-color);
 }
 
 .intermediate {
-    background: rgba(52, 152, 219, 0.15);
+    background: rgba(99, 179, 237, 0.15);
     color: var(--info-color);
 }
 
@@ -519,11 +515,10 @@ body {
 
 .skill-tags span {
     background: var(--bg-color);
-    color: #614c35; /* Ciemniejszy kolor zamiast var(--secondary-color) */
+    color: var(--secondary-color);
     padding: 8px 16px;
     border-radius: 30px;
-    font-size: 0.95rem; /* Zwiększony z 0.9rem */
-    font-weight: 500; /* Dodana waga czcionki */
+    font-size: 0.9rem;
     transition: var(--transition);
 }
 
@@ -557,7 +552,7 @@ body {
 
 .contact-info p {
     margin-bottom: 30px;
-    color: #614c35; /* Ciemniejszy kolor zamiast var(--secondary-color) */
+    color: var(--secondary-color);
 }
 
 .contact-links {
@@ -649,7 +644,7 @@ body {
 .contact-form textarea:focus {
     border-color: var(--accent-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2); /* Zaktualizowany kolor cienia */
+    box-shadow: 0 0 0 3px rgba(255, 204, 153, 0.2);
 }
 
 /* CTA Section */
@@ -668,9 +663,8 @@ body {
 
 .cta-section p {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.95); /* Zwiększony kontrast z 0.9 na 0.95 */
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 30px;
-    font-weight: 500; /* Dodana waga czcionki */
 }
 
 .cta-section .btn {
@@ -703,7 +697,7 @@ body {
 }
 
 .footer-logo p {
-    color: #614c35; /* Ciemniejszy kolor zamiast var(--secondary-color) */
+    color: var(--secondary-color);
     max-width: 300px;
 }
 
@@ -730,10 +724,9 @@ body {
 }
 
 .footer-nav ul li a {
-    color: #614c35; /* Ciemniejszy kolor zamiast var(--secondary-color) */
+    color: var(--secondary-color);
     text-decoration: none;
     transition: var(--transition);
-    font-weight: 500; /* Dodana waga czcionki */
 }
 
 .footer-nav ul li a:hover {
@@ -767,8 +760,6 @@ body {
     text-align: center;
     padding-top: 30px;
     border-top: 1px solid rgba(113, 128, 150, 0.1);
-    color: #222222; /* Zapewnienie ciemnego koloru tekstu */
-    font-weight: 500; /* Zwiększona waga */
 }
 
 /* Scroll To Top Button */
@@ -851,7 +842,7 @@ body {
 /* Additional Typography */
 blockquote {
     font-style: italic;
-    color: #614c35; /* Ciemniejszy kolor zamiast var(--secondary-color) */
+    color: var(--secondary-color);
     border-left: 4px solid var(--accent-color);
     padding-left: 20px;
     margin: 20px 0;
@@ -876,5 +867,5 @@ p code, li code {
     background-color: var(--card-bg);
     padding: 2px 6px;
     border-radius: 4px;
-    color: #d35400; /* Ciemniejszy kolor zamiast var(--accent-light) */
+    color: var(--accent-light);
 }
