@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="David Dylag - Portfolio of Data Engineering and Analytics Projects">
-    <meta name="keywords" content="data engineering, analytics, IoT, blockchain, machine learning">
+    <meta name="keywords" content="data engineering, analytics, IoT, blockchain, machine learning, data science, big data, ETL">
     <meta name="author" content="David Dylag">
     <title>David Dylag | Data Engineering Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Dodanie Font Awesome dla lepszych ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Nagłówek i nawigacja -->
     <header class="header">
         <div class="container">
             <div class="logo">
-                <span class="logo-highlight">D</span>avid Dylag
+                <span class="logo-highlight">D</span>avid <span class="logo-highlight">D</span>ylag
             </div>
             <nav class="nav">
                 <ul>
@@ -28,54 +30,88 @@
         </div>
     </header>
 
-    <!-- Sekcja hero / intro -->
+    <!-- Sekcja hero / intro z dodatkowymi elementami wizualnymi -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Data Engineering & Analytics Portfolio</h1>
-                <p>Building data solutions that translate information into business insights.</p>
-                <a href="#projects" class="btn">View My Work</a>
+                <h1 class="animate-fade-in">Data Engineering & Analytics Portfolio</h1>
+                <p class="animate-fade-in">Building intelligent data solutions that transform raw information into actionable business insights</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary animate-fade-in">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary animate-fade-in">Contact Me</a>
+                </div>
             </div>
         </div>
+        <div class="hero-overlay"></div>
     </section>
 
-    <!-- Sekcja o mnie -->
+    <!-- Sekcja o mnie z ulepszoną prezentacją -->
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Hello! I'm David Dylag, a passionate data engineer with expertise in building end-to-end data solutions. I specialize in IoT data systems, blockchain analytics, and machine learning implementations for real-world problems.</p>
-                    <p>With a background in [Twoje wykształcenie/doświadczenie], I combine technical expertise with business understanding to create data solutions that drive value.</p>
+                    <p>Hello! I'm <strong>David Dylag</strong>, a passionate data engineer with expertise in building end-to-end data solutions. I specialize in IoT data systems, blockchain analytics, and machine learning implementations for real-world problems.</p>
+                    <p>With a background in Computer Science and 5+ years of experience in data engineering, I combine technical expertise with business understanding to create data solutions that drive tangible value.</p>
+                    <p>My approach is to craft scalable, maintainable data architectures that transform complex information into clear insights for decision-makers.</p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-code"></i>
+                            <h4>Clean Code</h4>
+                            <p>Building maintainable solutions</p>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Data Insights</h4>
+                            <p>Extracting business value</p>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Innovation</h4>
+                            <p>Solving complex challenges</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <!-- Tutaj możesz dodać swoje zdjęcie -->
                     <img src="assets/images/profile-photo.jpg" alt="David Dylag" class="profile-img">
+                    <div class="social-icons">
+                        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sekcja projektów -->
-    <section id="projects" class="section">
+    <!-- Sekcja projektów ze wzbogaconymi kartami -->
+    <section id="projects" class="section section-dark">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Explore my recent work in data engineering and analytics</p>
             <div class="projects-grid">
                 <!-- Projekt IoT Monitoring -->
                 <div class="project-card">
                     <div class="project-img">
                         <img src="assets/images/iot-monitoring-thumbnail.jpg" alt="IoT Data Monitoring System">
+                        <div class="project-overlay">
+                            <a href="projects/iot-monitoring/index.html" class="btn btn-small">View Details</a>
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3>IoT Data Monitoring System</h3>
-                        <p>Real-time IoT data monitoring system using MQTT, InfluxDB, and Grafana to collect, store, and visualize sensor data.</p>
+                        <p>Real-time IoT data monitoring system using MQTT, InfluxDB, and Grafana to collect, store, and visualize sensor data with advanced analytics capabilities.</p>
                         <div class="project-tags">
                             <span>MQTT</span>
                             <span>InfluxDB</span>
                             <span>Grafana</span>
                             <span>Python</span>
+                            <span>Real-time Data</span>
                         </div>
-                        <a href="projects/iot-monitoring/index.html" class="btn btn-small">View Project</a>
+                        <div class="project-links">
+                            <a href="projects/iot-monitoring/index.html" class="btn btn-small">View Project</a>
+                            <a href="https://github.com/yourusername/iot-monitoring" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
                 </div>
                 
@@ -83,17 +119,24 @@
                 <div class="project-card">
                     <div class="project-img">
                         <img src="assets/images/blockchain-analysis-thumbnail.jpg" alt="Blockchain Transaction Analysis">
+                        <div class="project-overlay">
+                            <a href="projects/blockchain-analysis/index.html" class="btn btn-small">View Details</a>
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3>Blockchain Transaction Analysis</h3>
-                        <p>Analysis of blockchain transaction patterns using Python and specialized data visualization techniques.</p>
+                        <p>In-depth analysis of blockchain transaction patterns using Python and specialized data visualization techniques to identify key network dynamics and insights.</p>
                         <div class="project-tags">
                             <span>Blockchain</span>
                             <span>Python</span>
                             <span>Data Visualization</span>
                             <span>Network Analysis</span>
+                            <span>Graph Theory</span>
                         </div>
-                        <a href="projects/blockchain-analysis/index.html" class="btn btn-small">View Project</a>
+                        <div class="project-links">
+                            <a href="projects/blockchain-analysis/index.html" class="btn btn-small">View Project</a>
+                            <a href="https://github.com/yourusername/blockchain-analysis" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
                 </div>
                 
@@ -101,98 +144,225 @@
                 <div class="project-card">
                     <div class="project-img">
                         <img src="assets/images/churn-prediction-thumbnail.jpg" alt="Customer Churn Prediction">
+                        <div class="project-overlay">
+                            <a href="projects/churn-prediction/index.html" class="btn btn-small">View Details</a>
+                        </div>
                     </div>
                     <div class="project-content">
                         <h3>Customer Churn Prediction</h3>
-                        <p>Machine learning model to predict customer churn using historical data and behavioral patterns.</p>
+                        <p>Advanced machine learning model to predict customer churn using historical data and behavioral patterns, with comprehensive feature engineering and model explainability.</p>
                         <div class="project-tags">
                             <span>Machine Learning</span>
                             <span>Python</span>
                             <span>Pandas</span>
                             <span>Scikit-learn</span>
+                            <span>XGBoost</span>
                         </div>
-                        <a href="projects/churn-prediction/index.html" class="btn btn-small">View Project</a>
+                        <div class="project-links">
+                            <a href="projects/churn-prediction/index.html" class="btn btn-small">View Project</a>
+                            <a href="https://github.com/yourusername/churn-prediction" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="section-cta">
+                <a href="https://github.com/yourusername" class="btn btn-large" target="_blank">View All Projects on GitHub</a>
+            </div>
         </div>
     </section>
 
-    <!-- Sekcja umiejętności -->
+    <!-- Sekcja umiejętności z wizualnymi wskaźnikami -->
     <section id="skills" class="section">
         <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
+            <h2 class="section-title">Skills & Expertise</h2>
+            <p class="section-subtitle">Technologies and methodologies I work with</p>
+            
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3>Languages</h3>
+                    <h3><i class="fas fa-code"></i> Programming</h3>
                     <ul class="skill-list">
-                        <li>Python</li>
-                        <li>SQL</li>
-                        <li>JavaScript</li>
-                        <li>R</li>
+                        <li><span class="skill-name">Python</span><span class="skill-level expert">Expert</span></li>
+                        <li><span class="skill-name">SQL</span><span class="skill-level expert">Expert</span></li>
+                        <li><span class="skill-name">JavaScript</span><span class="skill-level advanced">Advanced</span></li>
+                        <li><span class="skill-name">R</span><span class="skill-level intermediate">Intermediate</span></li>
+                        <li><span class="skill-name">Scala</span><span class="skill-level intermediate">Intermediate</span></li>
                     </ul>
                 </div>
+                
                 <div class="skill-category">
-                    <h3>Data Engineering</h3>
+                    <h3><i class="fas fa-database"></i> Data Engineering</h3>
                     <ul class="skill-list">
-                        <li>Apache Spark</li>
-                        <li>Kafka</li>
-                        <li>Airflow</li>
-                        <li>MQTT</li>
-                        <li>ETL Pipelines</li>
+                        <li><span class="skill-name">Apache Spark</span><span class="skill-level expert">Expert</span></li>
+                        <li><span class="skill-name">Kafka</span><span class="skill-level advanced">Advanced</span></li>
+                        <li><span class="skill-name">Airflow</span><span class="skill-level expert">Expert</span></li>
+                        <li><span class="skill-name">MQTT</span><span class="skill-level advanced">Advanced</span></li>
+                        <li><span class="skill-name">ETL Pipelines</span><span class="skill-level expert">Expert</span></li>
                     </ul>
                 </div>
+                
                 <div class="skill-category">
-                    <h3>Databases</h3>
+                    <h3><i class="fas fa-server"></i> Databases</h3>
                     <ul class="skill-list">
-                        <li>PostgreSQL</li>
-                        <li>MongoDB</li>
-                        <li>InfluxDB</li>
-                        <li>Redis</li>
+                        <li><span class="skill-name">PostgreSQL</span><span class="skill-level expert">Expert</span></li>
+                        <li><span class="skill-name">MongoDB</span><span class="skill-level advanced">Advanced</span></li>
+                        <li><span class="skill-name">InfluxDB</span><span class="skill-level advanced">Advanced</span></li>
+                        <li><span class="skill-name">Redis</span><span class="skill-level intermediate">Intermediate</span></li>
+                        <li><span class="skill-name">Elasticsearch</span><span class="skill-level intermediate">Intermediate</span></li>
                     </ul>
                 </div>
+                
                 <div class="skill-category">
-                    <h3>Analytics</h3>
+                    <h3><i class="fas fa-chart-bar"></i> Analytics</h3>
                     <ul class="skill-list">
-                        <li>Pandas</li>
-                        <li>NumPy</li>
-                        <li>Scikit-learn</li>
-                        <li>TensorFlow</li>
+                        <li><span class="skill-name">Pandas</span><span class="skill-level expert">Expert</span></li>
+                        <li><span class="skill-name">NumPy</span><span class="skill-level expert">Expert</span></li>
+                        <li><span class="skill-name">Scikit-learn</span><span class="skill-level advanced">Advanced</span></li>
+                        <li><span class="skill-name">TensorFlow</span><span class="skill-level intermediate">Intermediate</span></li>
+                        <li><span class="skill-name">Tableau</span><span class="skill-level advanced">Advanced</span></li>
                     </ul>
+                </div>
+            </div>
+            
+            <div class="additional-skills">
+                <h3>Additional Expertise</h3>
+                <div class="skill-tags">
+                    <span>Docker</span>
+                    <span>Kubernetes</span>
+                    <span>AWS</span>
+                    <span>Azure</span>
+                    <span>GCP</span>
+                    <span>CI/CD</span>
+                    <span>Git</span>
+                    <span>REST APIs</span>
+                    <span>Microservices</span>
+                    <span>Data Warehousing</span>
+                    <span>Data Modeling</span>
+                    <span>Data Governance</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sekcja kontakt -->
-    <section id="contact" class="section">
+    <!-- Sekcja kontakt ze stylowym formularzem -->
+    <section id="contact" class="section section-dark">
         <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact-content">
-                <p>Interested in working together or have a question? Feel free to reach out!</p>
-                <div class="contact-links">
-                    <a href="mailto:your.email@example.com" class="contact-link">
-                        <img src="assets/images/icons/email.svg" alt="Email" class="icon">
-                        your.email@example.com
-                    </a>
-                    <a href="https://github.com/yourusername" class="contact-link" target="_blank">
-                        <img src="assets/images/icons/github.svg" alt="GitHub" class="icon">
-                        GitHub
-                    </a>
-                    <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank">
-                        <img src="assets/images/icons/linkedin.svg" alt="LinkedIn" class="icon">
-                        LinkedIn
-                    </a>
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Interested in working together or have a question?</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out through any of these channels:</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:your.email@example.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>your.email@example.com</span>
+                        </a>
+                        <a href="https://github.com/yourusername" class="contact-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <span>github.com/yourusername</span>
+                        </a>
+                        <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            <span>linkedin.com/in/yourusername</span>
+                        </a>
+                        <a href="tel:+123456789" class="contact-link">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (234) 567-89</span>
+                        </a>
+                    </div>
+                    
+                    <div class="availability">
+                        <h4>Current Availability</h4>
+                        <p>I'm currently available for freelance projects, consulting work, and interesting collaboration opportunities.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-large">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stopka -->
+    <!-- Sekcja CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to transform your data into insights?</h2>
+            <p>Let's collaborate on your next data engineering project.</p>
+            <a href="#contact" class="btn btn-large btn-primary">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Stopka z dodatkowymi informacjami -->
     <footer class="footer">
-        <p>© 2025 David Dylag | Designed with Precision</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <span class="logo-highlight">D</span>avid <span class="logo-highlight">D</span>ylag
+                    </div>
+                    <p>Building intelligent data solutions</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 David Dylag | All Rights Reserved | Designed with Precision</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- Przycisk do przewijania na górę -->
+    <button id="scroll-top" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Skrypty -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>
