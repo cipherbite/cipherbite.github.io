@@ -29,10 +29,10 @@
     <section class="section">
         <div class="container">
             <h1 class="section-title">IoT Data Monitoring System</h1>
-            <p class="intro-text">Imagine a world where device data is tracked in real time, delivering critical insights at a glance. That’s exactly what I’ve built with my IoT Data Monitoring System! In the age of the Internet of Things (IoT), where devices are constantly talking to each other, solutions like this are the backbone of industries, smart homes, and even precision agriculture. This project simulates temperature sensor data, streams it via MQTT, stores it in InfluxDB, visualizes it live in Grafana, and analyzes it in Jupyter Notebook. It’s not just a technical exercise—it’s a step toward a smarter future.</p>
+            <p class="intro-text">Imagine a world where device data is tracked in real time, delivering insights at a glance. That's exactly what I've built, a basic version of it. In the age of the Internet of Things (IoT), where devices are constantly talking to each other, solutions like this are the backbone of industries, smart homes, and even precision agriculture. This project simulates temperature sensor data, streams it via MQTT, stores it in InfluxDB, visualizes it live in Grafana, and analyzes it in Jupyter Notebook.</p>
 
             <h2 class="subtitle">1. Setting the Stage – A Strong Foundation</h2>
-            <p>I started by building a reliable environment on Windows using WSL—think of it as laying the groundwork for a sturdy house. Why these tools? Each brings something unique to the IoT table. Here’s what I set up:</p>
+            <p>I started by building a reliable environment on Windows using WSL—as I am more comfortable with Linux but still like using Windows. Why these tools? Each brings something unique to the IoT table and they are free. Here's what I set up:</p>
             <ul>
                 <li><strong>Mosquitto MQTT</strong>: A lightweight communication protocol perfect for IoT, thanks to its low resource use and reliability, running on port 1883.</li>
                 <li><strong>Node-RED</strong>: A visual programming tool that ties everything together effortlessly—like LEGO for tech enthusiasts.</li>
@@ -44,7 +44,7 @@
             <img src="images/screenshot_services.png" alt="Active services in WSL" class="project-img">
 
             <h2 class="subtitle">2. Database Setup – A Home for Data</h2>
-            <p>Next, I configured InfluxDB to securely store temperature data. With a simple <code>CREATE DATABASE iot_data</code> command, I carved out a space for my data, and <code>SHOW DATABASES</code> confirmed everything was ready. This step is critical—without a solid database, there’s no foundation for analysis or visualization.</p>
+            <p>Next, I configured InfluxDB to securely store temperature data. With a simple <code>CREATE DATABASE iot_data</code> command, I carved out a space for my data, and <code>SHOW DATABASES</code> confirmed everything was ready. This step is critical—without a solid database, there's no foundation for analysis or visualization.</p>
             <img src="images/screenshot_influxdb.png" alt="InfluxDB console" class="project-img">
 
             <h2 class="subtitle">3. Node-RED – The Data Maestro</h2>
@@ -84,7 +84,7 @@ while True:
             <img src="images/screenshot_jupyter_analysis.png" alt="Data analysis" class="project-img">
 
             <h2 class="subtitle">9. Advanced Analytics – Digging Deeper</h2>
-            <p>In Jupyter, I crafted a predictive model to forecast temperature trends. It’s like having a smart assistant that guesses future values based on past data.</p>
+            <p>In Jupyter, I crafted a predictive model to forecast temperature trends. It's like having a smart assistant that guesses future values based on past data.</p>
             <pre><code class="language-python">from statsmodels.tsa.holtwinters import ExponentialSmoothing
 model = ExponentialSmoothing(temp_series, trend="add").fit()
 forecast = model.forecast(10)
@@ -94,12 +94,11 @@ print(forecast)
             <img src="images/screenshot_jupyter_prediction.png" alt="Analysis output" class="project-img">
 
             <h2 class="subtitle">10. Problem-Solving – Tackling Challenges</h2>
-            <p>Not everything went smoothly at first, but solving problems is half the fun! Here’s how I tackled hurdles and learned along the way:</p>
+            <p>Not everything went smoothly at first, especially bringing data from InfluxDB to Grafana was somewhat challenging, but solving problems is half the fun! Here's how I tackled hurdles and learned along the way:</p>
             <table>
                 <tr><th>Issue</th><th>Solution</th></tr>
-                <tr><td>Mosquitto wouldn’t start</td><td>Checked ports with <code>netstat -an</code></td></tr>
+                <tr><td>Mosquitto wouldn't start</td><td>Checked ports with <code>netstat -an</code></td></tr>
                 <tr><td>No data in Node-RED</td><td>Added a debug node</td></tr>
-                <tr><td>InfluxDB not saving</td><td>Ran <code>SHOW MEASUREMENTS</code></td></tr>
                 <tr><td>Node-RED function node errors</td><td>Fixed JavaScript syntax and redeployed</td></tr>
                 <tr><td>JSON structure issues</td><td>Adjusted the node to extract temperature values correctly</td></tr>
                 <tr><td>Data missing in Grafana</td><td>Verified InfluxDB structure and tweaked the query</td></tr>
@@ -108,17 +107,17 @@ print(forecast)
             <img src="images/screenshot_troubleshooting.png" alt="Troubleshooting log" class="project-img">
 
             <h2 class="subtitle">11. Useful Commands – Tools I Relied On</h2>
-            <p>Te komendy pomogły mi w poruszaniu się po projekcie i utrzymaniu wszystkiego na właściwym torze:</p>
-            <pre><code># Sprawdzanie portów
+            <p>These commands helped me navigate the project and keep everything on track:</p>
+            <pre><code># Checking ports
 netstat -an | findstr "1883 8086 3000 1880"
-# Otwarcie InfluxDB
+# Opening InfluxDB
 influx
 </code></pre>
             <img src="images/screenshot_netstat.png" alt="Netstat output" class="project-img">
 
             <h2 class="subtitle">Why It Matters – The Bigger Picture</h2>
-            <p>Ten projekt to coś więcej niż tylko kod – pokazuje, jak IoT może pomóc w monitorowaniu danych w praktyczny sposób. Czy to w fabrykach, inteligentnych domach, czy innych zastosowaniach, daje możliwość śledzenia tego, co się dzieje na bieżąco. Przetestowałem każdą część, żeby upewnić się, że działa dobrze, a w przyszłości chciałbym podłączyć prawdziwe czujniki i może dodać powiadomienia o ważnych zmianach. To punkt wyjścia z potencjałem do dalszego rozwoju.</p>
-            <p>Jeśli chcesz zobaczyć szczegóły albo popracować nad czymś podobnym, zajrzyj na <a href="https://github.com/your-username/iot-data-monitoring" class="btn">GitHub</a> albo napisz do mnie na [your.email@example.com]. Chętnie porozmawiam o technologiach!</p>
+            <p>This project is more than just code – it demonstrates how IoT can help monitor data in a practical way. Whether in factories, smart homes, or other applications, it provides the ability to track what's happening in real-time. I tested each component to ensure it works well, and in the future, I'd like to connect real sensors and perhaps add notifications for important changes. This is a starting point with potential for further development.</p>
+            <p>If you want to see the details or work on something similar, check out my <a href="https://github.com/your-username/iot-data-monitoring" class="btn">GitHub</a> or contact me at [your.email@example.com]. I'm always happy to discuss technologies!</p>
         </div>
     </section>
 
