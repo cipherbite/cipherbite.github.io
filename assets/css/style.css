@@ -1,5 +1,6 @@
 :root {
-    --bg-color: #e6e2d3; /* Delikatny beż */
+    --bg-color: #e6e2d3; /* Delikatny beż jako domyślne tło */
+    --light-brown-bg: #d9c7a3; /* Bardziej jasnobrązowy dla klasy */
     --text-color: #333333; /* Ciemny szary dla kontrastu */
     --accent-color: #b38b6d; /* Stonowany brąz */
     --accent-light: #a17f5e; /* Jaśniejszy brąz dla efektów hover */
@@ -23,10 +24,15 @@
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-color);
-    background: var(--bg-color);
+    background: var(--bg-color); /* Domyślne tło dla całego body */
     scroll-behavior: smooth;
     line-height: 1.6;
     font-weight: 400;
+}
+
+/* Klasa dla bardziej jasnobrązowego tła */
+.light-brown-bg {
+    background: var(--light-brown-bg);
 }
 
 .container {
