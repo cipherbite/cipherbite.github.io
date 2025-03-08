@@ -41,15 +41,15 @@
                 <li><strong>Jupyter Notebook</strong>: My playground for analyzing data.</li>
             </ul>
             <p>Everything clicked into place like a perfect puzzle!</p>
-            <img src="images/screenshot_services.png" alt="Active services in WSL" class="project-img">
+            <img src="images/screenshot_services.jpg" alt="Active services in WSL" class="project-img">
 
             <h2 class="subtitle">2. Database Setup – Where Data Finds a Home</h2>
             <p>Next, I configured InfluxDB to store my temperature data securely. With a simple command, <code>CREATE DATABASE iot_data</code>, I built a vault for my numbers. A quick <code>SHOW DATABASES</code> confirmed it was ready to roll.</p>
-            <img src="images/screenshot_influxdb.png" alt="InfluxDB console" class="project-img">
+            <img src="images/screenshot_influxdb.jpg" alt="InfluxDB console" class="project-img">
 
             <h2 class="subtitle">3. Node-RED – The Data Maestro</h2>
             <p>Node-RED is the conductor of this symphony. I designed a flow that grabs data from MQTT, processes it into JSON, and sends it to InfluxDB. It's straightforward yet powerful – data moves effortlessly from point A to point B.</p>
-            <img src="images/screenshot_node_red.png" alt="Node-RED flow" class="project-img">
+            <img src="images/screenshot_node_red.jpg" alt="Node-RED flow" class="project-img">
 
             <h2 class="subtitle">4. Data Generator – Breathing Life into the System</h2>
             <p>I created a Python script in Jupyter to mimic a real IoT sensor. Every 2 seconds, it generates a random temperature (20–35°C) and sends it via MQTT. It's like a tiny factory pumping out test data!</p>
@@ -64,23 +64,23 @@ while True:
     client.publish("sensor/data", json.dumps(data))
     time.sleep(2)
 </code></pre>
-            <img src="images/screenshot_jupyter_generator.png" alt="Data generator output" class="project-img">
+            <img src="images/screenshot_jupyter_generator.jpg" alt="Data generator output" class="project-img">
 
             <h2 class="subtitle">5. Data Check – Making Sure It Works</h2>
             <p>To double-check everything, I wrote a script to pull data from InfluxDB. Seeing a neat table with temperatures and timestamps was proof: my system is alive and kicking!</p>
-            <img src="images/screenshot_jupyter_verification.png" alt="Data verification table" class="project-img">
+            <img src="images/screenshot_jupyter_verification.jpg" alt="Data verification table" class="project-img">
 
             <h2 class="subtitle">6. Grafana Magic – Seeing Is Believing</h2>
             <p>Grafana brings the data to life with real-time visuals. I built a dashboard to watch temperature trends as they happen. It's like having a window into my system.</p>
-            <img src="images/screenshot_grafana_dashboard.png" alt="Grafana dashboard" class="project-img">
+            <img src="images/screenshot_grafana_dashboard.jpg" alt="Grafana dashboard" class="project-img">
 
             <h2 class="subtitle">7. Full Launch – Everything in Sync</h2>
             <p>I fired up all the components – Mosquitto, InfluxDB, Node-RED, Grafana – and watched them work together flawlessly. Data flowed from the generator to the dashboard like a well-oiled machine.</p>
-            <img src="images/screenshot_grafana_dashboard_2.png" alt="Active Grafana dashboard" class="project-img">
+            <img src="images/screenshot_grafana_dashboard_2.jpg" alt="Active Grafana dashboard" class="project-img">
 
             <h2 class="subtitle">8. Data Analysis – Understanding the Patterns</h2>
             <p>I analyzed the collected temperature data to identify patterns and trends over time. This provides valuable insights into the system's behavior.</p>
-            <img src="images/screenshot_jupyter_analysis.png" alt="Data analysis" class="project-img">
+            <img src="images/screenshot_jupyter_analysis.jpg" alt="Data analysis" class="project-img">
 
             <h2 class="subtitle">9. Advanced Analytics – Going Deeper</h2>
             <p>Using Jupyter, I built a model to analyze temperature trends. It's like having an intelligent assistant that helps understand the data.</p>
@@ -90,7 +90,7 @@ forecast = model.forecast(10)
 print("Temperature forecast for next 10 periods:")
 print(forecast)
 </code></pre>
-            <img src="images/screenshot_jupyter_prediction.png" alt="Analysis output" class="project-img">
+            <img src="images/screenshot_jupyter_prediction.jpg" alt="Analysis output" class="project-img">
 
             <h2 class="subtitle">10. Problem-Solving – Cracking the Code</h2>
             <p>Not everything went perfectly at first, but that's where the fun begins! Here's how I tackled some hiccups:</p>
@@ -104,7 +104,7 @@ print(forecast)
                 <tr><td>Data not appearing in Grafana</td><td>Verified data structure in InfluxDB and adjusted query format</td></tr>
                 <tr><td>Nested JSON objects in InfluxDB</td><td>Modified Node-RED flow to store clean numeric values</td></tr>
             </table>
-            <img src="images/screenshot_troubleshooting.png" alt="Troubleshooting log" class="project-img">
+            <img src="images/screenshot_troubleshooting.jpg" alt="Troubleshooting log" class="project-img">
 
             <h2 class="subtitle">11. Handy Commands – My Toolkit</h2>
             <p>These commands kept me on track:</p>
@@ -113,7 +113,7 @@ netstat -an | findstr "1883 8086 3000 1880"
 # Open InfluxDB
 influx
 </code></pre>
-            <img src="images/screenshot_netstat.png" alt="Netstat output" class="project-img">
+            <img src="images/screenshot_netstat.jpg" alt="Netstat output" class="project-img">
 
             <h2 class="subtitle">Why It Matters – The Big Picture</h2>
             <p>This isn't just code – it's a working vision of how IoT can transform data monitoring. From factories to smart homes, this system provides real-time insights. I've tested every piece to make sure it's ready for the real world.</p>
