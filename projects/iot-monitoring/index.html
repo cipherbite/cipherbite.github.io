@@ -29,88 +29,84 @@
     <section class="section">
         <div class="container">
             <h1 class="section-title">IoT Data Monitoring System</h1>
-            <p class="intro-text">Imagine a world where device data is tracked in real time, delivering insights at a glance. That's exactly what I've built, a basic version of it. In the age of the Internet of Things (IoT), where devices are constantly talking to each other, solutions like this are the backbone of industries, smart homes, and even precision agriculture. This project simulates temperature sensor data, streams it via MQTT, stores it in InfluxDB, visualizes it live in Grafana, and analyzes it in Jupyter Notebook.</p>
+            <p class="intro-text">Ten projekt przedstawia system monitorowania danych IoT, który umożliwia śledzenie informacji z czujników w czasie rzeczywistym. Wykorzystuje technologie takie jak MQTT, InfluxDB, Grafana i Jupyter Notebook do zbierania, przechowywania, wizualizacji i analizy danych. W tym przypadku system symuluje dane temperaturowe, przesyła je za pomocą protokołu MQTT, zapisuje w bazie InfluxDB, prezentuje na żywo w Grafanie i analizuje w Jupyter Notebook. Takie rozwiązanie może znaleźć zastosowanie w przemyśle, inteligentnych domach czy rolnictwie precyzyjnym, gdzie kluczowe jest bieżące monitorowanie danych.</p>
 
-            <h2 class="subtitle">1. Setting the Stage – A Strong Foundation</h2>
-            <p>I started by building a reliable environment on Windows using WSL—as I am more comfortable with Linux but still like using Windows. Why these tools? Each brings something unique to the IoT table and they are free. Here's what I set up:</p>
+            <h2 class="subtitle">1. Konfiguracja narzędzi – Solidna baza</h2>
+            <p>Rozpocząłem od przygotowania środowiska na systemie Windows z użyciem WSL, co pozwala połączyć zalety Linuksa z wygodą Windowsa. Wybrałem zestaw narzędzi, które są nie tylko darmowe, ale też powszechnie stosowane w projektach IoT ze względu na ich funkcjonalność i niezawodność:</p>
             <ul>
-                <li><strong>Mosquitto MQTT</strong>: A lightweight communication protocol perfect for IoT, thanks to its low resource use and reliability, running on port 1883.</li>
-                <li><strong>Node-RED</strong>: A visual programming tool that ties everything together effortlessly—like LEGO for tech enthusiasts.</li>
-                <li><strong>InfluxDB</strong>: A database optimized for time-series data, tailor-made for sensor readings.</li>
-                <li><strong>Grafana</strong>: Turns raw numbers into stunning, real-time, interactive charts.</li>
-                <li><strong>Jupyter Notebook</strong>: My playground for data experiments and analysis.</li>
+                <li><strong>Mosquitto MQTT</strong>: Broker wiadomości działający na porcie 1883, oparty na lekkim protokole MQTT, idealnym do komunikacji między urządzeniami IoT.</li>
+                <li><strong>Node-RED</strong>: Narzędzie do wizualnego programowania, które ułatwia integrację komponentów systemu i zarządzanie przepływem danych.</li>
+                <li><strong>InfluxDB</strong>: Baza danych zaprojektowana do obsługi danych szeregów czasowych, takich jak odczyty z czujników, zoptymalizowana pod kątem wydajności.</li>
+                <li><strong>Grafana</strong>: Platforma do tworzenia interaktywnych wizualizacji danych w czasie rzeczywistym, czytelnych i łatwych do analizy.</li>
+                <li><strong>Jupyter Notebook</strong>: Środowisko do analizy danych, które wspiera eksplorację, wizualizację i budowanie modeli predykcyjnych.</li>
             </ul>
-            <p>It all came together like a perfectly solved puzzle!</p>
-            <img src="images/service_status_one.jpg" alt="Active mosquito" class="project-img">
-            <img src="images/service_status_two.jpg" alt="Active influx" class="project-img">
-            <img src="images/service_status_three.jpg" alt="Active grafana" class="project-img">
+            <p>Te narzędzia tworzą spójny system, w którym każdy element pełni określoną rolę w przetwarzaniu danych.</p>
+            <img src="images/service_status_one.jpg" alt="Aktywny Mosquitto" class="project-img">
+            <img src="images/service_status_two.jpg" alt="Aktywny InfluxDB" class="project-img">
+            <img src="images/service_status_three.jpg" alt="Aktywny Grafana" class="project-img">
 
-            <h2 class="subtitle">2. Database Setup – A Home for Data</h2>
-            <p>Next, I configured InfluxDB to securely store temperature data. With a simple <code>CREATE DATABASE iot_data</code> command, I carved out a space for my data, and <code>SHOW DATABASES</code> confirmed everything was ready. This step is critical—without a solid database, there's no foundation for analysis or visualization.</p>
-            <img src="images/screenshot_influxdb.jpg" alt="InfluxDB console" class="project-img">
+            <h2 class="subtitle">2. Przygotowanie bazy danych – Miejsce dla danych</h2>
+            <p>Skonfigurowałem InfluxDB, aby bezpiecznie przechowywać dane z czujników. Utworzyłem bazę za pomocą polecenia <code>CREATE DATABASE iot_data</code>, a polecenie <code>SHOW DATABASES</code> potwierdziło, że wszystko działa poprawnie. InfluxDB jest świetnym wyborem do tego typu projektów, ponieważ efektywnie radzi sobie z danymi szeregowymi, co jest istotne przy ciągłym napływie informacji z czujników.</p>
+            <img src="images/screenshot_influxdb.jpg" alt="Konsola InfluxDB" class="project-img">
 
-            <h2 class="subtitle">3. Node-RED – The Data Maestro</h2>
-            <p>Node-RED is the heart of this system—a conductor directing the orchestra. I designed a flow that grabs data from MQTT, formats it as JSON, and sends it to InfluxDB. Its visual interface makes integrating technologies a breeze, turning Node-RED into a powerhouse for IoT projects.</p>
-            <img src="images/screenshot_node_red.jpg" alt="Node-RED flow" class="project-img">
+            <h2 class="subtitle">3. Node-RED – Łączenie elementów</h2>
+            <p>Node-RED odpowiada za integrację systemu. Stworzyłem przepływ danych, który odbiera wiadomości z brokera MQTT, przekształca je w format JSON i zapisuje w InfluxDB. Dzięki graficznemu interfejsowi Node-RED konfiguracja jest intuicyjna, co przyspiesza pracę i ułatwia rozwiązywanie problemów. To narzędzie sprawdza się szczególnie w projektach IoT wymagających łączenia różnych technologii.</p>
+            <img src="images/screenshot_node_red.jpg" alt="Przepływ w Node-RED" class="project-img">
 
-            <h2 class="subtitle">4. Data Generator – Bringing It to Life</h2>
-            <p>I wrote a Python script in Jupyter Notebook to mimic a real IoT sensor. Every 2 seconds, it generates a random temperature between 20–35°C and sends it via MQTT. Simulating data is vital during testing—it lets me validate the system without physical hardware, speeding up development and debugging.</p>
-            
+            <h2 class="subtitle">4. Generator danych – Symulacja czujnika</h2>
+            <p>Stworzyłem skrypt w Pythonie w Jupyter Notebook, który symuluje dane z czujnika temperatury. Co 2 sekundy generuje losowe wartości w zakresie 20–35°C i wysyła je przez MQTT. Tego typu symulacja jest niezbędna na etapie testów – pozwala sprawdzić działanie systemu bez fizycznego sprzętu, co przyspiesza rozwój i weryfikację.</p>
+            <img src="images/screenshot_jupyter_generator.jpg" alt="Wyjście generatora danych" class="project-img">
 
-            <img src="images/screenshot_jupyter_generator.jpg" alt="Data generator output" class="project-img">
+            <h2 class="subtitle">5. Weryfikacja danych – Potwierdzenie działania</h2>
+            <p>Aby upewnić się, że dane trafiają do bazy, napisałem skrypt pobierający informacje z InfluxDB. Wyświetlona tabela z temperaturami i znacznikami czasu pokazała, że system działa zgodnie z planem. Ten krok jest ważny, by mieć pewność, że dane są prawidłowo zapisywane i gotowe do dalszego wykorzystania.</p>
+            <img src="images/screenshot_jupyter_verification.jpg" alt="Tabela weryfikacyjna danych" class="project-img">
 
-            <h2 class="subtitle">5. Data Check – Ensuring It Works</h2>
-            <p>To confirm everything was running smoothly, I scripted a data retrieval from InfluxDB. Seeing a neat table of temperatures and timestamps was proof my system was alive and kicking!</p>
-            <img src="images/screenshot_jupyter_verification.jpg" alt="Data verification table" class="project-img">
+            <h2 class="subtitle">6. Wizualizacja w Grafanie – Dane na żywo</h2>
+            <p>W Grafanie przygotowałem dashboard, który prezentuje dane temperaturowe w czasie rzeczywistym. Wykresy pokazują trendy temperatur, co ułatwia szybką ocenę sytuacji. Taka wizualizacja jest nieoceniona w monitorowaniu, bo pozwala od razu zauważyć nietypowe zmiany czy wzorce.</p>
+            <img src="images/screenshot_grafana_dashboard.jpg" alt="Dashboard w Grafanie" class="project-img">
 
-            <h2 class="subtitle">6. Grafana Magic – Seeing Is Believing</h2>
-            <p>Grafana brings data to life with real-time visualizations. I built a dashboard to display live temperature trends—a window into my system, showing data flowing and evolving over time.</p>
-            <img src="images/screenshot_grafana_dashboard.jpg" alt="Grafana dashboard" class="project-img">
+            <h2 class="subtitle">7. Uruchomienie systemu – Współpraca komponentów</h2>
+            <p>Po konfiguracji uruchomiłem wszystkie elementy jednocześnie: Mosquitto, InfluxDB, Node-RED i Grafanę. Dane z generatora płynnie przechodziły przez system – od wysyłki przez MQTT, przez zapis w bazie, aż po wyświetlenie w Grafanie. To pokazało, że wszystko działa jak należy.</p>
+            <img src="images/screenshot_grafana_dashboard_2.jpg" alt="Aktywny dashboard w Grafanie" class="project-img">
 
-            <h2 class="subtitle">7. Full Launch – Harmony in Action</h2>
-            <p>I fired up all components—Mosquitto, InfluxDB, Node-RED, Grafana—and watched them work in sync. Data flowed from the generator to the dashboard like a well-oiled machine.</p>
-            <img src="images/screenshot_grafana_dashboard_2.jpg" alt="Active Grafana dashboard" class="project-img">
+            <h2 class="subtitle">8. Analiza danych – Szukanie wzorców</h2>
+            <p>W Jupyter Notebook przeanalizowałem zebrane dane, by znaleźć trendy i zależności. Można tu obliczyć statystyki, jak średnia czy odchylenie, albo stworzyć wykresy, np. liniowe czy histogramy. Analiza pozwala lepiej zrozumieć dane i wyciągnąć wnioski, np. o stabilności temperatur.</p>
+            <img src="images/screenshot_jupyter_analysis.jpg" alt="Analiza danych" class="project-img">
 
-            <h2 class="subtitle">8. Data Analysis – Uncovering Patterns</h2>
-            <p>Using Jupyter Notebook, I analyzed the collected temperature data to spot trends and patterns. This offers valuable insights—like whether temperatures spike at certain times—laying the groundwork for future improvements.</p>
-            <img src="images/screenshot_jupyter_analysis.jpg" alt="Data analysis" class="project-img">
+            <h2 class="subtitle">9. Zaawansowana analityka – Przewidywanie trendów</h2>
+            <p>W Jupyter Notebook zbudowałem model predykcyjny, który na podstawie wcześniejszych danych prognozuje przyszłe wartości temperatur. Może to być prosta średnia krocząca albo bardziej złożony algorytm. Takie podejście przydaje się np. do przewidywania problemów w systemie.</p>
+            <img src="images/screenshot_jupyter_prediction.jpg" alt="Wyjście analizy predykcyjnej" class="project-img">
 
-            <h2 class="subtitle">9. Advanced Analytics – Digging Deeper</h2>
-            <p>In Jupyter, I crafted a predictive model to forecast temperature trends. It's like having a smart assistant that guesses future values based on past data.</p>
-            
-            <img src="images/screenshot_jupyter_prediction.jpg" alt="Analysis output" class="project-img">
-
-            <h2 class="subtitle">10. Problem-Solving – Tackling Challenges</h2>
-            <p>Not everything went smoothly at first, especially bringing data from InfluxDB to Grafana was somewhat challenging, but solving problems is half the fun! Here's how I tackled hurdles and learned along the way:</p>
+            <h2 class="subtitle">10. Rozwiązywanie problemów – Wyzwania i odpowiedzi</h2>
+            <p>Nie wszystko poszło gładko – napotkałem kilka przeszkód, które wymagały analizy i poprawek. Oto, z czym się zmierzyłem i jak to rozwiązałem:</p>
             <table>
-                <tr><th>Issue</th><th>Solution</th></tr>
-                <tr><td>Mosquitto wouldn't start</td><td>Checked ports with <code>netstat -an</code></td></tr>
-                <tr><td>No data in Node-RED</td><td>Added a debug node</td></tr>
-                <tr><td>Node-RED function node errors</td><td>Fixed JavaScript syntax and redeployed</td></tr>
-                <tr><td>JSON structure issues</td><td>Adjusted the node to extract temperature values correctly</td></tr>
-                <tr><td>Data missing in Grafana</td><td>Verified InfluxDB structure and tweaked the query</td></tr>
-                <tr><td>Nested JSON in InfluxDB</td><td>Modified Node-RED flow to save clean numeric values</td></tr>
+                <tr><th>Problem</th><th>Rozwiązanie</th></tr>
+                <tr><td>Mosquitto nie startował</td><td>Sprawdziłem porty za pomocą <code>netstat -an</code></td></tr>
+                <tr><td>Brak danych w Node-RED</td><td>Dodałem węzeł debugujący do przepływu</td></tr>
+                <tr><td>Błędy w węźle funkcyjnym Node-RED</td><td>Poprawiłem kod JavaScript i wdrożyłem ponownie</td></tr>
+                <tr><td>Problemy z formatem JSON</td><td>Dostosowałem węzeł, by poprawnie wyciągać temperaturę</td></tr>
+                <tr><td>Dane nie pojawiały się w Grafanie</td><td>Zweryfikowałem strukturę InfluxDB i poprawiłem zapytanie</td></tr>
+                <tr><td>Zagnieżdżony JSON w InfluxDB</td><td>Zmodyfikowałem przepływ w Node-RED na proste wartości</td></tr>
             </table>
-           
+            <img src="images/screenshot_netstat.jpg" alt="Logi rozwiązywania problemów" class="project-img">
 
-            <h2 class="subtitle">11. Useful Commands – Tools I Relied On</h2>
-            <p>These commands helped me navigate the project and keep everything on track:</p>
-            <pre><code># Checking ports
+            <h2 class="subtitle">11. Przydatne polecenia – Wsparcie w pracy</h2>
+            <p>Te polecenia pomogły mi monitorować system i rozwiązywać problemy:</p>
+            <pre><code># Sprawdzanie zajętości portów
 netstat -an | findstr "1883 8086 3000 1880"
-# Opening InfluxDB
+# Uruchomienie konsoli InfluxDB
 influx
 </code></pre>
-          <img src="images/screenshot_netstat.jpg" alt="Troubleshooting log" class="project-img">
 
-            <h2 class="subtitle">Why It Matters – The Bigger Picture</h2>
-            <p>This project is more than just code – it demonstrates how IoT can help monitor data in a practical way. Whether in factories, smart homes, or other applications, it provides the ability to track what's happening in real-time. I tested each component to ensure it works well, and in the future, I'd like to connect real sensors and perhaps add notifications for important changes. This is a starting point with potential for further development.</p>
-            <p>If you want to see the details or work on something similar, check out my <a href="https://github.com/your-username/iot-data-monitoring" class="btn">GitHub</a> or contact me at [your.email@example.com]. I'm always happy to discuss technologies!</p>
+            <h2 class="subtitle">Dlaczego to ważne – Szersza perspektywa</h2>
+            <p>Ten projekt pokazuje, jak technologie IoT mogą wspierać monitorowanie danych w praktyce. Może być bazą dla systemów w fabrykach, domach czy rolnictwie. Każdy element został przetestowany, a w przyszłości chciałbym dodać prawdziwe czujniki i powiadomienia o anomaliach. To solidny punkt wyjścia do dalszego rozwoju.</p>
+            <p>Jeśli chcesz zobaczyć szczegóły lub stworzyć coś podobnego, zajrzyj na mojego <a href="https://github.com/your-username/iot-data-monitoring" class="btn">GitHuba</a> lub napisz na [your.email@example.com]. Chętnie porozmawiam o technologiach i projektach!</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 David Dylag | Designed with Precision</p>
+        <p>© 2025 David Dylag | Zaprojektowano z precyzją</p>
     </footer>
 
     <script src="../../assets/js/script.js"></script>
