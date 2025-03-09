@@ -1,27 +1,27 @@
 :root {
     /* Tło strony */
-    --bg-color: #fce4ec; /* Jasny pastelowy róż jako baza */
-    --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 70%, #ede7f6 100%); /* Gradient różowo-lawendowy */
-    --light-brown-bg: #f3e5f5; /* Delikatna lawenda zamiast szarego */
-    --text-color: #333333; /* Ciemnoszary dla kontrastu */
-    --accent-color: #6c757d; /* Szary niebieski */
-    --accent-light: #adb5bd; /* Jaśniejszy szary */
-    --secondary-color: #ced4da; /* Bardzo jasny szary */
-    --card-bg: #ffffff; /* Biały dla kart */
+    --bg-color: #f5f5f5; /* Perłowy */
+    --bg-gradient: linear-gradient(135deg, #f5f5f5 0%, #e6e3d9 70%, #d9d6c9 100%); /* Gradient od perłowego do jasnego beżu */
+    --light-brown-bg: #e6e3d9; /* Jasny beż zamiast lawendy */
+    --text-color: #3a3a3a; /* Lekko ocieplony ciemnoszary dla kontrastu */
+    --accent-color: #4a2c4a; /* Ciemnofioletowy jako główny akcent */
+    --accent-light: #6b4e6b; /* Jaśniejszy ciemnofioletowy */
+    --secondary-color: #b3a99b; /* Stonowany beżowo-brązowy */
+    --card-bg: #fafafa; /* Bardzo jasny beż dla kart */
     --light-color: #ffffff;
-    --success-color: #98fb98; /* Pastelowy zielony dla "Expert" */
-    --warning-color: #ffd700; /* Pastelowy żółty dla "Advanced" */
-    --info-color: #87ceeb; /* Pastelowy niebieski dla "Intermediate" */
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtelny cień */
-    --transition: all 0.3s ease-in-out;
-    --code-bg: #fafafa; /* Bardzo jasny szary dla kodu, unikam bieli */
+    --success-color: #98fb98; /* Pastelowy zielony dla "Expert" - pozostawiony, bo nie koliduje z wytycznymi */
+    --warning-color: #ffd700; /* Pastelowy żółty dla "Advanced" - pozostawiony tymczasowo, ale możesz go zmienić */
+    --info-color: #87ceeb; /* Pastelowy niebieski dla "Intermediate" - pozostawiony tymczasowo, ale możesz go zmienić */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtelny cień - bez zmian */
+    --transition: all 0.3s ease-in-out; /* Bez zmian */
+    --code-bg: #fafafa; /* Bardzo jasny beż dla kodu */
     
-    /* Jeszcze jaśniejsze i delikatniejsze kolory dla spanów */
-    --tag-color-1: #fff7cc; /* Bardzo jasny kremowy żółty */
-    --tag-color-2: #e6f2fa; /* Bardzo jasny, subtelny błękit */
-    --tag-color-3: #e6f5e6; /* Bardzo jasny, subtelny zielony */
-    --tag-color-4: #fff0f0; /* Prawie biały różowy */
-    --tag-color-5: #f7e6f7; /* Bardzo jasny fiolet */
+    /* Kolory dla tagów - stonowane odcienie pasujące do palety */
+    --tag-color-1: #e6e3d9; /* Jasny beż */
+    --tag-color-2: #d9d6c9; /* Lekko ciemniejszy beż */
+    --tag-color-3: #c9c6b9; /* Jeszcze ciemniejszy beż */
+    --tag-color-4: #b9b6a9; /* Ciemny beż */
+    --tag-color-5: #a9a699; /* Najciemniejszy beż */
 }
 
 * {
