@@ -1,5 +1,7 @@
 :root {
-    --bg-color: #f5f5f5; /* Jasnoszary */
+    /* Tło strony */
+    --bg-color: #f5f5f5; /* Jasnoszary jako baza */
+    --bg-gradient: linear-gradient(135deg, #f5f5f5 0%, #e9ecef 70%, #e6f0fa 100%); /* Subtelny gradient z akcentem niebieskim */
     --light-brown-bg: #e9ecef; /* Bardzo jasny szary */
     --text-color: #333333; /* Ciemnoszary */
     --accent-color: #6c757d; /* Szary niebieski */
@@ -14,12 +16,12 @@
     --transition: all 0.3s ease-in-out;
     --code-bg: #f8f9fa; /* Bardzo jasny szary */
     
-    /* Pastelowe kolory dla spanów */
-    --tag-color-1: #ffd700; /* Pastelowy żółty */
-    --tag-color-2: #87ceeb; /* Pastelowy niebieski */
-    --tag-color-3: #98fb98; /* Pastelowy zielony */
-    --tag-color-4: #ffb6c1; /* Pastelowy czerwony */
-    --tag-color-5: #dda0dd; /* Pastelowy fiolet */
+    /* Jeszcze delikatniejsze pastelowe kolory dla spanów (intensywność zmniejszona o 35%) */
+    --tag-color-1: #fff0b3; /* Bardzo delikatny żółty */
+    --tag-color-2: #cce6f5; /* Bardzo delikatny niebieski */
+    --tag-color-3: #ccebd6; /* Bardzo delikatny zielony */
+    --tag-color-4: #ffe6e6; /* Bardzo delikatny czerwony/różowy */
+    --tag-color-5: #f0d6f0; /* Bardzo delikatny fiolet */
 }
 
 * {
@@ -31,7 +33,7 @@
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-color);
-    background: var(--bg-color);
+    background: var(--bg-gradient);
     scroll-behavior: smooth;
     line-height: 1.6;
     font-weight: 400;
@@ -98,7 +100,7 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, var(--bg-color) 60%, var(--light-brown-bg) 100%);
+    background: var(--bg-gradient);
     position: relative;
 }
 
@@ -211,7 +213,7 @@ body {
 /* Sections */
 .section {
     padding: 100px 0;
-    background: var(--bg-color);
+    background: var(--bg-gradient);
 }
 
 .section-dark {
@@ -417,8 +419,8 @@ body {
     margin-bottom: 20px;
 }
 
-/* Pastelowe tagi */
-.project-tags span {
+/* Kolorowe tagi - każdy n-ty element inny kolor */
+.project-tags span:nth-child(5n+1) {
     background: var(--tag-color-1);
     color: #333333;
     font-size: 0.8rem;
@@ -429,18 +431,38 @@ body {
 
 .project-tags span:nth-child(5n+2) {
     background: var(--tag-color-2);
+    color: #333333;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
 }
 
 .project-tags span:nth-child(5n+3) {
     background: var(--tag-color-3);
+    color: #333333;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
 }
 
 .project-tags span:nth-child(5n+4) {
     background: var(--tag-color-4);
+    color: #333333;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
 }
 
 .project-tags span:nth-child(5n+5) {
     background: var(--tag-color-5);
+    color: #333333;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
 }
 
 .project-links {
@@ -544,8 +566,8 @@ body {
     justify-content: center;
 }
 
-/* Pastelowe tagi umiejętności */
-.skill-tags span {
+/* Kolorowe tagi umiejętności */
+.skill-tags span:nth-child(5n+1) {
     background: var(--tag-color-1);
     color: #333333;
     padding: 8px 16px;
@@ -557,18 +579,42 @@ body {
 
 .skill-tags span:nth-child(5n+2) {
     background: var(--tag-color-2);
+    color: #333333;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-weight: 600;
 }
 
 .skill-tags span:nth-child(5n+3) {
     background: var(--tag-color-3);
+    color: #333333;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-weight: 600;
 }
 
 .skill-tags span:nth-child(5n+4) {
     background: var(--tag-color-4);
+    color: #333333;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-weight: 600;
 }
 
 .skill-tags span:nth-child(5n+5) {
     background: var(--tag-color-5);
+    color: #333333;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-weight: 600;
 }
 
 .skill-tags span:hover {
