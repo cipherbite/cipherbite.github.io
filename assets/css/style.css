@@ -1,27 +1,27 @@
 :root {
     /* Tło strony */
-    --bg-color: #f5f5f5; /* Perłowy */
-    --bg-gradient: linear-gradient(135deg, #f5f5f5 0%, #e6e3d9 70%, #d9d6c9 100%); /* Gradient od perłowego do jasnego beżu */
-    --light-brown-bg: #e6e3d9; /* Jasny beż zamiast lawendy */
-    --text-color: #3a3a3a; /* Lekko ocieplony ciemnoszary dla kontrastu */
-    --accent-color: #4a2c4a; /* Ciemnofioletowy jako główny akcent */
-    --accent-light: #6b4e6b; /* Jaśniejszy ciemnofioletowy */
-    --secondary-color: #b3a99b; /* Stonowany beżowo-brązowy */
-    --card-bg: #fafafa; /* Bardzo jasny beż dla kart */
+    --bg-color: #f4f4f7; /* Jasnoszary */
+    --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f4f4f7 70%, #e0e0e0 100%); /* Gradient od białego do jasnoszarego */
+    --light-brown-bg: #f2f4f8; /* Jasny szaroniebieski zamiast beżu */
+    --text-color: #161616; /* Ciemny, czytelny tekst w stylu IBM */
+    --accent-color: #006D5B; /* Głęboki zielony IBM */
+    --accent-light: #00A78F; /* Jaśniejszy zielony */
+    --secondary-color: #4d5358; /* Ciemnoszary jako kolor dodatkowy */
+    --card-bg: #ffffff; /* Biały dla kart */
     --light-color: #ffffff;
-    --success-color: #98fb98; /* Pastelowy zielony dla "Expert" - pozostawiony, bo nie koliduje z wytycznymi */
-    --warning-color: #ffd700; /* Pastelowy żółty dla "Advanced" - pozostawiony tymczasowo, ale możesz go zmienić */
-    --info-color: #87ceeb; /* Pastelowy niebieski dla "Intermediate" - pozostawiony tymczasowo, ale możesz go zmienić */
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtelny cień - bez zmian */
+    --success-color: #98fb98; /* Pastelowy zielony dla "Expert" - pozostawiony */
+    --warning-color: #ffd700; /* Pastelowy żółty dla "Advanced" - pozostawiony */
+    --info-color: #87ceeb; /* Pastelowy niebieski dla "Intermediate" - pozostawiony */
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtelny cień w stylu IBM */
     --transition: all 0.3s ease-in-out; /* Bez zmian */
-    --code-bg: #fafafa; /* Bardzo jasny beż dla kodu */
+    --code-bg: #f2f4f8; /* Jasnoszary dla kodu */
     
-    /* Kolory dla tagów - stonowane odcienie pasujące do palety */
-    --tag-color-1: #e6e3d9; /* Jasny beż */
-    --tag-color-2: #d9d6c9; /* Lekko ciemniejszy beż */
-    --tag-color-3: #c9c6b9; /* Jeszcze ciemniejszy beż */
-    --tag-color-4: #b9b6a9; /* Ciemny beż */
-    --tag-color-5: #a9a699; /* Najciemniejszy beż */
+    /* Kolory dla tagów - odcienie zieleni i szarości */
+    --tag-color-1: #e0f2f1; /* Bardzo jasny zielonkawy */
+    --tag-color-2: #b2dfdb; /* Jasny turkus */
+    --tag-color-3: #e4e9f0; /* Jasny szaroniebieski */
+    --tag-color-4: #c8d1d7; /* Średni szaroniebieski */
+    --tag-color-5: #a7b0b5; /* Ciemniejszy szaroniebieski */
 }
 
 * {
@@ -39,7 +39,7 @@ body {
     font-weight: 400;
 }
 
-/* Klasa dla bardziej jasnobrązowego tła */
+/* Klasa dla bardziej jasnoszarego tła */
 .light-brown-bg {
     background: var(--light-brown-bg);
 }
@@ -110,7 +110,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(252, 228, 236, 0.3) 0%, rgba(237, 231, 246, 0.7) 70%);
+    background: radial-gradient(circle at center, rgba(224, 242, 241, 0.3) 0%, rgba(242, 244, 248, 0.7) 70%);
     z-index: 1;
 }
 
@@ -147,7 +147,7 @@ body {
     background: var(--accent-color);
     color: var(--light-color);
     padding: 12px 32px;
-    border-radius: 0;
+    border-radius: 0; /* Kwadratowe przyciski w stylu IBM */
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
@@ -274,7 +274,7 @@ body {
 
 .about-image img {
     max-width: 100%;
-    border-radius: 12px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     box-shadow: var(--shadow);
     transition: var(--transition);
 }
@@ -294,7 +294,7 @@ body {
     flex: 1;
     padding: 20px;
     background: var(--card-bg);
-    border-radius: 8px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     transition: var(--transition);
 }
 
@@ -329,7 +329,7 @@ body {
     justify-content: center;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     background: var(--accent-color);
     color: var(--light-color);
     transition: var(--transition);
@@ -350,7 +350,7 @@ body {
 
 .project-card {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
@@ -425,7 +425,7 @@ body {
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 20px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-weight: 600;
 }
 
@@ -434,7 +434,7 @@ body {
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 20px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-weight: 600;
 }
 
@@ -443,7 +443,7 @@ body {
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 20px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-weight: 600;
 }
 
@@ -452,7 +452,7 @@ body {
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 20px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-weight: 600;
 }
 
@@ -461,7 +461,7 @@ body {
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 20px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-weight: 600;
 }
 
@@ -480,7 +480,7 @@ body {
 
 .skill-category {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     padding: 25px;
     box-shadow: var(--shadow);
     transition: var(--transition);
@@ -525,7 +525,7 @@ body {
 .skill-level {
     font-size: 0.8rem;
     padding: 3px 10px;
-    border-radius: 20px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-weight: 600;
 }
 
@@ -546,7 +546,7 @@ body {
 
 .additional-skills {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     padding: 30px;
     margin-top: 40px;
     text-align: center;
@@ -571,7 +571,7 @@ body {
     background: var(--tag-color-1);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 30px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-size: 0.9rem;
     transition: var(--transition);
     font-weight: 600;
@@ -581,7 +581,7 @@ body {
     background: var(--tag-color-2);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 30px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-size: 0.9rem;
     transition: var(--transition);
     font-weight: 600;
@@ -591,7 +591,7 @@ body {
     background: var(--tag-color-3);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 30px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-size: 0.9rem;
     transition: var(--transition);
     font-weight: 600;
@@ -601,7 +601,7 @@ body {
     background: var(--tag-color-4);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 30px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-size: 0.9rem;
     transition: var(--transition);
     font-weight: 600;
@@ -611,7 +611,7 @@ body {
     background: var(--tag-color-5);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 30px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     font-size: 0.9rem;
     transition: var(--transition);
     font-weight: 600;
@@ -632,7 +632,7 @@ body {
 
 .contact-info {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     padding: 30px;
     box-shadow: var(--shadow);
 }
@@ -668,7 +668,7 @@ body {
     width: 40px;
     height: 40px;
     background: var(--accent-color);
-    border-radius: 50%;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -700,7 +700,7 @@ body {
 
 .contact-form-container {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     padding: 40px;
     box-shadow: var(--shadow);
 }
@@ -726,7 +726,7 @@ body {
 .contact-form textarea {
     padding: 14px;
     border: 1px solid var(--secondary-color);
-    border-radius: 8px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     background: var(--light-brown-bg);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
@@ -737,12 +737,12 @@ body {
 .contact-form textarea:focus {
     border-color: var(--accent-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.2);
+    box-shadow: 0 0 0 3px rgba(0, 109, 91, 0.2);
 }
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+    background: linear-gradient(to right, var(--accent-color), #00473E);
     padding: 80px 0;
     text-align: center;
 }
@@ -837,7 +837,7 @@ body {
     justify-content: center;
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     background: var(--accent-color);
     color: var(--light-color);
     transition: var(--transition);
@@ -861,7 +861,7 @@ body {
     right: 30px;
     width: 50px;
     height: 50px;
-    border-radius: 0;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     background: var(--accent-color);
     color: var(--light-color);
     border: none;
@@ -943,7 +943,7 @@ blockquote {
 pre {
     background: var(--code-bg);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     overflow-x: auto;
     margin: 25px 0;
     box-shadow: var(--shadow);
@@ -958,7 +958,7 @@ code {
 p code, li code {
     background-color: var(--card-bg);
     padding: 2px 6px;
-    border-radius: 4px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     color: var(--accent-light);
 }
 
@@ -972,7 +972,7 @@ p code, li code {
 
 .metric-card {
     background: var(--card-bg);
-    border-radius: 8px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     padding: 15px;
     flex: 1 1 200px;
     box-shadow: var(--shadow);
@@ -1014,7 +1014,7 @@ table {
     border-collapse: collapse;
     margin: 25px 0;
     box-shadow: var(--shadow);
-    border-radius: 8px;
+    border-radius: 0; /* Kwadratowy w stylu IBM */
     overflow: hidden;
 }
 
@@ -1040,5 +1040,5 @@ table tr:nth-child(even) {
 }
 
 table tr:hover {
-    background-color: rgba(108, 117, 125, 0.1);
+    background-color: rgba(0, 109, 91, 0.05);
 }
