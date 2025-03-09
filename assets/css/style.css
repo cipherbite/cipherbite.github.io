@@ -1,27 +1,27 @@
 :root {
     /* Tło strony */
-    --bg-color: #f5f5f5; /* Jasnoszary jako baza */
-    --bg-gradient: linear-gradient(135deg, #f5f5f5 0%, #e9ecef 70%, #e6f0fa 100%); /* Subtelny gradient z akcentem niebieskim */
-    --light-brown-bg: #e9ecef; /* Bardzo jasny szary */
-    --text-color: #333333; /* Ciemnoszary */
+    --bg-color: #fce4ec; /* Jasny pastelowy róż jako baza */
+    --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 70%, #ede7f6 100%); /* Gradient różowo-lawendowy */
+    --light-brown-bg: #f3e5f5; /* Delikatna lawenda zamiast szarego */
+    --text-color: #333333; /* Ciemnoszary dla kontrastu */
     --accent-color: #6c757d; /* Szary niebieski */
     --accent-light: #adb5bd; /* Jaśniejszy szary */
     --secondary-color: #ced4da; /* Bardzo jasny szary */
-    --card-bg: #ffffff; /* Biały */
+    --card-bg: #ffffff; /* Biały dla kart */
     --light-color: #ffffff;
     --success-color: #98fb98; /* Pastelowy zielony dla "Expert" */
     --warning-color: #ffd700; /* Pastelowy żółty dla "Advanced" */
     --info-color: #87ceeb; /* Pastelowy niebieski dla "Intermediate" */
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtelny cień */
     --transition: all 0.3s ease-in-out;
-    --code-bg: #f8f9fa; /* Bardzo jasny szary */
+    --code-bg: #fafafa; /* Bardzo jasny szary dla kodu, unikam bieli */
     
-    /* Jeszcze delikatniejsze pastelowe kolory dla spanów (intensywność zmniejszona o 35%) */
-    --tag-color-1: #fff0b3; /* Bardzo delikatny żółty */
-    --tag-color-2: #cce6f5; /* Bardzo delikatny niebieski */
-    --tag-color-3: #ccebd6; /* Bardzo delikatny zielony */
-    --tag-color-4: #ffe6e6; /* Bardzo delikatny czerwony/różowy */
-    --tag-color-5: #f0d6f0; /* Bardzo delikatny fiolet */
+    /* Jeszcze jaśniejsze i delikatniejsze kolory dla spanów */
+    --tag-color-1: #fff7cc; /* Bardzo jasny kremowy żółty */
+    --tag-color-2: #e6f2fa; /* Bardzo jasny, subtelny błękit */
+    --tag-color-3: #e6f5e6; /* Bardzo jasny, subtelny zielony */
+    --tag-color-4: #fff0f0; /* Prawie biały różowy */
+    --tag-color-5: #f7e6f7; /* Bardzo jasny fiolet */
 }
 
 * {
@@ -110,7 +110,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(245, 245, 245, 0.3) 0%, rgba(245, 245, 245, 0.7) 70%);
+    background: radial-gradient(circle at center, rgba(252, 228, 236, 0.3) 0%, rgba(237, 231, 246, 0.7) 70%);
     z-index: 1;
 }
 
