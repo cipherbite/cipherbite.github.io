@@ -1,18 +1,25 @@
 :root {
-    --bg-color: #e6e2d3; /* Delikatny beż jako domyślne tło */
-    --light-brown-bg: #d9c7a3; /* Bardziej jasnobrązowy dla klasy */
-    --text-color: #333333; /* Ciemny szary dla kontrastu */
+    --bg-color: #444444; /* Zmieniony na ciemniejszy szary */
+    --light-brown-bg: #5a5a5a; /* Ciemniejszy szary dla klasy */
+    --text-color: #e6e6e6; /* Jaśniejszy tekst dla lepszego kontrastu */
     --accent-color: #b38b6d; /* Stonowany brąz */
     --accent-light: #a17f5e; /* Jaśniejszy brąz dla efektów hover */
     --secondary-color: #d2b48c; /* Jasnobrązowy dla akcentów */
-    --card-bg: #ffffff; /* Biały dla kart */
+    --card-bg: #333333; /* Ciemniejszy dla kart */
     --light-color: #ffffff;
     --success-color: #6c757d; /* Szary dla "Expert" */
     --warning-color: #adb5bd; /* Jaśniejszy szary dla "Advanced" */
     --info-color: #ced4da; /* Najjaśniejszy szary dla "Intermediate" */
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtelniejszy cień */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Subtelniejszy cień */
     --transition: all 0.3s ease-in-out;
-    --code-bg: #f9f9f9; /* Jasne tło dla kodu */
+    --code-bg: #2b2b2b; /* Ciemniejsze tło dla kodu */
+    
+    /* Nowe kolory dla spanów */
+    --tag-color-1: #ffcc00; /* Żółty */
+    --tag-color-2: #4db8ff; /* Niebieski */
+    --tag-color-3: #66cc99; /* Zielony jasny */
+    --tag-color-4: #ff6666; /* Czerwony */
+    --tag-color-5: #cc99ff; /* Fioletowy */
 }
 
 * {
@@ -91,7 +98,7 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, var(--bg-color) 60%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--bg-color) 60%, var(--light-brown-bg) 100%);
     position: relative;
 }
 
@@ -101,7 +108,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(230, 226, 211, 0.3) 0%, rgba(230, 226, 211, 0.7) 70%);
+    background: radial-gradient(circle at center, rgba(68, 68, 68, 0.3) 0%, rgba(68, 68, 68, 0.7) 70%);
     z-index: 1;
 }
 
@@ -283,7 +290,7 @@ body {
 .highlight {
     flex: 1;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(51, 51, 51, 0.7);
     border-radius: 8px;
     transition: var(--transition);
 }
@@ -349,7 +356,7 @@ body {
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .project-img {
@@ -375,7 +382,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(51, 51, 51, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -410,12 +417,50 @@ body {
     margin-bottom: 20px;
 }
 
-.project-tags span {
-    background: var(--bg-color);
-    color: var(--accent-color);
+/* Kolorowe tagi - każdy n-ty element inny kolor */
+.project-tags span:nth-child(5n+1) {
+    background: var(--tag-color-1);
+    color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
     border-radius: 20px;
+    font-weight: 600;
+}
+
+.project-tags span:nth-child(5n+2) {
+    background: var(--tag-color-2);
+    color: #333333;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.project-tags span:nth-child(5n+3) {
+    background: var(--tag-color-3);
+    color: #333333;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.project-tags span:nth-child(5n+4) {
+    background: var(--tag-color-4);
+    color: #333333;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.project-tags span:nth-child(5n+5) {
+    background: var(--tag-color-5);
+    color: #333333;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
 }
 
 .project-links {
@@ -441,7 +486,7 @@ body {
 
 .skill-category:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .skill-category h3 {
@@ -468,7 +513,7 @@ body {
     align-items: center;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(113, 128, 150, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .skill-name {
@@ -483,18 +528,18 @@ body {
 }
 
 .expert {
-    background: rgba(108, 117, 125, 0.15);
-    color: var(--success-color);
+    background: rgba(108, 117, 125, 0.3);
+    color: var(--light-color);
 }
 
 .advanced {
-    background: rgba(173, 181, 189, 0.15);
-    color: var(--warning-color);
+    background: rgba(173, 181, 189, 0.3);
+    color: var(--light-color);
 }
 
 .intermediate {
-    background: rgba(206, 212, 218, 0.15);
-    color: var(--info-color);
+    background: rgba(206, 212, 218, 0.3);
+    color: var(--light-color);
 }
 
 .additional-skills {
@@ -519,19 +564,60 @@ body {
     justify-content: center;
 }
 
-.skill-tags span {
-    background: var(--bg-color);
-    color: var(--secondary-color);
+/* Kolorowe tagi umiejętności */
+.skill-tags span:nth-child(5n+1) {
+    background: var(--tag-color-1);
+    color: #333333;
     padding: 8px 16px;
     border-radius: 30px;
     font-size: 0.9rem;
     transition: var(--transition);
+    font-weight: 600;
+}
+
+.skill-tags span:nth-child(5n+2) {
+    background: var(--tag-color-2);
+    color: #333333;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.skill-tags span:nth-child(5n+3) {
+    background: var(--tag-color-3);
+    color: #333333;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.skill-tags span:nth-child(5n+4) {
+    background: var(--tag-color-4);
+    color: #333333;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.skill-tags span:nth-child(5n+5) {
+    background: var(--tag-color-5);
+    color: #333333;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-weight: 600;
 }
 
 .skill-tags span:hover {
-    background: var(--accent-color);
-    color: var(--light-color);
     transform: translateY(-3px);
+    box-shadow: var(--shadow);
 }
 
 /* Contact */
@@ -601,7 +687,7 @@ body {
 .availability {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 1px solid rgba(113, 128, 150, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .availability h4 {
@@ -638,7 +724,7 @@ body {
 .contact-form input,
 .contact-form textarea {
     padding: 14px;
-    border: 1px solid rgba(113, 128, 150, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     background: var(--bg-color);
     color: var(--text-color);
@@ -751,7 +837,7 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(113, 128, 150, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     color: var(--text-color);
     transition: var(--transition);
 }
@@ -765,7 +851,7 @@ body {
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgba(113, 128, 150, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Scroll To Top Button */
@@ -874,4 +960,85 @@ p code, li code {
     padding: 2px 6px;
     border-radius: 4px;
     color: var(--accent-light);
+}
+
+/* Specjalne style dla projektu IoT i dataengineering */
+.data-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.metric-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 15px;
+    flex: 1 1 200px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--tag-color-1);
+    transition: var(--transition);
+}
+
+.metric-card:nth-child(2) {
+    border-left-color: var(--tag-color-2);
+}
+
+.metric-card:nth-child(3) {
+    border-left-color: var(--tag-color-3);
+}
+
+.metric-card:nth-child(4) {
+    border-left-color: var(--tag-color-4);
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-card h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--light-color);
+}
+
+.metric-card .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--light-color);
+}
+
+/* Dodatkowe style dla tabel w projektach data engineering */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th {
+    background-color: rgba(179, 139, 109, 0.2);
+    color: var(--light-color);
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(51, 51, 51, 0.4);
+}
+
+table tr:hover {
+    background-color: rgba(179, 139, 109, 0.1);
 }
