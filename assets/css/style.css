@@ -1,25 +1,25 @@
 :root {
-    --bg-color: #444444; /* Zmieniony na ciemniejszy szary */
-    --light-brown-bg: #5a5a5a; /* Ciemniejszy szary dla klasy */
-    --text-color: #e6e6e6; /* Jaśniejszy tekst dla lepszego kontrastu */
-    --accent-color: #b38b6d; /* Stonowany brąz */
-    --accent-light: #a17f5e; /* Jaśniejszy brąz dla efektów hover */
-    --secondary-color: #d2b48c; /* Jasnobrązowy dla akcentów */
-    --card-bg: #333333; /* Ciemniejszy dla kart */
+    --bg-color: #f5f5f5; /* Jasnoszary */
+    --light-brown-bg: #e9ecef; /* Bardzo jasny szary */
+    --text-color: #333333; /* Ciemnoszary */
+    --accent-color: #6c757d; /* Szary niebieski */
+    --accent-light: #adb5bd; /* Jaśniejszy szary */
+    --secondary-color: #ced4da; /* Bardzo jasny szary */
+    --card-bg: #ffffff; /* Biały */
     --light-color: #ffffff;
-    --success-color: #6c757d; /* Szary dla "Expert" */
-    --warning-color: #adb5bd; /* Jaśniejszy szary dla "Advanced" */
-    --info-color: #ced4da; /* Najjaśniejszy szary dla "Intermediate" */
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Subtelniejszy cień */
+    --success-color: #98fb98; /* Pastelowy zielony dla "Expert" */
+    --warning-color: #ffd700; /* Pastelowy żółty dla "Advanced" */
+    --info-color: #87ceeb; /* Pastelowy niebieski dla "Intermediate" */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtelny cień */
     --transition: all 0.3s ease-in-out;
-    --code-bg: #2b2b2b; /* Ciemniejsze tło dla kodu */
+    --code-bg: #f8f9fa; /* Bardzo jasny szary */
     
-    /* Nowe kolory dla spanów */
-    --tag-color-1: #ffcc00; /* Żółty */
-    --tag-color-2: #4db8ff; /* Niebieski */
-    --tag-color-3: #66cc99; /* Zielony jasny */
-    --tag-color-4: #ff6666; /* Czerwony */
-    --tag-color-5: #cc99ff; /* Fioletowy */
+    /* Pastelowe kolory dla spanów */
+    --tag-color-1: #ffd700; /* Pastelowy żółty */
+    --tag-color-2: #87ceeb; /* Pastelowy niebieski */
+    --tag-color-3: #98fb98; /* Pastelowy zielony */
+    --tag-color-4: #ffb6c1; /* Pastelowy czerwony */
+    --tag-color-5: #dda0dd; /* Pastelowy fiolet */
 }
 
 * {
@@ -108,7 +108,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(68, 68, 68, 0.3) 0%, rgba(68, 68, 68, 0.7) 70%);
+    background: radial-gradient(circle at center, rgba(245, 245, 245, 0.3) 0%, rgba(245, 245, 245, 0.7) 70%);
     z-index: 1;
 }
 
@@ -211,6 +211,7 @@ body {
 /* Sections */
 .section {
     padding: 100px 0;
+    background: var(--bg-color);
 }
 
 .section-dark {
@@ -290,7 +291,7 @@ body {
 .highlight {
     flex: 1;
     padding: 20px;
-    background: rgba(51, 51, 51, 0.7);
+    background: var(--card-bg);
     border-radius: 8px;
     transition: var(--transition);
 }
@@ -327,14 +328,13 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: var(--card-bg);
-    color: var(--text-color);
+    background: var(--accent-color);
+    color: var(--light-color);
     transition: var(--transition);
 }
 
 .social-icons a:hover {
-    background: var(--accent-color);
-    color: var(--light-color);
+    background: var(--accent-light);
     transform: translateY(-3px);
 }
 
@@ -356,7 +356,7 @@ body {
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .project-img {
@@ -382,7 +382,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(51, 51, 51, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -417,8 +417,8 @@ body {
     margin-bottom: 20px;
 }
 
-/* Kolorowe tagi - każdy n-ty element inny kolor */
-.project-tags span:nth-child(5n+1) {
+/* Pastelowe tagi */
+.project-tags span {
     background: var(--tag-color-1);
     color: #333333;
     font-size: 0.8rem;
@@ -429,38 +429,18 @@ body {
 
 .project-tags span:nth-child(5n+2) {
     background: var(--tag-color-2);
-    color: #333333;
-    font-size: 0.8rem;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: 600;
 }
 
 .project-tags span:nth-child(5n+3) {
     background: var(--tag-color-3);
-    color: #333333;
-    font-size: 0.8rem;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: 600;
 }
 
 .project-tags span:nth-child(5n+4) {
     background: var(--tag-color-4);
-    color: #333333;
-    font-size: 0.8rem;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: 600;
 }
 
 .project-tags span:nth-child(5n+5) {
     background: var(--tag-color-5);
-    color: #333333;
-    font-size: 0.8rem;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: 600;
 }
 
 .project-links {
@@ -486,7 +466,7 @@ body {
 
 .skill-category:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .skill-category h3 {
@@ -513,7 +493,7 @@ body {
     align-items: center;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .skill-name {
@@ -528,18 +508,18 @@ body {
 }
 
 .expert {
-    background: rgba(108, 117, 125, 0.3);
-    color: var(--light-color);
+    background: var(--success-color);
+    color: #333333;
 }
 
 .advanced {
-    background: rgba(173, 181, 189, 0.3);
-    color: var(--light-color);
+    background: var(--warning-color);
+    color: #333333;
 }
 
 .intermediate {
-    background: rgba(206, 212, 218, 0.3);
-    color: var(--light-color);
+    background: var(--info-color);
+    color: #333333;
 }
 
 .additional-skills {
@@ -564,8 +544,8 @@ body {
     justify-content: center;
 }
 
-/* Kolorowe tagi umiejętności */
-.skill-tags span:nth-child(5n+1) {
+/* Pastelowe tagi umiejętności */
+.skill-tags span {
     background: var(--tag-color-1);
     color: #333333;
     padding: 8px 16px;
@@ -577,42 +557,18 @@ body {
 
 .skill-tags span:nth-child(5n+2) {
     background: var(--tag-color-2);
-    color: #333333;
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    font-weight: 600;
 }
 
 .skill-tags span:nth-child(5n+3) {
     background: var(--tag-color-3);
-    color: #333333;
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    font-weight: 600;
 }
 
 .skill-tags span:nth-child(5n+4) {
     background: var(--tag-color-4);
-    color: #333333;
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    font-weight: 600;
 }
 
 .skill-tags span:nth-child(5n+5) {
     background: var(--tag-color-5);
-    color: #333333;
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    font-weight: 600;
 }
 
 .skill-tags span:hover {
@@ -665,29 +621,28 @@ body {
 .contact-link i {
     width: 40px;
     height: 40px;
-    background: var(--bg-color);
+    background: var(--accent-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--accent-color);
+    color: var(--light-color);
     transition: var(--transition);
 }
 
 .contact-link:hover {
-    color: var(--accent-color);
+    color: var(--accent-light);
 }
 
 .contact-link:hover i {
-    background: var(--accent-color);
-    color: var(--light-color);
+    background: var(--accent-light);
     transform: scale(1.1);
 }
 
 .availability {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .availability h4 {
@@ -724,9 +679,9 @@ body {
 .contact-form input,
 .contact-form textarea {
     padding: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--secondary-color);
     border-radius: 8px;
-    background: var(--bg-color);
+    background: var(--light-brown-bg);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     transition: var(--transition);
@@ -736,7 +691,7 @@ body {
 .contact-form textarea:focus {
     border-color: var(--accent-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(179, 139, 109, 0.2);
+    box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.2);
 }
 
 /* CTA Section */
@@ -837,21 +792,20 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-color);
+    background: var(--accent-color);
+    color: var(--light-color);
     transition: var(--transition);
 }
 
 .footer-social .social-links a:hover {
-    background: var(--accent-color);
-    color: var(--light-color);
+    background: var(--accent-light);
     transform: translateY(-3px);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Scroll To Top Button */
@@ -999,13 +953,13 @@ p code, li code {
 .metric-card h4 {
     font-size: 1rem;
     margin-bottom: 8px;
-    color: var(--light-color);
+    color: var(--text-color);
 }
 
 .metric-card .value {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--light-color);
+    color: var(--text-color);
 }
 
 /* Dodatkowe style dla tabel w projektach data engineering */
@@ -1019,7 +973,7 @@ table {
 }
 
 table th {
-    background-color: rgba(179, 139, 109, 0.2);
+    background-color: var(--accent-color);
     color: var(--light-color);
     font-weight: 600;
     padding: 12px 15px;
@@ -1028,7 +982,7 @@ table th {
 
 table td {
     padding: 12px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 table tr:last-child td {
@@ -1036,9 +990,9 @@ table tr:last-child td {
 }
 
 table tr:nth-child(even) {
-    background-color: rgba(51, 51, 51, 0.4);
+    background-color: var(--light-brown-bg);
 }
 
 table tr:hover {
-    background-color: rgba(179, 139, 109, 0.1);
+    background-color: rgba(108, 117, 125, 0.1);
 }
