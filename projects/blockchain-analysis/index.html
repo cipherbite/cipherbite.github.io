@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Analiza danych Solana w celu wykrycia insiderów z użyciem Pythona, Jupyter Notebook i GitHub Pages">
+    <meta name="keywords" content="Solana, blockchain, insider trading, data analysis, Python, Jupyter, GitHub Pages">
+    <meta name="author" content="Twoje Imię">
+    <title>Wykrywanie Insiderów na Solanie | Twoje Imię</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Nawigacja z linkiem powrotnym -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-highlight">T</span>woje Imię
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../../index.html" class="nav-link">Powrót do strony głównej</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Główna sekcja -->
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">Wykrywanie Insiderów na Solanie</h1>
+
+            <!-- Wprowadzenie -->
+            <p class="intro-text">
+                Ten projekt prezentuje zaawansowane narzędzie do analizy danych transakcyjnych na blockchainie Solana w celu identyfikacji potencjalnych insiderów – osób lub podmiotów, które mogą wykorzystywać poufne informacje do osiągania zysków.
+            </p>
+            <p class="intro-text">
+                System wykorzystuje Solana API do pobierania danych, Pythona i Jupyter Notebook do ich przetwarzania i analizy, oraz wizualizacje w celu prezentacji wyników. Projekt jest hostowany na GitHub Pages, co czyni go łatwo dostępnym i atrakcyjnym wizualnie.
+            </p>
+            <p class="intro-text">
+                Tego typu analiza ma zastosowanie w monitorowaniu rynków kryptowalut, wykrywaniu anomalii i budowaniu przejrzystości w ekosystemie blockchain.
+            </p>
+
+            <!-- Użyte technologie -->
+            <h2 class="subtitle">Użyte Technologie</h2>
+            <div class="tech-stack">
+                <ul>
+                    <li><strong>Python</strong>: Główny język do analizy danych.</li>
+                    <li><strong>Solana API</strong>: Źródło danych transakcyjnych.</li>
+                    <li><strong>Jupyter Notebook</strong>: Interaktywne środowisko do analizy i wizualizacji.</li>
+                    <li><strong>Pandas</strong>: Manipulacja i przetwarzanie danych.</li>
+                    <li><strong>Matplotlib/Seaborn</strong>: Tworzenie wykresów i wizualizacji.</li>
+                    <li><strong>Scikit-learn</strong>: Wykrywanie anomalii i analiza behawioralna.</li>
+                    <li><strong>GitHub Pages</strong>: Hostowanie projektu.</li>
+                </ul>
+            </div>
+            <p>
+                Wybór tych narzędzi odzwierciedla ich popularność w analizie danych i pracy z blockchainem.
+            </p>
+
+            <!-- 1. Konfiguracja środowiska -->
+            <h2 class="subtitle">1. Konfiguracja Środowiska</h2>
+            <p>
+                Projekt został skonfigurowany na lokalnym środowisku z użyciem następujących kroków:
+            </p>
+            <ul>
+                <li>Zainstalowano Pythona i wymagane biblioteki (<code>pip install pandas matplotlib seaborn scikit-learn requests</code>).</li>
+                <li>Skonfigurowano dostęp do Solana API poprzez endpoint publiczny.</li>
+                <li>Uruchomiono Jupyter Notebook do analizy danych.</li>
+            </ul>
+            <img src="images/setup_python.jpg" alt="Terminal pokazujący instalację bibliotek Pythona" class="project-img">
+
+            <!-- 2. Pobieranie danych -->
+            <h2 class="subtitle">2. Pobieranie Danych</h2>
+            <p>
+                Dane transakcyjne zostały pobrane z Solana API, w tym informacje o adresach, kwotach i znacznikach czasu. Przykładowy kod:
+            </p>
+            <pre><code>import requests
+import pandas as pd
+
+def get_solana_data():
+    url = "https://api.solana.com"
+    payload = {"jsonrpc": "2.0", "id": 1, "method": "getRecentBlockhash", "params": []}
+    response = requests.post(url, json=payload)
+    return response.json()
+
+data = get_solana_data()
+print(data)
+            </code></pre>
+            <img src="images/data_fetch.jpg" alt="Jupyter Notebook pokazujący pobrane dane" class="project-img">
+
+            <!-- 3. Przetwarzanie danych -->
+            <h2 class="subtitle">3. Przetwarzanie Danych</h2>
+            <p>
+                Pobrane dane zostały oczyszczone i przekształcone przy użyciu Pandas, np. poprzez grupowanie transakcji według adresów.
+            </p>
+            <img src="images/data_processing.jpg" alt="Jupyter Notebook z oczyszczonymi danymi" class="project-img">
+
+            <!-- 4. Analiza danych -->
+            <h2 class="subtitle">4. Analiza Danych</h2>
+            <p>
+                Insiderzy zostali zdefiniowani jako adresy z nietypowymi wzorcami transakcji. Użyto technik takich jak wykrywanie anomalii w Scikit-learn.
+            </p>
+            <img src="images/data_analysis.jpg" alt="Jupyter Notebook z wynikami analizy" class="project-img">
+
+            <!-- 5. Wizualizacja wyników -->
+            <h2 class="subtitle">5. Wizualizacja Wyników</h2>
+            <p>
+                Wyniki analizy przedstawiono za pomocą wykresów, takich jak histogramy i grafy sieciowe, z użyciem Matplotlib i Seaborn.
+            </p>
+            <pre><code>import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.figure(figsize=(10, 6))
+sns.histplot(df['amount'], bins=50, kde=True)
+plt.title('Rozkład kwot transakcji')
+plt.show()
+            </code></pre>
+            <img src="images/visualization.jpg" alt="Wykres w Jupyter Notebook" class="project-img">
+
+            <!-- 6. Wnioski -->
+            <h2 class="subtitle">6. Wnioski</h2>
+            <p>
+                Projekt skutecznie zidentyfikował potencjalnych insiderów na podstawie analizy danych Solana. Ograniczeniem jest brak danych w czasie rzeczywistym, co można rozwinąć w przyszłości.
+            </p>
+
+            <!-- Dlaczego to ważne -->
+            <h2 class="subtitle">Dlaczego To Ważne</h2>
+            <p>
+                Projekt демонстриuje umiejętności analizy blockchainu i może być wykorzystany do:
+            </p>
+            <ul>
+                <li><strong>Monitorowania rynku</strong>: Wykrywanie podejrzanych działań.</li>
+                <li><strong>Budowania zaufania</strong>: Zwiększanie przejrzystości w kryptowalutach.</li>
+                <li><strong>Badania</strong>: Analiza zachowań użytkowników blockchaina.</li>
+            </ul>
+
+            <!-- Demonstracja umiejętności -->
+            <h2 class="subtitle">Demonstracja Umiejętności</h2>
+            <ul>
+                <li>Analiza danych blockchainowych.</li>
+                <li>Programowanie w Pythonie.</li>
+                <li>Wizualizacja danych.</li>
+                <li>Praca z API i danymi zewnętrznymi.</li>
+            </ul>
+
+            <!-- Oś czasu projektu -->
+            <h2 class="subtitle">Oś Czasu Projektu</h2>
+            <ul>
+                <li><strong>Tydzień 1</strong>: Konfiguracja środowiska i pobieranie danych.</li>
+                <li><strong>Tydzień 2</strong>: Przetwarzanie i analiza danych.</li>
+                <li><strong>Tydzień 3</strong>: Wizualizacja i dokumentacja.</li>
+            </ul>
+
+            <!-- Wnioski końcowe -->
+            <h2 class="subtitle">Podsumowanie</h2>
+            <p>
+                Więcej szczegółów i kod znajdziesz w moim <a href="https://github.com/twoj-login/solana-insider-detection" class="btn">repozytorium GitHub</a>. Skontaktuj się ze mną pod adresem <a href="mailto:twoj.email@example.com">twoj.email@example.com</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stopka -->
+    <footer class="footer">
+        <p>© 2024 Twoje Imię | Zbudowane z pasją</p>
+    </footer>
+
+    <script src="../../assets/js/script.js"></script>
+</body>
+</html>
