@@ -168,3 +168,305 @@ plt.show()
     <script src="../../assets/js/script.js"></script>
 </body>
 </html>
+
+
+Aby wzbogacić projekt o elementy data engineering i zwiększyć swoje szanse na rynku pracy, mogę zaproponować kilka rozszerzeń i usprawnień. Takie podejście pozwoli Ci zademonstrować szerszy zakres umiejętności, które są cenione w branży.
+
+## Rozszerzenie projektu o elementy Data Engineering
+
+### 1. Zbuduj potok danych (Data Pipeline)
+- **Apache Airflow** - skonfiguruj orkiestrację zadań do regularnego pobierania i przetwarzania danych
+- Stwórz DAG-i (Directed Acyclic Graphs) z zadaniami:
+  - Pobieranie danych z Solana API
+  - Przetwarzanie i czyszczenie danych
+  - Wykrywanie anomalii
+  - Generowanie raportów i wizualizacji
+  - Powiadamianie (np. email) o wykrytych podejrzanych transakcjach
+
+### 2. Przechowywanie danych (Data Storage)
+- **Warstwa surowych danych** - przechowuj surowe dane w formacie parquet w systemie plików lub w S3
+- **Warstwa przetworzonych danych** - zastosuj bazę danych TimescaleDB (rozszerzenie PostgreSQL dla danych czasowych)
+- **Schematy danych** - zaprojektuj odpowiednią strukturę bazy z indeksami dla optymalnych zapytań
+
+### 3. Przetwarzanie strumieniowe (Stream Processing)
+- Użyj **Apache Kafka** i **Kafka Streams** lub **Apache Spark Streaming** do przetwarzania danych w czasie rzeczywistym
+- Wdrażaj wykrywanie anomalii w czasie rzeczywistym, a nie tylko w trybie wsadowym
+- Implementuj windowing functions do analizy zachowań w określonych oknach czasowych
+
+### 4. Skalowalna architektura
+- **Docker** - umieść komponenty w kontenerach
+- **Docker Compose** lub **Kubernetes** - zdefiniuj infrastrukturę jako kod
+- **CI/CD pipeline** - skonfiguruj automatyczne testy i wdrożenia (GitHub Actions)
+
+### 5. API i Microservices
+- Zaprojektuj **REST API** (FastAPI lub Flask) udostępniające:
+  - Endpointy do pobierania danych historycznych
+  - Endpointy do sprawdzania podejrzanych adresów
+  - Dokumentację API w Swagger
+- Podziel system na mikroserwisy odpowiedzialne za różne zadania
+
+### 6. Zaawansowana analiza danych
+- **Modele grafowe** - zastosuj Neo4j do analizy powiązań między adresami
+- **Deep Learning** - wykorzystaj LSTM lub GRU do wykrywania wzorców czasowych w transakcjach
+- **Ensemble Methods** - połącz różne techniki wykrywania anomalii dla lepszych wyników
+
+### 7. Monitorowanie i logowanie
+- Wdrożenie **ELK Stack** (Elasticsearch, Logstash, Kibana) lub **Prometheus + Grafana**
+- Monitorowanie wydajności potoków danych
+- Śledzenie metryk jakości modeli
+
+## Przykładowa struktura projektu
+
+```
+solana-insider-detection/
+├── airflow/                    # Konfiguracja Airflow i DAG-i
+├── api/                        # API do udostępniania wyników
+│   ├── app.py                  # Główna aplikacja FastAPI
+│   ├── routers/                # Endpointy API
+│   └── models/                 # Modele danych
+├── data/                       # Dane
+│   ├── raw/                    # Surowe dane
+│   └── processed/              # Przetworzone dane
+├── db/                         # Skrypty i migracje bazy danych
+├── docker/                     # Pliki Dockerfile dla komponentów
+├── src/                        # Kod źródłowy
+│   ├── data_ingestion/         # Pobieranie danych
+│   ├── data_processing/        # Przetwarzanie danych
+│   ├── feature_engineering/    # Inżynieria cech
+│   ├── models/                 # Modele ML
+│   └── visualization/          # Generowanie wizualizacji
+├── notebooks/                  # Jupyter Notebooks
+├── tests/                      # Testy jednostkowe i integracyjne
+├── web/                        # Aplikacja webowa
+├── docker-compose.yml          # Konfiguracja kontenerów
+├── requirements.txt            # Zależności Pythona
+└── README.md                   # Dokumentacja projektu
+```
+
+## Przykładowy kod dla komponentów Data Engineering
+
+### Przykład DAG-a w Airflow
+```python
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from datetime import datetime, timedelta
+import sys
+sys.path.append('/opt/airflow/src')
+
+from data_ingestion.solana_api import fetch_transactions
+from data_processing.preprocessing import clean_transactions
+from models.anomaly_detection import detect_anomalies
+from visualization.reports import generate_report
+
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'start_date': datetime(2023, 1, 1),
+    'email_on_failure': True,
+    'email_on_retry': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
+
+dag = DAG(
+    'solana_insider_detection',
+    default_args=default_args,
+    description='Wykrywanie insiderów na blockchainie Solana',
+    schedule_interval=timedelta(hours=6),
+)
+
+fetch_task = PythonOperator(
+    task_id='fetch_transactions',
+    python_callable=fetch_transactions,
+    op_kwargs={'addresses': ['adres1', 'adres2']},
+    dag=dag,
+)
+
+clean_task = PythonOperator(
+    task_id='clean_transactions',
+    python_callable=clean_transactions,
+    dag=dag,
+)
+
+detect_task = PythonOperator(
+    task_id='detect_anomalies',
+    python_callable=detect_anomalies,
+    dag=dag,
+)
+
+report_task = PythonOperator(
+    task_id='generate_report',
+    python_callable=generate_report,
+    dag=dag,
+)
+
+fetch_task >> clean_task >> detect_task >> report_task
+```
+
+### Przykład FastAPI
+```python
+from fastapi import FastAPI, Depends, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
+from typing import List, Optional
+import pandas as pd
+from sqlalchemy.orm import Session
+
+from .database import get_db
+from .models import Transaction, Anomaly
+
+app = FastAPI(
+    title="Solana Insider Detection API",
+    description="API do wykrywania insiderów na blockchainie Solana",
+    version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/transactions/", response_model=List[Transaction])
+def get_transactions(
+    address: Optional[str] = None,
+    from_date: Optional[str] = None,
+    to_date: Optional[str] = None,
+    limit: int = Query(100, le=1000),
+    db: Session = Depends(get_db)
+):
+    """Pobierz transakcje z możliwością filtrowania."""
+    query = db.query(Transaction)
+    
+    if address:
+        query = query.filter(Transaction.address == address)
+    
+    if from_date:
+        query = query.filter(Transaction.timestamp >= from_date)
+    
+    if to_date:
+        query = query.filter(Transaction.timestamp <= to_date)
+    
+    return query.limit(limit).all()
+
+@app.get("/anomalies/", response_model=List[Anomaly])
+def get_anomalies(
+    confidence: float = Query(0.8, ge=0, le=1),
+    limit: int = Query(50, le=500),
+    db: Session = Depends(get_db)
+):
+    """Pobierz wykryte anomalie z określonym poziomem pewności."""
+    return db.query(Anomaly).filter(
+        Anomaly.confidence >= confidence
+    ).order_by(Anomaly.confidence.desc()).limit(limit).all()
+
+@app.get("/address/{address}/risk-score")
+def get_address_risk_score(address: str, db: Session = Depends(get_db)):
+    """Zwraca ocenę ryzyka dla danego adresu."""
+    # Implementacja oceny ryzyka
+    # ...
+    return {"address": address, "risk_score": 0.75}
+```
+
+### Przykład konfiguracji Docker Compose
+```yaml
+version: '3'
+
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=solanadb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+  airflow-webserver:
+    build:
+      context: ./
+      dockerfile: ./docker/airflow.Dockerfile
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:postgres@postgres/airflow
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+    ports:
+      - "8080:8080"
+    command: webserver
+
+  api:
+    build:
+      context: ./
+      dockerfile: ./docker/api.Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/solanadb
+    volumes:
+      - ./api:/app/api
+
+  web:
+    build:
+      context: ./
+      dockerfile: ./docker/web.Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
+```
+
+## Umiejętności, które zademonstrujesz i rozwiniesz
+
+1. **Data Engineering**:
+   - Projektowanie systemów przetwarzania danych
+   - ETL/ELT (Extract, Transform, Load) procesów
+   - Orkiestracja zadań i zarządzanie przepływem danych
+
+2. **Programowanie**:
+   - Python (różne biblioteki i frameworki)
+   - SQL (zapytania, indeksowanie, optymalizacja)
+   - API development
+
+3. **Technologie chmurowe i DevOps**:
+   - Konteneryzacja (Docker)
+   - Infrastruktura jako kod
+   - CI/CD
+
+4. **Bazy danych**:
+   - Relacyjne (PostgreSQL z TimescaleDB)
+   - Nierelacyjne/grafowe (opcjonalnie)
+
+5. **Architektura oprogramowania**:
+   - Mikroserwisy
+   - REST API
+   - Projektowanie skalowalnych systemów
+
+6. **Data Science / ML**:
+   - Przetwarzanie danych w czasie rzeczywistym
+   - Zaawansowane modele ML
+   - Zarządzanie modelami
+
+Ten rozszerzony projekt pozwoli Ci nie tylko nauczyć się wielu cennych umiejętności, ale również stworzyć imponujące portfolio, które zwiększy Twoje szanse na rynku pracy w obszarze data engineering, data science i analityki blockchain.
