@@ -1,27 +1,22 @@
 :root {
     /* Tło strony */
-    --bg-color: #f4f4f7; /* Jasnoszary */
-    --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f4f4f7 70%, #e0e0e0 100%); /* Gradient od białego do jasnoszarego */
-    --light-brown-bg: #f2f4f8; /* Jasny szaroniebieski zamiast beżu */
-    --text-color: #161616; /* Ciemny, czytelny tekst w stylu IBM */
-    --accent-color: #006D5B; /* Głęboki zielony IBM */
-    --accent-light: #00A78F; /* Jaśniejszy zielony */
-    --secondary-color: #4d5358; /* Ciemnoszary jako kolor dodatkowy */
-    --card-bg: #ffffff; /* Biały dla kart */
-    --light-color: #ffffff;
-    --success-color: #98fb98; /* Pastelowy zielony dla "Expert" - pozostawiony */
-    --warning-color: #ffd700; /* Pastelowy żółty dla "Advanced" - pozostawiony */
-    --info-color: #87ceeb; /* Pastelowy niebieski dla "Intermediate" - pozostawiony */
-    --shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtelny cień w stylu IBM */
-    --transition: all 0.3s ease-in-out; /* Bez zmian */
-    --code-bg: #f2f4f8; /* Jasnoszary dla kodu */
+    --bg-color: #F2F4F8; /* Jasny szaroniebieski */
+    --text-color: #161616; /* Ciemny, czytelny tekst */
+    --accent-color: #007D79; /* Stonowany zielony IBM */
+    --accent-light: #009B77; /* Jaśniejszy stonowany zielony */
+    --secondary-color: #4D5358; /* Ciemnoszary jako kolor dodatkowy */
+    --card-bg: #FAFBFC; /* Bardzo jasny szary (perłowy) dla kart */
+    --light-color: #FFFFFF;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtelny cień */
+    --transition: all 0.3s ease-in-out;
+    --code-bg: #F2F4F8; /* Jasnoszary dla kodu */
     
-    /* Kolory dla tagów - odcienie zieleni i szarości */
-    --tag-color-1: #e0f2f1; /* Bardzo jasny zielonkawy */
-    --tag-color-2: #b2dfdb; /* Jasny turkus */
-    --tag-color-3: #e4e9f0; /* Jasny szaroniebieski */
-    --tag-color-4: #c8d1d7; /* Średni szaroniebieski */
-    --tag-color-5: #a7b0b5; /* Ciemniejszy szaroniebieski */
+    /* Kolory dla tagów - stonowane odcienie szarości i zieleni */
+    --tag-color-1: #E0E7E9; /* Jasny szary */
+    --tag-color-2: #C4D1D3; /* Średni szary */
+    --tag-color-3: #A8BABD; /* Ciemniejszy szary */
+    --tag-color-4: #8CA5A8; /* Jeszcze ciemniejszy szary */
+    --tag-color-5: #708D91; /* Najciemniejszy szary */
 }
 
 * {
@@ -33,22 +28,10 @@
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-color);
-    background: var(--bg-gradient);
+    background: var(--bg-color); /* Jednolite tło */
     scroll-behavior: smooth;
     line-height: 1.6;
     font-weight: 400;
-}
-
-/* Klasa dla bardziej jasnoszarego tła */
-.light-brown-bg {
-    background: var(--light-brown-bg);
-}
-
-.container {
-    width: 90%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 24px;
 }
 
 /* Header */
@@ -100,23 +83,15 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
-    background: var(--bg-gradient);
+    background: var(--bg-color); /* Jednolite tło */
     position: relative;
 }
 
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(224, 242, 241, 0.3) 0%, rgba(242, 244, 248, 0.7) 70%);
-    z-index: 1;
+    display: none; /* Usunięcie overlay */
 }
 
 .hero-content {
-    position: relative;
-    z-index: 2;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -147,24 +122,17 @@ body {
     background: var(--accent-color);
     color: var(--light-color);
     padding: 12px 32px;
-    border-radius: 0; /* Kwadratowe przyciski w stylu IBM */
+    border-radius: 0; /* Kwadratowy styl IBM */
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
     transition: var(--transition);
     border: none;
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
     background: var(--accent-light);
-    box-shadow: var(--shadow);
-}
-
-.btn-primary {
-    background: var(--accent-color);
 }
 
 .btn-secondary {
@@ -178,16 +146,6 @@ body {
     color: var(--light-color);
 }
 
-.btn-small {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-}
-
-.btn-large {
-    padding: 14px 36px;
-    font-size: 1.1rem;
-}
-
 .btn-outline {
     background: transparent;
     border: 1px solid var(--accent-color);
@@ -199,21 +157,10 @@ body {
     color: var(--light-color);
 }
 
-/* Animations */
-.animate-fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
-}
-
 /* Sections */
 .section {
     padding: 100px 0;
-    background: var(--bg-gradient);
+    background: var(--bg-color);
 }
 
 .section-dark {
@@ -246,100 +193,6 @@ body {
     margin: 0 auto 60px;
 }
 
-.section-cta {
-    text-align: center;
-    margin-top: 60px;
-}
-
-/* About */
-.about-content {
-    display: flex;
-    gap: 60px;
-    align-items: center;
-    margin-top: 30px;
-}
-
-.about-text {
-    flex: 1;
-}
-
-.about-text p {
-    margin-bottom: 20px;
-    font-size: 1.05rem;
-}
-
-.about-image {
-    flex: 0 0 320px;
-}
-
-.about-image img {
-    max-width: 100%;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.about-image img:hover {
-    transform: scale(1.05);
-}
-
-.about-highlights {
-    display: flex;
-    margin-top: 40px;
-    gap: 30px;
-    text-align: center;
-}
-
-.highlight {
-    flex: 1;
-    padding: 20px;
-    background: var(--card-bg);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    transition: var(--transition);
-}
-
-.highlight:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-}
-
-.highlight i {
-    font-size: 2rem;
-    color: var(--accent-color);
-    margin-bottom: 15px;
-}
-
-.highlight h4 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--text-color);
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    background: var(--accent-color);
-    color: var(--light-color);
-    transition: var(--transition);
-}
-
-.social-icons a:hover {
-    background: var(--accent-light);
-    transform: translateY(-3px);
-}
-
 /* Projects */
 .projects-grid {
     display: grid;
@@ -350,7 +203,7 @@ body {
 
 .project-card {
     background: var(--card-bg);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
@@ -361,71 +214,16 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.project-img {
-    position: relative;
-    overflow: hidden;
-    height: 220px;
-}
-
-.project-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.project-card:hover .project-img img {
-    transform: scale(1.05);
-}
-
-.project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
 .project-content {
     padding: 24px;
 }
 
-.project-content h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-bottom: 12px;
-}
-
-.project-content p {
-    color: var(--secondary-color);
-    margin-bottom: 20px;
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-/* Kolorowe tagi - każdy n-ty element inny kolor */
 .project-tags span:nth-child(5n+1) {
     background: var(--tag-color-1);
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-weight: 600;
 }
 
@@ -434,7 +232,7 @@ body {
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-weight: 600;
 }
 
@@ -443,7 +241,7 @@ body {
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-weight: 600;
 }
 
@@ -452,7 +250,7 @@ body {
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-weight: 600;
 }
 
@@ -461,13 +259,8 @@ body {
     color: #333333;
     font-size: 0.8rem;
     padding: 4px 10px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-weight: 600;
-}
-
-.project-links {
-    display: flex;
-    gap: 12px;
 }
 
 /* Skills */
@@ -480,33 +273,9 @@ body {
 
 .skill-category {
     background: var(--card-bg);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     padding: 25px;
     box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.skill-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.skill-category h3 {
-    color: var(--accent-color);
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.skill-category h3 i {
-    font-size: 1.5rem;
-}
-
-.skill-list {
-    list-style: none;
 }
 
 .skill-list li {
@@ -522,58 +291,12 @@ body {
     font-weight: 500;
 }
 
-.skill-level {
-    font-size: 0.8rem;
-    padding: 3px 10px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    font-weight: 600;
-}
-
-.expert {
-    background: var(--success-color);
-    color: #333333;
-}
-
-.advanced {
-    background: var(--warning-color);
-    color: #333333;
-}
-
-.intermediate {
-    background: var(--info-color);
-    color: #333333;
-}
-
-.additional-skills {
-    background: var(--card-bg);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    padding: 30px;
-    margin-top: 40px;
-    text-align: center;
-}
-
-.additional-skills h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-bottom: 25px;
-}
-
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-/* Kolorowe tagi umiejętności */
 .skill-tags span:nth-child(5n+1) {
     background: var(--tag-color-1);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-size: 0.9rem;
-    transition: var(--transition);
     font-weight: 600;
 }
 
@@ -581,9 +304,8 @@ body {
     background: var(--tag-color-2);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-size: 0.9rem;
-    transition: var(--transition);
     font-weight: 600;
 }
 
@@ -591,9 +313,8 @@ body {
     background: var(--tag-color-3);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-size: 0.9rem;
-    transition: var(--transition);
     font-weight: 600;
 }
 
@@ -601,9 +322,8 @@ body {
     background: var(--tag-color-4);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-size: 0.9rem;
-    transition: var(--transition);
     font-weight: 600;
 }
 
@@ -611,138 +331,14 @@ body {
     background: var(--tag-color-5);
     color: #333333;
     padding: 8px 16px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
+    border-radius: 0;
     font-size: 0.9rem;
-    transition: var(--transition);
     font-weight: 600;
-}
-
-.skill-tags span:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-}
-
-/* Contact */
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 50px;
-    margin-top: 40px;
-}
-
-.contact-info {
-    background: var(--card-bg);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    padding: 30px;
-    box-shadow: var(--shadow);
-}
-
-.contact-info h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-bottom: 20px;
-}
-
-.contact-info p {
-    margin-bottom: 30px;
-    color: var(--secondary-color);
-}
-
-.contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.contact-link {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-decoration: none;
-    color: var(--text-color);
-    transition: var(--transition);
-}
-
-.contact-link i {
-    width: 40px;
-    height: 40px;
-    background: var(--accent-color);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--light-color);
-    transition: var(--transition);
-}
-
-.contact-link:hover {
-    color: var(--accent-light);
-}
-
-.contact-link:hover i {
-    background: var(--accent-light);
-    transform: scale(1.1);
-}
-
-.availability {
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.availability h4 {
-    color: var(--accent-color);
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.contact-form-container {
-    background: var(--card-bg);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    padding: 40px;
-    box-shadow: var(--shadow);
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-group label {
-    font-weight: 600;
-    color: var(--text-color);
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 14px;
-    border: 1px solid var(--secondary-color);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    background: var(--light-brown-bg);
-    color: var(--text-color);
-    font-family: 'Inter', sans-serif;
-    transition: var(--transition);
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--accent-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 109, 91, 0.2);
 }
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(to right, var(--accent-color), #00473E);
+    background: linear-gradient(to right, var(--accent-color), #005F5A); /* Stonowany gradient */
     padding: 80px 0;
     text-align: center;
 }
@@ -773,272 +369,4 @@ body {
 .footer {
     background: var(--card-bg);
     padding: 60px 0 30px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-.footer-logo {
-    flex: 1;
-}
-
-.footer-logo .logo {
-    margin-bottom: 15px;
-}
-
-.footer-logo p {
-    color: var(--secondary-color);
-    max-width: 300px;
-}
-
-.footer-links {
-    flex: 2;
-    display: flex;
-    justify-content: space-around;
-}
-
-.footer-nav h4,
-.footer-social h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-bottom: 20px;
-}
-
-.footer-nav ul {
-    list-style: none;
-}
-
-.footer-nav ul li {
-    margin-bottom: 10px;
-}
-
-.footer-nav ul li a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.footer-nav ul li a:hover {
-    color: var(--accent-color);
-}
-
-.footer-social .social-links {
-    display: flex;
-    gap: 12px;
-}
-
-.footer-social .social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    background: var(--accent-color);
-    color: var(--light-color);
-    transition: var(--transition);
-}
-
-.footer-social .social-links a:hover {
-    background: var(--accent-light);
-    transform: translateY(-3px);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Scroll To Top Button */
-.scroll-top-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    background: var(--accent-color);
-    color: var(--light-color);
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-    z-index: 99;
-}
-
-.scroll-top-btn.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.scroll-top-btn:hover {
-    background: var(--accent-light);
-    transform: translateY(-5px);
-}
-
-/* Responsiveness */
-@media (max-width: 992px) {
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-    .section-title {
-        font-size: 2rem;
-    }
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-    .footer-content {
-        flex-direction: column;
-        gap: 40px;
-    }
-    .footer-links {
-        justify-content: space-between;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.4rem;
-    }
-    .about-content {
-        flex-direction: column-reverse;
-    }
-    .about-image {
-        flex: 0 0 100%;
-        margin-bottom: 30px;
-    }
-    .about-highlights {
-        flex-direction: column;
-    }
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    .skills-container {
-        grid-template-columns: 1fr;
-    }
-    .footer-links {
-        flex-direction: column;
-        gap: 30px;
-    }
-}
-
-/* Additional Typography */
-blockquote {
-    font-style: italic;
-    color: var(--secondary-color);
-    border-left: 4px solid var(--accent-color);
-    padding-left: 20px;
-    margin: 20px 0;
-}
-
-pre {
-    background: var(--code-bg);
-    padding: 20px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    overflow-x: auto;
-    margin: 25px 0;
-    box-shadow: var(--shadow);
-    border-left: 4px solid var(--accent-color);
-}
-
-code {
-    font-family: 'Courier New', monospace;
-    color: var(--text-color);
-}
-
-p code, li code {
-    background-color: var(--card-bg);
-    padding: 2px 6px;
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    color: var(--accent-light);
-}
-
-/* Specjalne style dla projektu IoT i dataengineering */
-.data-metrics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 20px 0;
-}
-
-.metric-card {
-    background: var(--card-bg);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    padding: 15px;
-    flex: 1 1 200px;
-    box-shadow: var(--shadow);
-    border-left: 4px solid var(--tag-color-1);
-    transition: var(--transition);
-}
-
-.metric-card:nth-child(2) {
-    border-left-color: var(--tag-color-2);
-}
-
-.metric-card:nth-child(3) {
-    border-left-color: var(--tag-color-3);
-}
-
-.metric-card:nth-child(4) {
-    border-left-color: var(--tag-color-4);
-}
-
-.metric-card:hover {
-    transform: translateY(-5px);
-}
-
-.metric-card h4 {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    color: var(--text-color);
-}
-
-.metric-card .value {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-color);
-}
-
-/* Dodatkowe style dla tabel w projektach data engineering */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    box-shadow: var(--shadow);
-    border-radius: 0; /* Kwadratowy w stylu IBM */
-    overflow: hidden;
-}
-
-table th {
-    background-color: var(--accent-color);
-    color: var(--light-color);
-    font-weight: 600;
-    padding: 12px 15px;
-    text-align: left;
-}
-
-table td {
-    padding: 12px 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-table tr:last-child td {
-    border-bottom: none;
-}
-
-table tr:nth-child(even) {
-    background-color: var(--light-brown-bg);
-}
-
-table tr:hover {
-    background-color: rgba(0, 109, 91, 0.05);
 }
