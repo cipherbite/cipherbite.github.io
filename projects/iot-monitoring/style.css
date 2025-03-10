@@ -1,16 +1,25 @@
-/* Zmienne kolorów i stylu */
+/* Zmienne kolorów i stylu w stylu IBM - stonowane i profesjonalne */
 :root {
-    --bg-color: #e6e2d3; /* Jasny beż - tło strony */
-    --light-brown-bg: #d9c7a3; /* Jaśniejszy brąz dla sekcji */
-    --text-color: #333333; /* Ciemny szary dla tekstu */
-    --accent-color: #b38b6d; /* Stonowany brąz dla akcentów */
-    --accent-light: #a17f5e; /* Jaśniejszy brąz dla efektów hover */
-    --secondary-color: #d2b48c; /* Jasny brąz dla elementów drugorzędnych */
-    --card-bg: #fafbfc; /* Perłowy odcień dla kart zamiast białego */
-    --light-color: #ffffff; /* Biały dla kontrastu */
-    --shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtelniejszy cień */
-    --transition: all 0.3s ease-in-out; /* Płynne przejścia */
-    --code-bg: #f9f9f9; /* Jasne tło dla bloków kodu */
+    /* Tło strony */
+    --bg-color: #f5f6f5; /* Bardzo jasny szary z subtelnym odcieniem zieleni */
+    --bg-gradient: linear-gradient(135deg, #f5f6f5 0%, #eceeed 70%, #e2e4e3 100%); /* Delikatny gradient */
+    --light-brown-bg: #f2f4f3; /* Bardzo jasny szarozielony dla sekcji */
+    --text-color: #1a1a1a; /* Ciemny, ale łagodniejszy szary dla tekstu */
+    --accent-color: #487a77; /* Stonowany, delikatny zielono-niebieski zamiast brązu */
+    --accent-light: #6a9a97; /* Jaśniejszy, subtelny odcień dla hover */
+    --secondary-color: #5c6665; /* Ciemniejszy szary z lekkim odcieniem zieleni */
+    --card-bg: #fafbfa; /* Perłowy odcień zamiast białego dla kart */
+    --light-color: #ffffff;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.06); /* Jeszcze subtelniejszy cień */
+    --transition: all 0.3s ease-in-out;
+    --code-bg: #f3f4f3; /* Bardzo jasny szary dla kodu */
+
+    /* Kolory dla tagów - stonowane odcienie szaro-zielone */
+    --tag-color-1: #e8f0ef; /* Bardzo jasny szarozielony */
+    --tag-color-2: #d4e2e1; /* Delikatny szarozielony */
+    --tag-color-3: #e6e9e8; /* Jasny szary z lekkim odcieniem zieleni */
+    --tag-color-4: #d1d7d6; /* Średni szary z subtelnym odcieniem */
+    --tag-color-5: #b8c1c0; /* Ciemniejszy szary z zielonym podtonem */
 }
 
 /* Reset i podstawowe style */
@@ -109,7 +118,7 @@ body {
     background: var(--accent-color);
     color: var(--light-color);
     padding: 10px 24px;
-    border-radius: 0;
+    border-radius: 0; /* Kwadratowy styl IBM */
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
@@ -228,7 +237,7 @@ body {
 
 .about-image img {
     max-width: 100%;
-    border-radius: 0;
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
     box-shadow: var(--shadow);
 }
 
@@ -248,6 +257,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
 
 .social-icons a:hover {
@@ -297,6 +307,8 @@ body {
     background: var(--card-bg);
     box-shadow: var(--shadow);
     transition: var(--transition);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
+    overflow: hidden;
 }
 
 .project-card:hover {
@@ -363,11 +375,28 @@ body {
 }
 
 .project-tags span {
-    background: var(--secondary-color);
+    background: var(--tag-color-1);
     color: var(--text-color);
     padding: 4px 10px;
     font-size: 0.8rem;
     font-weight: 500;
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
+}
+
+.project-tags span:nth-child(5n+2) {
+    background: var(--tag-color-2);
+}
+
+.project-tags span:nth-child(5n+3) {
+    background: var(--tag-color-3);
+}
+
+.project-tags span:nth-child(5n+4) {
+    background: var(--tag-color-4);
+}
+
+.project-tags span:nth-child(5n+5) {
+    background: var(--tag-color-5);
 }
 
 .project-links {
@@ -386,6 +415,7 @@ body {
     background: var(--card-bg);
     padding: 20px;
     box-shadow: var(--shadow);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
 
 .skill-category h3 {
@@ -419,6 +449,7 @@ body {
     margin-top: 30px;
     text-align: center;
     box-shadow: var(--shadow);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
 
 .additional-skills h3 {
@@ -436,12 +467,29 @@ body {
 }
 
 .skill-tags span {
-    background: var(--secondary-color);
+    background: var(--tag-color-1);
     color: var(--text-color);
     padding: 8px 16px;
     font-size: 0.9rem;
     font-weight: 500;
     transition: var(--transition);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
+}
+
+.skill-tags span:nth-child(5n+2) {
+    background: var(--tag-color-2);
+}
+
+.skill-tags span:nth-child(5n+3) {
+    background: var(--tag-color-3);
+}
+
+.skill-tags span:nth-child(5n+4) {
+    background: var(--tag-color-4);
+}
+
+.skill-tags span:nth-child(5n+5) {
+    background: var(--tag-color-5);
 }
 
 .skill-tags span:hover {
@@ -460,6 +508,7 @@ body {
     background: var(--card-bg);
     padding: 20px;
     box-shadow: var(--shadow);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
 
 .contact-info h3 {
@@ -497,6 +546,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
 
 .contact-link:hover {
@@ -507,6 +557,7 @@ body {
     background: var(--card-bg);
     padding: 20px;
     box-shadow: var(--shadow);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
 
 .contact-form {
@@ -534,17 +585,19 @@ body {
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     transition: var(--transition);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: var(--accent-color);
     outline: none;
+    box-shadow: 0 0 0 2px rgba(72, 122, 119, 0.2); /* Subtelny cień po fokusie w stylu IBM */
 }
 
 /* Sekcja CTA */
 .cta-section {
-    background: var(--accent-color);
+    background: linear-gradient(to right, var(--accent-color), #355755); /* Gradient w stylu IBM */
     padding: 60px 0;
     text-align: center;
 }
@@ -558,7 +611,7 @@ body {
 
 .cta-section p {
     font-size: 1.2rem;
-    color: var(--light-color);
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 20px;
 }
 
@@ -568,7 +621,7 @@ body {
 }
 
 .cta-section .btn:hover {
-    background: var(--secondary-color);
+    background: var(--tag-color-1);
 }
 
 /* Stopka */
@@ -637,6 +690,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
 
 .footer-social .social-links a:hover {
@@ -672,6 +726,7 @@ body {
     opacity: 0;
     transition: var(--transition);
     z-index: 99;
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
 
 .scroll-top-btn.visible {
@@ -742,4 +797,35 @@ body {
     .btn {
         padding: 8px 20px;
     }
+}
+
+/* Dodatkowe style typograficzne w stylu IBM */
+blockquote {
+    font-style: italic;
+    color: var(--secondary-color);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+pre {
+    background: var(--code-bg);
+    padding: 20px;
+    overflow-x: auto;
+    margin: 20px 0;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    color: var(--text-color);
+}
+
+p code, li code {
+    background-color: var(--code-bg);
+    padding: 2px 6px;
+    color: var(--accent-light);
+    border-radius: 0; /* Styl IBM - ostre krawędzie */
 }
