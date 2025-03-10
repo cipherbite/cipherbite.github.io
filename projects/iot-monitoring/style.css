@@ -1,15 +1,15 @@
 :root {
-    --bg-color: #e6e2d3; /* Light beige background */
-    --light-brown-bg: #d9c7a3; /* Lighter brown for sections */
-    --text-color: #333333; /* Dark gray for text */
-    --accent-color: #b38b6d; /* Muted brown for highlights */
-    --accent-light: #a17f5e; /* Lighter brown for hover effects */
-    --secondary-color: #d2b48c; /* Light brown for secondary elements */
-    --card-bg: #ffffff; /* White for content areas */
-    --light-color: #ffffff;
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-    --transition: all 0.3s ease-in-out;
-    --code-bg: #f9f9f9; /* Light background for code blocks */
+    --bg-color: #e6e2d3; /* Jasny beż - tło strony */
+    --light-brown-bg: #d9c7a3; /* Jaśniejszy brąz dla sekcji */
+    --text-color: #333333; /* Ciemny szary dla tekstu */
+    --accent-color: #b38b6d; /* Stonowany brąz dla akcentów */
+    --accent-light: #a17f5e; /* Jaśniejszy brąz dla efektów hover */
+    --secondary-color: #d2b48c; /* Jasny brąz dla elementów drugorzędnych */
+    --card-bg: #fafbfc; /* Perłowy odcień dla kart zamiast białego */
+    --light-color: #ffffff; /* Biały dla kontrastu */
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtelniejszy cień */
+    --transition: all 0.3s ease-in-out; /* Płynne przejścia */
+    --code-bg: #f9f9f9; /* Jasne tło dla bloków kodu */
 }
 
 * {
@@ -80,7 +80,7 @@ body {
 /* Section */
 .section {
     padding: 80px 0;
-    background: var(--card-bg);
+    background: var(--bg-color);
 }
 
 .section-title {
@@ -144,7 +144,7 @@ body {
 .section img.project-img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 0; /* Kwadratowy styl zamiast zaokrąglonego */
     box-shadow: var(--shadow);
     margin: 20px 0;
     display: block;
@@ -181,7 +181,7 @@ body {
 pre {
     background: var(--code-bg);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 0; /* Kwadratowy styl */
     overflow-x: auto;
     margin: 20px 0;
     box-shadow: var(--shadow);
@@ -193,10 +193,11 @@ code {
     color: var(--text-color);
 }
 
-p code, li code {
+p code,
+li code {
     background: var(--card-bg);
     padding: 2px 6px;
-    border-radius: 4px;
+    border-radius: 0; /* Kwadratowy styl */
     color: var(--accent-light);
 }
 
@@ -205,12 +206,13 @@ p code, li code {
     background: var(--accent-color);
     color: var(--light-color);
     padding: 10px 24px;
-    border-radius: 0;
+    border-radius: 0; /* Kwadratowy styl */
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
     transition: var(--transition);
     border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
