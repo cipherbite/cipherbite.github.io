@@ -1,472 +1,190 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Analiza danych Solana w celu wykrycia insiderów z użyciem Pythona, Jupyter Notebook i GitHub Pages">
-    <meta name="keywords" content="Solana, blockchain, insider trading, data analysis, Python, Jupyter, GitHub Pages">
-    <meta name="author" content="Twoje Imię">
-    <title>Wykrywanie Insiderów na Solanie | Twoje Imię</title>
+    <meta name="description" content="Solana Insiders Trading Analysis using Solana API, SQLite, Streamlit, and NetworkX">
+    <meta name="keywords" content="Solana, blockchain, insider trading, data analysis, SQLite, Streamlit, NetworkX, data engineering">
+    <meta name="author" content="David Dylag">
+    <title>Solana Insiders Trading Analysis | David Dylag</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <!-- Nawigacja z linkiem powrotnym -->
+    <!-- Navigation with Back Link -->
     <header class="header">
         <div class="container">
             <div class="logo">
-                <span class="logo-highlight">T</span>woje Imię
+                <span class="logo-highlight">D</span>avid Dylag
             </div>
             <nav class="nav">
                 <ul>
-                    <li><a href="../../index.html" class="nav-link">Powrót do strony głównej</a></li>
+                    <li><a href="../../index.html" class="nav-link">Back to Home</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Główna sekcja -->
+    <!-- Main Section -->
     <section class="section">
         <div class="container">
-            <h1 class="section-title">Wykrywanie Insiderów na Solanie</h1>
+            <h1 class="section-title">Solana Insiders Trading Analysis</h1>
 
-            <!-- Wprowadzenie -->
+            <!-- Introduction -->
             <p class="intro-text">
-                Ten projekt prezentuje zaawansowane narzędzie do analizy danych transakcyjnych na blockchainie Solana w celu identyfikacji potencjalnych insiderów – osób lub podmiotów, które mogą wykorzystywać poufne informacje do osiągania zysków.
+                This project investigates insider trading patterns on the Solana blockchain by monitoring wallet transactions in real time. It leverages the Solana API, SQLite, Streamlit, and NetworkX to collect, store, visualize, and analyze blockchain data efficiently.
             </p>
             <p class="intro-text">
-                System wykorzystuje Solana API do pobierania danych, Pythona i Jupyter Notebook do ich przetwarzania i analizy, oraz wizualizacje w celu prezentacji wyników. Projekt jest hostowany na GitHub Pages, co czyni go łatwo dostępnym i atrakcyjnym wizualnie.
+                The system tracks 10 predefined wallets, builds a network of SOL transfers, and provides insights through a dashboard. It aims to detect anomalies and correlations with SOL price movements, offering a foundation for blockchain forensics.
             </p>
             <p class="intro-text">
-                Tego typu analiza ma zastosowanie w monitorowaniu rynków kryptowalut, wykrywaniu anomalii i budowaniu przejrzystości w ekosystemie blockchain.
+                Potential applications include financial auditing, market manipulation detection, and blockchain security research.
             </p>
 
-            <!-- Użyte technologie -->
-            <h2 class="subtitle">Użyte Technologie</h2>
+            <!-- Technologies Used -->
+            <h2 class="subtitle">Technologies Used</h2>
             <div class="tech-stack">
                 <ul>
-                    <li><strong>Python</strong>: Główny język do analizy danych.</li>
-                    <li><strong>Solana API</strong>: Źródło danych transakcyjnych.</li>
-                    <li><strong>Jupyter Notebook</strong>: Interaktywne środowisko do analizy i wizualizacji.</li>
-                    <li><strong>Pandas</strong>: Manipulacja i przetwarzanie danych.</li>
-                    <li><strong>Matplotlib/Seaborn</strong>: Tworzenie wykresów i wizualizacji.</li>
-                    <li><strong>Scikit-learn</strong>: Wykrywanie anomalii i analiza behawioralna.</li>
-                    <li><strong>GitHub Pages</strong>: Hostowanie projektu.</li>
+                    <li><strong>Solana API</strong>: Source of blockchain transaction data.</li>
+                    <li><strong>SQLite</strong>: Lightweight database for storing transactions and prices.</li>
+                    <li><strong>Streamlit</strong>: Interactive dashboard for data visualization.</li>
+                    <li><strong>NetworkX</strong>: Tool for building and analyzing transfer networks.</li>
+                    <li><strong>Pandas</strong>: Data manipulation and analysis.</li>
                 </ul>
             </div>
             <p>
-                Wybór tych narzędzi odzwierciedla ich popularność w analizie danych i pracy z blockchainem.
+                These tools were selected for their efficiency, Python compatibility, and suitability for blockchain data analysis.
             </p>
 
-            <!-- 1. Konfiguracja środowiska -->
-            <h2 class="subtitle">1. Konfiguracja Środowiska</h2>
+            <h2 class="subtitle">1. Setting Up the Environment</h2>
             <p>
-                Projekt został skonfigurowany na lokalnym środowisku z użyciem następujących kroków:
+                The project was configured on a Linux environment (WSL on Windows), with the following setup:
             </p>
             <ul>
-                <li>Zainstalowano Pythona i wymagane biblioteki (<code>pip install pandas matplotlib seaborn scikit-learn requests</code>).</li>
-                <li>Skonfigurowano dostęp do Solana API poprzez endpoint publiczny.</li>
-                <li>Uruchomiono Jupyter Notebook do analizy danych.</li>
+                <li><strong>Python Virtual Environment</strong>: Isolated environment via <code>venv</code>.</li>
+                <li><strong>Solana API</strong>: Public endpoint at <code>https://api.mainnet-beta.solana.com</code>.</li>
+                <li><strong>SQLite</strong>: Local database in <code>data/solana_data.db</code>.</li>
+                <li><strong>Streamlit</strong>: Web-based dashboard for real-time insights.</li>
+                <li><strong>NetworkX</strong>: Graph analysis of wallet interactions.</li>
             </ul>
-            <img src="images/setup_python.jpg" alt="Terminal pokazujący instalację bibliotek Pythona" class="project-img">
+            <img src="images/env_setup.jpg" alt="Terminal showing virtual environment activation" class="project-img">
 
-            <!-- 2. Pobieranie danych -->
-            <h2 class="subtitle">2. Pobieranie Danych</h2>
+            <h2 class="subtitle">2. Database Configuration</h2>
             <p>
-                Dane transakcyjne zostały pobrane z Solana API, w tym informacje o adresach, kwotach i znacznikach czasu. Przykładowy kod:
+                SQLite was set up to store transaction and price data with tables <code>transactions</code> and <code>prices</code>, created dynamically in the script.
             </p>
-            <pre><code>import requests
-import pandas as pd
+            <img src="images/sqlite_tables.jpg" alt="SQLite console showing table structure" class="project-img">
 
-def get_solana_data():
-    url = "https://api.solana.com"
-    payload = {"jsonrpc": "2.0", "id": 1, "method": "getRecentBlockhash", "params": []}
-    response = requests.post(url, json=payload)
-    return response.json()
+            <h2 class="subtitle">3. Data Collection</h2>
+            <p>
+                A Python script fetches transaction signatures and details from the Solana API for 10 wallets, calculates net SOL changes, and builds a transfer graph. It respects API limits with a 6-second delay.
+            </p>
+            <img src="images/data_collection_log.jpg" alt="Log output of data collection process" class="project-img">
 
-data = get_solana_data()
-print(data)
+            <h2 class="subtitle">4. Network Analysis</h2>
+            <p>
+                NetworkX constructs a directed graph of SOL transfers, saved as <code>solana_transfers.gml</code>. This reveals connections between monitored wallets and others.
+            </p>
+            <img src="images/network_graph.jpg" alt="NetworkX graph visualization of wallet transfers" class="project-img">
+
+            <h2 class="subtitle">5. Visualization in Streamlit</h2>
+            <p>
+                A Streamlit dashboard displays SOL price trends, transaction details, and anomaly alerts. It includes filters for date and wallet, enhancing interactivity.
+            </p>
+            <img src="images/streamlit_dashboard.jpg" alt="Streamlit dashboard showing price and transactions" class="project-img">
+
+            <h2 class="subtitle">6. Running the System</h2>
+            <p>
+                The data collection script and dashboard run independently. Data flows from the Solana API to SQLite, then to Streamlit, validated by logs (e.g., 50 transactions on 2025-03-13).
+            </p>
+            <img src="images/system_run_log.jpg" alt="Log showing successful system run" class="project-img">
+
+            <h2 class="subtitle">7. Data Analysis</h2>
+            <p>
+                Pandas queries SQLite to analyze transaction volumes and correlate them with SOL price changes, identifying potential insider trading signals.
+            </p>
+            <img src="images/pandas_analysis.jpg" alt="Pandas output of transaction analysis" class="project-img">
+
+            <h2 class="subtitle">8. Troubleshooting</h2>
+            <p>
+                Key issues encountered and resolved:
+            </p>
+            <table>
+                <tr><th>Problem</th><th>Solution</th></tr>
+                <tr><td>Database file error</td><td>Added <code>os.makedirs("data")</code></td></tr>
+                <tr><td>UnboundLocalError for conn</td><td>Initialized <code>conn = None</code> and fixed <code>finally</code></td></tr>
+                <tr><td>API rate limits</td><td>Implemented 6-second delay</td></tr>
+                <tr><td>Streamlit not running</td><td>Used <code>streamlit run</code> instead of <code>python</code></td></tr>
+            </table>
+            <img src="images/troubleshooting_log.jpg" alt="Log showing error resolution" class="project-img">
+
+            <h2 class="subtitle">9. Useful Commands</h2>
+            <p>
+                Commands used for setup and debugging:
+            </p>
+            <pre><code># Activate environment
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run data collection
+python3 collect_network.py
+
+# Launch dashboard
+streamlit run dashboard.py
             </code></pre>
-            <img src="images/data_fetch.jpg" alt="Jupyter Notebook pokazujący pobrane dane" class="project-img">
 
-            <!-- 3. Przetwarzanie danych -->
-            <h2 class="subtitle">3. Przetwarzanie Danych</h2>
+            <h2 class="subtitle">Why It Matters</h2>
             <p>
-                Pobrane dane zostały oczyszczone i przekształcone przy użyciu Pandas, np. poprzez grupowanie transakcji według adresów.
-            </p>
-            <img src="images/data_processing.jpg" alt="Jupyter Notebook z oczyszczonymi danymi" class="project-img">
-
-            <!-- 4. Analiza danych -->
-            <h2 class="subtitle">4. Analiza Danych</h2>
-            <p>
-                Insiderzy zostali zdefiniowani jako adresy z nietypowymi wzorcami transakcji. Użyto technik takich jak wykrywanie anomalii w Scikit-learn.
-            </p>
-            <img src="images/data_analysis.jpg" alt="Jupyter Notebook z wynikami analizy" class="project-img">
-
-            <!-- 5. Wizualizacja wyników -->
-            <h2 class="subtitle">5. Wizualizacja Wyników</h2>
-            <p>
-                Wyniki analizy przedstawiono za pomocą wykresów, takich jak histogramy i grafy sieciowe, z użyciem Matplotlib i Seaborn.
-            </p>
-            <pre><code>import matplotlib.pyplot as plt
-import seaborn as sns
-
-plt.figure(figsize=(10, 6))
-sns.histplot(df['amount'], bins=50, kde=True)
-plt.title('Rozkład kwot transakcji')
-plt.show()
-            </code></pre>
-            <img src="images/visualization.jpg" alt="Wykres w Jupyter Notebook" class="project-img">
-
-            <!-- 6. Wnioski -->
-            <h2 class="subtitle">6. Wnioski</h2>
-            <p>
-                Projekt skutecznie zidentyfikował potencjalnych insiderów na podstawie analizy danych Solana. Ograniczeniem jest brak danych w czasie rzeczywistym, co można rozwinąć w przyszłości.
-            </p>
-
-            <!-- Dlaczego to ważne -->
-            <h2 class="subtitle">Dlaczego To Ważne</h2>
-            <p>
-                Projekt демонстриuje umiejętności analizy blockchainu i może być wykorzystany do:
+                This project demonstrates blockchain data analysis for detecting insider trading. It could be applied to:
             </p>
             <ul>
-                <li><strong>Monitorowania rynku</strong>: Wykrywanie podejrzanych działań.</li>
-                <li><strong>Budowania zaufania</strong>: Zwiększanie przejrzystości w kryptowalutach.</li>
-                <li><strong>Badania</strong>: Analiza zachowań użytkowników blockchaina.</li>
+                <li><strong>Financial Auditing</strong>: Tracking suspicious wallet activity.</li>
+                <li><strong>Market Manipulation Detection</strong>: Identifying price influence patterns.</li>
+                <li><strong>Blockchain Security</strong>: Enhancing transparency in DeFi.</li>
             </ul>
-
-            <!-- Demonstracja umiejętności -->
-            <h2 class="subtitle">Demonstracja Umiejętności</h2>
-            <ul>
-                <li>Analiza danych blockchainowych.</li>
-                <li>Programowanie w Pythonie.</li>
-                <li>Wizualizacja danych.</li>
-                <li>Praca z API i danymi zewnętrznymi.</li>
-            </ul>
-
-            <!-- Oś czasu projektu -->
-            <h2 class="subtitle">Oś Czasu Projektu</h2>
-            <ul>
-                <li><strong>Tydzień 1</strong>: Konfiguracja środowiska i pobieranie danych.</li>
-                <li><strong>Tydzień 2</strong>: Przetwarzanie i analiza danych.</li>
-                <li><strong>Tydzień 3</strong>: Wizualizacja i dokumentacja.</li>
-            </ul>
-
-            <!-- Wnioski końcowe -->
-            <h2 class="subtitle">Podsumowanie</h2>
             <p>
-                Więcej szczegółów i kod znajdziesz w moim <a href="https://github.com/twoj-login/solana-insider-detection" class="btn">repozytorium GitHub</a>. Skontaktuj się ze mną pod adresem <a href="mailto:twoj.email@example.com">twoj.email@example.com</a>.
+                Future enhancements could include token transfer analysis or automated anomaly alerts.
+            </p>
+
+            <h2 class="subtitle">Skills Demonstrated</h2>
+            <ul>
+                <li>Blockchain data extraction and processing.</li>
+                <li>Data engineering with SQLite and Python.</li>
+                <li>Network analysis with NetworkX.</li>
+                <li>Interactive visualization with Streamlit.</li>
+                <li>Troubleshooting API and database issues.</li>
+            </ul>
+
+            <h2 class="subtitle">Project Timeline</h2>
+            <ul>
+                <li><strong>Week 1</strong>: Environment setup and API testing.</li>
+                <li><strong>Week 2</strong>: Data collection and SQLite integration.</li>
+                <li><strong>Week 3</strong>: Network graph and Streamlit dashboard development.</li>
+                <li><strong>Week 4</strong>: Analysis and documentation (ongoing as of 2025-03-13).</li>
+            </ul>
+
+            <h2 class="subtitle">Lessons Learned</h2>
+            <ul>
+                <li>Managing API rate limits effectively.</li>
+                <li>Importance of robust error handling in data pipelines.</li>
+                <li>Visualizing complex networks for actionable insights.</li>
+                <li>Streamlit’s power for rapid dashboard prototyping.</li>
+            </ul>
+
+            <h2 class="subtitle">Conclusion</h2>
+            <p>
+                Check out the code and details on my <a href="https://github.com/daviddylag/solana-insiders-trading" class="btn">GitHub repository</a> or reach out at <a href="mailto:david.dylag@example.com">david.dylag@example.com</a> to discuss this project or related ideas.
             </p>
         </div>
     </section>
 
-    <!-- Stopka -->
+    <!-- Footer -->
     <footer class="footer">
-        <p>© 2024 Twoje Imię | Zbudowane z pasją</p>
+        <p>© 2025 David Dylag | Built with Care</p>
     </footer>
 
     <script src="../../assets/js/script.js"></script>
 </body>
 </html>
-
-
-Aby wzbogacić projekt o elementy data engineering i zwiększyć swoje szanse na rynku pracy, mogę zaproponować kilka rozszerzeń i usprawnień. Takie podejście pozwoli Ci zademonstrować szerszy zakres umiejętności, które są cenione w branży.
-
-## Rozszerzenie projektu o elementy Data Engineering
-
-### 1. Zbuduj potok danych (Data Pipeline)
-- **Apache Airflow** - skonfiguruj orkiestrację zadań do regularnego pobierania i przetwarzania danych
-- Stwórz DAG-i (Directed Acyclic Graphs) z zadaniami:
-  - Pobieranie danych z Solana API
-  - Przetwarzanie i czyszczenie danych
-  - Wykrywanie anomalii
-  - Generowanie raportów i wizualizacji
-  - Powiadamianie (np. email) o wykrytych podejrzanych transakcjach
-
-### 2. Przechowywanie danych (Data Storage)
-- **Warstwa surowych danych** - przechowuj surowe dane w formacie parquet w systemie plików lub w S3
-- **Warstwa przetworzonych danych** - zastosuj bazę danych TimescaleDB (rozszerzenie PostgreSQL dla danych czasowych)
-- **Schematy danych** - zaprojektuj odpowiednią strukturę bazy z indeksami dla optymalnych zapytań
-
-### 3. Przetwarzanie strumieniowe (Stream Processing)
-- Użyj **Apache Kafka** i **Kafka Streams** lub **Apache Spark Streaming** do przetwarzania danych w czasie rzeczywistym
-- Wdrażaj wykrywanie anomalii w czasie rzeczywistym, a nie tylko w trybie wsadowym
-- Implementuj windowing functions do analizy zachowań w określonych oknach czasowych
-
-### 4. Skalowalna architektura
-- **Docker** - umieść komponenty w kontenerach
-- **Docker Compose** lub **Kubernetes** - zdefiniuj infrastrukturę jako kod
-- **CI/CD pipeline** - skonfiguruj automatyczne testy i wdrożenia (GitHub Actions)
-
-### 5. API i Microservices
-- Zaprojektuj **REST API** (FastAPI lub Flask) udostępniające:
-  - Endpointy do pobierania danych historycznych
-  - Endpointy do sprawdzania podejrzanych adresów
-  - Dokumentację API w Swagger
-- Podziel system na mikroserwisy odpowiedzialne za różne zadania
-
-### 6. Zaawansowana analiza danych
-- **Modele grafowe** - zastosuj Neo4j do analizy powiązań między adresami
-- **Deep Learning** - wykorzystaj LSTM lub GRU do wykrywania wzorców czasowych w transakcjach
-- **Ensemble Methods** - połącz różne techniki wykrywania anomalii dla lepszych wyników
-
-### 7. Monitorowanie i logowanie
-- Wdrożenie **ELK Stack** (Elasticsearch, Logstash, Kibana) lub **Prometheus + Grafana**
-- Monitorowanie wydajności potoków danych
-- Śledzenie metryk jakości modeli
-
-## Przykładowa struktura projektu
-
-```
-solana-insider-detection/
-├── airflow/                    # Konfiguracja Airflow i DAG-i
-├── api/                        # API do udostępniania wyników
-│   ├── app.py                  # Główna aplikacja FastAPI
-│   ├── routers/                # Endpointy API
-│   └── models/                 # Modele danych
-├── data/                       # Dane
-│   ├── raw/                    # Surowe dane
-│   └── processed/              # Przetworzone dane
-├── db/                         # Skrypty i migracje bazy danych
-├── docker/                     # Pliki Dockerfile dla komponentów
-├── src/                        # Kod źródłowy
-│   ├── data_ingestion/         # Pobieranie danych
-│   ├── data_processing/        # Przetwarzanie danych
-│   ├── feature_engineering/    # Inżynieria cech
-│   ├── models/                 # Modele ML
-│   └── visualization/          # Generowanie wizualizacji
-├── notebooks/                  # Jupyter Notebooks
-├── tests/                      # Testy jednostkowe i integracyjne
-├── web/                        # Aplikacja webowa
-├── docker-compose.yml          # Konfiguracja kontenerów
-├── requirements.txt            # Zależności Pythona
-└── README.md                   # Dokumentacja projektu
-```
-
-## Przykładowy kod dla komponentów Data Engineering
-
-### Przykład DAG-a w Airflow
-```python
-from airflow import DAG
-from airflow.operators.python import PythonOperator
-from datetime import datetime, timedelta
-import sys
-sys.path.append('/opt/airflow/src')
-
-from data_ingestion.solana_api import fetch_transactions
-from data_processing.preprocessing import clean_transactions
-from models.anomaly_detection import detect_anomalies
-from visualization.reports import generate_report
-
-default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    'start_date': datetime(2023, 1, 1),
-    'email_on_failure': True,
-    'email_on_retry': False,
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
-}
-
-dag = DAG(
-    'solana_insider_detection',
-    default_args=default_args,
-    description='Wykrywanie insiderów na blockchainie Solana',
-    schedule_interval=timedelta(hours=6),
-)
-
-fetch_task = PythonOperator(
-    task_id='fetch_transactions',
-    python_callable=fetch_transactions,
-    op_kwargs={'addresses': ['adres1', 'adres2']},
-    dag=dag,
-)
-
-clean_task = PythonOperator(
-    task_id='clean_transactions',
-    python_callable=clean_transactions,
-    dag=dag,
-)
-
-detect_task = PythonOperator(
-    task_id='detect_anomalies',
-    python_callable=detect_anomalies,
-    dag=dag,
-)
-
-report_task = PythonOperator(
-    task_id='generate_report',
-    python_callable=generate_report,
-    dag=dag,
-)
-
-fetch_task >> clean_task >> detect_task >> report_task
-```
-
-### Przykład FastAPI
-```python
-from fastapi import FastAPI, Depends, HTTPException, Query
-from fastapi.middleware.cors import CORSMiddleware
-from typing import List, Optional
-import pandas as pd
-from sqlalchemy.orm import Session
-
-from .database import get_db
-from .models import Transaction, Anomaly
-
-app = FastAPI(
-    title="Solana Insider Detection API",
-    description="API do wykrywania insiderów na blockchainie Solana",
-    version="1.0.0"
-)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-@app.get("/transactions/", response_model=List[Transaction])
-def get_transactions(
-    address: Optional[str] = None,
-    from_date: Optional[str] = None,
-    to_date: Optional[str] = None,
-    limit: int = Query(100, le=1000),
-    db: Session = Depends(get_db)
-):
-    """Pobierz transakcje z możliwością filtrowania."""
-    query = db.query(Transaction)
-    
-    if address:
-        query = query.filter(Transaction.address == address)
-    
-    if from_date:
-        query = query.filter(Transaction.timestamp >= from_date)
-    
-    if to_date:
-        query = query.filter(Transaction.timestamp <= to_date)
-    
-    return query.limit(limit).all()
-
-@app.get("/anomalies/", response_model=List[Anomaly])
-def get_anomalies(
-    confidence: float = Query(0.8, ge=0, le=1),
-    limit: int = Query(50, le=500),
-    db: Session = Depends(get_db)
-):
-    """Pobierz wykryte anomalie z określonym poziomem pewności."""
-    return db.query(Anomaly).filter(
-        Anomaly.confidence >= confidence
-    ).order_by(Anomaly.confidence.desc()).limit(limit).all()
-
-@app.get("/address/{address}/risk-score")
-def get_address_risk_score(address: str, db: Session = Depends(get_db)):
-    """Zwraca ocenę ryzyka dla danego adresu."""
-    # Implementacja oceny ryzyka
-    # ...
-    return {"address": address, "risk_score": 0.75}
-```
-
-### Przykład konfiguracji Docker Compose
-```yaml
-version: '3'
-
-services:
-  postgres:
-    image: timescale/timescaledb:latest-pg13
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=solanadb
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=admin
-    ports:
-      - "5050:80"
-    depends_on:
-      - postgres
-
-  airflow-webserver:
-    build:
-      context: ./
-      dockerfile: ./docker/airflow.Dockerfile
-    restart: always
-    depends_on:
-      - postgres
-    environment:
-      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:postgres@postgres/airflow
-    volumes:
-      - ./airflow/dags:/opt/airflow/dags
-      - ./src:/opt/airflow/src
-    ports:
-      - "8080:8080"
-    command: webserver
-
-  api:
-    build:
-      context: ./
-      dockerfile: ./docker/api.Dockerfile
-    ports:
-      - "8000:8000"
-    depends_on:
-      - postgres
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/solanadb
-    volumes:
-      - ./api:/app/api
-
-  web:
-    build:
-      context: ./
-      dockerfile: ./docker/web.Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./web:/app
-      - /app/node_modules
-
-volumes:
-  postgres_data:
-```
-
-## Umiejętności, które zademonstrujesz i rozwiniesz
-
-1. **Data Engineering**:
-   - Projektowanie systemów przetwarzania danych
-   - ETL/ELT (Extract, Transform, Load) procesów
-   - Orkiestracja zadań i zarządzanie przepływem danych
-
-2. **Programowanie**:
-   - Python (różne biblioteki i frameworki)
-   - SQL (zapytania, indeksowanie, optymalizacja)
-   - API development
-
-3. **Technologie chmurowe i DevOps**:
-   - Konteneryzacja (Docker)
-   - Infrastruktura jako kod
-   - CI/CD
-
-4. **Bazy danych**:
-   - Relacyjne (PostgreSQL z TimescaleDB)
-   - Nierelacyjne/grafowe (opcjonalnie)
-
-5. **Architektura oprogramowania**:
-   - Mikroserwisy
-   - REST API
-   - Projektowanie skalowalnych systemów
-
-6. **Data Science / ML**:
-   - Przetwarzanie danych w czasie rzeczywistym
-   - Zaawansowane modele ML
-   - Zarządzanie modelami
-
-Ten rozszerzony projekt pozwoli Ci nie tylko nauczyć się wielu cennych umiejętności, ale również stworzyć imponujące portfolio, które zwiększy Twoje szanse na rynku pracy w obszarze data engineering, data science i analityki blockchain.
