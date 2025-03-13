@@ -114,29 +114,7 @@
             <p>
                 Na podstawie listy insiderów skrypt <code>test.py</code> pobiera ostatnie transakcje dla 10 portfeli (5 transakcji na portfel) i buduje graf transferów SOL. Log z 2025-03-13:
             </p>
-            <pre><code>2025-03-13 10:38:30,599 - INFO - Rozpoczęcie zbierania danych
-2025-03-13 10:38:30,857 - INFO - Pobrano 5 podpisów dla 2AQdpHJ2JpcEgPiATUXjQxA8QmafFegfQwSLWSprPicm
-2025-03-13 10:38:30,861 - INFO - Przetwarzanie 5 transakcji dla 2AQdpHJ2JpcEgPiATUXjQxA8QmafFegfQwSLWSprPicm
-2025-03-13 10:39:04,831 - INFO - Pobrano 5 podpisów dla 2FFfKzEBb8LQQii2kqwUU1XT9m1ivVvJQGCQuSTbFwCE
-2025-03-13 10:39:04,834 - INFO - Przetwarzanie 5 transakcji dla 2FFfKzEBb8LQQii2kqwUU1XT9m1ivVvJQGCQuSTbFwCE
-2025-03-13 10:39:37,267 - INFO - Pobrano 5 podpisów dla H8sMJSCQxfKiFTCfDR3DUMLPwcRbM61LGFJ8N4dK3WjS
-2025-03-13 10:39:37,269 - INFO - Przetwarzanie 5 transakcji dla H8sMJSCQxfKiFTCfDR3DUMLPwcRbM61LGFJ8N4dK3WjS
-2025-03-13 10:40:08,562 - INFO - Pobrano 5 podpisów dla BNDhPHmUs98uZWbshpnV43jDZfzdtLnVViuKk51qoNzg
-2025-03-13 10:40:08,565 - INFO - Przetwarzanie 5 transakcji dla BNDhPHmUs98uZWbshpnV43jDZfzdtLnVViuKk51qoNzg
-2025-03-13 10:40:41,481 - INFO - Pobrano 5 podpisów dla 5VCwKtCXgCJ6kit5FybXjvriW3xELsFDhYrPSqtJNmcD
-2025-03-13 10:40:41,482 - INFO - Przetwarzanie 5 transakcji dla 5VCwKtCXgCJ6kit5FybXjvriW3xELsFDhYrPSqtJNmcD
-2025-03-13 10:41:12,790 - INFO - Pobrano 5 podpisów dla 7DbZsTn3nqf3hQ2KSFaPL2mZzE9ETUhtGhkzZzXH7YV2
-2025-03-13 10:41:12,793 - INFO - Przetwarzanie 5 transakcji dla 7DbZsTn3nqf3hQ2KSFaPL2mZzE9ETUhtGhkzZzXH7YV2
-2025-03-13 10:41:45,945 - INFO - Pobrano 5 podpisów dla 9obNtb5GyUegcs3a1CbBkLuc5hEWynWfJC6gjz5uWQkE
-2025-03-13 10:41:45,949 - INFO - Przetwarzanie 5 transakcji dla 9obNtb5GyUegcs3a1CbBkLuc5hEWynWfJC6gjz5uWQkE
-2025-03-13 10:42:17,520 - INFO - Pobrano 5 podpisów dla 2WBv2qtdKTHmhY5eTs7q4YJFpbgB2SUNQVkRzzSKoKyb
-2025-03-13 10:42:17,522 - INFO - Przetwarzanie 5 transakcji dla 2WBv2qtdKTHmhY5eTs7q4YJFpbgB2SUNQVkRzzSKoKyb
-2025-03-13 10:42:49,842 - INFO - Pobrano 5 podpisów dla CFVhFYf6RcaWJc9gu91ZDa8nFtw3ev7makkgpWDM1UYK
-2025-03-13 10:42:49,843 - INFO - Przetwarzanie 5 transakcji dla CFVhFYf6RcaWJc9gu91ZDa8nFtw3ev7makkgpWDM1UYK
-2025-03-13 10:43:22,018 - INFO - Pobrano 5 podpisów dla 6JXxJFe8HBRRX46eWGM9qm6JZ2FcZAQC1tx7vQpT74U5
-2025-03-13 10:43:22,019 - INFO - Przetwarzanie 5 transakcji dla 6JXxJFe8HBRRX46eWGM9qm6JZ2FcZAQC1tx7vQpT74U5
-2025-03-13 10:43:53,111 - INFO - Zapisano graf powiązań do solana_transfers.gml
-            </code></pre>
+            [screenshot scryptu]
             <p>
                 Skrypt pobrał 50 transakcji (5 dla każdego z 10 portfeli), zbudował graf transferów i zapisał go jako <code>solana_transfers.gml</code>.
             </p>
@@ -160,6 +138,24 @@
                 <li>Zbudował i zapisał graf transferów w <code>solana_transfers.gml</code>.</li>
             </ul>
             [screenshot of baza danych SQLite z danymi transakcji]
+            <h3>Analiza powiązań portfeli</h3>
+            <p>
+                Przeprowadziliśmy głębszą analizę powiązań portfeli, aby lepiej zrozumieć potencjalne działania insiderów. W ramach tej analizy:
+            </p>
+            <ul>
+                <li>Zidentyfikowaliśmy portfele, które kupiły token TRUMP w ciągu pierwszych godzin po jego powstaniu.</li>
+                <li>Przeanalizowaliśmy ich transakcje, szukając wzorców takich jak szybkie kupno i sprzedaż, co może sugerować insider trading.</li>
+                <li>Stworzyliśmy i zwizualizowaliśmy sieć interakcji między portfelami za pomocą NetworkX, co pozwoliło nam zobaczyć powiązania i klastry portfeli.</li>
+            </ul>
+            <p>
+                Kluczowe wnioski z analizy:
+            </p>
+            <ul>
+                <li>Zidentyfikowano 10 portfeli, które dokonały zakupów tokena TRUMP w początkowych godzinach.</li>
+                <li>Wykryto wzorce szybkiego kupna i sprzedaży u niektórych portfeli, co może wskazywać na działania insiderów.</li>
+                <li>Wizualizacja sieci ujawniła klastry silnie powiązanych portfeli, co sugeruje możliwe grupy insiderów działających razem.</li>
+            </ul>
+            [screenshot of wizualizacja grafu sieciowego z analizą]
 
             <!-- 7. Planowane kroki z Dagsterem -->
             <h2 class="subtitle">7. Planowane kroki z Dagsterem</h2>
@@ -168,17 +164,20 @@
             </p>
             <ul>
                 <li><strong>Potok 1: Zbieranie danych</strong>: Automatyczne pobieranie transakcji portfeli i cen SOL w regularnych odstępach czasu.</li>
-                <li><strong>Potok 2: Analiza danych</strong>: Automatyczna analiza nowych danych pod kątem anomalii i aktualizacja grafu transferów.</li>
+                <li><strong>Potok 2: Analiza danych</strong>: Automatyczna analiza nowych danych pod kątem anomalii (np. wzorców insider tradingu) i aktualizacja grafu transferów.</li>
                 <li><strong>Potok 3: Alerty</strong>: Generowanie powiadomień o podejrzanych aktywnościach, np. dużych transakcjach przed zmianami cen.</li>
             </ul>
             <p>
-                Dagster zapewni efektywność, logowanie i obsługę błędów w środowisku produkcyjnym.
+                Integracja obecnej analizy z Dagsterem pozwoli na ciągłe monitorowanie portfeli i automatyczne wykrywanie podejrzanych wzorców w czasie rzeczywistym.
             </p>
 
             <!-- Podsumowanie -->
             <h2 class="subtitle">Podsumowanie</h2>
             <p>
-                Sprawdź kod i postępy na moim <a href="https://github.com/daviddylag/solana-insiders-trading" class="btn">repozytorium GitHub</a> lub skontaktuj się ze mną pod adresem <a href="mailto:david.dylag@example.com">david.dylag@example.com</a>, aby omówić projekt lub pomysły.
+                Projekt Solana Insiders Trading rozwija się dynamicznie. Do tej pory zidentyfikowaliśmy 10 portfeli, które kupiły token TRUMP w pierwszych godzinach po jego powstaniu, przeanalizowaliśmy ich transakcje i zbudowaliśmy sieć powiązań, która ujawniła klastry potencjalnych insiderów. Kluczowe wzorce, takie jak szybkie kupno i sprzedaż, zostały zidentyfikowane i zwizualizowane.
+            </p>
+            <p>
+                W kolejnych krokach planuję zautomatyzować procesy za pomocą Dagstera, co umożliwi ciągłe monitorowanie i szybsze reagowanie na podejrzane aktywności. Sprawdź kod i postępy na moim <a href="https://github.com/daviddylag/solana-insiders-trading" class="btn">repozytorium GitHub</a> lub skontaktuj się ze mną pod adresem <a href="mailto:david.dylag@example.com">david.dylag@example.com</a>, aby omówić projekt lub pomysły.
             </p>
         </div>
     </section>
