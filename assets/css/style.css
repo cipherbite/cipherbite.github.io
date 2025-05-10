@@ -1,51 +1,46 @@
-/* Poprawiony CSS dla Portfolio Analityka Danych */
-/* Zainspirowany stylem IBM, z uwzględnieniem sugestii */
+/* Portfolio CSS for David Dylag - Data Engineering & Cybersecurity */
 
 /* -------------------------------------------------- */
-/* Zmienne Globalne (Variables) */
+/* Global Variables */
 /* -------------------------------------------------- */
 :root {
-    /* --- Paleta Kolorów --- */
-    /* Tło */
-    --bg-color: #f5f6f5; /* Bardzo jasny szary z subtelnym odcieniem zieleni */
-    --section-bg-alt: #f2f4f3; /* Bardzo jasny szarozielony dla alternatywnych sekcji */
-    --card-bg: #fafbfa; /* Perłowy odcień dla kart/nagłówka/stopki */
-    --code-bg: #f3f4f3; /* Bardzo jasny szary dla tła bloków kodu */
-    --light-color: #ffffff; /* Biały */
+    /* --- Color Palette --- */
+    /* Background Colors */
+    --bg-color: #f5f6f5; /* Very light gray with subtle green tint */
+    --section-bg-alt: #f2f4f3; /* Very light gray-green for alternate sections */
+    --card-bg: #fafbfa; /* Pearl shade for cards/header/footer */
+    --code-bg: #f3f4f3; /* Very light gray for code block backgrounds */
+    --light-color: #ffffff; /* White */
 
-    /* Tekst */
-    --text-color: #1a1a1a; /* Ciemny, ale łagodniejszy szary (główny tekst) */
-    --secondary-color: #5c6665; /* Ciemniejszy szary z lekkim odcieniem zieleni (tekst drugorzędny, tagi) */
-    /* UWAGA: Sprawdź kontrast --secondary-color na --bg-color i --card-bg! */
+    /* Text Colors */
+    --text-color: #1a1a1a; /* Dark but milder gray (main text) */
+    --secondary-color: #5c6665; /* Darker gray with slight green tint (secondary text, tags) */
 
-    /* Akcenty */
-    --accent-color: #487a77; /* Stonowany, delikatny zielono-niebieski (główny akcent) */
-    --accent-light: #6a9a97; /* Jaśniejszy odcień akcentu (dla hover/focus) */
-    --focus-outline-color: rgba(72, 122, 119, 0.5); /* Kolor dla obramowania focus */
+    /* Accent Colors */
+    --accent-color: #487a77; /* Muted teal-blue (main accent) */
+    --accent-light: #6a9a97; /* Lighter accent shade (for hover/focus) */
+    --focus-outline-color: rgba(72, 122, 119, 0.5); /* Focus outline color */
 
-    /* Kolory Tagów (Projects/Skills) */
-    /* UWAGA: Sprawdź kontrast --secondary-color na tych tłach! */
-    /* Sugestia: Dla lepszej semantyki rozważ użycie klas np. .tag-python zamiast nth-child */
+    /* Tag Colors */
     --tag-color-1: #e8f0ef;
     --tag-color-2: #d4e2e1;
     --tag-color-3: #e6e9e8;
     --tag-color-4: #d1d7d6;
     --tag-color-5: #b8c1c0;
 
-    /* --- Stylizacja --- */
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Lekko wzmocniony cień dla lepszej separacji */
+    /* --- Styling --- */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --transition: all 0.3s ease-in-out;
-    --border-radius: 0; /* Kwadratowe krawędzie w stylu IBM */
+    --border-radius: 0; /* Square edges */
 
-    /* --- Typografia --- */
-    /* UWAGA: Upewnij się, że czcionka 'Inter' jest poprawnie załadowana z opcją 'display=swap' */
+    /* --- Typography --- */
     --font-family: 'Inter', sans-serif;
-    --base-font-size: 16px; /* Domyślny rozmiar czcionki */
+    --base-font-size: 16px;
     --line-height: 1.6;
 }
 
 /* -------------------------------------------------- */
-/* Reset i Podstawowe Style (Reset & Base Styles) */
+/* Base Styles */
 /* -------------------------------------------------- */
 * {
     margin: 0;
@@ -68,7 +63,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Dostępność: Zapewnienie widocznego focusu dla wszystkich interaktywnych elementów */
+/* Accessibility focus styles */
 a:focus,
 button:focus,
 input:focus,
@@ -78,12 +73,7 @@ select:focus,
     outline: 2px solid var(--accent-light);
     outline-offset: 2px;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
-    border-radius: var(--border-radius); /* Utrzymanie stylu kwadratowego */
-}
-/* Usunięcie domyślnego outline tylko jeśli zapewniony jest customowy styl focus */
-a:focus:not(:focus-visible),
-button:focus:not(:focus-visible) {
-   /* outline: none; */ /* Zazwyczaj lepiej zostawić lub ostylować :focus-visible */
+    border-radius: var(--border-radius);
 }
 
 img, video {
@@ -93,7 +83,7 @@ img, video {
 }
 
 /* -------------------------------------------------- */
-/* Kontener (Container) */
+/* Container */
 /* -------------------------------------------------- */
 .container {
     width: 90%;
@@ -103,14 +93,14 @@ img, video {
 }
 
 /* -------------------------------------------------- */
-/* Nagłówek (Header) */
+/* Header */
 /* -------------------------------------------------- */
 .header {
     background: var(--card-bg);
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
-    z-index: 1000; /* Wyższy z-index */
+    z-index: 1000;
 }
 
 .header .container {
@@ -119,7 +109,7 @@ img, video {
     align-items: center;
     padding-top: 16px;
     padding-bottom: 16px;
-    position: relative; /* Dla pozycjonowania menu mobilnego */
+    position: relative;
 }
 
 .logo {
@@ -133,11 +123,11 @@ img, video {
     color: var(--accent-color);
 }
 
-/* --- Nawigacja --- */
+/* Navigation */
 .nav ul {
     display: flex;
     list-style: none;
-    gap: 5px; /* Mały odstęp między linkami */
+    gap: 5px;
 }
 
 .nav ul li a {
@@ -146,30 +136,30 @@ img, video {
     padding: 10px 15px;
     transition: var(--transition);
     font-weight: 500;
-    display: block; /* Lepsze dla klikalności */
-    border-radius: var(--border-radius); /* Dla spójności focus */
+    display: block;
+    border-radius: var(--border-radius);
 }
 
 .nav ul li a:hover,
 .nav ul li a:focus {
     color: var(--accent-color);
-    background-color: rgba(72, 122, 119, 0.05); /* Lekkie tło dla hover/focus */
+    background-color: rgba(72, 122, 119, 0.05);
 }
 
-/* --- Przycisk Menu Mobilnego (Wymaga HTML i JS) --- */
+/* Mobile menu toggle */
 .menu-toggle {
-    display: none; /* Ukryty domyślnie */
+    display: none; /* Hidden by default */
     background: none;
     border: none;
-    font-size: 1.8rem; /* Rozmiar ikony */
+    font-size: 1.8rem;
     color: var(--text-color);
     cursor: pointer;
     padding: 5px;
-    z-index: 1100; /* Nad nawigacją */
+    z-index: 1100;
 }
 
 /* -------------------------------------------------- */
-/* Sekcja Hero */
+/* Hero Section */
 /* -------------------------------------------------- */
 .hero {
     padding: 100px 0;
@@ -177,13 +167,12 @@ img, video {
     align-items: center;
     text-align: center;
     background: var(--bg-color);
-    min-height: 70vh; /* Zapewnia minimalną wysokość */
+    min-height: 70vh;
 }
 
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
-    animation: fadeIn 1s ease forwards; /* Użycie zdefiniowanej animacji */
 }
 
 .hero h1 {
@@ -203,13 +192,23 @@ img, video {
 .hero-buttons {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Lepsze na mniejszych ekranach */
+    flex-wrap: wrap;
     gap: 20px;
     margin-top: 30px;
 }
 
+/* Animations */
+.animate-fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* -------------------------------------------------- */
-/* Przyciski (Buttons) */
+/* Buttons */
 /* -------------------------------------------------- */
 .btn {
     background: var(--accent-color);
@@ -220,7 +219,7 @@ img, video {
     font-weight: 600;
     display: inline-block;
     transition: var(--transition);
-    border: 2px solid transparent; /* Dodane dla spójności z .btn-secondary */
+    border: 2px solid transparent;
     cursor: pointer;
     font-family: var(--font-family);
     text-align: center;
@@ -231,22 +230,22 @@ img, video {
     border-color: var(--accent-light);
     transform: translateY(-3px);
     box-shadow: var(--shadow);
-    color: var(--light-color); /* Upewnienie się, że kolor tekstu pozostaje */
+    color: var(--light-color);
 }
 
-/* Styl focus dla przycisków - oddzielny od ogólnego */
 .btn:focus {
-    outline: none; /* Usuwamy domyślny outline */
-    box-shadow: 0 0 0 3px var(--focus-outline-color), var(--shadow); /* Łączymy cień focus z normalnym */
-    border-color: var(--accent-light); /* Dopasowujemy border */
-    background-color: var(--accent-light); /* Dopasowujemy tło */
-    transform: translateY(-3px); /* Spójny efekt z hover */
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-outline-color), var(--shadow);
+    border-color: var(--accent-light);
+    background-color: var(--accent-light);
+    transform: translateY(-3px);
 }
 
 .btn-primary {
     background: var(--accent-color);
-    border-color: var(--accent-color); /* Spójność */
+    border-color: var(--accent-color);
 }
+
 .btn-primary:hover, .btn-primary:focus {
     background: var(--accent-light);
     border-color: var(--accent-light);
@@ -257,19 +256,30 @@ img, video {
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
 }
+
 .btn-secondary:hover, .btn-secondary:focus {
     background: var(--accent-color);
     color: var(--light-color);
     transform: translateY(-3px);
     box-shadow: var(--shadow);
 }
-/* Specyficzny focus dla secondary, aby nie dziedziczył tła z ogólnego .btn:focus */
+
 .btn-secondary:focus {
     background-color: var(--accent-color);
     color: var(--light-color);
     border-color: var(--accent-color);
 }
 
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-outline:hover, .btn-outline:focus {
+    background: var(--accent-color);
+    color: var(--light-color);
+}
 
 .btn-small {
     padding: 8px 16px;
@@ -282,42 +292,16 @@ img, video {
 }
 
 /* -------------------------------------------------- */
-/* Animacje (Animations) */
-/* -------------------------------------------------- */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Klasa pomocnicza do animacji */
-.animate-on-scroll {
-    opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transform: translateY(20px);
-}
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* Można użyć Intersection Observer API w JS do dodawania klasy .is-visible */
-
-
-/* -------------------------------------------------- */
-/* Sekcje (Sections) */
+/* Sections */
 /* -------------------------------------------------- */
 .section {
     padding: 80px 0;
     background: var(--bg-color);
 }
 
-.section-alt { /* Zamiast .section-dark dla jasności nazwy */
+.section-dark {
     background: var(--section-bg-alt);
 }
-/* Klasa pomocnicza dla bardzo jasnego tła (jeśli potrzebna gdzie indziej) */
-.light-bg {
-    background: var(--section-bg-alt);
-}
-
 
 .section-title {
     font-size: 2.5rem;
@@ -351,7 +335,7 @@ img, video {
 }
 
 /* -------------------------------------------------- */
-/* Sekcja O Mnie (About Section) */
+/* About Section */
 /* -------------------------------------------------- */
 .about-content {
     display: flex;
@@ -371,17 +355,17 @@ img, video {
 
 .about-image {
     flex: 0 0 300px;
-    max-width: 300px; /* Dodane dla pewności */
+    max-width: 300px;
 }
 
-.about-image img {
-    width: 100%; /* Dopasowanie do kontenera */
+.profile-img {
+    width: 100%;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
 }
 
 .about-highlights {
-    display: grid; /* Lepsze dla równego rozłożenia */
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     margin-top: 30px;
@@ -389,34 +373,38 @@ img, video {
 }
 
 .highlight {
-    flex: 1; /* Usunięte, grid zarządza rozmiarem */
-    padding: 25px 20px; /* Trochę więcej paddingu */
+    padding: 25px 20px;
     background: var(--card-bg);
     transition: var(--transition);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow); /* Dodany domyślny cień */
+    box-shadow: var(--shadow);
 }
 
-.highlight:hover, .highlight:focus-within { /* focus-within dla dostępności */
+.highlight:hover, .highlight:focus-within {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Lekko mocniejszy cień hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .highlight i {
     font-size: 2rem;
     color: var(--accent-color);
     margin-bottom: 15px;
-    display: inline-block; /* Dla poprawnego marginesu */
+    display: inline-block;
 }
 
 .highlight h4 {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-color);
-    margin: 0; /* Usunięcie domyślnego marginesu */
+    margin: 0 0 10px 0;
 }
 
-/* --- Ikony Społecznościowe --- */
+.highlight p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* Social icons */
 .social-icons {
     display: flex;
     justify-content: center;
@@ -434,30 +422,39 @@ img, video {
     justify-content: center;
     border-radius: var(--border-radius);
     transition: var(--transition);
-    text-decoration: none; /* Usunięcie podkreślenia */
-    font-size: 1.2rem; /* Rozmiar ikon FontAwesome/innych */
+    text-decoration: none;
+    font-size: 1.2rem;
 }
 
 .social-icons a:hover, .social-icons a:focus {
     background: var(--accent-light);
     transform: translateY(-3px);
-    color: var(--light-color); /* Upewnienie się */
+    color: var(--light-color);
 }
-/* Specyficzny focus dla ikon */
+
 .social-icons a:focus {
-     outline: 2px solid var(--accent-light);
-     outline-offset: 2px;
-     box-shadow: 0 0 0 3px var(--focus-outline-color);
+    outline: 2px solid var(--accent-light);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
 
 /* -------------------------------------------------- */
-/* Sekcja Projekty (Projects Section) */
+/* Projects Section */
 /* -------------------------------------------------- */
+.category-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 40px 0 20px;
+    text-align: center;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
     margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .project-card {
@@ -466,8 +463,8 @@ img, video {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    display: flex; /* Umożliwia flex-direction */
-    flex-direction: column; /* Treść pod obrazkiem */
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover, .project-card:focus-within {
@@ -485,29 +482,36 @@ img, video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease-out; /* Trochę dłuższa animacja */
+    transition: transform 0.4s ease-out;
 }
 
 .project-card:hover .project-img img,
-.project-card:focus-within .project-img img { /* Efekt również na focus */
+.project-card:focus-within .project-img img {
     transform: scale(1.05);
 }
 
-/* Overlay (opcjonalny, jeśli potrzebny) */
-/*
 .project-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.6);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
 }
+
 .project-card:hover .project-overlay,
-.project-card:focus-within .project-overlay { opacity: 1; }
-*/
+.project-card:focus-within .project-overlay {
+    opacity: 1;
+}
 
 .project-content {
-    padding: 25px 20px; /* Dopasowanie paddingu */
-    flex-grow: 1; /* Rozpycha stopkę karty na dół */
+    padding: 25px 20px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
@@ -523,7 +527,7 @@ img, video {
     color: var(--secondary-color);
     margin-bottom: 15px;
     font-size: 0.95rem;
-    flex-grow: 1; /* Zajmuje dostępną przestrzeń przed linkami */
+    flex-grow: 1;
 }
 
 .project-tags {
@@ -534,13 +538,12 @@ img, video {
 }
 
 .project-tags span {
-    /* Używamy --secondary-color dla tekstu - sprawdź kontrast! */
     color: var(--secondary-color);
     font-size: 0.8rem;
     padding: 4px 10px;
     border-radius: var(--border-radius);
     font-weight: 500;
-    line-height: 1.4; /* Lepsze dopasowanie wysokości */
+    line-height: 1.4;
 }
 
 .project-tags span:nth-child(5n+1) { background: var(--tag-color-1); }
@@ -552,15 +555,15 @@ img, video {
 .project-links {
     display: flex;
     gap: 10px;
-    margin-top: auto; /* Przykleja linki do dołu, jeśli p jest flex-grow: 1 */
+    margin-top: auto;
 }
 
 /* -------------------------------------------------- */
-/* Sekcja Umiejętności (Skills Section) */
+/* Skills Section */
 /* -------------------------------------------------- */
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Nieco szersze minimum */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 20px;
 }
@@ -582,7 +585,7 @@ img, video {
     color: var(--accent-color);
     font-size: 1.3rem;
     font-weight: 600;
-    margin-bottom: 20px; /* Większy odstęp */
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -590,28 +593,29 @@ img, video {
 
 .skill-category h3 i {
     font-size: 1.5rem;
-    line-height: 1; /* Zapobiega dodatkowej przestrzeni */
+    line-height: 1;
 }
 
 .skill-list {
     list-style: none;
-    padding-left: 5px; /* Lekkie wcięcie dla estetyki */
+    padding-left: 5px;
 }
 
 .skill-list li {
     margin-bottom: 12px;
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--section-bg-alt); /* Subtelniejszy border */
+    border-bottom: 1px solid var(--section-bg-alt);
     font-weight: 500;
-    position: relative; /* Dla pseudo-elementu */
-    padding-left: 18px; /* Miejsce na "bullet" */
+    position: relative;
+    padding-left: 18px;
 }
+
 .skill-list li:last-child {
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
 }
-/* Prosty "bullet" dla listy */
+
 .skill-list li::before {
     content: '';
     display: block;
@@ -620,16 +624,15 @@ img, video {
     background-color: var(--accent-light);
     position: absolute;
     left: 0;
-    top: 9px; /* Dopasuj pionowo */
+    top: 9px;
 }
 
-
-/* --- Dodatkowe Umiejętności (Tagi) --- */
+/* Additional Skills (Tags) */
 .additional-skills {
     background: var(--card-bg);
     border-radius: var(--border-radius);
     padding: 30px 25px;
-    margin-top: 40px; /* Większy odstęp */
+    margin-top: 40px;
     text-align: center;
     box-shadow: var(--shadow);
 }
@@ -644,19 +647,441 @@ img, video {
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px; /* Trochę większy odstęp */
+    gap: 12px;
     justify-content: center;
 }
 
 .skill-tags span {
-    color: var(--secondary-color); /* Sprawdź kontrast! */
+    color: var(--secondary-color);
     padding: 8px 16px;
     border-radius: var(--border-radius);
     font-size: 0.9rem;
     font-weight: 500;
     transition: var(--transition);
     line-height: 1.4;
-    cursor: default; /* Zwykły kursor, bo to nie linki */
+    cursor: default;
 }
 
 .skill-tags span:nth-child(5n+1) { background: var(--tag-color-1); }
+.skill-tags span:nth-child(5n+2) { background: var(--tag-color-2); }
+.skill-tags span:nth-child(5n+3) { background: var(--tag-color-3); }
+.skill-tags span:nth-child(5n+4) { background: var(--tag-color-4); }
+.skill-tags span:nth-child(5n+5) { background: var(--tag-color-5); }
+
+/* -------------------------------------------------- */
+/* Contact Section */
+/* -------------------------------------------------- */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.contact-info {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-info h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.contact-link:hover, .contact-link:focus {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.contact-link i {
+    width: 25px;
+    height: 25px;
+    background: var(--accent-color);
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.contact-link:hover i, .contact-link:focus i {
+    background: var(--accent-light);
+}
+
+.contact-form-container {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group:nth-child(3),
+.form-group:nth-child(4) {
+    grid-column: 1 / 3;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--section-bg-alt);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-outline-color);
+}
+
+.contact-form button {
+    grid-column: 1 / 3;
+    justify-self: center;
+    margin-top: 10px;
+}
+
+/* -------------------------------------------------- */
+/* CTA Section */
+/* -------------------------------------------------- */
+.cta-section {
+    background: var(--accent-color);
+    padding: 60px 0;
+    color: var(--light-color);
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-section .btn {
+    background: var(--light-color);
+    color: var(--accent-color);
+    border: 2px solid var(--light-color);
+}
+
+.cta-section .btn:hover, .cta-section .btn:focus {
+    background: transparent;
+    color: var(--light-color);
+}
+
+/* -------------------------------------------------- */
+/* Footer */
+/* -------------------------------------------------- */
+.footer {
+    background: var(--card-bg);
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-logo p {
+    color: var(--secondary-color);
+    margin-top: 15px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 60px;
+}
+
+.footer-nav h4, .footer-social h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.footer-nav h4::after, .footer-social h4::after {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: var(--accent-color);
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+}
+
+.footer-nav ul {
+    list-style: none;
+}
+
+.footer-nav ul li {
+    margin-bottom: 10px;
+}
+
+.footer-nav ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-nav ul li a:hover, .footer-nav ul li a:focus {
+    color: var(--accent-color);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 35px;
+    height: 35px;
+    background: var(--accent-color);
+    color: var(--light-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-links a:hover, .social-links a:focus {
+    background: var(--accent-light);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid var(--section-bg-alt);
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* -------------------------------------------------- */
+/* Scroll To Top Button */
+/* -------------------------------------------------- */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 99;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.scroll-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top-btn:hover, .scroll-top-btn:focus {
+    background: var(--accent-light);
+    transform: translateY(-3px);
+}
+
+/* -------------------------------------------------- */
+/* Media Queries */
+/* -------------------------------------------------- */
+@media (max-width: 1024px) {
+    .section {
+        padding: 60px 0;
+    }
+
+    .hero {
+        padding: 80px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 50px 0;
+    }
+
+    .hero {
+        padding: 60px 0;
+        min-height: 60vh;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .about-content {
+        flex-direction: column-reverse;
+    }
+
+    .about-image {
+        margin-bottom: 30px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group:nth-child(3),
+    .form-group:nth-child(4),
+    .contact-form button {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 95%;
+        padding: 0 15px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .about-image {
+        max-width: 250px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-links {
+        gap: 30px;
+        flex-direction: column;
+    }
+
+    /* Mobile menu */
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--card-bg);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        z-index: 1000;
+        padding: 80px 20px 30px;
+    }
+
+    .nav.active {
+        right: 0;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav ul li a {
+        padding: 15px;
+        border-bottom: 1px solid var(--section-bg-alt);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
