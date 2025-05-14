@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shadow Tracker: Analyzing User Behavior in Tor and VPN Environments">
-    <meta name="keywords" content="Tor, VPN, user behavior, cybersecurity, digital forensics, data analysis">
+    <meta name="description" content="Shadow Tracker: Analyzing User Behavior in Tor and VPN with Grafana Visualizations">
+    <meta name="keywords" content="Tor, VPN, cybersecurity, digital forensics, Grafana, InfluxDB, data analysis">
     <meta name="author" content="David Dylag">
     <title>Shadow Tracker | David Dylag</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -32,107 +32,127 @@
 
             <!-- Introduction -->
             <p class="intro-text">
-                Shadow Tracker is a cybersecurity project focused on analyzing user behavior in privacy-centric environments like Tor and VPNs. By examining digital artifacts such as Tor browser cache, VPN logs, and memory dumps, it reconstructs user activities and identifies suspicious patterns, such as rapid IP changes or short browsing sessions.
+                Shadow Tracker is a beginner-friendly cybersecurity project that explores how users interact with privacy tools like Tor and VPNs. By analyzing artifacts such as Tor’s browsing history and VPN connection logs, it reveals patterns like session times and IP changes, visualized beautifully in Grafana dashboards.
             </p>
             <p class="intro-text">
-                This project simulates a digital forensics investigation, providing insights into how users interact with privacy tools. It is relevant for cybercrime investigations and threat intelligence, showcasing skills in cybersecurity and data analysis.
+                This project is perfect for learning digital forensics and data visualization. It’s relevant for cybercrime investigations and threat intelligence, showcasing skills in Python, InfluxDB, and Grafana.
             </p>
 
             <!-- Technologies Used -->
             <h2 class="subtitle">Technologies Used</h2>
             <div class="tech-stack">
                 <ul>
-                    <li><strong>Python</strong>: Parsing artifacts and analyzing data.</li>
+                    <li><strong>Python</strong>: Parsing Tor and VPN artifacts, sending data to InfluxDB.</li>
                     <li><strong>SQLite3</strong>: Extracting browsing history from Tor’s <code>places.sqlite</code>.</li>
-                    <li><strong>Volatility3</strong>: Analyzing memory dumps for Tor and VPN processes.</li>
-                    <li><strong>Pandas</strong>: Aggregating and processing artifact data.</li>
-                    <li><strong>Matplotlib</strong>: Creating simple visualizations like timelines.</li>
+                    <li><strong>Volatility3</strong>: Checking Tor/VPN processes in memory.</li>
+                    <li><strong>InfluxDB</strong>: Storing time-series data for visualization.</li>
+                    <li><strong>Grafana</strong>: Creating real-time dashboards for session timelines and IP tracking.</li>
+                    <li><strong>Tor Browser</strong>: Generating browsing artifacts.</li>
+                    <li><strong>OpenVPN</strong>: Logging VPN connections.</li>
                 </ul>
             </div>
             <p>
-                These tools were selected for their reliability in digital forensics and data processing.
+                These tools are widely used in cybersecurity and data engineering, making them great for learning and portfolio-building.
             </p>
 
             <h2 class="subtitle">1. Setting Up the Environment</h2>
             <p>
-                A virtual machine with Windows 10 and Ubuntu 20.04 was configured to simulate user activities in Tor and VPN environments.
+                I set up a virtual machine with Ubuntu 20.04 to simulate user activities in a safe, isolated environment.
             </p>
             <ul>
-                <li><strong>Tor Browser</strong>: Installed to generate browsing artifacts.</li>
-                <li><strong>OpenVPN</strong>: Set up with logging enabled to track VPN connections.</li>
-                <li><strong>Volatility3</strong>: Configured for memory analysis.</li>
-                <li><strong>Python</strong>: Used with libraries like <code>pandas</code> and <code>sqlite3</code>.</li>
+                <li><strong>Tor Browser</strong>: Installed to generate browsing history.</li>
+                <li><strong>OpenVPN</strong>: Configured with a sample VPN provider, logging enabled.</li>
+                <li><strong>InfluxDB</strong>: Set up to store time-series data.</li>
+                <li><strong>Grafana</strong>: Installed for dashboard creation.</li>
+                <li><strong>Python</strong>: Used with <code>sqlite3</code> and <code>influxdb-client</code>.</li>
             </ul>
-            <img src="images/tor_vpn_setup.jpg" alt="Terminal showing Tor Browser and OpenVPN running" class="project-img">
             <p>
-                Tor Browser and OpenVPN were launched, and a memory dump was created to capture system state.
+                I launched Tor Browser and OpenVPN, then created a memory dump to capture system state.
             </p>
+            <img src="images/tor_vpn_setup.jpg" alt="Terminal showing Tor Browser and OpenVPN running" class="project-img">
 
             <h2 class="subtitle">2. Collecting Artifacts</h2>
             <p>
-                Artifacts from Tor and VPN usage were collected to analyze user behavior.
+                I collected data from Tor and VPN to understand user behavior.
             </p>
             <ul>
-                <li><strong>Tor Browser Cache</strong>: Parsed <code>places.sqlite</code> to extract URLs and timestamps.</li>
-                <li><strong>VPN Logs</strong>: Analyzed OpenVPN logs for connection times and IP addresses.</li>
-                <li><strong>Memory Analysis</strong>: Used Volatility3 to identify Tor and VPN processes.</li>
+                <li><strong>Tor Browsing History</strong>: Parsed <code>places.sqlite</code> to extract URLs and timestamps of visited sites.</li>
+                <li><strong>VPN Logs</strong>: Extracted connection times and IP addresses from OpenVPN logs.</li>
+                <li><strong>Memory Check</strong>: Used Volatility3 to confirm Tor and VPN processes were running.</li>
             </ul>
+            <p>
+                The parsed data was saved to InfluxDB for visualization.
+            </p>
             <img src="images/sqlite_results.jpg" alt="Parsed Tor browsing history from places.sqlite" class="project-img">
             <img src="images/vpn_logs.jpg" alt="OpenVPN log showing connection details" class="project-img">
 
-            <h2 class="subtitle">3. Analyzing Behavior</h2>
+            <h2 class="subtitle">3. Storing Data in InfluxDB</h2>
             <p>
-                User behavior was analyzed by examining browsing patterns and VPN usage. Key metrics included session duration, frequency of IP changes, and visited domains.
+                InfluxDB was configured to store time-series data, like session timestamps and IP connections. I created a database called <code>tor_vpn_data</code> and used Python to send parsed artifacts.
             </p>
-            <img src="images/session_timeline.jpg" alt="Timeline of Tor and VPN sessions" class="project-img">
+            <img src="images/influxdb_setup.jpg" alt="InfluxDB console showing database creation" class="project-img">
             <p>
-                A simple timeline was created to visualize when users were active, highlighting unusual patterns like short Tor sessions.
+                This step ensured data was ready for Grafana to visualize.
             </p>
 
-            <h2 class="subtitle">4. Detecting Suspicious Activity</h2>
+            <h2 class="subtitle">4. Visualizing with Grafana</h2>
             <p>
-                Suspicious behaviors were flagged using simple rules, such as sessions shorter than 1 minute or multiple IP changes in a short period.
+                Grafana dashboards brought the data to life, showing patterns in user behavior. I created two main panels:
+            </p>
+            <ul>
+                <li><strong>Session Timeline</strong>: A line chart showing when Tor sessions occurred.</li>
+                <li><strong>IP Connections</strong>: A table listing VPN IPs and connection times.</li>
+            </ul>
+            <img src="images/grafana_timeline.jpg" alt="Grafana timeline of Tor sessions" class="project-img">
+            <img src="images/grafana_ip_table.jpg" alt="Grafana table of VPN connections" class="project-img">
+            <p>
+                These visualizations made it easy to spot trends, like frequent VPN IP changes.
+            </p>
+
+            <h2 class="subtitle">5. Detecting Suspicious Activity</h2>
+            <p>
+                I used simple rules to flag suspicious behaviors, such as Tor sessions shorter than 1 minute or VPN connections with multiple IP changes in an hour.
             </p>
             <img src="images/suspicious_activity.jpg" alt="Table of flagged suspicious sessions" class="project-img">
             <p>
-                The results were summarized in a table, making it easy to identify potential issues.
+                The results were displayed in Grafana, making it clear and visual for analysis.
             </p>
 
-            <h2 class="subtitle">5. Troubleshooting</h2>
+            <h2 class="subtitle">6. Troubleshooting</h2>
             <p>
-                Several issues were encountered and resolved during the project:
+                I ran into a few issues while building the project. Here’s how I fixed them:
             </p>
             <table>
                 <tr><th>Problem</th><th>Solution</th></tr>
-                <tr><td>Tor <code>places.sqlite</code> corrupted</td><td>Validated database with <code>sqlite3.pragma_integrity_check</code></td></tr>
-                <tr><td>Missing VPN logs</td><td>Enabled verbose logging in OpenVPN</td></tr>
-                <tr><td>Volatility3 errors</td><td>Updated to latest version and used correct memory profile</td></tr>
+                <tr><td>Tor <code>places.sqlite</code> corrupted</td><td>Checked database with <code>sqlite3.pragma_integrity_check</code></td></tr>
+                <tr><td>VPN logs not detailed</td><td>Enabled verbose logging in OpenVPN config</td></tr>
+                <tr><td>InfluxDB connection failed</td><td>Verified token and port (8086) in Python script</td></tr>
             </table>
             <img src="images/troubleshooting_output.jpg" alt="Terminal showing troubleshooting steps" class="project-img">
 
-            <h2 class="subtitle">6. Why It Matters</h2>
+            <h2 class="subtitle">7. Why It Matters</h2>
             <p>
-                Shadow Tracker demonstrates how to analyze user behavior in privacy tools like Tor and VPNs, with applications in:
+                Shadow Tracker shows how to analyze privacy tools like Tor and VPNs, useful for:
             </p>
             <ul>
-                <li><strong>Cybercrime Investigations</strong>: Tracking activities in privacy-centric environments.</li>
-                <li><strong>Threat Intelligence</strong>: Identifying suspicious patterns.</li>
+                <li><strong>Cybercrime Investigations</strong>: Understanding user activity in dark pools.</li>
+                <li><strong>Learning Forensics</strong>: Practicing artifact analysis and visualization.</li>
             </ul>
             <p>
-                Future enhancements could include real-time monitoring or support for other privacy tools.
+                It’s a great starting point for beginners and looks impressive in a portfolio.
             </p>
 
-            <h2 class="subtitle">7. Skills Demonstrated</h2>
+            <h2 class="subtitle">8. What I Learned</h2>
             <ul>
-                <li>Digital forensics for Tor and VPN environments.</li>
-                <li>Data analysis with Python and Pandas.</li>
-                <li>Basic visualization with Matplotlib.</li>
-                <li>Troubleshooting technical issues.</li>
+                <li>How to parse Tor’s <code>places.sqlite</code> and VPN logs.</li>
+                <li>Setting up InfluxDB and Grafana for time-series data.</li>
+                <li>Using Volatility3 for basic memory analysis.</li>
+                <li>Debugging data pipelines with Python.</li>
             </ul>
 
-            <h2 class="subtitle">8. Conclusion</h2>
+            <h2 class="subtitle">9. Conclusion</h2>
             <p>
-                For more details or to explore the project, visit my <a href="https://github.com/cipherbite/shadow-tracker" class="btn">GitHub repository</a> or contact me at <a href="mailto:david.dylag@protonmail.com">david.dylag@protonmail.com</a>.
+                Check out the code and setup on my <a href="https://github.com/cipherbite/shadow-tracker" class="btn">GitHub repository</a>. Want to discuss this project or cybersecurity? Email me at <a href="mailto:david.dylag@protonmail.com">david.dylag@protonmail.com</a>.
             </p>
         </div>
     </section>
