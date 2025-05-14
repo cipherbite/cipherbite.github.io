@@ -1,1 +1,156 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Social Media Trends Analysis</title><link href="/assets/css/style.css" rel="stylesheet"></head><body><h1>Social Media Trends Analysis</h1><p>Analyzing trends and patterns in social media data using advanced data science techniques.</p><a href="/">Back to Home</a></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Social Media Trends Analysis: Exploring Post Activity and Hashtags with Grafana Visualizations">
+    <meta name="keywords" content="social media, data analysis, Grafana, InfluxDB, Python, trends, hashtags">
+    <meta name="author" content="David Dylag">
+    <title>Social Media Trends Analysis | David Dylag</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Navigation with Back Link -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-highlight">D</span>avid Dylag
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../../index.html" class="nav-link">Back to Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">Social Media Trends Analysis</h1>
+
+            <!-- Introduction -->
+            <p class="intro-text">
+                Social Media Trends Analysis is a beginner-friendly data analysis project that explores activity on social media platforms. By analyzing simulated post data and hashtags, it reveals patterns like posting frequency and popular topics, visualized in stunning Grafana dashboards.
+            </p>
+            <p class="intro-text">
+                This project is perfect for learning data processing and visualization. It’s relevant for marketing analytics and social media monitoring, showcasing skills in Python, InfluxDB, and Grafana.
+            </p>
+
+            <!-- Technologies Used -->
+            <h2 class="subtitle">Technologies Used</h2>
+            <div class="tech-stack">
+                <ul>
+                    <li><strong>Python</strong>: Processing post data and sending to InfluxDB.</li>
+                    <li><strong>Pandas</strong>: Aggregating and analyzing post data.</li>
+                    <li><strong>InfluxDB</strong>: Storing time-series data for posts and hashtags.</li>
+                    <li><strong>Grafana</strong>: Creating real-time dashboards for trends.</li>
+                </ul>
+            </div>
+            <p>
+                These tools are standard in data engineering, making this project a great addition to any portfolio.
+            </p>
+
+            <h2 class="subtitle">1. Setting Up the Environment</h2>
+            <p>
+                I used a local environment on Ubuntu 20.04 to process and visualize social media data.
+            </p>
+            <ul>
+                <li><strong>Python</strong>: Installed with <code>pandas</code> and <code>influxdb-client</code>.</li>
+                <li><strong>InfluxDB</strong>: Set up to store time-series data.</li>
+                <li><strong>Grafana</strong>: Installed for dashboard creation.</li>
+            </ul>
+            <p>
+                I generated sample social media data to simulate posts and hashtags.
+            </p>
+            <img src="images/data_setup.jpg" alt="Python script generating sample social media data" class="project-img">
+
+            <h2 class="subtitle">2. Collecting and Parsing Data</h2>
+            <p>
+                I created a dataset simulating social media posts, including timestamps, usernames, and hashtags. The data was parsed with Pandas to extract key metrics like post frequency and hashtag usage.
+            </p>
+            <img src="images/parsed_data.jpg" alt="Parsed social media data in a Pandas DataFrame" class="project-img">
+            <p>
+                The parsed data was sent to InfluxDB for visualization.
+            </p>
+
+            <h2 class="subtitle">3. Storing Data in InfluxDB</h2>
+            <p>
+                InfluxDB was configured with a database called <code>social_media_data</code> to store post timestamps and hashtag counts.
+            </p>
+            <img src="images/influxdb_setup.jpg" alt="InfluxDB console showing database creation" class="project-img">
+            <p>
+                Python scripts pushed the data to InfluxDB, ready for Grafana.
+            </p>
+
+            <h2 class="subtitle">4. Visualizing with Grafana</h2>
+            <p>
+                Grafana dashboards made the trends easy to understand. I created two panels:
+            </p>
+            <ul>
+                <li><strong>Post Timeline</strong>: A line chart showing post activity over time.</li>
+                <li><strong>Hashtag Popularity</strong>: A table ranking the most used hashtags.</li>
+            </ul>
+            <img src="images/grafana_timeline.jpg" alt="Grafana timeline of social media post activity" class="project-img">
+            <img src="images/grafana_hashtags.jpg" alt="Grafana table of popular hashtags" class="project-img">
+            <p>
+                These visuals highlighted peak posting times and trending topics.
+            </p>
+
+            <h2 class="subtitle">5. Analyzing Trends</h2>
+            <p>
+                I identified trends, such as high posting activity during evenings and popular hashtags related to specific topics.
+            </p>
+            <img src="images/trend_summary.jpg" alt="Summary of social media trends" class="project-img">
+            <p>
+                The analysis was simple but insightful, perfect for marketing or monitoring.
+            </p>
+
+            <h2 class="subtitle">6. Troubleshooting</h2>
+            <p>
+                I faced a few challenges and solved them like this:
+            </p>
+            <table>
+                <tr><th>Problem</th><th>Solution</th></tr>
+                <tr><td>InfluxDB connection errors</td><td>Checked token and port (8086) in Python script</td></tr>
+                <tr><td>Data not showing in Grafana</td><td>Fixed InfluxDB query syntax</td></tr>
+                <tr><td>Slow data parsing</td><td>Optimized Pandas operations</td></tr>
+            </table>
+            <img src="images/troubleshooting_output.jpg" alt="Terminal showing troubleshooting steps" class="project-img">
+
+            <h2 class="subtitle">7. Why It Matters</h2>
+            <p>
+                This project shows how to analyze social media data, useful for:
+            </p>
+            <ul>
+                <li><strong>Marketing Analytics</strong>: Understanding audience behavior.</li>
+                <li><strong>Social Media Monitoring</strong>: Tracking trends and topics.</li>
+            </ul>
+            <p>
+                It’s a great way to learn data analysis and visualization for beginners.
+            </p>
+
+            <h2 class="subtitle">8. What I Learned</h2>
+            <ul>
+                <li>Parsing and processing data with Pandas.</li>
+                <li>Using InfluxDB for time-series storage.</li>
+                <li>Creating dashboards in Grafana.</li>
+                <li>Debugging data pipelines.</li>
+            </ul>
+
+            <h2 class="subtitle">9. Conclusion</h2>
+            <p>
+                Explore the code on my <a href="https://github.com/cipherbite/social-media-trends" class="btn">GitHub repository</a>. Want to talk about this project or data analysis? Email me at <a href="mailto:david.dylag@protonmail.com">david.dylag@protonmail.com</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 David Dylag | Built with Care</p>
+    </footer>
+
+    <script src="../../assets/js/script.js"></script>
+</body>
+</html>
