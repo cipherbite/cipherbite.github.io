@@ -1,1 +1,158 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>SELinux Security Analysis</title><link href="/assets/css/style.css" rel="stylesheet"></head><body><h1>SELinux Security Analysis</h1><p>Implementing SELinux with log analysis and anomaly detection for enhanced system security.</p><a href="/">Back to Home</a></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SELinux Security Analysis: Monitoring Logs and Detecting Anomalies with Grafana Visualizations">
+    <meta name="keywords" content="SELinux, cybersecurity, log analysis, Grafana, InfluxDB, anomaly detection">
+    <meta name="author" content="David Dylag">
+    <title>SELinux Security Analysis | David Dylag</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Navigation with Back Link -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-highlight">D</span>avid Dylag
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../../index.html" class="nav-link">Back to Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">SELinux Security Analysis</h1>
+
+            <!-- Introduction -->
+            <p class="intro-text">
+                SELinux Security Analysis is a beginner-friendly cybersecurity project that monitors SELinux logs to enhance system security. By parsing log data and detecting anomalies like policy violations, it provides insights into potential threats, visualized in clear Grafana dashboards.
+            </p>
+            <p class="intro-text">
+                This project is ideal for learning log analysis and visualization. It’s relevant for system security and incident response, showcasing skills in Python, InfluxDB, and Grafana.
+            </p>
+
+            <!-- Technologies Used -->
+            <h2 class="subtitle">Technologies Used</h2>
+            <div class="tech-stack">
+                <ul>
+                    <li><strong>Python</strong>: Parsing SELinux logs and sending data to InfluxDB.</li>
+                    <li><strong>Pandas</strong>: Aggregating and analyzing log data.</li>
+                    <li><strong>InfluxDB</strong>: Storing time-series data for events.</li>
+                    <li><strong>Grafana</strong>: Creating real-time dashboards for log analysis.</li>
+                    <li><strong>SELinux</strong>: Generating audit logs on a Linux system.</li>
+                </ul>
+            </div>
+            <p>
+                These tools are essential for cybersecurity and data analysis, making this project a strong portfolio piece.
+            </p>
+
+            <h2 class="subtitle">1. Setting Up the Environment</h2>
+            <p>
+                I configured a CentOS 8 virtual machine with SELinux in enforcing mode to generate audit logs.
+            </p>
+            <ul>
+                <li><strong>SELinux</strong>: Enabled with <code>setenforce 1</code>.</li>
+                <li><strong>Python</strong>: Installed with <code>pandas</code> and <code>influxdb-client</code>.</li>
+                <li><strong>InfluxDB</strong>: Set up to store log data.</li>
+                <li><strong>Grafana</strong>: Installed for visualizations.</li>
+            </ul>
+            <p>
+                I triggered sample SELinux violations (e.g., accessing restricted files) to create logs.
+            </p>
+            <img src="images/selinux_setup.jpg" alt="Terminal showing SELinux configuration" class="project-img">
+
+            <h2 class="subtitle">2. Collecting and Parsing Logs</h2>
+            <p>
+                I parsed SELinux audit logs from <code>/var/log/audit/audit.log</code> to extract events like policy violations, including timestamps and event types.
+            </p>
+            <img src="images/parsed_logs.jpg" alt="Parsed SELinux log data in a Pandas DataFrame" class="project-img">
+            <p>
+                The data was processed with Pandas and sent to InfluxDB.
+            </p>
+
+            <h2 class="subtitle">3. Storing Data in InfluxDB</h2>
+            <p>
+                InfluxDB was configured with a database called <code>selinux_data</code> to store event timestamps and details.
+            </p>
+            <img src="images/influxdb_setup.jpg" alt="InfluxDB console showing database creation" class="project-img">
+            <p>
+                Python scripts sent parsed log data to InfluxDB for visualization.
+            </p>
+
+            <h2 class="subtitle">4. Visualizing with Grafana</h2>
+            <p>
+                Grafana dashboards visualized SELinux activity. I created two panels:
+            </p>
+            <ul>
+                <li><strong>Event Timeline</strong>: A line chart showing violation events over time.</li>
+                <li><strong>Event Types</strong>: A table listing the most common violation types.</li>
+            </ul>
+            <img src="images/grafana_timeline.jpg" alt="Grafana timeline of SELinux events" class="project-img">
+            <img src="images/grafana_events.jpg" alt="Grafana table of SELinux event types" class="project-img">
+            <p>
+                These visuals made it easy to spot unusual activity.
+            </p>
+
+            <h2 class="subtitle">5. Detecting Anomalies</h2>
+            <p>
+                I used simple rules to flag anomalies, such as multiple violations from the same process or unusual access attempts.
+            </p>
+            <img src="images/anomaly_summary.jpg" alt="Summary of detected anomalies" class="project-img">
+            <p>
+                The results were displayed in Grafana for clear analysis.
+            </p>
+
+            <h2 class="subtitle">6. Troubleshooting</h2>
+            <p>
+                I encountered a few issues and resolved them as follows:
+            </p>
+            <table>
+                <tr><th>Problem</th><th>Solution</th></tr>
+                <tr><td>No SELinux logs</td><td>Ensured auditd was running with <code>systemctl start auditd</code></td></tr>
+                <tr><td>InfluxDB connection failed</td><td>Verified token and port (8086)</td></tr>
+                <tr><td>Empty Grafana panels</td><td>Corrected InfluxDB query syntax</td></tr>
+            </table>
+            <img src="images/troubleshooting_output.jpg" alt="Terminal showing troubleshooting steps" class="project-img">
+
+            <h2 class="subtitle">7. Why It Matters</h2>
+            <p>
+                This project demonstrates SELinux log analysis, useful for:
+            </p>
+            <ul>
+                <li><strong>System Security</strong>: Detecting unauthorized access.</li>
+                <li><strong>Incident Response</strong>: Investigating security events.</li>
+            </ul>
+            <p>
+                It’s a practical way to learn cybersecurity and visualization.
+            </p>
+
+            <h2 class="subtitle">8. What I Learned</h2>
+            <ul>
+                <li>Parsing SELinux audit logs with Python.</li>
+                <li>Using InfluxDB for time-series data.</li>
+                <li>Creating Grafana dashboards for security monitoring.</li>
+                <li>Debugging log analysis pipelines.</li>
+            </ul>
+
+            <h2 class="subtitle">9. Conclusion</h2>
+            <p>
+                Check the code on my <a href="https://github.com/cipherbite/selinux-security" class="btn">GitHub repository</a>. Want to discuss this project or cybersecurity? Email me at <a href="mailto:david.dylag@protonmail.com">david.dylag@protonmail.com</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 David Dylag | Built with Care</p>
+    </footer>
+
+    <script src="../../assets/js/script.js"></script>
+</body>
+</html>
