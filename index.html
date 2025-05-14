@@ -6,10 +6,11 @@
     <meta name="description" content="David Dylag - Portfolio of Data Engineering, Analytics, and Cybersecurity Projects">
     <meta name="keywords" content="data engineering, analytics, IoT, dark pools, social media, SELinux, machine learning, cybersecurity">
     <meta name="author" content="David Dylag">
-    <title>David Dylag | Data Engineering & Cybersecurity Portfolio</title>
+    <title>David Dylag | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <base href="/cipherbite.github.io/"> <!-- Dodaj, jeśli strona jest w podfolderze na GitHub Pages -->
 </head>
 <body>
     <!-- Nagłówek i nawigacja -->
@@ -71,11 +72,11 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="assets/images/profile-photo.jpg" alt="David Dylag" class="profile-img">
+                    <img src="/assets/images/profile-photo.jpg" alt="David Dylag" class="profile-img">
                     <div class="social-icons">
-                        <a href="https://github.com/cipherbite" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/in/daviddylag" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:david.dylag@protonmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/cipherbite" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/daviddylag" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:david.dylag@protonmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -83,7 +84,9 @@
     </section>
 
     <!-- Sekcja projektów -->
-    <section id="projects" class="section section-dark">
+    <section id="projects" class="section section
+
+-dark">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <p class="section-subtitle">Explore my recent work in data engineering, analytics, and cybersecurity</p>
@@ -93,9 +96,9 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="projects/iot-monitoring/images/screenshot_grafana_dashboard.jpg" alt="IoT Data Monitoring System">
+                        <img src="/projects/iot-monitoring/images/screenshot_grafana_dashboard.jpg" alt="IoT Data Monitoring System">
                         <div class="project-overlay">
-                            <a href="projects/iot-monitoring/index.html" class="btn btn-small">View Details</a>
+                            <a href="/projects/iot-monitoring/index.html" class="btn btn-small">View Details</a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -109,7 +112,7 @@
                             <span>Real-time Data</span>
                         </div>
                         <div class="project-links">
-                            <a href="projects/iot-monitoring/index.html" class="btn btn-small">View Project</a>
+                            <a href="/projects/iot-monitoring/index.html" class="btn btn-small">View Project</a>
                             <a href="https://github.com/cipherbite/cipherbite.github.io" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
@@ -117,9 +120,9 @@
                 
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="assets/images/social-media-trends-thumbnail.jpg" alt="Social Media Trends Analysis">
+                        <img src="/assets/images/social-media-trends-thumbnail.jpg" alt="Social Media Trends Analysis">
                         <div class="project-overlay">
-                            <a href="projects/social-media-trends/index.html" class="btn btn-small">View Details</a>
+                            <a href="/projects/social-media-trends/index.html" class="btn btn-small">View Details</a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -133,7 +136,7 @@
                             <span>Social Media</span>
                         </div>
                         <div class="project-links">
-                            <a href="projects/social-media-trends/index.html" class="btn btn-small">View Project</a>
+                            <a href="/projects/social-media-trends/index.html" class="btn btn-small">View Project</a>
                             <a href="https://github.com/cipherbite/cipherbite.github.io" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
@@ -145,9 +148,9 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="assets/images/selinux-security-thumbnail.jpg" alt="SELinux Security Analysis">
+                        <img src="/assets/images/selinux-security-thumbnail.jpg" alt="SELinux Security Analysis">
                         <div class="project-overlay">
-                            <a href="projects/selinux-security/index.html" class="btn btn-small">View Details</a>
+                            <a href="/projects/selinux-security/index.html" class="btn btn-small">View Details</a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -161,7 +164,7 @@
                             <span>Security Hardening</span>
                         </div>
                         <div class="project-links">
-                            <a href="projects/selinux-security/index.html" class="btn btn-small">View Project</a>
+                            <a href="/projects/selinux-security/index.html" class="btn btn-small">View Project</a>
                             <a href="https://github.com/cipherbite/cipherbite.github.io" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
@@ -169,9 +172,9 @@
                 
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="assets/images/dark-pools-analysis-thumbnail.jpg" alt="Dark Pools and Anti-Forensics Analysis">
+                        <img src="/assets/images/dark-pools-analysis-thumbnail.jpg" alt="Dark Pools and Anti-Forensics Analysis">
                         <div class="project-overlay">
-                            <a href="projects/dark-pools-analysis/index.html" class="btn btn-small">View Details</a>
+                            <a href="/projects/dark-pools-analysis/index.html" class="btn btn-small">View Details</a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -185,7 +188,7 @@
                             <span>Python</span>
                         </div>
                         <div class="project-links">
-                            <a href="projects/dark-pools-analysis/index.html" class="btn btn-small">View Project</a>
+                            <a href="/projects/dark-pools-analysis/index.html" class="btn btn-small">View Project</a>
                             <a href="https://github.com/cipherbite/cipherbite.github.io" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
@@ -217,10 +220,7 @@
                 <div class="skill-category">
                     <h3><i class="fas fa-database"></i> Data Engineering</h3>
                     <ul class="skill-list">
-                        <li>Kafka</li>
-                        <li>MQTT</li>
                         <li>ETL Pipelines</li>
-                        <li>Data Warehousing</li>
                     </ul>
                 </div>
                 
@@ -228,8 +228,6 @@
                     <h3><i class="fas fa-server"></i> Databases</h3>
                     <ul class="skill-list">
                         <li>MariaSQL</li>
-                        <li>MongoDB</li>
-                        <li>InfluxDB</li>
                         <li>ElasticSearch</li>
                     </ul>
                 </div>
@@ -239,8 +237,6 @@
                     <ul class="skill-list">
                         <li>Pandas</li>
                         <li>NumPy</li>
-                        <li>Scikit-learn</li>
-                        <li>TensorFlow</li>
                         <li>PowerBI</li>
                         <li>Google Analytics</li>
                     </ul>
@@ -262,10 +258,7 @@
                     <span>Social Media Analytics</span>
                     <span>Anomaly Detection</span>
                     <span>Security Log Analysis</span>
-                    <span>Threat Intelligence</span>
                     <span>Incident Response</span>
-                    <span>Risk Assessment</span>
-                    <span>User Behavior Analysis</span>
                 </div>
             </div>
         </div>
@@ -335,9 +328,9 @@
                     <div class="footer-social">
                         <h4>Connect</h4>
                         <div class="social-links">
-                            <a href="https://github.com/cipherbite" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://linkedin.com/in/daviddylag" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="mailto:david.dylag@protonmail.com"><i class="fas fa-envelope"></i></a>
+                            <a href="https://github.com/cipherbite" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/daviddylag" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:david.dylag@protonmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
@@ -349,11 +342,11 @@
     </footer>
 
     <!-- Przycisk do przewijania na górę -->
-    <button id="scroll-top" class="scroll-top-btn">
+    <button id="scroll-top" class="scroll-top-btn" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <!-- Skrypty -->
-    <script src="assets/js/script.js"></script>
+    <script src="/assets/js/script.js"></script>
 </body>
 </html>
