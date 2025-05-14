@@ -1,1 +1,326 @@
+/* Zmienne kolorów i stylu w stylu IBM - stonowane i profesjonalne */
+:root {
+    /* Tło strony */
+    --bg-color: #f5f6f5; /* Bardzo jasny szary z subtelnym odcieniem zieleni */
+    --bg-gradient: linear-gradient(135deg, #f5f6f5 0%, #eceeed 70%, #e2e4e3 100%); /* Delikatny gradient */
+    --light-brown-bg: #f2f4f3; /* Bardzo jasny szarozielony dla sekcji */
+    --text-color: #1a1a1a; /* Ciemny, ale łagodniejszy szary dla tekstu */
+    --accent-color: #487a77; /* Stonowany, delikatny zielono-niebieski */
+    --accent-light: #6a9a97; /* Jaśniejszy, subtelny odcień dla hover */
+    --secondary-color: #5c6665; /* Ciemniejszy szary z lekkim odcieniem zieleni */
+    --card-bg: #fafbfa; /* Perłowy odcień zamiast białego dla kart */
+    --light-color: #ffffff;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.06); /* Subtelny cień */
+    --transition: all 0.3s ease-in-out;
+    --code-bg: #f3f4f3; /* Bardzo jasny szary dla kodu */
 
+    /* Kolory dla tagów - stonowane odcienie szaro-zielone */
+    --tag-color-1: #e8f0ef; /* Bardzo jasny szarozielony */
+    --tag-color-2: #d4e2e1; /* Delikatny szarozielony */
+    --tag-color-3: #e6e9e8; /* Jasny szary z lekkim odcieniem zieleni */
+    --tag-color-4: #d1d7d6; /* Średni szary z subtelnym odcieniem */
+    --tag-color-5: #b8c1c0; /* Ciemniejszy szary z zielonym podtonem */
+}
+
+/* Reset i podstawowe style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background: var(--bg-gradient);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Kontener */
+.container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Nagłówek */
+.header {
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.logo-highlight {
+    color: var(--accent-color);
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* Sekcje */
+.section {
+    padding: 60px 0;
+    background: var(--bg-color);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title::after {
+    content: '';
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+    display: block;
+    margin: 16px auto 0;
+}
+
+/* Style dla strony projektu Shadow Tracker */
+.subtitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--tag-color-5);
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.tech-stack {
+    margin-bottom: 30px;
+}
+
+.tech-stack ul, 
+.section ul {
+    margin-left: 24px;
+    margin-bottom: 20px;
+}
+
+.tech-stack li,
+.section li {
+    margin-bottom: 10px;
+}
+
+/* Style dla obrazów projektu */
+.project-img {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--tag-color-4);
+}
+
+/* Style dla tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 30px;
+    box-shadow: var(--shadow);
+}
+
+table th {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    text-align: left;
+    padding: 12px 15px;
+}
+
+table td {
+    border: 1px solid var(--tag-color-4);
+    padding: 12px 15px;
+}
+
+table tr:nth-child(even) {
+    background-color: var(--tag-color-1);
+}
+
+table tr:hover {
+    background-color: var(--tag-color-2);
+}
+
+/* Style dla kodu */
+pre {
+    background: var(--code-bg);
+    padding: 20px;
+    overflow-x: auto;
+    margin: 20px 0;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent-color);
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    color: var(--secondary-color);
+}
+
+pre code {
+    color: var(--text-color);
+}
+
+p code, li code {
+    background-color: var(--code-bg);
+    padding: 2px 6px;
+    color: var(--accent-color);
+}
+
+/* Przyciski */
+.btn {
+    background: var(--accent-color);
+    color: var(--light-color);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn:hover {
+    background: var(--accent-light);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+/* Linki */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent-light);
+    text-decoration: underline;
+}
+
+/* Podkreślone linki w paragrafach */
+p a:not(.btn) {
+    border-bottom: 1px dotted var(--accent-color);
+}
+
+p a:not(.btn):hover {
+    border-bottom: 1px solid var(--accent-light);
+}
+
+/* Stopka */
+.footer {
+    background: var(--card-bg);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+}
+
+.footer p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* Responsywność */
+@media (max-width: 992px) {
+    .container {
+        width: 95%;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.4rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+    }
+    
+    table th, 
+    table td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0 12px;
+    }
+    
+    pre {
+        padding: 15px;
+    }
+    
+    .header .container {
+        flex-direction: column;
+        padding: 12px 0;
+    }
+    
+    .logo {
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+    }
+}
