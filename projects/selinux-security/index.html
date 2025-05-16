@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SELinux Security Analysis: Monitoring Logs and Detecting Anomalies with Grafana Visualizations for cybersecurity">
-    <meta name="keywords" content="SELinux, cybersecurity, log analysis, Grafana, InfluxDB, anomaly detection, security monitoring, log visualization, threat detection">
+    <meta name="description" content="SELinux Security Analysis: Monitoring Logs and Detecting Anomalies with Prometheus and Grafana Visualizations for cybersecurity">
+    <meta name="keywords" content="SELinux, cybersecurity, log analysis, Grafana, InfluxDB, Prometheus, anomaly detection, security monitoring, log visualization, threat detection, real-time monitoring">
     <meta name="author" content="David Dylag">
     <title>SELinux Security Analysis | David Dylag</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -32,10 +32,10 @@
 
             <!-- Introduction -->
             <p class="intro-text">
-                SELinux Security Analysis is a beginner-friendly cybersecurity project that monitors SELinux logs to enhance system security. By parsing log data and detecting anomalies like policy violations, it provides insights into potential threats, visualized in clear Grafana dashboards.
+                SELinux Security Analysis is a beginner-friendly cybersecurity project that monitors SELinux logs to enhance system security. By parsing log data, collecting metrics with Prometheus, and detecting anomalies like policy violations, it provides real-time insights into potential threats, visualized in clear Grafana dashboards.
             </p>
             <p class="intro-text">
-                This project is ideal for learning log analysis and visualization. It’s relevant for system security and incident response, showcasing skills in Python, InfluxDB, and Grafana.
+                This project is ideal for learning log analysis, metric monitoring, and visualization. It’s relevant for system security and incident response, showcasing skills in Python, Prometheus, InfluxDB, and Grafana.
             </p>
 
             <!-- Technologies Used -->
@@ -44,8 +44,9 @@
                 <ul>
                     <li><strong>Python</strong>: Extracts and processes SELinux log data for analysis.</li>
                     <li><strong>Pandas</strong>: Organizes and aggregates log data for insights.</li>
+                    <li><strong>Prometheus</strong>: Collects real-time metrics like violation counts for monitoring.</li>
                     <li><strong>InfluxDB</strong>: Stores time-series data like event timestamps and details.</li>
-                    <li><strong>Grafana</strong>: Creates real-time dashboards to visualize security events.</li>
+                    <li><strong>Grafana</strong>: Creates real-time dashboards to visualize security events and metrics.</li>
                     <li><strong>SELinux</strong>: Generates audit logs for monitoring on a Linux system.</li>
                 </ul>
             </div>
@@ -55,31 +56,40 @@
 
             <h2 class="subtitle">1. Setting Up the Environment</h2>
             <p>
-                I configured a CentOS 8 virtual machine with SELinux in enforcing mode to generate audit logs.
+                I configured a CentOS 8 virtual machine with SELinux in enforcing mode to generate audit logs, and set up Prometheus for metric collection.
             </p>
             <ul>
                 <li><strong>SELinux</strong>: Enabled with <code>setenforce 1</code>.</li>
-                <li><strong>Python</strong>: Installed with <code>pandas</code> and <code>influxdb-client</code>.</li>
+                <li><strong>Python</strong>: Installed with <code>pandas</code>, <code>influxdb-client</code>, and <code>prometheus-client</code>.</li>
+                <li><strong>Prometheus</strong>: Installed and configured to scrape metrics from a custom endpoint.</li>
                 <li><strong>InfluxDB</strong>: Set up to store log data.</li>
                 <li><strong>Grafana</strong>: Installed for visualizations.</li>
             </ul>
             <p>
-                I triggered sample SELinux violations (e.g., accessing restricted files) to create logs.
+                I triggered sample SELinux violations (e.g., accessing restricted files) to create logs and metrics.
             </p>
             <img src="images/selinux_setup.jpg" alt="Terminal showing SELinux configuration" class="project-img">
 
             <h2 class="subtitle">2. Collecting and Parsing Logs</h2>
             <p>
-                I parsed SELinux audit logs from <code>/var/log/audit/audit.log</code> to extract events like policy violations, including timestamps and event types. Below is an example of the parsing script:
+                I parsed SELinux audit logs from <code>/var/log/audit/audit.log</code> to extract events like policy violations, including timestamps and event types. Metrics were exported to Prometheus using a custom Python script:
             </p>
             <pre><code class="language-python">
 import pandas as pd
 from influxdb_client import InfluxDBClient, Point
 from influxdb_client.client.write_api import WritePrecision
+from prometheus_client import Counter, start_http_server
+import time
+
+# Start Prometheus metrics server
+selinux_denials = Counter('selinux_avc_denials_total', 'Total SELinux AVC denials')
+start_http_server(8000)
 
 # Parse audit.log
 with open("/var/log/audit/audit.log", "r") as file:
     logs = [line.strip() for line in file if "AVC" in line]  # Filter for denials
+    for log in logs:
+        selinux_denials.inc()  # Increment Prometheus counter
 df = pd.DataFrame(logs, columns=["raw_log"])
 
 # Extract timestamps and event types
@@ -95,12 +105,12 @@ for index, row in df.iterrows():
             </code></pre>
             <img src="images/parsed_logs.jpg" alt="Parsed SELinux log data in a Pandas DataFrame" class="project-img">
             <p>
-                The data was processed with Pandas and sent to InfluxDB.
+                The data was processed with Pandas and sent to InfluxDB, while Prometheus collected real-time metrics.
             </p>
 
             <h2 class="subtitle">3. Storing Data in InfluxDB</h2>
             <p>
-                InfluxDB was configured with a database called <code>selinux_data</code> to store event timestamps and details.
+                InfluxDB was configured with a database called <code>selinux_data</code> to store event timestamps and details, complementing Prometheus’ metric storage.
             </p>
             <img src="images/influxdb_setup.jpg" alt="InfluxDB console showing database creation" class="project-img">
             <p>
@@ -109,21 +119,21 @@ for index, row in df.iterrows():
 
             <h2 class="subtitle">4. Visualizing with Grafana</h2>
             <p>
-                Grafana dashboards visualized SELinux activity, using queries like <code>SELECT COUNT(*) FROM selinux_events WHERE time >= now() - 1h GROUP BY time(5m)</code>. I created two panels:
+                Grafana dashboards visualized SELinux activity, integrating both InfluxDB and Prometheus data sources. For Prometheus, I used queries like <code>rate(selinux_avc_denials_total[5m])</code>. I created two panels:
             </p>
             <ul>
-                <li><strong>Event Timeline</strong>: A line chart showing violation events over time.</li>
-                <li><strong>Event Types</strong>: A table listing the most common violation types.</li>
+                <li><strong>Event Timeline</strong>: A line chart showing violation events over time (from Prometheus).</li>
+                <li><strong>Event Types</strong>: A table listing the most common violation types (from InfluxDB).</li>
             </ul>
             <img src="images/grafana_timeline.jpg" alt="Grafana timeline of SELinux events" class="project-img">
             <img src="images/grafana_events.jpg" alt="Grafana table of SELinux event types" class="project-img">
             <p>
-                These visuals made it easy to spot unusual activity.
+                These visuals made it easy to spot unusual activity in real time.
             </p>
 
             <h2 class="subtitle">5. Detecting Anomalies</h2>
             <p>
-                I used simple rules to flag anomalies, such as multiple violations from the same process or unusual access attempts. Below is an example of the anomaly detection logic:
+                I used simple rules to flag anomalies, such as multiple violations from the same process or unusual access attempts, with Prometheus providing real-time metrics. Below is an example of anomaly detection logic:
             </p>
             <pre><code class="language-python">
 import pandas as pd
@@ -138,9 +148,27 @@ process_counts = df.groupby('comm').size()
 anomalies = process_counts[process_counts > 5]  # Threshold for anomalies
 print(anomalies)
             </code></pre>
+            <h3>Prometheus Alerting</h3>
+            <p>
+                Prometheus’ Alertmanager was configured to send notifications for high violation rates, using rules like:
+            </p>
+            <pre><code class="language-yaml">
+groups:
+- name: selinux_alerts
+  rules:
+  - alert: HighSELinuxDenials
+    expr: rate(selinux_avc_denials_total[5m]) > 10
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High rate of SELinux AVC denials detected"
+      description: "More than 10 denials per minute for 5 minutes."
+            </code></pre>
+           \textbf{Alertmanager} sent alerts to a configured endpoint (e.g., email or Slack), enhancing incident response.
             <img src="images/anomaly_summary.jpg" alt="Summary of detected anomalies" class="project-img">
             <p>
-                The results were displayed in Grafana for clear analysis.
+                The results were displayed in Grafana for clear analysis, with alerts visible in real time.
             </p>
 
             <h2 class="subtitle">6. Troubleshooting</h2>
@@ -151,28 +179,29 @@ print(anomalies)
                 <tr><th>Problem</th><th>Solution</th></tr>
                 <tr><td>No SELinux logs</td><td>Ensured auditd was running with <code>systemctl start auditd</code></td></tr>
                 <tr><td>InfluxDB connection failed</td><td>Verified token and port (8086)</td></tr>
-                <tr><td>Empty Grafana panels</td><td>Corrected InfluxDB query syntax</td></tr>
+                <tr><td>Prometheus not scraping metrics</td><td>Checked endpoint and port (8000) in <code>prometheus.yml</code></td></tr>
+                <tr><td>Empty Grafana panels</td><td>Corrected InfluxDB and PromQL query syntax</td></tr>
             </table>
             <img src="images/troubleshooting_output.jpg" alt="Terminal showing troubleshooting steps" class="project-img">
 
             <h2 class="subtitle">7. Why It Matters</h2>
             <p>
-                This project demonstrates SELinux log analysis, helping organizations strengthen system security by identifying potential threats early. It’s useful for:
+                This project demonstrates SELinux log analysis with real-time monitoring via Prometheus, helping organizations strengthen system security by identifying and responding to threats early. It’s useful for:
             </p>
             <ul>
-                <li><strong>System Security</strong>: Detecting unauthorized access.</li>
-                <li><strong>Incident Response</strong>: Investigating security events.</li>
+                <li><strong>System Security</strong>: Detecting unauthorized access in real time.</li>
+                <li><strong>Incident Response</strong>: Investigating and mitigating security events.</li>
             </ul>
             <p>
-                It’s a practical way to learn cybersecurity and visualization.
+                It’s a practical way to learn cybersecurity, metric monitoring, and visualization.
             </p>
 
             <h2 class="subtitle">8. What I Learned</h2>
             <ul>
                 <li>Parsing SELinux audit logs with Python.</li>
-                <li>Using InfluxDB for time-series data.</li>
-                <li>Creating Grafana dashboards for security monitoring.</li>
-                <li>Debugging log analysis pipelines.</li>
+                <li>Using Prometheus for real-time metric collection and alerting.</li>
+                <li>Integrating InfluxDB and Prometheus with Grafana for visualization.</li>
+                <li>Debugging log and metric pipelines.</li>
             </ul>
 
             <h2 class="subtitle">9. Conclusion</h2>
