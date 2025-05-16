@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SELinux Security Analysis: Monitoring Logs and Detecting Anomalies with Grafana Visualizations">
-    <meta name="keywords" content="SELinux, cybersecurity, log analysis, Grafana, InfluxDB, anomaly detection">
+    <meta name="description" content="SELinux Security Analysis: Monitoring Logs and Detecting Anomalies with Grafana Visualizations for cybersecurity">
+    <meta name="keywords" content="SELinux, cybersecurity, log analysis, Grafana, InfluxDB, anomaly detection, security monitoring, log visualization, threat detection">
     <meta name="author" content="David Dylag">
     <title>SELinux Security Analysis | David Dylag</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -42,11 +42,11 @@
             <h2 class="subtitle">Technologies Used</h2>
             <div class="tech-stack">
                 <ul>
-                    <li><strong>Python</strong>: Parsing SELinux logs and sending data to InfluxDB.</li>
-                    <li><strong>Pandas</strong>: Aggregating and analyzing log data.</li>
-                    <li><strong>InfluxDB</strong>: Storing time-series data for events.</li>
-                    <li><strong>Grafana</strong>: Creating real-time dashboards for log analysis.</li>
-                    <li><strong>SELinux</strong>: Generating audit logs on a Linux system.</li>
+                    <li><strong>Python</strong>: Extracts and processes SELinux log data for analysis.</li>
+                    <li><strong>Pandas</strong>: Organizes and aggregates log data for insights.</li>
+                    <li><strong>InfluxDB</strong>: Stores time-series data like event timestamps and details.</li>
+                    <li><strong>Grafana</strong>: Creates real-time dashboards to visualize security events.</li>
+                    <li><strong>SELinux</strong>: Generates audit logs for monitoring on a Linux system.</li>
                 </ul>
             </div>
             <p>
@@ -70,8 +70,29 @@
 
             <h2 class="subtitle">2. Collecting and Parsing Logs</h2>
             <p>
-                I parsed SELinux audit logs from <code>/var/log/audit/audit.log</code> to extract events like policy violations, including timestamps and event types.
+                I parsed SELinux audit logs from <code>/var/log/audit/audit.log</code> to extract events like policy violations, including timestamps and event types. Below is an example of the parsing script:
             </p>
+            <pre><code class="language-python">
+import pandas as pd
+from influxdb_client import InfluxDBClient, Point
+from influxdb_client.client.write_api import WritePrecision
+
+# Parse audit.log
+with open("/var/log/audit/audit.log", "r") as file:
+    logs = [line.strip() for line in file if "AVC" in line]  # Filter for denials
+df = pd.DataFrame(logs, columns=["raw_log"])
+
+# Extract timestamps and event types
+df['timestamp'] = df['raw_log'].str.extract(r'time=(\d+\.\d+)')
+df['event_type'] = df['raw_log'].str.extract(r'type=(\w+)')
+
+# Send to InfluxDB
+client = InfluxDBClient(url="http://localhost:8086", token="my-token", org="my-org")
+write_api = client.write_api()
+for index, row in df.iterrows():
+    point = Point("selinux_events").field("event_type", row['event_type']).time(row['timestamp'], WritePrecision.S)
+    write_api.write(bucket="selinux_data", record=point)
+            </code></pre>
             <img src="images/parsed_logs.jpg" alt="Parsed SELinux log data in a Pandas DataFrame" class="project-img">
             <p>
                 The data was processed with Pandas and sent to InfluxDB.
@@ -88,7 +109,7 @@
 
             <h2 class="subtitle">4. Visualizing with Grafana</h2>
             <p>
-                Grafana dashboards visualized SELinux activity. I created two panels:
+                Grafana dashboards visualized SELinux activity, using queries like <code>SELECT COUNT(*) FROM selinux_events WHERE time >= now() - 1h GROUP BY time(5m)</code>. I created two panels:
             </p>
             <ul>
                 <li><strong>Event Timeline</strong>: A line chart showing violation events over time.</li>
@@ -102,8 +123,21 @@
 
             <h2 class="subtitle">5. Detecting Anomalies</h2>
             <p>
-                I used simple rules to flag anomalies, such as multiple violations from the same process or unusual access attempts.
+                I used simple rules to flag anomalies, such as multiple violations from the same process or unusual access attempts. Below is an example of the anomaly detection logic:
             </p>
+            <pre><code class="language-python">
+import pandas as pd
+from influxdb_client import InfluxDBClient
+
+client = InfluxDBClient(url="http://localhost:8086", token="my-token", org="my-org")
+query = 'from(bucket:"selinux_data") |> range(start:-1h) |> filter(fn:(r) => r._measurement == "selinux_events")'
+df = client.query_api().query_data_frame(query)
+
+# Flag processes with multiple violations
+process_counts = df.groupby('comm').size()
+anomalies = process_counts[process_counts > 5]  # Threshold for anomalies
+print(anomalies)
+            </code></pre>
             <img src="images/anomaly_summary.jpg" alt="Summary of detected anomalies" class="project-img">
             <p>
                 The results were displayed in Grafana for clear analysis.
@@ -123,7 +157,7 @@
 
             <h2 class="subtitle">7. Why It Matters</h2>
             <p>
-                This project demonstrates SELinux log analysis, useful for:
+                This project demonstrates SELinux log analysis, helping organizations strengthen system security by identifying potential threats early. It’s useful for:
             </p>
             <ul>
                 <li><strong>System Security</strong>: Detecting unauthorized access.</li>
@@ -143,7 +177,7 @@
 
             <h2 class="subtitle">9. Conclusion</h2>
             <p>
-                Check the code on my <a href="https://github.com/cipherbite/selinux-security" class="btn">GitHub repository</a>. Want to discuss this project or cybersecurity? Email me at <a href="mailto:david.dylag@protonmail.com">david.dylag@protonmail.com</a>.
+                Explore the code, run the system yourself, or reach out to discuss this project! Visit my <a href="https://github.com/cipherbite/selinux-security" class="btn btn-primary">GitHub repository</a> or contact me at <a href="mailto:david.dylag@protonmail.com">david.dylag@protonmail.com</a>.
             </p>
         </div>
     </section>
