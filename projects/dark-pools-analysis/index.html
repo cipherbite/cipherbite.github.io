@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shadow Tracker: Analyzing User Behavior in Tor and VPN with Grafana Visualizations for cybersecurity and digital forensics">
-    <meta name="keywords" content="Tor, VPN, cybersecurity, digital forensics, Grafana, InfluxDB, data analysis, user behavior analysis, privacy tools, time-series visualization">
+    <meta name="description" content="Shadow Tracker: Analyzing User Behavior in Tor and VPN with Prometheus and Grafana Visualizations for cybersecurity and digital forensics">
+    <meta name="keywords" content="Tor, VPN, cybersecurity, digital forensics, Grafana, InfluxDB, Prometheus, data analysis, user behavior analysis, privacy tools, time-series visualization, real-time monitoring">
     <meta name="author" content="David Dylag">
     <title>Shadow Tracker | David Dylag</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -32,10 +32,10 @@
 
             <!-- Introduction -->
             <p class="intro-text">
-                Shadow Tracker is a beginner-friendly cybersecurity project that explores how users interact with privacy tools like Tor and VPNs. By analyzing artifacts such as Tor’s browsing history and VPN connection logs, it reveals patterns like session times and IP changes, visualized beautifully in Grafana dashboards.
+                Shadow Tracker is a beginner-friendly cybersecurity project that explores how users interact with privacy tools like Tor and VPNs. By analyzing artifacts such as Tor’s browsing history and VPN connection logs, and collecting real-time metrics with Prometheus, it reveals patterns like session times and IP changes, visualized in Grafana dashboards.
             </p>
             <p class="intro-text">
-                This project is perfect for learning digital forensics and data visualization. It’s relevant for cybercrime investigations and threat intelligence, showcasing skills in Python, InfluxDB, and Grafana.
+                This project is perfect for learning digital forensics, data visualization, and real-time monitoring. It’s relevant for cybercrime investigations and threat intelligence, showcasing skills in Python, InfluxDB, Prometheus, and Grafana.
             </p>
 
             <!-- Technologies Used -->
@@ -45,40 +45,47 @@
                     <li><strong>Python</strong>: Extracts and processes data from Tor and VPN artifacts for storage.</li>
                     <li><strong>SQLite3</strong>: Reads browsing history from Tor’s <code>places.sqlite</code> database.</li>
                     <li><strong>Volatility3</strong>: Analyzes system memory to verify Tor/VPN activity.</li>
+                    <li><strong>Prometheus</strong>: Collects real-time metrics like session counts and IP changes.</li>
                     <li><strong>InfluxDB</strong>: Stores time-series data like session timestamps and IPs.</li>
-                    <li><strong>Grafana</strong>: Creates real-time dashboards to visualize user behavior.</li>
+                    <li><strong>Grafana</strong>: Creates real-time dashboards to visualize user behavior and metrics.</li>
                     <li><strong>Tor Browser</strong>: Generates browsing artifacts for analysis.</li>
                     <li><strong>OpenVPN</strong>: Logs VPN connections for tracking.</li>
                 </ul>
             </div>
             <p>
-                These tools are widely used in cybersecurity and data engineering, making them great for learning and portfolio-building.
+                These tools are widely used in cybersecurity and data engineering, making this project a strong portfolio piece.
             </p>
 
             <h2 class="subtitle">1. Setting Up the Environment</h2>
             <p>
-                I set up a virtual machine with Ubuntu 20.04 to simulate user activities in a safe, isolated environment.
+                I set up a virtual machine with Ubuntu 20.04 to simulate user activities in a safe, isolated environment, and configured Prometheus for real-time metric collection.
             </p>
             <ul>
                 <li><strong>Tor Browser</strong>: Installed to generate browsing history.</li>
                 <li><strong>OpenVPN</strong>: Configured with a sample VPN provider, logging enabled.</li>
+                <li><strong>Prometheus</strong>: Installed and set up to scrape metrics from a custom endpoint.</li>
                 <li><strong>InfluxDB</strong>: Set up to store time-series data.</li>
                 <li><strong>Grafana</strong>: Installed for dashboard creation.</li>
-                <li><strong>Python</strong>: Used with <code>sqlite3</code> and <code>influxdb-client</code>.</li>
+                <li><strong>Python</strong>: Used with <code>sqlite3</code>, <code>influxdb-client</code>, and <code>prometheus-client</code>.</li>
             </ul>
             <p>
-                I launched Tor Browser and OpenVPN, then created a memory dump to capture system state.
+                I launched Tor Browser and OpenVPN, created a memory dump, and started a metrics server for Prometheus.
             </p>
             <img src="images/tor_vpn_setup.jpg" alt="Terminal showing Tor Browser and OpenVPN running" class="project-img">
 
             <h2 class="subtitle">2. Collecting Artifacts</h2>
             <p>
-                I collected data from Tor and VPN to understand user behavior. Below is an example of parsing Tor’s browsing history:
+                I collected data from Tor and VPN to understand user behavior, exporting metrics to Prometheus. Below is an example of parsing Tor’s browsing history and exposing metrics:
             </p>
             <pre><code class="language-python">
 import sqlite3
 from influxdb_client import InfluxDBClient, Point
 from influxdb_client.client.write_api import WritePrecision
+from prometheus_client import Counter, start_http_server
+
+# Start Prometheus metrics server
+tor_sessions = Counter('tor_sessions_total', 'Total Tor sessions')
+start_http_server(8000)
 
 # Connect to Tor's places.sqlite
 conn = sqlite3.connect("places.sqlite")
@@ -86,51 +93,52 @@ cursor = conn.cursor()
 cursor.execute("SELECT url, visit_date FROM moz_places")
 visits = cursor.fetchall()
 
-# Send to InfluxDB
+# Send to InfluxDB and increment Prometheus counter
 client = InfluxDBClient(url="http://localhost:8086", token="my-token", org="my-org")
 write_api = client.write_api()
 for url, timestamp in visits:
     point = Point("tor_visits").field("url", url).time(timestamp, WritePrecision.MS)
     write_api.write(bucket="tor_vpn_data", record=point)
+    tor_sessions.inc()  # Increment session counter
 conn.close()
             </code></pre>
             <ul>
-                <li><strong>Tor Browsing History</strong>: Parsed <code>places.sqlite</code> to extract URLs and timestamps of visited sites.</li>
-                <li><strong>VPN Logs</strong>: Extracted connection times and IP addresses from OpenVPN logs.</li>
-                <li><strong>Memory Check</strong>: Used Volatility3 to confirm Tor and VPN processes were running.</li>
+                <li><strong>Tor Browsing History</strong>: Parsed <code>places.sqlite</code> to extract URLs and timestamps.</li>
+                <li><strong>VPN Logs</strong>: Extracted connection times and IPs from OpenVPN logs.</li>
+                <li><strong>Memory Check</strong>: Used Volatility3 to confirm Tor/VPN processes.</li>
             </ul>
             <p>
-                The parsed data was saved to InfluxDB for visualization.
+                The parsed data was saved to InfluxDB, while Prometheus collected metrics like session counts.
             </p>
             <img src="images/sqlite_results.jpg" alt="Parsed Tor browsing history from places.sqlite" class="project-img">
             <img src="images/vpn_logs.jpg" alt="OpenVPN log showing connection details" class="project-img">
 
             <h2 class="subtitle">3. Storing Data in InfluxDB</h2>
             <p>
-                InfluxDB was configured to store time-series data, like session timestamps and IP connections. I created a database called <code>tor_vpn_data</code> and used Python to send parsed artifacts.
+                InfluxDB was configured to store time-series data, like session timestamps and IP connections, complementing Prometheus’ metric storage.
             </p>
             <img src="images/influxdb_setup.jpg" alt="InfluxDB console showing database creation" class="project-img">
             <p>
-                This step ensured data was ready for Grafana to visualize.
+                This ensured data was ready for Grafana visualization.
             </p>
 
             <h2 class="subtitle">4. Visualizing with Grafana</h2>
             <p>
-                Grafana dashboards brought the data to life, using queries like <code>SELECT MEAN(visit_count) FROM tor_visits WHERE time >= now() - 1h GROUP BY time(5m)</code>. I created two main panels:
+                Grafana dashboards visualized user behavior, using both InfluxDB and Prometheus data sources. For Prometheus, I used queries like <code>rate(tor_sessions_total[5m])</code>. I created two main panels:
             </p>
             <ul>
-                <li><strong>Session Timeline</strong>: A line chart showing when Tor sessions occurred.</li>
-                <li><strong>IP Connections</strong>: A table listing VPN IPs and connection times.</li>
+                <li><strong>Session Timeline</strong>: A line chart showing Tor session rates over time (from Prometheus).</li>
+                <li><strong>IP Connections</strong>: A table listing VPN IPs and connection times (from InfluxDB).</li>
             </ul>
             <img src="images/grafana_timeline.jpg" alt="Grafana timeline of Tor sessions" class="project-img">
             <img src="images/grafana_ip_table.jpg" alt="Grafana table of VPN connections" class="project-img">
             <p>
-                These visualizations made it easy to spot trends, like frequent VPN IP changes.
+                These visualizations, enhanced by Prometheus metrics, highlighted trends like frequent VPN IP changes.
             </p>
 
             <h2 class="subtitle">5. Detecting Suspicious Activity</h2>
             <p>
-                I used simple rules to flag suspicious behaviors, such as Tor sessions shorter than 1 minute or VPN connections with multiple IP changes in an hour. Below is an example of the detection logic:
+                I used rules to flag suspicious behaviors, such as short Tor sessions or rapid VPN IP changes, with Prometheus providing real-time metrics. Below is an example of detection logic:
             </p>
             <pre><code class="language-python">
 from influxdb_client import InfluxDBClient
@@ -145,26 +153,47 @@ df['session_duration'] = df['_time'].diff().dt.total_seconds()
 suspicious = df[df['session_duration'] < 60]
 print(suspicious[['_time', 'url', 'session_duration']])
             </code></pre>
+            <h3>Prometheus Alerting</h3>
+            <p>
+                Prometheus’ Alertmanager sent notifications for anomalies, such as high session rates, using rules like:
+            </p>
+            <pre><code class="language-yaml">
+groups:
+- name: shadow_tracker_alerts
+  rules:
+  - alert: SuspiciousTorActivity
+    expr: rate(tor_sessions_total[5m]) > 10
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High rate of Tor sessions detected"
+      description: "More than 10 Tor sessions per minute for 5 minutes."
+            </code></pre>
+            <p>
+                Alerts were sent to a configured endpoint (e.g., email), enhancing real-time threat detection.
+            </p>
             <img src="images/suspicious_activity.jpg" alt="Table of flagged suspicious sessions" class="project-img">
             <p>
-                The results were displayed in Grafana, making it clear and visual for analysis.
+                Results were displayed in Grafana, with alerts visible in real time.
             </p>
 
             <h2 class="subtitle">6. Troubleshooting</h2>
             <p>
-                I ran into a few issues while building the project. Here’s how I fixed them:
+                I ran into a few issues and fixed them:
             </p>
             <table>
                 <tr><th>Problem</th><th>Solution</th></tr>
                 <tr><td>Tor <code>places.sqlite</code> corrupted</td><td>Checked database with <code>sqlite3.pragma_integrity_check</code></td></tr>
                 <tr><td>VPN logs not detailed</td><td>Enabled verbose logging in OpenVPN config</td></tr>
-                <tr><td>InfluxDB connection failed</td><td>Verified token and port (8086) in Python script</td></tr>
+                <tr><td>InfluxDB connection failed</td><td>Verified token and port (8086)</td></tr>
+                <tr><td>Prometheus not scraping metrics</td><td>Checked endpoint and port (8000) in <code>prometheus.yml</code></td></tr>
             </table>
             <img src="images/troubleshooting_output.jpg" alt="Terminal showing troubleshooting steps" class="project-img">
 
             <h2 class="subtitle">7. Why It Matters</h2>
             <p>
-                Shadow Tracker demonstrates how to analyze privacy tools like Tor and VPNs, enabling better tracking of user behavior for security purposes. It can help organizations detect unauthorized activity, enhancing cybersecurity measures. It’s useful for:
+                Shadow Tracker demonstrates how to analyze privacy tools like Tor and VPNs with real-time monitoring via Prometheus, enabling faster detection of unauthorized activity for enhanced cybersecurity. It’s useful for:
             </p>
             <ul>
                 <li><strong>Cybercrime Investigations</strong>: Understanding user activity in dark pools.</li>
@@ -176,10 +205,10 @@ print(suspicious[['_time', 'url', 'session_duration']])
 
             <h2 class="subtitle">8. What I Learned</h2>
             <ul>
-                <li>How to parse Tor’s <code>places.sqlite</code> and VPN logs.</li>
-                <li>Setting up InfluxDB and Grafana for time-series data.</li>
-                <li>Using Volatility3 for basic memory analysis.</li>
-                <li>Debugging data pipelines with Python.</li>
+                <li>Parsing Tor’s <code>places.sqlite</code> and VPN logs.</li>
+                <li>Using Prometheus for real-time metric collection and alerting.</li>
+                <li>Integrating InfluxDB and Prometheus with Grafana.</li>
+                <li>Debugging data and metric pipelines.</li>
             </ul>
 
             <h2 class="subtitle">9. Conclusion</h2>
