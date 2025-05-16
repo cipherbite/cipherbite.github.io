@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Social Media Trends Analysis: Exploring Post Activity and Hashtags with Grafana Visualizations">
-    <meta name="keywords" content="social media, data analysis, Grafana, InfluxDB, Python, trends, hashtags">
+    <meta name="description" content="Social Media Trends Analysis: Exploring Post Activity and Hashtags with Grafana Visualizations for marketing analytics">
+    <meta name="keywords" content="social media, data analysis, Grafana, InfluxDB, Python, trends, hashtags, social media analytics, data visualization, trend analysis">
     <meta name="author" content="David Dylag">
     <title>Social Media Trends Analysis | David Dylag</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -42,10 +42,10 @@
             <h2 class="subtitle">Technologies Used</h2>
             <div class="tech-stack">
                 <ul>
-                    <li><strong>Python</strong>: Processing post data and sending to InfluxDB.</li>
-                    <li><strong>Pandas</strong>: Aggregating and analyzing post data.</li>
-                    <li><strong>InfluxDB</strong>: Storing time-series data for posts and hashtags.</li>
-                    <li><strong>Grafana</strong>: Creating real-time dashboards for trends.</li>
+                    <li><strong>Python</strong>: Processes and organizes social media data for analysis.</li>
+                    <li><strong>Pandas</strong>: Handles data aggregation and trend analysis.</li>
+                    <li><strong>InfluxDB</strong>: Stores time-series data like post timestamps and hashtag counts.</li>
+                    <li><strong>Grafana</strong>: Creates real-time dashboards to visualize trends.</li>
                 </ul>
             </div>
             <p>
@@ -68,8 +68,27 @@
 
             <h2 class="subtitle">2. Collecting and Parsing Data</h2>
             <p>
-                I created a dataset simulating social media posts, including timestamps, usernames, and hashtags. The data was parsed with Pandas to extract key metrics like post frequency and hashtag usage.
+                I created a dataset simulating social media posts, including timestamps, usernames, and hashtags. The data was parsed with Pandas to extract key metrics like post frequency and hashtag usage. Below is an example of the parsing script:
             </p>
+            <pre><code class="language-python">
+import pandas as pd
+from influxdb_client import InfluxDBClient, Point
+from influxdb_client.client.write_api import WritePrecision
+
+# Load simulated data
+data = pd.read_csv("social_media_data.csv")
+data['timestamp'] = pd.to_datetime(data['timestamp'])
+
+# Count hashtags
+hashtag_counts = data['hashtags'].str.split().explode().value_counts()
+
+# Send to InfluxDB
+client = InfluxDBClient(url="http://localhost:8086", token="my-token", org="my-org")
+write_api = client.write_api()
+for index, row in data.iterrows():
+    point = Point("posts").field("username", row['username']).time(row['timestamp'], WritePrecision.MS)
+    write_api.write(bucket="social_media_data", record=point)
+            </code></pre>
             <img src="images/parsed_data.jpg" alt="Parsed social media data in a Pandas DataFrame" class="project-img">
             <p>
                 The parsed data was sent to InfluxDB for visualization.
@@ -86,7 +105,7 @@
 
             <h2 class="subtitle">4. Visualizing with Grafana</h2>
             <p>
-                Grafana dashboards made the trends easy to understand. I created two panels:
+                Grafana dashboards made the trends easy to understand, using queries like <code>SELECT COUNT(*) FROM posts WHERE time >= now() - 1h GROUP BY time(10m)</code>. I created two panels:
             </p>
             <ul>
                 <li><strong>Post Timeline</strong>: A line chart showing post activity over time.</li>
@@ -100,8 +119,21 @@
 
             <h2 class="subtitle">5. Analyzing Trends</h2>
             <p>
-                I identified trends, such as high posting activity during evenings and popular hashtags related to specific topics.
+                I identified trends, such as high posting activity during evenings and popular hashtags related to specific topics. Below is an example of trend analysis:
             </p>
+            <pre><code class="language-python">
+import pandas as pd
+from influxdb_client import InfluxDBClient
+
+client = InfluxDBClient(url="http://localhost:8086", token="my-token", org="my-org")
+query = 'from(bucket:"social_media_data") |> range(start:-1d) |> filter(fn:(r) => r._measurement == "posts")'
+df = client.query_api().query_data_frame(query)
+
+# Group by hour to find peak posting times
+df['hour'] = df['_time'].dt.hour
+peak_hours = df.groupby('hour').size().sort_values(ascending=False)
+print(peak_hours.head())
+            </code></pre>
             <img src="images/trend_summary.jpg" alt="Summary of social media trends" class="project-img">
             <p>
                 The analysis was simple but insightful, perfect for marketing or monitoring.
@@ -121,7 +153,7 @@
 
             <h2 class="subtitle">7. Why It Matters</h2>
             <p>
-                This project shows how to analyze social media data, useful for:
+                This project demonstrates how to analyze social media data, enabling better marketing strategies by identifying peak engagement times and trending topics. It’s useful for:
             </p>
             <ul>
                 <li><strong>Marketing Analytics</strong>: Understanding audience behavior.</li>
@@ -141,7 +173,7 @@
 
             <h2 class="subtitle">9. Conclusion</h2>
             <p>
-                Explore the code on my <a href="https://github.com/cipherbite/social-media-trends" class="btn">GitHub repository</a>. Want to talk about this project or data analysis? Email me at <a href="mailto:david.dylag@protonmail.com">david.dylag@protonmail.com</a>.
+                Explore the code, run the system yourself, or reach out to discuss this project! Visit my <a href="https://github.com/cipherbite/social-media-trends" class="btn btn-primary">GitHub repository</a> or contact me at <a href="mailto:david.dylag@protonmail.com">david.dylag@protonmail.com</a>.
             </p>
         </div>
     </section>
