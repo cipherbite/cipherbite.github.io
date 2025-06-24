@@ -3,154 +3,1158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="David Dylag - Cybersecurity Portfolio showcasing forensics, network security, and advanced threat detection projects">
-    <meta name="keywords" content="cybersecurity, forensics, metadata analysis, BLE security, DNS security, steganography, WAF, memory forensics, Docker security">
+    <meta name="description" content="David Dylag - Cybersecurity Engineer specializing in penetration testing, digital forensics, and security tool development. View my security research and open-source projects.">
+    <meta name="keywords" content="cybersecurity engineer, penetration tester, security researcher, forensics analyst, security tools developer, ethical hacker, David Dylag">
     <meta name="author" content="David Dylag">
-    <title>David Dylag | Cybersecurity Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <base href="/cipherbite.github.io/">
+    <meta property="og:title" content="David Dylag - Cybersecurity Engineer">
+    <meta property="og:description" content="Security engineer passionate about building innovative security tools and discovering vulnerabilities">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cipherbite.github.io">
+    <title>David Dylag - Cybersecurity Engineer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Professional Light Theme */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: #ffffff;
+            --bg-hover: #f1f3f5;
+            
+            --text-primary: #000000;
+            --text-secondary: #495057;
+            --text-muted: #6c757d;
+            
+            --accent-primary: #0066ff;
+            --accent-secondary: #00a8ff;
+            --accent-success: #00c851;
+            --accent-danger: #ff3547;
+            
+            --border-color: #dee2e6;
+            --border-light: #e9ecef;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+            
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            background-color: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3rem; font-weight: 900; }
+        h2 { font-size: 2.25rem; font-weight: 800; }
+        h3 { font-size: 1.5rem; font-weight: 700; }
+        h4 { font-size: 1.25rem; font-weight: 600; }
+
+        /* Header */
+        header {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--accent-primary);
+            color: white !important;
+            padding: 0.625rem 1.5rem !important;
+            border-radius: var(--radius-sm);
+            font-weight: 600 !important;
+        }
+
+        .nav-cta:hover {
+            background: #0052cc;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #e7f3ff;
+            color: var(--accent-primary);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="David Dylag - Cybersecurity Engineer specializing in penetration testing, digital forensics, and security tool development. View my security research and open-source projects.">
+    <meta name="keywords" content="cybersecurity engineer, penetration tester, security researcher, forensics analyst, security tools developer, ethical hacker, David Dylag">
+    <meta name="author" content="David Dylag">
+    <meta property="og:title" content="David Dylag - Cybersecurity Engineer">
+    <meta property="og:description" content="Security engineer passionate about building innovative security tools and discovering vulnerabilities">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cipherbite.github.io">
+    <title>David Dylag - Cybersecurity Engineer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Professional Light Theme */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: #ffffff;
+            --bg-hover: #f1f3f5;
+            
+            --text-primary: #000000;
+            --text-secondary: #495057;
+            --text-muted: #6c757d;
+            
+            --accent-primary: #0066ff;
+            --accent-secondary: #00a8ff;
+            --accent-success: #00c851;
+            --accent-danger: #ff3547;
+            
+            --border-color: #dee2e6;
+            --border-light: #e9ecef;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+            
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            background-color: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3rem; font-weight: 900; }
+        h2 { font-size: 2.25rem; font-weight: 800; }
+        h3 { font-size: 1.5rem; font-weight: 700; }
+        h4 { font-size: 1.25rem; font-weight: 600; }
+
+        /* Header */
+        header {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--accent-primary);
+            color: white !important;
+            padding: 0.625rem 1.5rem !important;
+            border-radius: var(--radius-sm);
+            font-weight: 600 !important;
+        }
+
+        .nav-cta:hover {
+            background: #0052cc;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #e7f3ff;
+            color: var(--accent-primary);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0052cc;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: var(--bg-primary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-primary);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        /* Section Base */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: #e7f3ff;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-light);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background: var(--bg-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-primary);
+        }
+
+        .project-header {
+            padding: 2rem 2rem 0;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.375rem 0.875rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .project-footer {
+            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-light);
+            margin-top: auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: var(--transition);
+        }
+
+        .project-link.primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .project-link.primary:hover {
+            background: #0052cc;
+            transform: translateY(-1px);
+        }
+
+        .project-link.secondary {
+            background: white;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .project-link.secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+        }
+
+        .skill-category h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-category i {
+            color: var(--accent-primary);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+        }
+
+        .skill-item {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-item::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-primary);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-card {
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-primary);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            border: 1px solid var(--border-light);
+        }
+
+        .contact-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats-grid,
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
 </head>
 <body>
-    <!-- Nagłówek i nawigacja -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <span class="logo-highlight">D</span>avid <span class="logo-highlight">D</span>ylag
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+    <!-- Header -->
+    <header id="header">
+        <nav class="container">
+            <a href="#" class="logo">David <span>Dylag</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://github.com/cipherbite" target="_blank" class="nav-cta">GitHub →</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Sekcja hero / intro -->
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="animate-fade-in">Cybersecurity Research & Development Portfolio</h1>
-                <p class="animate-fade-in">Building innovative security tools and uncovering hidden threats in digital environments</p>
+                <div class="hero-badge">
+                    <i class="fas fa-circle" style="font-size: 8px; color: #00c851;"></i>
+                    Open to Opportunities
+                </div>
+                <h1>Cybersecurity Engineer Building Next-Gen Security Tools</h1>
+                <p class="hero-subtitle">
+                    Passionate about developing innovative security solutions, from advanced forensics 
+                    to IoT vulnerability detection. Turning complex security challenges into practical tools.
+                </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary animate-fade-in">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary animate-fade-in">Contact Me</a>
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> View My Projects
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-comment"></i> Let's Connect
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sekcja o mnie -->
-    <section id="about" class="section">
+    <!-- Stats Section -->
+    <section class="stats-section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Security Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Technologies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Open Source</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Learning</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p class="section-subtitle">Security researcher with a passion for building practical solutions</p>
+            </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Hello! I'm <strong>David Dylag</strong>, a cybersecurity researcher passionate about developing innovative security tools and uncovering sophisticated threats. I specialize in forensics, network security analysis, and building custom security solutions.</p>
-                    <p>My focus is on creating practical, cutting-edge tools that address real-world security challenges, from forensic analysis to advanced threat detection. I believe in proactive security and building solutions that stay ahead of emerging threats.</p>
-                    <p>Through my projects, I explore niche areas of cybersecurity that are often overlooked but critical for comprehensive security posture - from IoT vulnerabilities to container forensics.</p>
-                    <div class="about-highlights">
-                        <div class="highlight">
-                            <i class="fas fa-search"></i>
-                            <h4>Forensic Analysis</h4>
-                            <p>Uncovering hidden threats</p>
+                    <h3>Building Security, One Tool at a Time</h3>
+                    <p>
+                        I'm David Dylag, a cybersecurity engineer dedicated to developing innovative security tools 
+                        that address real-world vulnerabilities. My approach combines deep technical knowledge with 
+                        practical problem-solving to create solutions that make a difference.
+                    </p>
+                    <p>
+                        From uncovering hidden metadata in forensic investigations to detecting sophisticated DNS 
+                        exfiltration attempts, I focus on the security challenges that others might overlook. 
+                        Every project is an opportunity to strengthen our digital defenses.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Deep Analysis</h4>
+                                <p>Forensic expertise in uncovering hidden threats</p>
+                            </div>
                         </div>
-                        <div class="highlight">
-                            <i class="fas fa-network-wired"></i>
-                            <h4>Network Security</h4>
-                            <p>Detecting advanced attacks</p>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Tool Development</h4>
+                                <p>Building practical security solutions</p>
+                            </div>
                         </div>
-                        <div class="highlight">
-                            <i class="fas fa-shield-alt"></i>
-                            <h4>Innovative Tools</h4>
-                            <p>Building niche solutions</p>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Proactive Security</h4>
+                                <p>Staying ahead of emerging threats</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Innovation Focus</h4>
+                                <p>Exploring overlooked security domains</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="/assets/images/profile-photo.jpg" alt="David Dylag" class="profile-img">
-                    <div class="social-icons">
-                        <a href="https://github.com/cipherbite" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/in/daviddylag" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:david.dylag@protonmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <div class="about-image-wrapper">
+                        <div style="background: #e7f3ff; height: 400px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-user-shield" style="font-size: 6rem; color: var(--accent-primary);"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sekcja projektów -->
-    <section id="projects" class="section section-dark">
+    <!-- Projects Section -->
+    <section class="projects-section section" id="projects">
         <div class="container">
-            <h2 class="section-title">Cybersecurity Projects</h2>
-            <p class="section-subtitle">Innovative security tools addressing real-world threats and vulnerabilities</p>
-            
-            <!-- Entry Level Project -->
-            <h3 class="category-title">Foundation Project</h3>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/projects/forensic-metadata-harvester/images/screenshot.jpg" alt="Forensic Metadata Harvester">
-                        <div class="project-overlay">
-                            <a href="/projects/forensic-metadata-harvester/index.html" class="btn btn-small">View Details</a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Forensic Metadata Harvester</h3>
-                        <p>Deep analysis tool for extracting hidden metadata from various file types including images, documents, and PDFs. Goes beyond basic EXIF data to uncover edit histories, embedded objects, and forensic artifacts.</p>
-                        <div class="project-tags">
-                            <span>Python</span>
-                            <span>Forensics</span>
-                            <span>OSINT</span>
-                            <span>Metadata Analysis</span>
-                            <span>File Structures</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="/projects/forensic-metadata-harvester/index.html" class="btn btn-small">View Project</a>
-                            <a href="https://github.com/cipherbite/forensic-metadata-harvester" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p class="section-subtitle">Security tools addressing critical vulnerabilities across multiple domains</p>
             </div>
-            
-            <!-- Intermediate Projects -->
-            <h3 class="category-title">Intermediate Security Tools</h3>
             <div class="projects-grid">
+                <!-- DNS Exfiltration Detector -->
                 <div class="project-card">
-                    <div class="project-img">
-                        <img src="/projects/ble-security-scanner/images/screenshot.jpg" alt="BLE Security Scanner">
-                        <div class="project-overlay">
-                            <a href="/projects/ble-security-scanner/index.html" class="btn btn-small">View Details</a>
-                        </div>
+                    <div class="project-header">
+                        <div class="project-category">Network Security</div>
+                        <h3 class="project-title">DNS Exfiltration Detector</h3>
+                        <p class="project-description">
+                            Advanced detection system for identifying data exfiltration through DNS channels. 
+                            Uses entropy analysis and ML patterns to catch sophisticated tunneling attempts in real-time.
+                        </p>
                     </div>
-                    <div class="project-content">
-                        <h3>Bluetooth Low Energy Security Scanner</h3>
-                        <p>Vulnerability scanner for BLE devices detecting weak PIN configurations, unsecured characteristics, and tracking possibilities. Addresses the growing IoT security gap.</p>
-                        <div class="project-tags">
-                            <span>Python</span>
-                            <span>BLE Protocol</span>
-                            <span>IoT Security</span>
-                            <span>Reverse Engineering</span>
-                            <span>Hardware Security</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="/projects/ble-security-scanner/index.html" class="btn btn-small">View Project</a>
-                            <a href="https://github.com/cipherbite/ble-security-scanner" class="btn btn-outline btn-small"><i class="fab fa-github"></i> Code</a>
-                        </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Scapy</span>
+                        <span class="tech-tag">DNS Analysis</span>
+                    </div>
+                    <div class="project-footer">
+                        <a href="/projects/dns-exfiltration-detector" class="project-link primary">View Details</a>
+                        <a href="https://github.com/cipherbite/dns-exfiltration-detector" class="project-link secondary">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
                     </div>
                 </div>
-                
+
+                <!-- Container Memory Forensics -->
                 <div class="project-card">
-                    <div class="project-img">
-                        <img src="/projects/dns-exfiltration-detector/images/screenshot.jpg" alt="DNS Exfiltration Detector">
-                        <div class="project-overlay">
-                            <a href="/projects/dns-exfiltration-detector/index.html" class="btn btn-small">View Details</a>
-                        </div>
+                    <div class="project-header">
+                        <div class="project-category">Digital Forensics</div>
+                        <h3 class="project-title">Container Memory Forensics</h3>
+                        <p class="project-description">
+                            First-of-its-kind tool for extracting and analyzing memory from Docker containers. 
+                            Enables incident response and malware analysis in containerized environments.
+                        </p>
                     </div>
-                    <div class="project-content">
-                        <h3>DNS Exfiltration Detector</h3>
-                        <p>System detecting data exfiltration attempts through DNS queries. Analyzes query patterns, subdomain entropy, and request frequency to identify DNS tunneling attempts.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Docker API</span>
+                        <span class="tech-tag">Memory Analysis</span>
+                        <span class="tech-tag">Volatility</span>
+                    </div>
+                    <div class="project-footer">
+                        <a href="/projects/container-memory-forensics" class="project-link primary">View Details</a>
+                        <a href="https://github.com/cipherbite/container-memory-forensics" class="project-link secondary">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- BLE Security Scanner -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-category">IoT Security</div>
+                        <h3 class="project-title">BLE Security Scanner</h3>
+                        <p class="project-description">
+                            Comprehensive vulnerability scanner for Bluetooth Low Energy devices. 
+                            Detects weak encryption, unsecured characteristics, and privacy leaks in IoT ecosystems.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">BLE Protocol</span>
+                        <span class="tech-tag">BlueZ</span>
+                        <span class="tech-tag">Reverse Engineering</span>
+                    </div>
+                    <div class="project-footer">
+                        <a href="/projects/ble-security-scanner" class="project-link primary">View Details</a>
+                        <a href="https://github.com/cipherbite/ble-security-scanner" class="project-link secondary">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Behavioral WAF -->
+                <div class="project-card">
+                    <div class="project-header">
