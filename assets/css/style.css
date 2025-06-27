@@ -1,0 +1,858 @@
+/* ================================================== */
+/* PURPLE TEAM PORTFOLIO - Professional Gray Edition */
+/* ================================================== */
+
+/* ================================================== */
+/* 1. CSS VARIABLES - Professional Gray System */
+/* ================================================== */
+
+:root {
+    /* Professional Grays - Refined Palette */
+    --gray-50: #fafafa;   /* Background */
+    --gray-100: #f5f5f5;  /* Light surfaces */
+    --gray-150: #eeeeee;  /* Elevated surfaces */
+    --gray-200: #e0e0e0;  /* Borders */
+    --gray-300: #d6d6d6;  /* Subtle borders */
+    --gray-400: #bdbdbd;  /* Disabled states */
+    --gray-500: #9e9e9e;  /* Muted text */
+    --gray-600: #757575;  /* Secondary text */
+    --gray-700: #616161;  /* Primary text */
+    --gray-800: #424242;  /* Headings */
+    --gray-900: #212121;  /* High emphasis */
+    
+    /* Subtle Purple Accents - Minimal */
+    --accent-primary: #6366f1;    /* Indigo purple */
+    --accent-hover: #5558e3;      /* Darker purple */
+    --accent-light: #eef2ff;      /* Light purple bg */
+    --accent-border: #e0e7ff;     /* Purple border */
+    
+    /* Semantic Colors - Muted */
+    --success: #059669;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --info: #3b82f6;
+    
+    /* Layout Colors */
+    --bg-primary: var(--gray-50);
+    --bg-secondary: var(--gray-100);
+    --bg-card: #ffffff;
+    --bg-hover: var(--gray-100);
+    
+    /* Text Colors */
+    --text-primary: var(--gray-800);
+    --text-secondary: var(--gray-600);
+    --text-muted: var(--gray-500);
+    --text-heading: var(--gray-900);
+    
+    /* Border Colors */
+    --border-primary: var(--gray-200);
+    --border-secondary: var(--gray-300);
+    --border-light: rgba(0, 0, 0, 0.06);
+    
+    /* Professional Shadows */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 8px 12px rgba(0, 0, 0, 0.1);
+    
+    /* Typography - Professional */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+    
+    /* Transitions */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-fast: 150ms;
+    --duration-base: 200ms;
+    --duration-slow: 300ms;
+    
+    /* Spacing - Refined */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+}
+
+/* ================================================== */
+/* 2. RESET & BASE STYLES */
+/* ================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* ================================================== */
+/* 3. TYPOGRAPHY - Professional */
+/* ================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--text-heading);
+    margin-bottom: 0.5em;
+    letter-spacing: -0.025em;
+}
+
+h1 { 
+    font-size: 2.5rem; 
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+h2 { 
+    font-size: 2rem; 
+    font-weight: 600;
+}
+
+h3 { 
+    font-size: 1.5rem; 
+}
+
+h4 { 
+    font-size: 1.25rem; 
+}
+
+h5 { 
+    font-size: 1.125rem; 
+}
+
+h6 { 
+    font-size: 1rem; 
+}
+
+p {
+    margin-bottom: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+strong {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--gray-100);
+    padding: 0.125em 0.375em;
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    border: 1px solid var(--gray-200);
+}
+
+/* ================================================== */
+/* 4. LAYOUT - Clean Structure */
+/* ================================================== */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ================================================== */
+/* 5. COMPONENTS - Professional Elements */
+/* ================================================== */
+
+/* Header - Minimal & Clean */
+.header {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+/* Logo - Professional */
+.logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-heading);
+    letter-spacing: -0.025em;
+}
+
+/* Navigation - Clean */
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav a {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--duration-fast) var(--ease-out);
+    position: relative;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: width var(--duration-base) var(--ease-out);
+}
+
+.nav a:hover {
+    color: var(--text-primary);
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+    width: 100%;
+}
+
+/* Hero - Minimal Professional */
+.hero {
+    padding: 8rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.04em;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons - Professional */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    transition: all var(--duration-base) var(--ease-out);
+    cursor: pointer;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: var(--gray-900);
+    color: white;
+    border-color: var(--gray-900);
+}
+
+.btn-primary:hover {
+    background: var(--gray-800);
+    border-color: var(--gray-800);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--text-primary);
+    border-color: var(--gray-300);
+}
+
+.btn-secondary:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-400);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border-color: transparent;
+}
+
+.btn-ghost:hover {
+    background: var(--gray-100);
+}
+
+/* Cards - Clean Professional */
+.card {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: all var(--duration-base) var(--ease-out);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+/* Grid Layouts */
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Project Cards - Professional */
+.project-card {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--duration-base) var(--ease-out);
+}
+
+.project-card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+}
+
+.project-image {
+    height: 200px;
+    background: var(--gray-100);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-heading);
+}
+
+.project-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+/* Tags - Minimal */
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    background: var(--gray-100);
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tag-purple {
+    background: var(--accent-light);
+    color: var(--accent-primary);
+}
+
+/* Skills Section */
+.skill-group {
+    margin-bottom: 2rem;
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.skill-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-100);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.skill-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+
+.skill-list {
+    list-style: none;
+    padding-left: 3.25rem;
+}
+
+.skill-item {
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.skill-item:last-child {
+    border-bottom: none;
+}
+
+/* Contact Form - Professional */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--text-primary);
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Footer - Minimal */
+.footer {
+    background: white;
+    border-top: 1px solid var(--border-light);
+    padding: 3rem 0;
+    margin-top: 5rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-text {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    transition: color var(--duration-fast) var(--ease-out);
+}
+
+.footer-links a:hover {
+    color: var(--text-primary);
+}
+
+/* Social Icons - Professional */
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    transition: all var(--duration-base) var(--ease-out);
+}
+
+.social-link:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: var(--accent-light);
+}
+
+/* ================================================== */
+/* 6. UTILITIES - Professional Helpers */
+/* ================================================== */
+
+/* Spacing */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mt-5 { margin-top: 3rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+/* Text Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-sm { font-size: 0.875rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+.text-primary { color: var(--text-primary); }
+
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Display */
+.block { display: block; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.hidden { display: none; }
+
+/* Flexbox */
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-1 { gap: 0.5rem; }
+.gap-2 { gap: 1rem; }
+.gap-3 { gap: 1.5rem; }
+.gap-4 { gap: 2rem; }
+
+/* Borders */
+.border { border: 1px solid var(--border-light); }
+.border-t { border-top: 1px solid var(--border-light); }
+.border-b { border-bottom: 1px solid var(--border-light); }
+.border-l { border-left: 1px solid var(--border-light); }
+.border-r { border-right: 1px solid var(--border-light); }
+
+/* Shadows */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Border Radius */
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+.rounded-full { border-radius: 9999px; }
+
+/* ================================================== */
+/* 7. RESPONSIVE DESIGN */
+/* ================================================== */
+
+@media (max-width: 1024px) {
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Typography */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.375rem; }
+    
+    /* Layout */
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    /* Navigation */
+    .nav ul {
+        gap: 1rem;
+    }
+    
+    /* Hero */
+    .hero {
+        padding: 5rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+    
+    /* Grid */
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mobile Navigation */
+    .nav {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Cards */
+    .card {
+        padding: 1.5rem;
+    }
+}
+
+/* ================================================== */
+/* 8. ANIMATIONS - Subtle Professional */
+/* ================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Apply animations */
+.animate-fadeIn {
+    animation: fadeIn 0.6s var(--ease-out);
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s var(--ease-out);
+}
+
+/* Scroll animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s var(--ease-out);
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================================================== */
+/* 9. PURPLE TEAM SPECIFIC STYLES */
+/* ================================================== */
+
+.security-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent-light);
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent-primary);
+}
+
+.threat-level {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.threat-level-low {
+    color: var(--success);
+}
+
+.threat-level-medium {
+    color: var(--warning);
+}
+
+.threat-level-high {
+    color: var(--danger);
+}
+
+.security-metric {
+    background: var(--gray-50);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 0.25rem;
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ================================================== */
+/* 10. PRINT STYLES */
+/* ================================================== */
+
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .header,
+    .footer,
+    .nav,
+    .btn,
+    .social-links {
+        display: none;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+}
