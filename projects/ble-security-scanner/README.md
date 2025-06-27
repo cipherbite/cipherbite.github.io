@@ -1,1 +1,0 @@
-# BLE Security Scanner

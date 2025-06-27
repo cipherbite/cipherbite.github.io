@@ -1,1 +1,0 @@
-# DNS Exfiltration Detector
