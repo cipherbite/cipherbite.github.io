@@ -1,0 +1,15 @@
+
+.terminal-line .prompt[style*="#ff9500"] {
+    text-shadow: 0 0 10px rgba(255, 149, 0, 0.5);
+}
+
+/* Animacja dla critical detections */
+.alert-critical.pulse {
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+}
