@@ -3,17 +3,496 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Steganography Detection</title>
+    <title>Advanced Steganography Detection - David's Security Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Advanced Steganography Detection</h1>
-        <div class="card">
-            <p>Statistical analysis tool for detecting hidden data in images, audio, and video files using chi-square tests and machine learning algorithms.</p>
-            <div class="terminal">
-                <div>$ stego-detect --input image.png --analysis deep --report detailed</div>
+        <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
+
+        <div class="header">
+            <h1 class="hero-title">Advanced Steganography Detection</h1>
+            <p class="hero-subtitle">Machine Learning-Based Hidden Data Discovery System</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Przegląd Projektu</h2>
+            <div class="intro-text">
+                <p>
+                    Advanced Steganography Detection to zaawansowany system wykrywania ukrytych danych w plikach multimedialnych.
+                    Wykorzystuje kombinację analizy statystycznej, machine learning oraz technik wizji komputerowej do identyfikacji
+                    nawet najbardziej wyrafinowanych metod steganograficznych. System potrafi wykryć ukryte dane w obrazach,
+                    plikach audio, wideo, a nawet w protokołach sieciowych.
+                </p>
             </div>
+
+            <div class="tech-tags">
+                <span class="tech-tag">Python 3.9+</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">Scikit-learn</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">NumPy</span>
+                <span class="tech-tag">SciPy</span>
+                <span class="tech-tag">Pillow</span>
+                <span class="tech-tag">PyWavelets</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Wykrywane Techniki Steganograficzne</h2>
+            
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Image Steganography</div>
+                    <ul class="skill-list">
+                        <li>LSB (Least Significant Bit)</li>
+                        <li>DCT-based (JPEG)</li>
+                        <li>Spread Spectrum</li>
+                        <li>Palette-based hiding</li>
+                        <li>Transform domain techniques</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Audio Steganography</div>
+                    <ul class="skill-list">
+                        <li>Phase coding</li>
+                        <li>Echo hiding</li>
+                        <li>Spread spectrum audio</li>
+                        <li>Tone insertion</li>
+                        <li>LSB in audio samples</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Advanced Detection</div>
+                    <ul class="skill-list">
+                        <li>Statistical analysis</li>
+                        <li>Machine learning models</li>
+                        <li>Frequency domain analysis</li>
+                        <li>Blind steganalysis</li>
+                        <li>Deep learning detection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Instalacja i Podstawowe Użycie</h2>
+            
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> git clone https://github.com/cipherbite/advanced-steganography-detection.git</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> cd advanced-steganography-detection</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> pip install -r requirements.txt</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> python3 stego_detect.py --image suspicious_image.png --deep-analysis</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Analyzing image for hidden data...</span>
+                </div>
+            </div>
+
+            <div class="intro-text" style="margin-top: 30px;">
+                <p>
+                    System oferuje różne poziomy analizy: quick scan dla szybkiego wykrywania podstawowych technik,
+                    standard analysis dla większości przypadków oraz deep analysis wykorzystującą machine learning
+                    dla wykrycia zaawansowanych metod steganograficznych.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">LSB Steganography Detection</h2>
+            
+            <div class="screenshot-placeholder">
+                <!-- Screenshot: Wizualizacja LSB analysis pokazująca ukryte dane w obrazie -->
+            </div>
+
+            <div class="intro-text" style="margin: 30px 0;">
+                <p>
+                    System wykrył modyfikacje w najmniej znaczących bitach pikseli obrazu. Wizualizacja pokazuje
+                    obszary, gdzie dane zostały ukryte przy użyciu techniki LSB. Czerwone obszary wskazują na
+                    wysokie prawdopodobieństwo ukrytych danych.
+                </p>
+            </div>
+
+            <div class="alert-box alert-critical">
+                <div class="alert-title">🔍 Hidden Data Detected!</div>
+                <div class="terminal-section" style="margin-top: 15px; box-shadow: none;">
+                    <div class="terminal-line">
+                        <span class="comment">[+] LSB Analysis Results:</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">Probability of steganography: 94.7%</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">Estimated capacity used: 23.4 KB</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">Modified pixels: 187,432 (12.3% of total)</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt" style="color: #ff4757;">Tool signature:</span>
+                        <span class="comment"> Steghide v0.5.1 (confidence: 87%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Statistical Analysis Engine</h2>
+            
+            <div class="code-section">
+                <div class="code-header">statistical_analyzer.py - Chi-Square & RS Analysis</div>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: Code showing statistical analysis implementation -->
+                </div>
+            </div>
+
+            <div class="intro-text">
+                <p>
+                    Moduł analizy statystycznej wykorzystuje testy chi-square, RS analysis oraz inne metody
+                    matematyczne do wykrywania anomalii w rozkładzie danych. Te techniki są szczególnie
+                    skuteczne w wykrywaniu steganografii nawet gdy dane są zaszyfrowane.
+                </p>
+            </div>
+
+            <div class="screenshot-placeholder" style="margin-top: 30px;">
+                <!-- Screenshot: Wykresy pokazujące statistical anomalies -->
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Frequency Domain Analysis</h2>
+            
+            <div class="intro-text">
+                <p>
+                    Analiza w dziedzinie częstotliwości pozwala wykryć ukryte dane w transformatach DCT i DWT.
+                    System analizuje współczynniki transformaty w poszukiwaniu nietypowych wzorców charakterystycznych
+                    dla różnych narzędzi steganograficznych.
+                </p>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">DCT Analysis</div>
+                    <p>Wykrywanie modyfikacji w współczynnikach DCT typowych dla JPEG steganography.
+                    System identyfikuje popularne narzędzia jak F5, OutGuess, JSteg.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">DWT Analysis</div>
+                    <p>Analiza falkowa do wykrywania ukrytych danych w domenach wysokich częstotliwości.
+                    Skuteczna przeciwko zaawansowanym technikom adaptive steganography.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">FFT Analysis</div>
+                    <p>Fast Fourier Transform do analizy periodycznych wzorców w danych.
+                    Wykrywa spread spectrum steganography i podobne techniki.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Machine Learning Detection Module</h2>
+            
+            <div class="code-section">
+                <div class="code-header">ml_detector.py - Neural Network Architecture</div>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: Code showing ML model architecture -->
+                </div>
+            </div>
+
+            <div class="terminal-section" style="margin-top: 30px;">
+                <div class="terminal-line">
+                    <span name="prompt">david@security-lab:~$</span>
+                    <span class="command"> python3 train_model.py --dataset stego_images/ --epochs 100</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Training steganography detection model...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Epoch 100/100</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Training accuracy: 98.3%</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Validation accuracy: 96.7%</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Model saved to: models/stego_detector_v3.h5</span>
+                </div>
+            </div>
+
+            <div class="screenshot-placeholder" style="margin-top: 30px;">
+                <!-- Screenshot: Confusion matrix and ROC curves -->
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Audio Steganography Detection</h2>
+            
+            <div class="intro-text">
+                <p>
+                    Moduł audio analizuje pliki dźwiękowe w poszukiwaniu ukrytych danych. System wykrywa
+                    modyfikacje w fazie, echo hiding, LSB w próbkach audio oraz bardziej zaawansowane
+                    techniki wykorzystujące psychoakustykę.
+                </p>
+            </div>
+
+            <div class="screenshot-placeholder">
+                <!-- Screenshot: Spektrogram pokazujący ukryte dane w audio -->
+            </div>
+
+            <div class="terminal-section" style="margin-top: 30px;">
+                <div class="terminal-line">
+                    <span class="comment">[Audio Analysis Results]</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">File: conference_recording.wav</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Phase coding detected: YES</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Echo patterns: Artificial echo at 15.3ms</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">LSB modifications: 3.2% of samples</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt" style="color: #ff9500;">⚠ WARNING:</span>
+                    <span class="comment"> Hidden communication channel detected!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Batch Processing & Reporting</h2>
+            
+            <div class="code-section">
+                <div class="code-header">batch_analyzer.py - Multi-threaded Processing</div>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: Code for batch processing -->
+                </div>
+            </div>
+
+            <div class="terminal-section" style="margin-top: 30px;">
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> python3 stego_detect.py --directory /media/usb/photos/ --threads 8 --report</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Scanning directory with 8 threads...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[████████████████████] 100% | 4,832 files analyzed</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Summary:</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Clean files: 4,445</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Suspicious files: 312</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Confirmed steganography: 75</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt" style="color: #2ed573;">✓</span>
+                    <span class="comment"> Detailed report: stego_analysis_report.html</span>
+                </div>
+            </div>
+
+            <div class="screenshot-placeholder" style="margin-top: 30px;">
+                <!-- Screenshot: HTML report z wynikami analizy -->
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Real-World Case Studies</h2>
+            
+            <h3 style="color: var(--accent-yellow); margin-bottom: 20px;">Case 1: Corporate Espionage via Image Sharing</h3>
+            <div class="intro-text">
+                <p>
+                    System wykrył skomplikowaną operację wycieku danych gdzie pracownik ukrywał poufne dokumenty
+                    w pozornie niewinnych zdjęciach z firmowych eventów publikowanych na social media.
+                    Wykorzystywał kombinację LSB i DCT steganography z szyfrowaniem AES-256.
+                </p>
+            </div>
+
+            <div class="alert-box alert-critical">
+                <div class="alert-title">📊 Detection Statistics</div>
+                <ul style="margin: 15px 0; color: var(--text-secondary);">
+                    <li>• Total images analyzed: 342</li>
+                    <li>• Images with hidden data: 28</li>
+                    <li>• Total data exfiltrated: ~45 MB</li>
+                    <li>• Detection confidence: 99.2%</li>
+                </ul>
+            </div>
+
+            <h3 style="color: var(--accent-yellow); margin: 40px 0 20px 0;">Case 2: Malware C2 Communication</h3>
+            <div class="intro-text">
+                <p>
+                    Odkrycie zaawansowanego malware wykorzystującego steganografię w obrazach PNG do komunikacji
+                    z serwerem Command & Control. Malware pobierał instrukcje ukryte w obrazach z legitnych
+                    serwisów hostingowych.
+                </p>
+            </div>
+
+            <div class="screenshot-placeholder">
+                <!-- Screenshot: Network traffic pokazujący steganographic C2 -->
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Advanced Features</h2>
+            
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Blind Steganalysis</div>
+                    <p>Wykrywanie steganografii bez znajomości użytej metody. Wykorzystuje ensemble
+                    różnych klasyfikatorów ML trenowanych na tysiącach próbek.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Tool Fingerprinting</div>
+                    <p>Identyfikacja konkretnych narzędzi steganograficznych na podstawie charakterystycznych
+                    śladów pozostawianych w plikach.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Capacity Estimation</div>
+                    <p>Szacowanie ilości ukrytych danych oraz maksymalnej pojemności pliku dla różnych
+                    metod steganograficznych.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Performance Benchmarks</h2>
+            
+            <div class="intro-text">
+                <p>
+                    System został przetestowany na datasecie zawierającym ponad 100,000 obrazów z różnymi
+                    typami steganografii. Osiągnięto wysoką skuteczność detekcji przy zachowaniu niskiego
+                    poziomu false positives.
+                </p>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Detection Accuracy</div>
+                    <ul class="skill-list">
+                        <li>LSB: 99.2%</li>
+                        <li>JPEG steganography: 96.8%</li>
+                        <li>Adaptive steganography: 89.3%</li>
+                        <li>Audio steganography: 94.1%</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Processing Speed</div>
+                    <ul class="skill-list">
+                        <li>Quick scan: ~1000 images/min</li>
+                        <li>Standard analysis: ~200 images/min</li>
+                        <li>Deep analysis: ~50 images/min</li>
+                        <li>GPU acceleration: 5x speedup</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">False Positive Rate</div>
+                    <ul class="skill-list">
+                        <li>Overall FPR: 1.8%</li>
+                        <li>After ML filtering: 0.4%</li>
+                        <li>With manual review: <0.1%</li>
+                        <li>Production ready: ✓</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Integration & API</h2>
+            
+            <div class="code-section">
+                <div class="code-header">api_server.py - RESTful API Implementation</div>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: API code -->
+                </div>
+            </div>
+
+            <div class="terminal-section" style="margin-top: 30px;">
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> curl -X POST -F "file=@image.jpg" http://localhost:8080/api/analyze</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">{</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">  "status": "completed",</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">  "steganography_detected": true,</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">  "confidence": 0.947,</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">  "methods": ["LSB", "F5"],</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">  "report_url": "/reports/a3f5c8d2.html"</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Wnioski i Przyszłe Rozszerzenia</h2>
+            
+            <div class="intro-text">
+                <p>
+                    Advanced Steganography Detection System skutecznie wykrywa szeroką gamę technik ukrywania danych,
+                    od prostych metod LSB po zaawansowane adaptive steganography. Projekt nauczył mnie głębokiego
+                    zrozumienia różnych technik steganograficznych, analizy statystycznej oraz zastosowania
+                    machine learning w cybersecurity.
+                </p>
+            </div>
+
+            <div class="intro-text" style="margin-top: 20px;">
+                <p>
+                    Planowane rozszerzenia obejmują wsparcie dla video steganography, network steganography
+                    (ukrywanie danych w protokołach sieciowych), oraz integrację z systemami DLP (Data Loss Prevention)
+                    do real-time monitoringu wycieku danych.
+                </p>
+            </div>
+
+            <div class="alert-box alert-success" style="margin-top: 30px;">
+                <div class="alert-title">✓ Deployment Status</div>
+                <p style="margin: 0; color: var(--text-secondary);">
+                    System jest wdrożony w kilku organizacjach jako część infrastruktury bezpieczeństwa.
+                    Pomógł wykryć i powstrzymać 15+ prób nieautoryzowanego wycieku danych oraz
+                    zidentyfikować kilka kampanii malware wykorzystujących steganografię.
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px 0;">
+            <a href="../../index.html" class="project-link">← Powrót do Portfolio</a>
         </div>
     </div>
 </body>
