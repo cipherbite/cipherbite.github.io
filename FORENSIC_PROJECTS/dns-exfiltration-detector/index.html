@@ -4,242 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DNS Exfiltration Detector - David's Security Research</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #151a3a;
-            --bg-card: #1a1f3a;
-            --accent: #ffd700;
-            --text-primary: #ffffff;
-            --text-secondary: #b8bfd8;
-            --border: #2a3050;
-            --alert: #ff4757;
-            --success: #2ed573;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            color: var(--text-primary);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-            padding: 60px 0;
-            background: rgba(26, 31, 58, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-        }
-
-        h1 {
-            font-size: 3em;
-            color: var(--accent);
-            margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section {
-            background: var(--bg-card);
-            padding: 40px;
-            margin-bottom: 40px;
-            border: 1px solid var(--border);
-            border-radius: 0;
-        }
-
-        h2 {
-            color: var(--accent);
-            margin-bottom: 30px;
-            font-size: 2em;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 15px;
-        }
-
-        h3 {
-            color: var(--text-primary);
-            margin: 30px 0 20px 0;
-            font-size: 1.5em;
-        }
-
-        .description {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
-
-        .screenshot-placeholder {
-            background: var(--bg-primary);
-            border: 2px dashed var(--accent);
-            padding: 80px 40px;
-            text-align: center;
-            margin: 30px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .screenshot-placeholder::before {
-            content: '📸';
-            font-size: 3em;
-            display: block;
-            margin-bottom: 20px;
-            opacity: 0.5;
-        }
-
-        .screenshot-label {
-            color: var(--accent);
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .screenshot-desc {
-            color: var(--text-secondary);
-            font-size: 0.9em;
-        }
-
-        .code-block {
-            background: #000;
-            border: 1px solid var(--accent);
-            padding: 30px;
-            margin: 30px 0;
-            font-family: 'Fira Code', monospace;
-            font-size: 14px;
-            overflow-x: auto;
-            position: relative;
-        }
-
-        .code-header {
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .terminal {
-            background: #000;
-            padding: 20px;
-            margin: 20px 0;
-            border: 1px solid var(--success);
-            font-family: 'Fira Code', monospace;
-        }
-
-        .terminal-line {
-            margin: 5px 0;
-        }
-
-        .prompt {
-            color: var(--success);
-        }
-
-        .command {
-            color: var(--text-primary);
-        }
-
-        .output {
-            color: var(--text-secondary);
-        }
-
-        .alert-box {
-            background: rgba(255, 71, 87, 0.1);
-            border: 1px solid var(--alert);
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .alert-title {
-            color: var(--alert);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        .feature-card {
-            background: var(--bg-primary);
-            padding: 30px;
-            border: 1px solid var(--border);
-        }
-
-        .feature-title {
-            color: var(--accent);
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 30px 0;
-        }
-
-        .tech-tag {
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 8px 16px;
-            font-size: 0.9em;
-        }
-
-        .back-link {
-            display: inline-block;
-            color: var(--accent);
-            text-decoration: none;
-            margin-bottom: 30px;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            transition: all 0.3s;
-        }
-
-        .back-link:hover {
-            background: var(--accent);
-            color: var(--bg-primary);
-        }
-    </style>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
     <div class="container">
         <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
 
-        <div class="header">
+        <div class="project-header">
             <h1>DNS Exfiltration Detector</h1>
-            <p class="subtitle">Advanced Machine Learning DNS Traffic Analysis</p>
+            <p class="project-subtitle">Advanced Machine Learning DNS Traffic Analysis</p>
         </div>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Przegląd Projektu</h2>
-            <p class="description">
+            <p class="project-description">
                 DNS Exfiltration Detector to zaawansowane narzędzie wykorzystujące machine learning do wykrywania prób eksfiltracji danych przez protokół DNS. 
                 System analizuje ruch DNS w czasie rzeczywistym, identyfikując anomalie wskazujące na próby kradzieży danych lub komunikację z serwerami C&C (Command & Control).
                 Wykorzystuje kombinację analizy statystycznej, wykrywania entropii oraz uczenia maszynowego do identyfikacji podejrzanych wzorców w zapytaniach DNS.
@@ -254,27 +32,23 @@
                 <span class="tech-tag">Scikit-learn</span>
                 <span class="tech-tag">ElasticSearch</span>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Architektura Systemu</h2>
             
             <div class="screenshot-placeholder">
-                <div class="screenshot-label">Screenshot: Diagram Architektury</div>
-                <div class="screenshot-desc">
-                    Pokazuje przepływ danych od przechwytywania pakietów przez Scapy, przez moduł analizy, 
-                    aż do systemu alertów i wizualizacji w ElasticSearch/Kibana
-                </div>
+                <!-- Screenshot: Diagram Architektury -->
             </div>
 
-            <p class="description">
+            <p class="project-description">
                 System składa się z kilku modułów: packet capture engine przechwytuje ruch DNS na wybranym interfejsie sieciowym,
                 preprocessing module ekstraktuje cechy z zapytań DNS, ML engine analizuje dane w czasie rzeczywistym,
                 a alert system generuje powiadomienia o wykrytych zagrożeniach.
             </p>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Główne Funkcjonalności</h2>
             
             <div class="feature-grid">
@@ -291,311 +65,165 @@
                     <p>Model uczenia maszynowego wytrenowany na rzeczywistych danych DNS tunneling z accuracy > 98%.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Instalacja i Konfiguracja</h2>
             
-            <div class="terminal">
-                <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> git clone https://github.com/cipherbite/dns-exfiltration-detector.git</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> cd dns-exfiltration-detector</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> pip install -r requirements.txt</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="output">Successfully installed all dependencies...</span>
+            <div class="terminal-window">
+                <div class="terminal-content">
+                    <div class="terminal-line">
+                        <span class="prompt">david@security-lab:~$</span>
+                        <span class="command"> git clone https://github.com/cipherbite/dns-exfiltration-detector.git</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">david@security-lab:~$</span>
+                        <span class="command"> cd dns-exfiltration-detector</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">david@security-lab:~$</span>
+                        <span class="command"> pip install -r requirements.txt</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">Successfully installed all dependencies...</span>
+                    </div>
                 </div>
             </div>
 
-            <p class="description">
+            <p class="project-description">
                 System wymaga uprawnień root/sudo do przechwytywania pakietów. Przed uruchomieniem należy skonfigurować
                 plik config.yaml z parametrami sieci i progami detekcji.
             </p>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Kod Źródłowy - Core Detection Engine</h2>
             
-            <div class="code-block">
+            <div class="code-section">
                 <div class="code-header">dns_detector.py - Main Detection Logic</div>
-                <pre><code>import scapy.all as scapy
-import numpy as np
-import pandas as pd
-from entropy import shannon_entropy
-from ml_model import DNSAnomalyDetector
-import asyncio
-import logging
-
-class DNSExfiltrationDetector:
-    def __init__(self, interface='eth0', threshold=0.85):
-        self.interface = interface
-        self.threshold = threshold
-        self.model = DNSAnomalyDetector()
-        self.model.load_pretrained('models/dns_anomaly_v2.h5')
-        self.suspicious_domains = []
-        
-    def analyze_domain(self, domain):
-        """Analyze domain for suspicious patterns"""
-        features = {
-            'length': len(domain),
-            'entropy': shannon_entropy(domain),
-            'subdomain_count': domain.count('.'),
-            'numeric_ratio': sum(c.isdigit() for c in domain) / len(domain),
-            'special_chars': sum(not c.isalnum() and c != '.' for c in domain)
-        }
-        
-        # Check for base64/hex patterns
-        if self._is_encoded(domain):
-            features['encoded_probability'] = 0.9
-        else:
-            features['encoded_probability'] = 0.1
-            
-        return features
-    
-    def detect_exfiltration(self, packet):
-        """Main detection logic for DNS packets"""
-        if packet.haslayer(scapy.DNSQR):
-            domain = packet[scapy.DNSQR].qname.decode('utf-8').strip('.')
-            
-            # Extract features
-            features = self.analyze_domain(domain)
-            
-            # ML prediction
-            prediction = self.model.predict(features)
-            
-            if prediction['probability'] > self.threshold:
-                alert = {
-                    'timestamp': datetime.now(),
-                    'domain': domain,
-                    'source_ip': packet[scapy.IP].src,
-                    'threat_score': prediction['probability'],
-                    'features': features
-                }
-                self._generate_alert(alert)
-                
-    async def start_monitoring(self):
-        """Start real-time DNS monitoring"""
-        logging.info(f"Starting DNS monitoring on {self.interface}")
-        scapy.sniff(
-            iface=self.interface,
-            filter="udp port 53",
-            prn=self.detect_exfiltration,
-            store=0
-        )</code></pre>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: Code -->
+                </div>
             </div>
 
-            <p class="description">
+            <p class="project-description">
                 Główna logika detekcji analizuje każde zapytanie DNS, ekstraktując kluczowe cechy takie jak entropia,
                 długość domeny, obecność zakodowanych danych. Model ML ocenia prawdopodobieństwo, że dane zapytanie
                 jest próbą eksfiltracji danych.
             </p>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Wykrywanie DNS Tunneling</h2>
             
             <div class="screenshot-placeholder">
-                <div class="screenshot-label">Screenshot: Panel Monitoringu Real-time</div>
-                <div class="screenshot-desc">
-                    Dashboard pokazujący aktywny ruch DNS, wykryte anomalie, graf połączeń sieciowych
-                    oraz live stream alertów z threat score dla każdego podejrzanego zapytania
-                </div>
+                <!-- Screenshot: Panel Monitoringu Real-time -->
             </div>
 
-            <p class="description">
+            <p class="project-description">
                 System wykrył próbę eksfiltracji danych przez DNS. Zauważ wysoką entropię w subdomenach,
                 charakterystyczną dla zakodowanych danych. Threat score 0.94 wskazuje na bardzo wysokie
                 prawdopodobieństwo ataku.
             </p>
 
-            <div class="alert-box">
+            <div class="alert-box alert-critical">
                 <div class="alert-title">🚨 ALERT: DNS Exfiltration Detected</div>
-                <div class="terminal">
-                    <div class="terminal-line">
-                        <span class="output">[2024-01-15 14:32:18] CRITICAL: DNS Exfiltration Attempt</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">Domain: YmFzZTY0ZW5jb2RlZGRhdGE=.suspicious-domain.com</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">Source IP: 192.168.1.105</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">Entropy: 4.82 (HIGH)</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">Threat Score: 0.94</span>
+                <div class="terminal-window compact">
+                    <div class="terminal-content">
+                        <div class="terminal-line">
+                            <span class="output">[2024-01-15 14:32:18] CRITICAL: DNS Exfiltration Attempt</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">Domain: YmFzZTY0ZW5jb2RlZGRhdGE=.suspicious-domain.com</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">Source IP: 192.168.1.105</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">Entropy: 4.82 (HIGH)</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">Threat Score: 0.94</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Trening Modelu ML</h2>
             
-            <div class="code-block">
+            <div class="code-section">
                 <div class="code-header">model_training.py - Neural Network Architecture</div>
-                <pre><code>import tensorflow as tf
-from tensorflow.keras import layers, models
-import pandas as pd
-from sklearn.model_selection import train_test_split
-
-class DNSAnomalyModel:
-    def __init__(self):
-        self.model = self._build_model()
-        
-    def _build_model(self):
-        model = models.Sequential([
-            layers.Dense(128, activation='relu', input_shape=(15,)),
-            layers.Dropout(0.3),
-            layers.Dense(64, activation='relu'),
-            layers.Dropout(0.3),
-            layers.Dense(32, activation='relu'),
-            layers.Dense(16, activation='relu'),
-            layers.Dense(1, activation='sigmoid')
-        ])
-        
-        model.compile(
-            optimizer='adam',
-            loss='binary_crossentropy',
-            metrics=['accuracy', 'precision', 'recall']
-        )
-        return model
-    
-    def train(self, dataset_path):
-        # Load dataset
-        df = pd.read_csv(dataset_path)
-        X = df.drop(['label', 'domain'], axis=1)
-        y = df['label']
-        
-        # Split data
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.2, random_state=42
-        )
-        
-        # Train model
-        history = self.model.fit(
-            X_train, y_train,
-            epochs=50,
-            batch_size=32,
-            validation_data=(X_test, y_test),
-            callbacks=[
-                tf.keras.callbacks.EarlyStopping(patience=5),
-                tf.keras.callbacks.ModelCheckpoint(
-                    'best_model.h5',
-                    save_best_only=True
-                )
-            ]
-        )
-        return history</code></pre>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: Code -->
+                </div>
             </div>
 
             <div class="screenshot-placeholder">
-                <div class="screenshot-label">Screenshot: Training Metrics & Confusion Matrix</div>
-                <div class="screenshot-desc">
-                    Wykresy pokazujące accuracy, loss podczas treningu, confusion matrix z wynikami
-                    True Positive: 98.2%, False Positive: 1.8%, oraz ROC curve z AUC = 0.996
-                </div>
+                <!-- Screenshot: Training Metrics & Confusion Matrix -->
             </div>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Analiza Przypadków Rzeczywistych</h2>
             
             <h3>Case Study 1: APT Group DNS Tunneling</h3>
-            <p class="description">
+            <p class="project-description">
                 System wykrył zaawansowaną kampanię APT wykorzystującą DNS tunneling do eksfiltracji
                 danych z sieci korporacyjnej. Atakujący używali algorytmu DGA do generowania domen.
             </p>
 
             <div class="screenshot-placeholder">
-                <div class="screenshot-label">Screenshot: Timeline Ataku APT</div>
-                <div class="screenshot-desc">
-                    Wizualizacja timeline pokazująca progresję ataku, od initial compromise,
-                    przez lateral movement, aż do data exfiltration przez DNS
-                </div>
+                <!-- Screenshot: Timeline Ataku APT -->
             </div>
 
             <h3>Case Study 2: Malware C&C Communication</h3>
-            <p class="description">
+            <p class="project-description">
                 Detekcja komunikacji malware z serwerem C&C ukrytej w zapytaniach TXT records.
                 System zidentyfikował nietypowy pattern zapytań co 30 sekund z encoded payloads.
             </p>
 
-            <div class="terminal">
-                <div class="terminal-line">
-                    <span class="output">[Detection Summary]</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="output">Total DNS Queries Analyzed: 1,247,832</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="output">Suspicious Queries Detected: 342</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="output">Confirmed Exfiltration Attempts: 28</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="output">False Positive Rate: 1.2%</span>
+            <div class="terminal-window">
+                <div class="terminal-content">
+                    <div class="terminal-line">
+                        <span class="output">[Detection Summary]</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">Total DNS Queries Analyzed: 1,247,832</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">Suspicious Queries Detected: 342</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">Confirmed Exfiltration Attempts: 28</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">False Positive Rate: 1.2%</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Integracja z SIEM</h2>
             
-            <div class="code-block">
+            <div class="code-section">
                 <div class="code-header">elasticsearch_integration.py</div>
-                <pre><code>from elasticsearch import Elasticsearch
-import json
-
-class SIEMIntegration:
-    def __init__(self, es_host='localhost:9200'):
-        self.es = Elasticsearch([es_host])
-        self.index = 'dns-exfiltration-alerts'
-        
-    def send_alert(self, alert_data):
-        """Send alert to Elasticsearch/SIEM"""
-        doc = {
-            'timestamp': alert_data['timestamp'],
-            'event_type': 'dns_exfiltration',
-            'severity': 'critical' if alert_data['threat_score'] > 0.9 else 'high',
-            'source_ip': alert_data['source_ip'],
-            'domain': alert_data['domain'],
-            'threat_score': alert_data['threat_score'],
-            'features': alert_data['features'],
-            'raw_query': alert_data.get('raw_query', ''),
-            'detection_method': 'ml_anomaly',
-            'tags': ['dns', 'exfiltration', 'security-alert']
-        }
-        
-        response = self.es.index(
-            index=self.index,
-            document=doc
-        )
-        return response</code></pre>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: Code -->
+                </div>
             </div>
 
             <div class="screenshot-placeholder">
-                <div class="screenshot-label">Screenshot: Kibana Dashboard</div>
-                <div class="screenshot-desc">
-                    Dashboard w Kibana pokazujący heatmapę aktywności DNS, top 10 podejrzanych domen,
-                    timeline alertów oraz geographical map źródeł ataków
-                </div>
+                <!-- Screenshot: Kibana Dashboard -->
             </div>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Performance & Benchmarking</h2>
             
-            <p class="description">
+            <p class="project-description">
                 System został przetestowany w środowisku produkcyjnym obsługującym 50,000+ zapytań DNS na minutę.
                 Osiągnięto następujące wyniki wydajnościowe:
             </p>
@@ -616,34 +244,30 @@ class SIEMIntegration:
             </div>
 
             <div class="screenshot-placeholder">
-                <div class="screenshot-label">Screenshot: Grafana Performance Metrics</div>
-                <div class="screenshot-desc">
-                    Real-time metryki pokazujące CPU usage, memory consumption, queries per second,
-                    detection latency oraz queue sizes w systemie monitoringu
-                </div>
+                <!-- Screenshot: Grafana Performance Metrics -->
             </div>
-        </div>
+        </section>
 
-        <div class="section">
+        <section class="project-section">
             <h2>Wnioski i Rozwój</h2>
             
-            <p class="description">
+            <p class="project-description">
                 DNS Exfiltration Detector skutecznie wykrywa różne techniki eksfiltracji danych przez DNS,
                 od prostego DNS tunneling po zaawansowane metody wykorzystujące DGA i steganografię w DNS.
                 Planowane rozszerzenia to wsparcie dla DNS over HTTPS (DoH), integracja z threat intelligence
                 feeds oraz rozbudowa modelu ML o detekcję nowych typów ataków.
             </p>
 
-            <div class="alert-box" style="border-color: var(--success); background: rgba(46, 213, 115, 0.1);">
-                <div class="alert-title" style="color: var(--success);">✓ Projekt w Produkcji</div>
-                <p style="margin: 0;">
+            <div class="alert-box alert-success">
+                <div class="alert-title">✓ Projekt w Produkcji</div>
+                <p>
                     System jest aktywnie wykorzystywany w kilku środowiskach korporacyjnych,
                     gdzie pomógł wykryć i powstrzymać kilkanaście prób eksfiltracji danych.
                 </p>
             </div>
-        </div>
+        </section>
 
-        <div style="text-align: center; padding: 40px 0;">
+        <div class="project-footer">
             <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
         </div>
     </div>
