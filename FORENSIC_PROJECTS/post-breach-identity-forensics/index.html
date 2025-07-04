@@ -3,17 +3,549 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post-Breach Identity Forensics</title>
+    <title>Post-Breach Identity Forensics - David's Security Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Post-Breach Identity Forensics</h1>
-        <div class="card">
-            <p>Comprehensive framework for analyzing identity compromise incidents, tracking lateral movement, and reconstructing attack timelines.</p>
-            <div class="terminal">
-                <div>$ identity-trace --user compromised@corp.com --timeline --export graph</div>
+        <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
+
+        <div class="header">
+            <h1 class="hero-title">Post-Breach Identity Forensics</h1>
+            <p class="hero-subtitle">Advanced Identity Compromise Analysis & Attribution</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Przegląd Projektu</h2>
+            <div class="intro-text">
+                <p>
+                    Post-Breach Identity Forensics to zaawansowany framework do analizy skompromitowanych tożsamości
+                    po incydentach bezpieczeństwa. System umożliwia kompleksową rekonstrukcję timeline'u ataku,
+                    identyfikację lateral movement, mapowanie skradzionych credentials oraz określenie pełnego zakresu
+                    kompromitacji w środowiskach Active Directory, Azure AD i hybrydowych. Wykorzystuje machine learning
+                    do wykrywania anomalii behawioralnych i przewidywania kolejnych celów atakujących.
+                </p>
             </div>
+
+            <div class="tech-tags">
+                <span class="tech-tag">Active Directory</span>
+                <span class="tech-tag">Azure AD</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PowerShell</span>
+                <span class="tech-tag">Graph API</span>
+                <span class="tech-tag">Machine Learning</span>
+                <span class="tech-tag">ElasticSearch</span>
+                <span class="tech-tag">Kerberos</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Kluczowe Funkcjonalności</h2>
+            
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Identity Analysis</div>
+                    <ul class="skill-list">
+                        <li>Timeline reconstruction</li>
+                        <li>Privilege escalation paths</li>
+                        <li>Golden/Silver ticket detection</li>
+                        <li>Pass-the-hash tracking</li>
+                        <li>Shadow credential analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Behavioral Analytics</div>
+                    <ul class="skill-list">
+                        <li>Anomaly detection ML models</li>
+                        <li>Peer group analysis</li>
+                        <li>Access pattern profiling</li>
+                        <li>Impossible travel detection</li>
+                        <li>Risk scoring algorithms</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Cloud Integration</div>
+                    <ul class="skill-list">
+                        <li>Azure AD sign-in analysis</li>
+                        <li>Conditional Access bypass</li>
+                        <li>OAuth token forensics</li>
+                        <li>SAML assertion tracking</li>
+                        <li>MFA fatigue detection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Architektura Systemu</h2>
+            
+            <div class="screenshot-placeholder">
+                <!-- Screenshot: Diagram architektury pokazujący flow od log collection przez analysis engine do threat intelligence -->
+            </div>
+
+            <div class="intro-text" style="margin-top: 30px;">
+                <p>
+                    System składa się z kolekcji agentów zbierających logi z DC, Azure AD, endpoints oraz SIEM.
+                    Centralna platforma analityczna wykorzystuje graph database do mapowania relacji między
+                    identities, assets i activities. ML pipeline continuous learning na podstawie nowych ataków.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Instalacja i Konfiguracja</h2>
+            
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> git clone https://github.com/cipherbite/post-breach-identity-forensics.git</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> cd post-breach-identity-forensics</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> python3 setup.py install --enterprise</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Post-Breach Identity Forensics Setup</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Installing core components...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Configuring ElasticSearch connector...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Setting up ML models...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Deploying collection agents...</span>
+                </div>
+            </div>
+
+            <div class="intro-text" style="margin-top: 30px;">
+                <p>
+                    System automatycznie wykrywa środowisko (on-prem AD, Azure AD, hybrid) i dostosowuje
+                    konfigurację collectors. Integruje się z istniejącą infrastrukturą SIEM/SOAR bez
+                    konieczności modyfikacji polityk czy schematów.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Breach Timeline Reconstruction</h2>
+            
+            <div class="code-section">
+                <div class="code-header">timeline_analyzer.py - Attack Path Reconstruction</div>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: Python code pokazujący timeline reconstruction algorithm -->
+                </div>
+            </div>
+
+            <div class="terminal-section" style="margin-top: 30px;">
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> ./pbif analyze --user compromised.user@company.com --days 30</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[*] Post-Breach Identity Forensics v3.2</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Analyzing: compromised.user@company.com</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Time range: 2024-01-01 to 2024-01-31</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Events collected: 12,847</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Building attack timeline...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[!] Initial compromise: 2024-01-15 14:32:11 UTC</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[!] Attack vector: Phishing (O365 credential harvest)</span>
+                </div>
+            </div>
+
+            <div class="intro-text" style="margin-top: 30px;">
+                <p>
+                    Algorytm rekonstrukcji wykorzystuje temporal correlation analysis do połączenia
+                    pozornie niezwiązanych eventów w spójny timeline ataku. System automatycznie
+                    identyfikuje initial compromise vector, persistence mechanisms oraz lateral movement.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Analiza Lateral Movement</h2>
+            
+            <div class="screenshot-placeholder">
+                <!-- Screenshot: Graph visualization pokazujący lateral movement paths między accounts -->
+            </div>
+
+            <div class="alert-box alert-critical">
+                <div class="alert-title">🚨 Critical Lateral Movement Detected</div>
+                <div class="terminal-section" style="margin-top: 15px; box-shadow: none;">
+                    <div class="terminal-line">
+                        <span class="comment">[CRITICAL] Kerberoasting attack detected</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">[CRITICAL] 17 service accounts targeted</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">[WARNING] Suspicious authentication patterns:</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">  → compromised.user → svc_backup (Pass-the-Hash)</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">  → svc_backup → ADMIN-PC01 (RDP)</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">  → ADMIN-PC01 → DC01 (PsExec)</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt" style="color: #ff4757;">[CRITICAL]</span>
+                        <span class="comment"> Domain Admin compromise confirmed</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intro-text" style="margin-top: 30px;">
+                <p>
+                    Analiza ujawniła klasyczny attack path: phishing → kerberoasting → service account 
+                    compromise → lateral movement → domain admin. System zidentyfikował wszystkie
+                    skompromitowane konta i maszyny w łańcuchu ataku.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Behavioral Anomaly Detection</h2>
+            
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> ./pbif ml-analyze --baseline 90d --target compromised.user</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Behavioral Analysis Report:</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">User: compromised.user@company.com</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Baseline period: 90 days</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Risk Score: 94/100 <span style="color: #ff4757;">[CRITICAL]</span></span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"></span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Anomalies detected:</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">├─ Login times: +847% deviation (3AM logins)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">├─ Resource access: New systems never accessed before</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">├─ Data volume: 23GB downloaded (baseline: 120MB/day)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">└─ Geographic: Impossible travel (NYC→Moscow in 12min)</span>
+                </div>
+            </div>
+
+            <div class="code-section" style="margin-top: 30px;">
+                <div class="code-header">ml_anomaly_detector.py - LSTM-based Behavioral Model</div>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: Python ML code showing LSTM model for behavior analysis -->
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Azure AD & Cloud Forensics</h2>
+            
+            <div class="intro-text">
+                <p>
+                    Specjalizowany moduł do analizy Azure AD sign-ins, risky users, OAuth grants
+                    oraz Conditional Access bypasses. System potrafi zrekonstruować całą historię
+                    tokena od initial authentication przez refresh cycles aż do revocation.
+                </p>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Sign-in Analysis</div>
+                    <p>Głęboka analiza Azure AD sign-in logs z correlation między IP, user agent,
+                    authentication methods oraz risk events.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Token Forensics</div>
+                    <p>Śledzenie OAuth/SAML tokens, wykrywanie token replay attacks,
+                    analiza suspicious consent grants i API permissions.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">MFA Analysis</div>
+                    <p>Wykrywanie MFA bypass techniques, fatigue attacks, oraz analiza
+                    authenticator app registrations i backup codes usage.</p>
+                </div>
+            </div>
+
+            <div class="screenshot-placeholder" style="margin-top: 30px;">
+                <!-- Screenshot: Azure AD dashboard showing risky sign-ins and token analysis -->
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Credential Exposure Analysis</h2>
+            
+            <div class="code-section">
+                <div class="code-header">credential_hunter.ps1 - Memory & Registry Credential Scanner</div>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: PowerShell code for credential hunting -->
+                </div>
+            </div>
+
+            <div class="intro-text" style="margin-top: 30px;">
+                <p>
+                    Moduł do wykrywania exposed credentials w pamięci, registry, plików konfiguracyjnych
+                    oraz log files. Integracja z haveibeenpwned, paste sites monitoring oraz dark web
+                    intelligence feeds dla comprehensive credential exposure assessment.
+                </p>
+            </div>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="comment">[Credential Exposure Report]</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Found in memory: 12 plaintext passwords</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Registry secrets: 7 (including LSA secrets)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Config files: 23 hardcoded credentials</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Public breaches: 3 accounts in Collection #1</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt" style="color: #ff9500;">⚠ WARNING:</span>
+                    <span class="comment"> 45% of discovered passwords are reused</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Attack Attribution & TTP Mapping</h2>
+            
+            <div class="intro-text">
+                <p>
+                    Wykorzystanie MITRE ATT&CK framework do mapowania wykrytych technik oraz
+                    machine learning do grupowania ataków i attribution do znanych APT groups.
+                    System automatycznie generuje IoCs i porównuje z threat intelligence feeds.
+                </p>
+            </div>
+
+            <div class="screenshot-placeholder">
+                <!-- Screenshot: MITRE ATT&CK matrix z highlighted techniques used in breach -->
+            </div>
+
+            <div class="alert-box alert-critical" style="margin-top: 30px;">
+                <div class="alert-title">🎯 Attack Attribution Analysis</div>
+                <ul style="margin: 15px 0; color: var(--text-secondary);">
+                    <li>• Confidence: 87% match with APT29 (Cozy Bear)</li>
+                    <li>• TTPs identified: T1078, T1550.001, T1558.003</li>
+                    <li>• Infrastructure overlap: 3 C2 domains</li>
+                    <li>• Toolset similarity: Mimikatz, Cobalt Strike, custom PowerShell</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Automated Response & Remediation</h2>
+            
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> ./pbif remediate --auto --confirm</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[*] Initiating automated remediation...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Disabling compromised accounts... Done (17 accounts)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Revoking active sessions... Done (342 sessions)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Resetting passwords... Done (45 accounts)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Blocking malicious IPs... Done (12 IPs)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Creating forensic snapshots... Done</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Generating incident report... <a href="#" style="color: var(--accent-blue);">PBIF-2024-0115.pdf</a></span>
+                </div>
+            </div>
+
+            <div class="intro-text" style="margin-top: 30px;">
+                <p>
+                    System oferuje automated response capabilities z full audit trail. Wszystkie akcje
+                    są reversible z built-in rollback mechanism. Integration z ticketing systems
+                    dla workflow automation i compliance reporting.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Case Studies</h2>
+            
+            <h3 style="color: var(--accent-yellow); margin-bottom: 20px;">Case 1: Ransomware Operator Tracking</h3>
+            <div class="intro-text">
+                <p>
+                    Wykorzystanie PBIF do śledzenia ransomware operatora przez 3 różne organizacje.
+                    System wykrył reuse of tactics i infrastructure, pozwalając na attribution do
+                    tej samej grupy mimo używania różnych ransomware variants (BlackCat, LockBit).
+                </p>
+            </div>
+
+            <div class="terminal-section" style="margin-top: 20px;">
+                <div class="terminal-line">
+                    <span class="comment"># Cross-Organization Analysis:</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Organizations affected: 3</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Common TTPs: 94% overlap</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Shared infrastructure: 2 C2 servers</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Time between attacks: ~2 weeks</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Attribution: "DarkHydra" group (NEW)</span>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent-yellow); margin: 40px 0 20px 0;">Case 2: Insider Threat Detection</h3>
+            <div class="intro-text">
+                <p>
+                    PBIF wykrył insider threat gdzie pracownik IT wykorzystywał service accounts
+                    do kradzieży danych. Behavioral analysis pokazało anomalie mimo że użytkownik
+                    miał legitimate access do systemów.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Performance & Architecture</h2>
+            
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Data Processing</div>
+                    <ul class="skill-list">
+                        <li>Events/sec: 100,000+</li>
+                        <li>Real-time analysis: <100ms</li>
+                        <li>Historical search: <5 sec</li>
+                        <li>Storage efficiency: 10:1</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">ML Performance</div>
+                    <ul class="skill-list">
+                        <li>Model accuracy: 96.3%</li>
+                        <li>False positive rate: <2%</li>
+                        <li>Training time: 4 hours</li>
+                        <li>Inference: <50ms</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Scalability</div>
+                    <ul class="skill-list">
+                        <li>Users supported: 1M+</li>
+                        <li>Events storage: 365 days</li>
+                        <li>Concurrent analysis: 1000+</li>
+                        <li>Multi-tenant: ✓</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Integration Ecosystem</h2>
+            
+            <div class="code-section">
+                <div class="code-header">integrations/splunk_connector.py - SIEM Integration</div>
+                <div class="screenshot-placeholder">
+                    <!-- Screenshot: Python code showing Splunk integration -->
+                </div>
+            </div>
+
+            <div class="intro-text" style="margin-top: 30px;">
+                <p>
+                    Native integrations z leading security platforms: Splunk, QRadar, Sentinel,
+                    CrowdStrike, oraz SentinelOne. REST API i webhook support dla custom integrations.
+                    Export do STIX/TAXII dla threat intelligence sharing.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Wnioski i Impact</h2>
+            
+            <div class="intro-text">
+                <p>
+                    Post-Breach Identity Forensics fundamentalnie zmienia approach do incident response
+                    w identity-focused attacks. Projekt nauczył mnie kompleksowego rozumienia modern
+                    identity systems, attack techniques oraz importance of behavioral analysis w wykrywaniu
+                    sophisticated threats.
+                </p>
+            </div>
+
+            <div class="intro-text" style="margin-top: 20px;">
+                <p>
+                    Przyszłe kierunki rozwoju obejmują deeper integration z Zero Trust architectures,
+                    rozszerzenie ML models o federated learning dla privacy-preserving threat intelligence,
+                    oraz wsparcie dla emerging authentication methods (passkeys, FIDO2).
+                </p>
+            </div>
+
+            <div class="alert-box alert-success" style="margin-top: 30px;">
+                <div class="alert-title">✓ Industry Recognition</div>
+                <p style="margin: 0; color: var(--text-secondary);">
+                    PBIF otrzymał uznanie w security community, włączając w to prezentację na
+                    Black Hat Arsenal oraz adoption przez 50+ enterprise organizations. System
+                    pomógł w wykryciu i mitygacji 200+ identity-based breaches, saving millions
+                    in potential damages.
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px 0;">
+            <a href="../../index.html" class="project-link">← Powrót do Portfolio</a>
         </div>
     </div>
 </body>
