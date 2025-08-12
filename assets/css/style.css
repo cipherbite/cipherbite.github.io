@@ -422,3 +422,20 @@ button:focus {
 .inline-block { display: inline-block; }
 .flex { display: flex; }
 .grid { display: grid; }
+
+/* Back to Portfolio Link */
+.back-link {
+    display: inline-block;
+    color: var(--accent-primary);
+    text-decoration: none;
+    margin-bottom: 30px;
+    padding: 8px 16px;
+    border: 1px solid var(--accent-primary);
+    border-radius: var(--radius);
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+}
