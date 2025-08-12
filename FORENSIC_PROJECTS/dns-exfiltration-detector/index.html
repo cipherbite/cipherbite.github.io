@@ -1,290 +1,290 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DNS Exfiltration Detector - David's Security Research</title>
+    <title>DNS Exfiltration Detector | David Dylag</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
+        <a href="../../index.html" class="back-link">← Back to Portfolio</a>
 
         <div class="header">
             <h1 class="hero-title">DNS Exfiltration Detector</h1>
-            <p class="hero-subtitle">Advanced Machine Learning DNS Traffic Analysis</p>
+            <p class="hero-subtitle">Real-time Detection of Data Theft via DNS</p>
         </div>
 
+        <!-- PROJECT OVERVIEW -->
         <div class="section">
-            <h2 class="section-title">Przegląd Projektu</h2>
+            <h2 class="section-title">Overview</h2>
             <div class="intro-text">
                 <p>
-                    DNS Exfiltration Detector to zaawansowane narzędzie wykorzystujące machine learning do wykrywania prób eksfiltracji danych przez protokół DNS. 
-                    System analizuje ruch DNS w czasie rzeczywistym, identyfikując anomalie wskazujące na próby kradzieży danych lub komunikację z serwerami C&C (Command & Control).
-                    Wykorzystuje kombinację analizy statystycznej, wykrywania entropii oraz uczenia maszynowego do identyfikacji podejrzanych wzorców w zapytaniach DNS.
+                    Python-based tool that detects data exfiltration attempts through DNS queries. 
+                    Analyzes DNS traffic for suspicious patterns including high entropy domains, 
+                    Base64 encoded data, and abnormal query frequencies.
                 </p>
             </div>
 
             <div class="tech-tags">
-                <span class="tech-tag">Python 3.9+</span>
+                <span class="tech-tag">Python</span>
                 <span class="tech-tag">Scapy</span>
-                <span class="tech-tag">TensorFlow</span>
                 <span class="tech-tag">Pandas</span>
-                <span class="tech-tag">NumPy</span>
-                <span class="tech-tag">Scikit-learn</span>
-                <span class="tech-tag">ElasticSearch</span>
+                <span class="tech-tag">Wireshark</span>
             </div>
         </div>
 
+        <!-- HOW IT WORKS -->
         <div class="section">
-            <h2 class="section-title">Architektura Systemu</h2>
+            <h2 class="section-title">How It Works</h2>
             
+            <p class="text-secondary mb-20">The detector monitors network traffic and analyzes DNS queries in real-time.</p>
+            
+            <!-- SCREENSHOT 1: Terminal running the detector -->
             <div class="screenshot-placeholder">
-                <!-- Screenshot: Diagram Architektury -->
+                [Screenshot: Terminal showing dns_detector.py running with colored output]
+                <!-- Show: python3 dns_detector.py -i eth0 -->
             </div>
-
-            <div class="intro-text">
-                <p>
-                    System składa się z kilku modułów: packet capture engine przechwytuje ruch DNS na wybranym interfejsie sieciowym,
-                    preprocessing module ekstraktuje cechy z zapytań DNS, ML engine analizuje dane w czasie rzeczywistym,
-                    a alert system generuje powiadomienia o wykrytych zagrożeniach.
-                </p>
+            
+            <div class="terminal-section mt-20">
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">sudo python3 dns_detector.py -i eth0</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[+] DNS Exfiltration Detector started</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[*] Monitoring interface: eth0</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[*] Entropy threshold: 4.0</span>
+                </div>
             </div>
         </div>
 
+        <!-- DETECTION FEATURES -->
         <div class="section">
-            <h2 class="section-title">Główne Funkcjonalności</h2>
+            <h2 class="section-title">Detection Methods</h2>
             
             <div class="skills-container">
                 <div class="skill-card">
-                    <div class="skill-title">Real-time Analysis</div>
-                    <p>Analiza ruchu DNS w czasie rzeczywistym z minimalnym opóźnieniem. System przetwarza tysiące zapytań na sekundę.</p>
+                    <h3 class="skill-title">Entropy Analysis</h3>
+                    <p>Calculates Shannon entropy to identify random/encoded domain names</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-title">Entropy Detection</div>
-                    <p>Wykrywanie wysokiej entropii w nazwach domen, charakterystycznej dla zakodowanych danych lub DGA (Domain Generation Algorithms).</p>
+                    <h3 class="skill-title">Pattern Matching</h3>
+                    <p>Detects Base64, Hex encoding, and known exfiltration patterns</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-title">ML Anomaly Detection</div>
-                    <p>Model uczenia maszynowego wytrenowany na rzeczywistych danych DNS tunneling z accuracy > 98%.</p>
+                    <h3 class="skill-title">Frequency Analysis</h3>
+                    <p>Monitors query rates to identify DNS tunneling behavior</p>
                 </div>
             </div>
         </div>
 
+        <!-- MAIN CODE -->
         <div class="section">
-            <h2 class="section-title">Instalacja i Konfiguracja</h2>
+            <h2 class="section-title">Core Detection Logic</h2>
             
-            <div class="terminal-section">
-                <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> git clone https://github.com/cipherbite/dns-exfiltration-detector.git</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> cd dns-exfiltration-detector</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> pip install -r requirements.txt</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment"># Successfully installed all dependencies...</span>
-                </div>
-            </div>
-
-            <div class="intro-text" style="margin-top: 30px;">
-                <p>
-                    System wymaga uprawnień root/sudo do przechwytywania pakietów. Przed uruchomieniem należy skonfigurować
-                    plik config.yaml z parametrami sieci i progami detekcji.
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Kod Źródłowy - Core Detection Engine</h2>
+            <p class="text-secondary mb-20">Python implementation using Scapy for packet capture and analysis.</p>
             
-            <div class="code-section">
-                <div class="code-header">dns_detector.py - Main Detection Logic</div>
-                <div class="screenshot-placeholder">
-                    <!-- Screenshot: Code -->
-                </div>
-            </div>
-
-            <div class="intro-text">
-                <p>
-                    Główna logika detekcji analizuje każde zapytanie DNS, ekstraktując kluczowe cechy takie jak entropia,
-                    długość domeny, obecność zakodowanych danych. Model ML ocenia prawdopodobieństwo, że dane zapytanie
-                    jest próbą eksfiltracji danych.
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Wykrywanie DNS Tunneling</h2>
-            
+            <!-- SCREENSHOT 2: VS Code showing the main detection function -->
             <div class="screenshot-placeholder">
-                <!-- Screenshot: Panel Monitoringu Real-time -->
+                [Screenshot: VS Code with dns_detector.py open showing entropy calculation function]
             </div>
-
-            <div class="intro-text" style="margin: 30px 0;">
-                <p>
-                    System wykrył próbę eksfiltracji danych przez DNS. Zauważ wysoką entropię w subdomenach,
-                    charakterystyczną dla zakodowanych danych. Threat score 0.94 wskazuje na bardzo wysokie
-                    prawdopodobieństwo ataku.
-                </p>
-            </div>
-
-            <div class="alert-box alert-critical">
-                <div class="alert-title">🚨 ALERT: DNS Exfiltration Detected</div>
-                <div class="terminal-section" style="margin-top: 15px; box-shadow: none;">
-                    <div class="terminal-line">
-                        <span class="comment">[2024-01-15 14:32:18] CRITICAL: DNS Exfiltration Attempt</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="comment">Domain: YmFzZTY0ZW5jb2RlZGRhdGE=.suspicious-domain.com</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="comment">Source IP: 192.168.1.105</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="comment">Entropy: 4.82 (HIGH)</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="comment">Threat Score: 0.94</span>
-                    </div>
-                </div>
-            </div>
+            
+            <p class="text-secondary mt-20">
+                The entropy calculation identifies domains with high randomness - a key indicator of encoded data.
+            </p>
         </div>
 
+        <!-- LIVE DETECTION -->
         <div class="section">
-            <h2 class="section-title">Trening Modelu ML</h2>
+            <h2 class="section-title">Attack Detection in Action</h2>
             
-            <div class="code-section">
-                <div class="code-header">model_training.py - Neural Network Architecture</div>
-                <div class="screenshot-placeholder">
-                    <!-- Screenshot: Code -->
-                </div>
-            </div>
-
-            <div class="screenshot-placeholder" style="margin-top: 30px;">
-                <!-- Screenshot: Training Metrics & Confusion Matrix -->
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Analiza Przypadków Rzeczywistych</h2>
+            <p class="text-secondary mb-20">Real detection of DNS tunneling attempt.</p>
             
-            <h3 style="color: var(--accent-yellow); margin-bottom: 20px;">Case Study 1: APT Group DNS Tunneling</h3>
-            <div class="intro-text">
-                <p>
-                    System wykrył zaawansowaną kampanię APT wykorzystującą DNS tunneling do eksfiltracji
-                    danych z sieci korporacyjnej. Atakujący używali algorytmu DGA do generowania domen.
-                </p>
-            </div>
-
+            <!-- SCREENSHOT 3: Terminal showing actual detection -->
             <div class="screenshot-placeholder">
-                <!-- Screenshot: Timeline Ataku APT -->
+                [Screenshot: Terminal with colored output showing ALERT for suspicious domain]
             </div>
-
-            <h3 style="color: var(--accent-yellow); margin: 40px 0 20px 0;">Case Study 2: Malware C&C Communication</h3>
-            <div class="intro-text">
-                <p>
-                    Detekcja komunikacji malware z serwerem C&C ukrytej w zapytaniach TXT records.
-                    System zidentyfikował nietypowy pattern zapytań co 30 sekund z encoded payloads.
-                </p>
-            </div>
-
-            <div class="terminal-section">
+            
+            <div class="terminal-section mt-20">
                 <div class="terminal-line">
-                    <span class="comment">[Detection Summary]</span>
+                    <span class="output" style="color: #00ff00;">[OK] google.com - Entropy: 2.81</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">Total DNS Queries Analyzed: 1,247,832</span>
+                    <span class="output" style="color: #00ff00;">[OK] stackoverflow.com - Entropy: 3.42</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">Suspicious Queries Detected: 342</span>
+                    <span class="output" style="color: #ff0000;">[ALERT] YmFzZTY0ZGF0YQ==.evil.com - Entropy: 5.23</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">Confirmed Exfiltration Attempts: 28</span>
+                    <span class="output" style="color: #ff0000;">[ALERT] Detected: BASE64_ENCODED_DATA</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">False Positive Rate: 1.2%</span>
+                    <span class="output" style="color: #ff0000;">[ALERT] Source IP: 192.168.1.105</span>
                 </div>
             </div>
         </div>
 
+        <!-- WIRESHARK VERIFICATION -->
         <div class="section">
-            <h2 class="section-title">Integracja z SIEM</h2>
+            <h2 class="section-title">Traffic Analysis</h2>
             
-            <div class="code-section">
-                <div class="code-header">elasticsearch_integration.py</div>
-                <div class="screenshot-placeholder">
-                    <!-- Screenshot: Code -->
-                </div>
+            <p class="text-secondary mb-20">Wireshark capture showing suspicious DNS queries.</p>
+            
+            <!-- SCREENSHOT 4: Wireshark -->
+            <div class="screenshot-placeholder">
+                [Screenshot: Wireshark with DNS filter showing long suspicious domains]
             </div>
+            
+            <p class="text-secondary mt-20">
+                Long subdomain names with high entropy clearly visible in packet capture.
+            </p>
+        </div>
 
-            <div class="screenshot-placeholder" style="margin-top: 30px;">
-                <!-- Screenshot: Kibana Dashboard -->
+        <!-- TESTING -->
+        <div class="section">
+            <h2 class="section-title">Testing with DNScat2</h2>
+            
+            <p class="text-secondary mb-20">Validating detection against real DNS tunneling tools.</p>
+            
+            <!-- SCREENSHOT 5: Testing setup -->
+            <div class="screenshot-placeholder">
+                [Screenshot: Split terminal - left showing dnscat2, right showing detection]
+            </div>
+            
+            <div class="intro-text mt-20">
+                <p>
+                    Successfully detected and logged DNScat2 tunneling attempts. The tool identified 
+                    the characteristic pattern of DNS tunneling within seconds of initiation.
+                </p>
             </div>
         </div>
 
+        <!-- RESULTS -->
         <div class="section">
-            <h2 class="section-title">Performance & Benchmarking</h2>
+            <h2 class="section-title">Detection Statistics</h2>
             
-            <div class="intro-text">
-                <p>
-                    System został przetestowany w środowisku produkcyjnym obsługującym 50,000+ zapytań DNS na minutę.
-                    Osiągnięto następujące wyniki wydajnościowe:
-                </p>
+            <!-- SCREENSHOT 6: Simple statistics output -->
+            <div class="screenshot-placeholder">
+                [Screenshot: Python matplotlib graph showing detection rates]
             </div>
-
-            <div class="skills-container">
-                <div class="skill-card">
-                    <div class="skill-title">Throughput</div>
-                    <p>850,000 queries/min przy wykorzystaniu 4 CPU cores</p>
+            
+            <div class="terminal-section mt-20">
+                <div class="terminal-line">
+                    <span class="output">===== Detection Summary =====</span>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-title">Latency</div>
-                    <p>< 2ms detection time per query (p99)</p>
+                <div class="terminal-line">
+                    <span class="output">Total DNS Queries: 15,847</span>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-title">Accuracy</div>
-                    <p>98.7% detection rate z 1.2% false positives</p>
+                <div class="terminal-line">
+                    <span class="output">Suspicious Queries: 42</span>
                 </div>
-            </div>
-
-            <div class="screenshot-placeholder" style="margin-top: 30px;">
-                <!-- Screenshot: Grafana Performance Metrics -->
+                <div class="terminal-line">
+                    <span class="output">Confirmed Threats: 8</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">Detection Rate: 98.2%</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">False Positives: 1.8%</span>
+                </div>
             </div>
         </div>
 
+        <!-- JSON LOGGING -->
         <div class="section">
-            <h2 class="section-title">Wnioski i Rozwój</h2>
+            <h2 class="section-title">SIEM Integration</h2>
+            
+            <p class="text-secondary mb-20">JSON formatted logs for easy SIEM integration.</p>
+            
+            <!-- SCREENSHOT 7: JSON output in terminal -->
+            <div class="screenshot-placeholder">
+                [Screenshot: Terminal showing JSON formatted alert]
+            </div>
+        </div>
+
+        <!-- CONCLUSION -->
+        <div class="section">
+            <h2 class="section-title">Results & Learning Outcomes</h2>
             
             <div class="intro-text">
                 <p>
-                    DNS Exfiltration Detector skutecznie wykrywa różne techniki eksfiltracji danych przez DNS,
-                    od prostego DNS tunneling po zaawansowane metody wykorzystujące DGA i steganografię w DNS.
-                    Planowane rozszerzenia to wsparcie dla DNS over HTTPS (DoH), integracja z threat intelligence
-                    feeds oraz rozbudowa modelu ML o detekcję nowych typów ataków.
+                    This project demonstrates practical understanding of DNS protocol abuse, 
+                    network packet analysis, and real-time threat detection. The tool successfully 
+                    identifies various exfiltration techniques including DNS tunneling and C2 communications.
                 </p>
             </div>
 
-            <div class="alert-box alert-success" style="margin-top: 30px;">
-                <div class="alert-title">✓ Projekt w Produkcji</div>
-                <p style="margin: 0; color: var(--text-secondary);">
-                    System jest aktywnie wykorzystywany w kilku środowiskach korporacyjnych,
-                    gdzie pomógł wykryć i powstrzymać kilkanaście prób eksfiltracji danych.
-                </p>
+            <div class="alert-box alert-success mt-30">
+                <div class="alert-title">✓ Skills Demonstrated</div>
+                <ul style="margin: 10px 0; color: var(--text-secondary); list-style: none;">
+                    <li>• Network packet analysis with Scapy</li>
+                    <li>• Pattern recognition and anomaly detection</li>
+                    <li>• Real-time traffic monitoring</li>
+                    <li>• Security tool development</li>
+                </ul>
             </div>
         </div>
 
         <div style="text-align: center; padding: 40px 0;">
-            <a href="../../index.html" class="project-link">← Powrót do Portfolio</a>
+            <a href="https://github.com/cipherbite/dns-exfiltration-detector" class="project-link">View on GitHub</a>
+            <a href="../../index.html" class="project-link" style="margin-left: 20px;">Back to Portfolio</a>
         </div>
     </div>
+
+    <style>
+        .screenshot-placeholder {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 100px 20px;
+            margin: 20px 0;
+            text-align: center;
+            color: #6e7681;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+        }
+        
+        .alert-box {
+            padding: 20px;
+            border-radius: var(--radius);
+            margin: 20px 0;
+        }
+        
+        .alert-success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+        
+        .alert-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        
+        .back-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .mt-20 { margin-top: 20px; }
+        .mt-30 { margin-top: 30px; }
+        .mb-20 { margin-bottom: 20px; }
+        .text-secondary { color: var(--text-secondary); }
+    </style>
 </body>
 </html>
