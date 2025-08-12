@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David | Cybersecurity Research Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="hero-title">DAVID</h1>
+            <p class="hero-subtitle">Cybersecurity Research Portfolio</p>
+            <p class="hero-subtitle">Advanced Forensics & Identity Access Management</p>
+            
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span> 
+                    <span class="command">whoami</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Cybersecurity Specialist | Forensics Expert | IAM Researcher</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span> 
+                    <span class="command">cat /etc/skills | grep "expertise"</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Digital Forensics, Zero Trust Architecture, Advanced Threat Detection</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="section">
+            <h2 class="section-title">Obszary Badawcze</h2>
+            <div class="intro-text">
+                <p>Specjalizuję się w zaawansowanych technikach analizy forensycznej i bezpieczeństwie systemów zarządzania tożsamością. Moje projekty obejmują wykrywanie zaawansowanych zagrożeń, analizę malware'u oraz badania nad obejściem systemów Zero Trust. Koncentruję się na praktycznych aspektach cybersecurity, łącząc teorię z rzeczywistymi scenariuszami ataków.</p>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <h2 class="section-title">Kompetencje Techniczne</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Digital Forensics</div>
+                    <ul class="skill-list">
+                        <li>Memory Forensics & Analysis</li>
+                        <li>Container Security Analysis</li>
+                        <li>Steganography Detection</li>
+                        <li>Metadata Harvesting</li>
+                        <li>DNS Exfiltration Detection</li>
+                        <li>Post-Breach Investigation</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Identity & Access Management</div>
+                    <ul class="skill-list">
+                        <li>Active Directory Security</li>
+                        <li>Zero Trust Architecture</li>
+                        <li>Authentication Protocol Analysis</li>
+                        <li>Cloud IAM (AWS, Azure, GCP)</li>
+                        <li>Behavioral Analysis</li>
+                        <li>Privilege Escalation Detection</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Security Tools & Frameworks</div>
+                    <ul class="skill-list">
+                        <li>Python Security Development</li>
+                        <li>Volatility Framework</li>
+                        <li>Custom Fuzzing Tools</li>
+                        <li>Bluetooth LE Security</li>
+                        <li>Web Application Firewalls</li>
+                        <li>PowerShell Security</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forensics Projects -->
+        <div class="section">
+            <h2 class="section-title">Projekty Forensyczne</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Advanced Steganography Detection</h3>
+                    <p class="project-description">Zaawansowany system wykrywania ukrytych danych w plikach multimedialnych z wykorzystaniem analizy statystycznej i machine learning. System analizuje różne typy plików i wykrywa anomalie wskazujące na obecność ukrytych informacji.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Numpy</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="FORENSIC_PROJECTS/advanced-steganography-detection/index.html" class="project-link">Demo</a>
+                        <a href="https://github.com/cipherbite/advanced-steganography-detection" class="project-link">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Container Memory Forensics</h3>
+                    <p class="project-description">Narzędzie do analizy pamięci kontenerów Docker w środowiskach produkcyjnych. Umożliwia wykrywanie anomalii, potencjalnych ataków i nieautoryzowanych procesów działających w kontenerach.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Volatility</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">C++</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="FORENSIC_PROJECTS/container-memory-forensics/index.html" class="project-link">Demo</a>
+                        <a href="https://github.com/cipherbite/container-memory-forensics" class="project-link">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">DNS Exfiltration Detector</h3>
+                    <p class="project-description">System wykrywania eksfiltracji danych przez DNS w czasie rzeczywistym. Analizuje wzorce ruchu DNS i identyfikuje anomalie wskazujące na próby wycieku danych przez ten protokół.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scapy</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Wireshark</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="FORENSIC_PROJECTS/dns-exfiltration-detector/index.html" class="project-link">Demo</a>
+                        <a href="https://github.com/cipherbite/dns-exfiltration-detector" class="project-link">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Forensic Metadata Harvester</h3>
+                    <p class="project-description">Zaawansowane narzędzie do ekstrakcji i analizy metadanych z różnych typów plików dla potrzeb śledczych. Obsługuje szeroką gamę formatów i umożliwia głęboką analizę ukrytych informacji.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ExifRead</span>
+                        <span class="tech-tag">PyPDF2</span>
+                        <span class="tech-tag">Pillow</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="FORENSIC_PROJECTS/forensic-metadata-harvester/index.html" class="project-link">Demo</a>
+                        <span class="status-indicator status-active"></span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Post-Breach Identity Forensics</h3>
+                    <p class="project-description">Framework do analizy kompromitacji tożsamości po incydencie bezpieczeństwa. Śledzi lateral movement, analizuje logi uwierzytelniania i identyfikuje skompromitowane konta.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PowerShell</span>
+                        <span class="tech-tag">Azure AD</span>
+                        <span class="tech-tag">Graph API</span>
+                        <span class="tech-tag">SIEM</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="FORENSIC_PROJECTS/post-breach-identity-forensics/index.html" class="project-link">Demo</a>
+                        <span class="status-indicator status-pending"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-divider"></div>
+
+        <!-- IAM Projects -->
+        <div class="section">
+            <h2 class="section-title">Projekty IAM & Zero Trust</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Active Directory Compromise Lab</h3>
+                    <p class="project-description">Laboratorium testowe do badania ataków na Active Directory. Symuluje różne scenariusze ataków including Golden Ticket, Silver Ticket i DCSync w kontrolowanym środowisku.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PowerShell</span>
+                        <span class="tech-tag">Mimikatz</span>
+                        <span class="tech-tag">Windows</span>
+                        <span class="tech-tag">Kerberos</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="IAM_PROJECTS/active-directory-compromise-lab/index.html" class="project-link">Demo</a>
+                        <a href="https://github.com/cipherbite/ad-compromise-lab" class="project-link">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Authentication Protocol Fuzzer</h3>
+                    <p class="project-description">Specialized fuzzer do testowania protokołów uwierzytelniania (SAML, OAuth, OpenID Connect). Automatycznie identyfikuje potencjalne luki bezpieczeństwa w implementacjach protokołów.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Burp Suite</span>
+                        <span class="tech-tag">SAML</span>
+                        <span class="tech-tag">OAuth</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="IAM_PROJECTS/authentication-protocol-fuzzer/index.html" class="project-link">Demo</a>
+                        <a href="https://github.com/cipherbite/auth-protocol-fuzzer" class="project-link">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Behavioral Web Application Firewall</h3>
+                    <p class="project-description">WAF oparty na analizie behawioralnej użytkowników. Wykorzystuje machine learning do wykrywania anomalii i potencjalnych ataków w czasie rzeczywistym na podstawie wzorców zachowań.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="IAM_PROJECTS/behavioral-web-application-firewall/index.html" class="project-link">Demo</a>
+                        <span class="status-indicator status-active"></span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Bluetooth LE Security Scanner</h3>
+                    <p class="project-description">Comprehensive scanner bezpieczeństwa dla urządzeń Bluetooth Low Energy. Wykrywa luki w implementacji, weak pairing mechanisms i potencjalne backdoors w urządzeniach IoT.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">BlueZ</span>
+                        <span class="tech-tag">Ubertooth</span>
+                        <span class="tech-tag">Linux</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="IAM_PROJECTS/bluetooth-le-security-scanner/index.html" class="project-link">Demo</a>
+                        <a href="https://github.com/cipherbite/ble-security-scanner" class="project-link">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Cloud Identity Breach Simulator</h3>
+                    <p class="project-description">Symulator ataków na tożsamość w środowiskach chmurowych (AWS, Azure, GCP). Testuje mechanizmy obrony i pomaga w identyfikacji słabych punktów w architekturze bezpieczeństwa chmury.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Azure</span>
+                        <span class="tech-tag">Terraform</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="IAM_PROJECTS/cloud-identity-breach-simulator/index.html" class="project-link">Demo</a>
+                        <span class="status-indicator status-pending"></span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Zero Trust Bypass Research</h3>
+                    <p class="project-description">Badania nad metodami obejścia architektury Zero Trust. Analizuje weak points w implementacjach Zero Trust i identyfikuje potencjalne wektory ataków na te systemy.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Networking</span>
+                        <span class="tech-tag">Certificates</span>
+                        <span class="tech-tag">PKI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="IAM_PROJECTS/zero-trust-bypass-research/index.html" class="project-link">Research</a>
+                        <a href="https://github.com/cipherbite/zero-trust-bypass" class="project-link">Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact-section">
+            <h2 class="contact-title">Współpraca</h2>
+            <p class="contact-description">Zainteresowany współpracą w zakresie cybersecurity research lub konsultacjami? Skontaktuj się ze mną!</p>
+            <div class="contact-links">
+                <a href="mailto:david@security-lab.com" class="contact-link">Email</a>
+                <a href="https://linkedin.com/in/david-cybersec" class="contact-link">LinkedIn</a>
+                <a href="https://github.com/cipherbite" class="contact-link">GitHub</a>
+                <a href="https://twitter.com/cyber_david" class="contact-link">Twitter</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
