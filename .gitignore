@@ -1,0 +1,8 @@
+*.backup
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
