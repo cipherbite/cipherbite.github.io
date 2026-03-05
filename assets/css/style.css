@@ -21,6 +21,9 @@
     --accent-primary: #00d4ff;  /* Cyan - modern tech feel */
     --accent-secondary: #64ffda; /* Mint - softer accent */
     --accent-warning: #ffd700;   /* Gold for important items */
+    --accent-yellow: #ffd700;    /* Alias for warning */
+    --accent-red: #ff4757;       /* Red for critical alerts */
+    --accent-green: #2ed573;     /* Green for success */
     
     /* Text hierarchy */
     --text-primary: #ffffff;
@@ -438,4 +441,73 @@ button:focus {
 .back-link:hover {
     background: var(--accent-primary);
     color: var(--bg-primary);
+}
+
+/* Alert Boxes */
+.alert-box {
+    padding: 20px 25px;
+    border-radius: var(--radius);
+    margin: 20px 0;
+    border-left: 4px solid;
+}
+
+.alert-critical {
+    background: rgba(255, 71, 87, 0.1);
+    border-color: var(--accent-red);
+}
+
+.alert-warning {
+    background: rgba(255, 215, 0, 0.1);
+    border-color: var(--accent-yellow);
+}
+
+.alert-success {
+    background: rgba(46, 213, 115, 0.1);
+    border-color: var(--accent-green);
+}
+
+.alert-info {
+    background: rgba(0, 212, 255, 0.1);
+    border-color: var(--accent-primary);
+}
+
+.alert-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+/* Screenshot / Code Placeholder */
+.screenshot-placeholder {
+    background: var(--bg-card);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 0.9em;
+    font-style: italic;
+    margin: 15px 0;
+    padding: 20px;
+}
+
+/* Code Section */
+.code-section {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.code-header {
+    background: var(--bg-secondary);
+    padding: 10px 20px;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.85em;
+    color: var(--accent-secondary);
+    border-bottom: 1px solid var(--border);
 }
