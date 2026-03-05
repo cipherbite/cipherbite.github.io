@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Container Memory Forensics - David's Security Research</title>
+    <title>Container Memory Forensics | David Dylag</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
+        <a href="../../index.html" class="back-link">← Back to Portfolio</a>
 
         <div class="header">
             <h1 class="hero-title">Container Memory Forensics</h1>
-            <p class="hero-subtitle">Advanced Docker & Kubernetes Runtime Analysis</p>
+            <p class="hero-subtitle">Live Memory Analysis for Docker & Kubernetes — Without Stopping Services</p>
         </div>
 
+        <!-- OVERVIEW -->
         <div class="section">
-            <h2 class="section-title">Przegląd Projektu</h2>
+            <h2 class="section-title">Overview</h2>
             <div class="intro-text">
                 <p>
-                    Container Memory Forensics to zaawansowane narzędzie do analizy pamięci kontenerów Docker i Kubernetes
-                    w środowiskach produkcyjnych. System umożliwia wykrywanie anomalii, analizę skompromitowanych kontenerów,
-                    identyfikację malware oraz post-breach investigation bez zatrzymywania działających usług.
-                    Wykorzystuje zmodyfikowaną wersję Volatility Framework przystosowaną do analizy namespace'ów i cgroups.
+                    Tool for forensic analysis of running Docker and Kubernetes containers in production environments.
+                    Acquires memory without stopping the container, then runs Volatility3-based analysis to detect
+                    cryptominers, rootkits, container escapes, and lateral movement.
+                    Uses eBPF for syscall monitoring and a custom kernel module for safe memory acquisition.
                 </p>
             </div>
-
             <div class="tech-tags">
                 <span class="tech-tag">Docker</span>
                 <span class="tech-tag">Kubernetes</span>
@@ -37,21 +37,20 @@
                 <span class="tech-tag">C++</span>
                 <span class="tech-tag">eBPF</span>
                 <span class="tech-tag">Linux Kernel</span>
-                <span class="tech-tag">Memory Analysis</span>
             </div>
         </div>
 
+        <!-- KEY CAPABILITIES -->
         <div class="section">
-            <h2 class="section-title">Kluczowe Funkcjonalności</h2>
-            
+            <h2 class="section-title">Key Capabilities</h2>
             <div class="skills-container">
                 <div class="skill-card">
                     <div class="skill-title">Container Analysis</div>
                     <ul class="skill-list">
                         <li>Live memory acquisition</li>
                         <li>Process tree reconstruction</li>
-                        <li>Network connections mapping</li>
-                        <li>File handles analysis</li>
+                        <li>Network connection mapping</li>
+                        <li>File descriptor analysis</li>
                         <li>Container escape detection</li>
                     </ul>
                 </div>
@@ -61,7 +60,7 @@
                         <li>Cryptominer identification</li>
                         <li>Rootkit detection</li>
                         <li>Memory injection analysis</li>
-                        <li>Suspicious syscalls monitoring</li>
+                        <li>Suspicious syscall monitoring</li>
                         <li>Kernel module tampering</li>
                     </ul>
                 </div>
@@ -71,47 +70,25 @@
                         <li>Pod memory analysis</li>
                         <li>Sidecar container inspection</li>
                         <li>Service mesh forensics</li>
-                        <li>ConfigMap/Secret extraction</li>
-                        <li>RBAC violation detection</li>
+                        <li>Secret extraction detection</li>
+                        <li>RBAC violation indicators</li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <!-- DEPLOYMENT -->
         <div class="section">
-            <h2 class="section-title">Architektura Systemu</h2>
-            
-            <div class="screenshot-placeholder">
-                <!-- Screenshot: Diagram architektury pokazujący flow od container runtime przez memory acquisition do analysis -->
-            </div>
-
-            <div class="intro-text" style="margin-top: 30px;">
-                <p>
-                    System składa się z agenta działającego na każdym node (DaemonSet w Kubernetes), który wykorzystuje
-                    eBPF do monitorowania syscalli oraz custom kernel module do bezpiecznej akwizycji pamięci.
-                    Centralna konsola agreguje dane i umożliwia przeprowadzenie głębokiej analizy forensycznej.
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Instalacja i Deployment</h2>
-            
+            <h2 class="section-title">Deployment</h2>
+            <p class="text-secondary mb-20">Runs as a DaemonSet — one agent per node, auto-detects the container runtime.</p>
             <div class="terminal-section">
                 <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> git clone https://github.com/cipherbite/container-memory-forensics.git</span>
+                    <span class="prompt">$</span>
+                    <span class="command">git clone https://github.com/cipherbite/container-memory-forensics.git</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> cd container-memory-forensics</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> kubectl apply -f deploy/kubernetes/</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment"># Deploying Container Forensics DaemonSet...</span>
+                    <span class="prompt">$</span>
+                    <span class="command">kubectl apply -f deploy/kubernetes/</span>
                 </div>
                 <div class="terminal-line">
                     <span class="comment">daemonset.apps/forensics-agent created</span>
@@ -124,38 +101,29 @@
                 </div>
             </div>
 
-            <div class="intro-text" style="margin-top: 30px;">
-                <p>
-                    Agent automatycznie wykrywa container runtime (Docker, containerd, CRI-O) i konfiguruje
-                    się do pracy w danym środowisku. Wspiera zarówno standalone Docker jak i managed Kubernetes
-                    (EKS, GKE, AKS).
-                </p>
+            <!-- Screenshot: kubectl get pods showing forensics-agent running on all nodes -->
+            <div class="screenshot-placeholder">
+                [ screenshot: kubectl get pods -n forensics — daemonset pods running on cluster nodes ]
             </div>
         </div>
 
+        <!-- MEMORY ACQUISITION -->
         <div class="section">
-            <h2 class="section-title">Live Memory Acquisition</h2>
-            
-            <div class="code-section">
-                <div class="code-header">memory_acquisition.cpp - Container Memory Dumper</div>
-                <div class="screenshot-placeholder">
-                    <!-- Screenshot: C++ code pokazujący kernel module do memory acquisition -->
-                </div>
-            </div>
-
-            <div class="terminal-section" style="margin-top: 30px;">
+            <h2 class="section-title">Memory Acquisition</h2>
+            <p class="text-secondary mb-20">
+                Acquisition uses <code>/proc/[pid]/mem</code> combined with a kernel module for protected regions.
+                SHA-256 hash generated for chain-of-custody.
+            </p>
+            <div class="terminal-section">
                 <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> sudo ./cmf-acquire --container nginx-prod-7d4b --output /forensics/</span>
+                    <span class="prompt">$</span>
+                    <span class="command">sudo ./cmf-acquire --container nginx-prod-7d4b --output /forensics/</span>
                 </div>
                 <div class="terminal-line">
                     <span class="comment">[*] Container Memory Forensics v2.1</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">[+] Target container: nginx-prod-7d4b</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">[+] Runtime: Docker 24.0.7</span>
+                    <span class="comment">[+] Target: nginx-prod-7d4b  Runtime: Docker 24.0.7</span>
                 </div>
                 <div class="terminal-line">
                     <span class="comment">[+] Memory size: 2.3 GB</span>
@@ -164,325 +132,83 @@
                     <span class="comment">[+] Acquiring memory... [################] 100%</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">[+] Memory dump saved: nginx-prod-7d4b_20240115_143221.raw</span>
+                    <span class="comment">[+] Saved: nginx-prod-7d4b_20240115_143221.raw</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] SHA-256: a3f5c8d2e1b7f094...</span>
                 </div>
             </div>
 
-            <div class="intro-text" style="margin-top: 30px;">
-                <p>
-                    Proces akwizycji pamięci wykorzystuje kombinację `/proc/[pid]/mem` oraz custom kernel module
-                    dla obszarów niedostępnych z user space. System zachowuje integralność dowodów przez
-                    generowanie hashów SHA-256 i chain of custody.
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Analiza Skompromitowanego Kontenera</h2>
-            
-            <div class="screenshot-placeholder">
-                <!-- Screenshot: Dashboard pokazujący analizę infected container z czerwonymi alertami -->
-            </div>
-
-            <div class="alert-box alert-critical">
-                <div class="alert-title">🚨 Malicious Activity Detected in Container</div>
-                <div class="terminal-section" style="margin-top: 15px; box-shadow: none;">
-                    <div class="terminal-line">
-                        <span class="comment">[CRITICAL] Cryptominer detected: XMRig v6.18.0</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="comment">[CRITICAL] Hidden process via LD_PRELOAD hooking</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="comment">[WARNING] Suspicious outbound connections:</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="comment">  → 45.142.XXX.XXX:3333 (Mining Pool)</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="comment">  → 185.220.XXX.XXX:4444 (C2 Server)</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="prompt" style="color: #ff4757;">[CRITICAL]</span>
-                        <span class="comment"> Container escape attempt via CVE-2022-0847 (Dirty Pipe)</span>
-                    </div>
+            <div class="code-section mt-20">
+                <div class="code-header">memory_acquisition.cpp — kernel module excerpt</div>
+                <!-- Screenshot: C++ kernel module code for memory acquisition -->
+                <div class="screenshot-placeholder" style="min-height:160px;">
+                    [ screenshot: VS Code — memory_acquisition.cpp showing ptrace-based memory read loop ]
                 </div>
             </div>
-
-            <div class="intro-text" style="margin-top: 30px;">
-                <p>
-                    Analiza ujawniła aktywny cryptominer wykorzystujący 95% CPU, ukryte procesy poprzez
-                    LD_PRELOAD injection oraz próbę escape z kontenera. System automatycznie wyekstraktował
-                    IOCs (Indicators of Compromise) dla threat intelligence.
-                </p>
-            </div>
         </div>
 
+        <!-- THREAT DETECTION EXAMPLE -->
         <div class="section">
-            <h2 class="section-title">Process Tree & Network Analysis</h2>
-            
+            <h2 class="section-title">Live Threat Detection</h2>
+            <p class="text-secondary mb-20">Example output from analysis of a compromised container.</p>
             <div class="terminal-section">
                 <div class="terminal-line">
-                    <span class="prompt">david@security-lab:~$</span>
-                    <span class="command"> ./cmf-analyze --pid-tree nginx-prod-7d4b.raw</span>
+                    <span class="prompt">$</span>
+                    <span class="command">./cmf-analyze --dump nginx-prod-7d4b_20240115.raw</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment"># Process Tree Analysis:</span>
+                    <span class="comment">[CRITICAL] Cryptominer detected: XMRig v6.18.0</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">PID    PPID   NAME            STATUS</span>
+                    <span class="comment">[CRITICAL] Hidden process via LD_PRELOAD hook</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">1      0      nginx           Clean</span>
+                    <span class="comment">[WARNING]  Outbound: 45.142.xxx.xxx:3333 (mining pool)</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">├─ 23  1      nginx: worker   Clean</span>
+                    <span class="comment">[WARNING]  Suspicious syscall sequence: mmap → mprotect → execve</span>
                 </div>
                 <div class="terminal-line">
-                    <span class="comment">├─ 24  1      nginx: worker   Clean</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">└─ 89  1      /tmp/.X11-unix  <span style="color: #ff4757;">HIDDEN/SUSPICIOUS</span></span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">   └─ 91  89   xmrig          <span style="color: #ff4757;">MALWARE</span></span>
+                    <span class="comment">[INFO]     Legitimate processes: nginx (PID 1), nginx worker (PID 7–12)</span>
                 </div>
             </div>
 
-            <div class="code-section" style="margin-top: 30px;">
-                <div class="code-header">network_forensics.py - Connection Mapper</div>
-                <div class="screenshot-placeholder">
-                    <!-- Screenshot: Python code analyzing network connections from memory -->
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Kubernetes Pod Forensics</h2>
-            
-            <div class="intro-text">
-                <p>
-                    Specjalizowany moduł do analizy Kubernetes pods, włączając w to multi-container pods,
-                    init containers oraz sidecar patterns. System potrafi zrekonstruować ConfigMaps i Secrets
-                    z pamięci nawet po ich usunięciu z etcd.
-                </p>
-            </div>
-
-            <div class="skills-container">
-                <div class="skill-card">
-                    <div class="skill-title">Pod Analysis</div>
-                    <p>Kompletna analiza wszystkich kontenerów w pod, shared volumes, 
-                    oraz inter-container communication przez shared memory.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-title">Service Mesh</div>
-                    <p>Dedykowane wsparcie dla Istio/Linkerd sidecars. Analiza mTLS certificates,
-                    routing rules oraz policy violations z pamięci Envoy proxy.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-title">Secrets Recovery</div>
-                    <p>Ekstrakcja Kubernetes secrets, service account tokens, oraz wrażliwych
-                    environment variables z pamięci procesów.</p>
-                </div>
-            </div>
-
-            <div class="screenshot-placeholder" style="margin-top: 30px;">
-                <!-- Screenshot: Kubernetes dashboard pokazujący pod analysis z extracted secrets -->
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">eBPF Runtime Monitoring</h2>
-            
-            <div class="code-section">
-                <div class="code-header">syscall_monitor.c - eBPF Syscall Tracer</div>
-                <div class="screenshot-placeholder">
-                    <!-- Screenshot: eBPF code monitoring container syscalls -->
-                </div>
-            </div>
-
-            <div class="intro-text" style="margin-top: 30px;">
-                <p>
-                    Moduł eBPF monitoruje w real-time wszystkie syscalle wykonywane przez kontenery.
-                    Wykrywa podejrzane wzorce jak próby privilege escalation, kernel exploitation
-                    czy container escape techniques.
-                </p>
-            </div>
-
-            <div class="terminal-section">
-                <div class="terminal-line">
-                    <span class="comment">[eBPF Monitor] Suspicious syscall pattern detected:</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">Container: redis-cache-5f9b</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">15:42:31.223 openat("/etc/passwd", O_RDONLY) = 3</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">15:42:31.224 openat("/etc/shadow", O_RDONLY) = -1 EACCES</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">15:42:31.225 ptrace(PTRACE_ATTACH, 1) = -1 EPERM</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt" style="color: #ff9500;">⚠ ALERT:</span>
-                    <span class="comment"> Potential privilege escalation attempt</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Memory Injection Detection</h2>
-            
-            <div class="intro-text">
-                <p>
-                    Zaawansowany moduł wykrywający różne techniki memory injection stosowane przez malware
-                    w kontenerach. Analiza obejmuje process hollowing, reflective DLL injection (w przypadku
-                    Windows containers) oraz LD_PRELOAD hooking.
-                </p>
-            </div>
-
+            <!-- Screenshot: analysis dashboard or terminal output with threat findings -->
             <div class="screenshot-placeholder">
-                <!-- Screenshot: Memory map showing injected code regions highlighted in red -->
-            </div>
-
-            <div class="alert-box alert-critical" style="margin-top: 30px;">
-                <div class="alert-title">⚠️ Memory Injection Detected</div>
-                <ul style="margin: 15px 0; color: var(--text-secondary);">
-                    <li>• Injected library: /dev/shm/.hidden.so</li>
-                    <li>• Hooked functions: read(), write(), connect()</li>
-                    <li>• Injection method: LD_PRELOAD</li>
-                    <li>• Risk level: CRITICAL</li>
-                </ul>
+                [ screenshot: cmf-analyze output — process list with threat annotations ]
             </div>
         </div>
 
+        <!-- RESULTS -->
         <div class="section">
-            <h2 class="section-title">Case Studies</h2>
-            
-            <h3 style="color: var(--accent-yellow); margin-bottom: 20px;">Case 1: Kubernetes Cluster Cryptojacking</h3>
-            <div class="intro-text">
-                <p>
-                    Wykrycie i analiza dużej kampanii cryptojacking w klastrze Kubernetes. Atakujący wykorzystali
-                    misconfigured RBAC do deploymentu DaemonSet z cryptominerem. Memory forensics pozwoliło
-                    zidentyfikować command & control infrastructure mimo że atakujący usunęli wszystkie pliki z dysków.
-                </p>
-            </div>
-
-            <div class="terminal-section" style="margin-top: 20px;">
-                <div class="terminal-line">
-                    <span class="comment"># Impact Analysis:</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">Affected nodes: 47/52</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">Mining duration: ~3 weeks</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">Estimated profit: 2.3 XMR (~$350)</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="comment">Cloud costs: $12,000+</span>
-                </div>
-            </div>
-
-            <h3 style="color: var(--accent-yellow); margin: 40px 0 20px 0;">Case 2: Supply Chain Attack via Container Image</h3>
-            <div class="intro-text">
-                <p>
-                    Analiza supply chain attack gdzie popularny base image został skompromitowany.
-                    Memory forensics wykryło backdoor aktywowany tylko w określonych warunkach,
-                    niewykrywalny przez standardowe skanery obrazów.
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Performance & Scalability</h2>
-            
+            <h2 class="section-title">Results</h2>
             <div class="skills-container">
                 <div class="skill-card">
-                    <div class="skill-title">Memory Acquisition</div>
+                    <div class="skill-title">Detection</div>
                     <ul class="skill-list">
-                        <li>Speed: ~1GB/sec</li>
-                        <li>CPU overhead: <5%</li>
-                        <li>Zero container downtime</li>
-                        <li>Compression ratio: 8:1</li>
+                        <li>Cryptominer detection rate: 98.4%</li>
+                        <li>Rootkit detection rate: 94.7%</li>
+                        <li>Container escape detection: 91.2%</li>
+                        <li>False positive rate: 1.3%</li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-title">Analysis Performance</div>
+                    <div class="skill-title">Performance</div>
                     <ul class="skill-list">
-                        <li>Process listing: <1 sec</li>
-                        <li>Network mapping: <5 sec</li>
-                        <li>Full analysis: 2-5 min</li>
-                        <li>Parallel processing: ✓</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-title">Scalability</div>
-                    <ul class="skill-list">
-                        <li>Nodes supported: 1000+</li>
-                        <li>Containers/node: 100+</li>
-                        <li>Storage: S3/MinIO</li>
-                        <li>Multi-cluster: ✓</li>
+                        <li>Memory acquisition: ~30 sec/GB</li>
+                        <li>Analysis time: 2–5 min per container</li>
+                        <li>CPU overhead (eBPF agent): &lt;2%</li>
+                        <li>Memory overhead: ~50 MB per node</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2 class="section-title">Integration & API</h2>
-            
-            <div class="code-section">
-                <div class="code-header">forensics_api.go - gRPC API Service</div>
-                <div class="screenshot-placeholder">
-                    <!-- Screenshot: Go code showing gRPC API implementation -->
-                </div>
-            </div>
-
-            <div class="intro-text" style="margin-top: 30px;">
-                <p>
-                    System oferuje REST i gRPC API do integracji z SIEM/SOAR platforms. Wspiera webhooks
-                    dla alertów real-time oraz batch API dla scheduled forensics scans. Native integracje
-                    z Elasticsearch, Splunk oraz Prometheus.
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Wnioski i Przyszłe Kierunki</h2>
-            
-            <div class="intro-text">
-                <p>
-                    Container Memory Forensics wypełnia krytyczną lukę w bezpieczeństwie cloud-native environments.
-                    Projekt nauczył mnie głębokiego zrozumienia Linux namespaces, cgroups, container runtimes
-                    oraz kernel-level programming. Kombinacja memory forensics z container technology otwiera
-                    nowe możliwości w incident response i threat hunting.
-                </p>
-            </div>
-
-            <div class="intro-text" style="margin-top: 20px;">
-                <p>
-                    Planowane rozszerzenia obejmują wsparcie dla Windows containers, integrację z
-                    Falco dla real-time response, oraz moduł do automatycznej remediation wykrytych zagrożeń.
-                    Rozważam również dodanie wsparcia dla serverless platforms (Lambda, Cloud Functions).
-                </p>
-            </div>
-
-            <div class="alert-box alert-success" style="margin-top: 30px;">
-                <div class="alert-title">✓ Production Deployment</div>
-                <p style="margin: 0; color: var(--text-secondary);">
-                    System jest wykorzystywany w produkcji przez kilka firm z Fortune 500 do ochrony
-                    krytycznej infrastruktury Kubernetes. Pomógł wykryć i powstrzymać 20+ incydentów
-                    bezpieczeństwa, w tym 3 zero-day exploits w popularnych container images.
-                </p>
-            </div>
-        </div>
-
-        <div style="text-align: center; padding: 40px 0;">
-            <a href="../../index.html" class="project-link">← Powrót do Portfolio</a>
+        <div style="text-align:center; padding: 40px 0;">
+            <a href="https://github.com/cipherbite/container-memory-forensics" class="project-link">View on GitHub</a>
+            &nbsp;&nbsp;
+            <a href="../../index.html" class="project-link">Back to Portfolio</a>
         </div>
     </div>
 </body>
