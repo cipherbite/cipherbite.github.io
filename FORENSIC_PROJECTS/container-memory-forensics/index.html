@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
+        <a href="../../index.html" class="back-link">← Back to Portfolio</a>
 
         <div class="header">
             <h1 class="hero-title">Container Memory Forensics</h1>
@@ -19,13 +19,17 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Przegląd Projektu</h2>
+            <h2 class="section-title">Project Overview</h2>
             <div class="intro-text">
                 <p>
-                    Container Memory Forensics to zaawansowane narzędzie do analizy pamięci kontenerów Docker i Kubernetes
-                    w środowiskach produkcyjnych. System umożliwia wykrywanie anomalii, analizę skompromitowanych kontenerów,
-                    identyfikację malware oraz post-breach investigation bez zatrzymywania działających usług.
-                    Wykorzystuje zmodyfikowaną wersję Volatility Framework przystosowaną do analizy namespace'ów i cgroups.
+                    Container Memory Forensics is an advanced tool for analyzing the memory of Docker and Kubernetes
+                    containers (lightweight, isolated environments that run applications) in production environments.
+                    The system detects anomalies, analyzes compromised containers, identifies malware, and enables
+                    post-breach investigation (examining a system after an attack) without stopping running services.
+                    It uses a modified version of the Volatility Framework (an open-source tool for analyzing computer
+                    memory/RAM dumps) adapted to work with namespaces (Linux kernel features that isolate processes so
+                    containers are separated from each other) and cgroups (control groups — a Linux feature that limits
+                    how many resources, such as CPU and memory, a container can use).
                 </p>
             </div>
 
@@ -42,7 +46,7 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Kluczowe Funkcjonalności</h2>
+            <h2 class="section-title">Key Features</h2>
             
             <div class="skills-container">
                 <div class="skill-card">
@@ -79,23 +83,26 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Architektura Systemu</h2>
+            <h2 class="section-title">System Architecture</h2>
             
             <div class="screenshot-placeholder">
-                <!-- Screenshot: Diagram architektury pokazujący flow od container runtime przez memory acquisition do analysis -->
+                <!-- Screenshot: Architecture diagram showing the flow from container runtime through memory acquisition to analysis -->
             </div>
 
             <div class="intro-text" style="margin-top: 30px;">
                 <p>
-                    System składa się z agenta działającego na każdym node (DaemonSet w Kubernetes), który wykorzystuje
-                    eBPF do monitorowania syscalli oraz custom kernel module do bezpiecznej akwizycji pamięci.
-                    Centralna konsola agreguje dane i umożliwia przeprowadzenie głębokiej analizy forensycznej.
+                    The system consists of an agent running on every node (a physical or virtual machine in the cluster)
+                    as a DaemonSet (a Kubernetes object that ensures a pod runs on every node in the cluster). It uses
+                    eBPF (Extended Berkeley Packet Filter — a Linux kernel technology that safely monitors system activity
+                    without modifying kernel code) to monitor syscalls (system calls — requests a program makes to the
+                    operating system), and a custom kernel module for safe memory acquisition.
+                    A central console aggregates the data and enables deep forensic analysis.
                 </p>
             </div>
         </div>
 
         <div class="section">
-            <h2 class="section-title">Instalacja i Deployment</h2>
+            <h2 class="section-title">Installation & Deployment</h2>
             
             <div class="terminal-section">
                 <div class="terminal-line">
@@ -126,9 +133,10 @@
 
             <div class="intro-text" style="margin-top: 30px;">
                 <p>
-                    Agent automatycznie wykrywa container runtime (Docker, containerd, CRI-O) i konfiguruje
-                    się do pracy w danym środowisku. Wspiera zarówno standalone Docker jak i managed Kubernetes
-                    (EKS, GKE, AKS).
+                    The agent automatically detects the container runtime (Docker, containerd, CRI-O — the software
+                    layer responsible for actually running containers) and configures itself for that environment.
+                    It supports both standalone Docker and managed Kubernetes services (EKS, GKE, AKS — hosted
+                    Kubernetes platforms from AWS, Google Cloud, and Microsoft Azure respectively).
                 </p>
             </div>
         </div>
@@ -139,7 +147,7 @@
             <div class="code-section">
                 <div class="code-header">memory_acquisition.cpp - Container Memory Dumper</div>
                 <div class="screenshot-placeholder">
-                    <!-- Screenshot: C++ code pokazujący kernel module do memory acquisition -->
+                    <!-- Screenshot: C++ code showing kernel module for memory acquisition -->
                 </div>
             </div>
 
@@ -170,18 +178,20 @@
 
             <div class="intro-text" style="margin-top: 30px;">
                 <p>
-                    Proces akwizycji pamięci wykorzystuje kombinację `/proc/[pid]/mem` oraz custom kernel module
-                    dla obszarów niedostępnych z user space. System zachowuje integralność dowodów przez
-                    generowanie hashów SHA-256 i chain of custody.
+                    The memory acquisition process uses a combination of <code>/proc/[pid]/mem</code> (a special Linux
+                    file that exposes a process's memory) and a custom kernel module for regions not accessible from
+                    user space (the safe, restricted area where normal programs run, as opposed to kernel space where
+                    the OS core runs). The system preserves evidence integrity by generating SHA-256 hashes and
+                    maintaining a chain of custody (a documented record proving evidence was not tampered with).
                 </p>
             </div>
         </div>
 
         <div class="section">
-            <h2 class="section-title">Analiza Skompromitowanego Kontenera</h2>
+            <h2 class="section-title">Compromised Container Analysis</h2>
             
             <div class="screenshot-placeholder">
-                <!-- Screenshot: Dashboard pokazujący analizę infected container z czerwonymi alertami -->
+                <!-- Screenshot: Dashboard showing analysis of an infected container with red alerts -->
             </div>
 
             <div class="alert-box alert-critical">
@@ -211,9 +221,13 @@
 
             <div class="intro-text" style="margin-top: 30px;">
                 <p>
-                    Analiza ujawniła aktywny cryptominer wykorzystujący 95% CPU, ukryte procesy poprzez
-                    LD_PRELOAD injection oraz próbę escape z kontenera. System automatycznie wyekstraktował
-                    IOCs (Indicators of Compromise) dla threat intelligence.
+                    The analysis revealed an active cryptominer (malware that secretly uses your computer's resources
+                    to mine cryptocurrency) consuming 95% of CPU, hidden processes via LD_PRELOAD injection
+                    (a technique that forces a program to load a malicious library before any other, allowing attackers
+                    to intercept function calls), and an attempted container escape (when malicious code inside a
+                    container breaks out and accesses the host system). The system automatically extracted IOCs
+                    (Indicators of Compromise — artifacts like IP addresses or file hashes that signal an attack)
+                    for threat intelligence.
                 </p>
             </div>
         </div>
@@ -262,32 +276,39 @@
             
             <div class="intro-text">
                 <p>
-                    Specjalizowany moduł do analizy Kubernetes pods, włączając w to multi-container pods,
-                    init containers oraz sidecar patterns. System potrafi zrekonstruować ConfigMaps i Secrets
-                    z pamięci nawet po ich usunięciu z etcd.
+                    A specialized module for analyzing Kubernetes pods (the smallest deployable unit in Kubernetes,
+                    which can contain one or more containers), including multi-container pods, init containers
+                    (containers that run setup tasks before the main container starts), and sidecar patterns
+                    (helper containers that run alongside the main container). The system can reconstruct
+                    ConfigMaps (Kubernetes objects storing non-sensitive configuration data) and Secrets
+                    (Kubernetes objects storing sensitive data like passwords) from memory even after they have
+                    been deleted from etcd (the key-value database that stores all Kubernetes cluster state).
                 </p>
             </div>
 
             <div class="skills-container">
                 <div class="skill-card">
                     <div class="skill-title">Pod Analysis</div>
-                    <p>Kompletna analiza wszystkich kontenerów w pod, shared volumes, 
-                    oraz inter-container communication przez shared memory.</p>
+                    <p>Complete analysis of all containers in a pod, including shared volumes (storage shared
+                    between containers) and inter-container communication through shared memory.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-title">Service Mesh</div>
-                    <p>Dedykowane wsparcie dla Istio/Linkerd sidecars. Analiza mTLS certificates,
-                    routing rules oraz policy violations z pamięci Envoy proxy.</p>
+                    <p>Dedicated support for Istio/Linkerd sidecars (service mesh tools that manage
+                    network traffic between microservices). Analyzes mTLS certificates (mutual TLS — where
+                    both sides verify each other's identity), routing rules, and policy violations from
+                    Envoy proxy (a high-performance network proxy used by service meshes) memory.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-title">Secrets Recovery</div>
-                    <p>Ekstrakcja Kubernetes secrets, service account tokens, oraz wrażliwych
-                    environment variables z pamięci procesów.</p>
+                    <p>Extraction of Kubernetes secrets (stored sensitive data such as API keys and
+                    passwords), service account tokens (credentials that allow pods to authenticate with
+                    the Kubernetes API), and sensitive environment variables from process memory.</p>
                 </div>
             </div>
 
             <div class="screenshot-placeholder" style="margin-top: 30px;">
-                <!-- Screenshot: Kubernetes dashboard pokazujący pod analysis z extracted secrets -->
+                <!-- Screenshot: Kubernetes dashboard showing pod analysis with extracted secrets -->
             </div>
         </div>
 
@@ -303,9 +324,12 @@
 
             <div class="intro-text" style="margin-top: 30px;">
                 <p>
-                    Moduł eBPF monitoruje w real-time wszystkie syscalle wykonywane przez kontenery.
-                    Wykrywa podejrzane wzorce jak próby privilege escalation, kernel exploitation
-                    czy container escape techniques.
+                    The eBPF (Extended Berkeley Packet Filter — a Linux kernel technology that safely monitors system
+                    activity without modifying kernel code) module monitors in real-time all syscalls (system calls —
+                    low-level requests a program makes to the OS kernel) made by containers. It detects suspicious
+                    patterns such as privilege escalation attempts (trying to gain higher-level permissions than
+                    allowed), kernel exploitation, and container escape (when malicious code inside a container
+                    breaks out and accesses the host system) techniques.
                 </p>
             </div>
 
@@ -337,9 +361,11 @@
             
             <div class="intro-text">
                 <p>
-                    Zaawansowany moduł wykrywający różne techniki memory injection stosowane przez malware
-                    w kontenerach. Analiza obejmuje process hollowing, reflective DLL injection (w przypadku
-                    Windows containers) oraz LD_PRELOAD hooking.
+                    An advanced module that detects various memory injection techniques used by malware
+                    inside containers. Analysis covers process hollowing (replacing legitimate process code with
+                    malicious code in memory), reflective DLL injection (loading a malicious library entirely from
+                    memory without writing it to disk, used in Windows containers), and LD_PRELOAD hooking
+                    (forcing a process to load a malicious shared library that intercepts standard function calls).
                 </p>
             </div>
 
@@ -364,9 +390,14 @@
             <h3 style="color: var(--accent-yellow); margin-bottom: 20px;">Case 1: Kubernetes Cluster Cryptojacking</h3>
             <div class="intro-text">
                 <p>
-                    Wykrycie i analiza dużej kampanii cryptojacking w klastrze Kubernetes. Atakujący wykorzystali
-                    misconfigured RBAC do deploymentu DaemonSet z cryptominerem. Memory forensics pozwoliło
-                    zidentyfikować command & control infrastructure mimo że atakujący usunęli wszystkie pliki z dysków.
+                    Detection and analysis of a large cryptojacking (hijacking computing resources to mine
+                    cryptocurrency without the owner's consent) campaign in a Kubernetes cluster. The attackers
+                    exploited misconfigured RBAC (Role-Based Access Control — a security method that gives
+                    users/processes only the permissions they need) to deploy a DaemonSet (a Kubernetes object
+                    that ensures a pod runs on every node) containing a cryptominer (malware that secretly mines
+                    cryptocurrency). Memory forensics allowed identification of the command &amp; control
+                    infrastructure (servers the attacker uses to remotely direct the malware) even after the
+                    attackers had deleted all files from disk.
                 </p>
             </div>
 
@@ -391,9 +422,12 @@
             <h3 style="color: var(--accent-yellow); margin: 40px 0 20px 0;">Case 2: Supply Chain Attack via Container Image</h3>
             <div class="intro-text">
                 <p>
-                    Analiza supply chain attack gdzie popularny base image został skompromitowany.
-                    Memory forensics wykryło backdoor aktywowany tylko w określonych warunkach,
-                    niewykrywalny przez standardowe skanery obrazów.
+                    Analysis of a supply chain attack (an attack that compromises software before it reaches the
+                    end user, for example by tampering with a widely used base image) where a popular base image
+                    (the starting template used to build container images) had been compromised. Memory forensics
+                    detected a backdoor (hidden access mechanism planted by an attacker) that was activated only
+                    under specific conditions, making it undetectable by standard image scanners (tools that check
+                    container images for known vulnerabilities).
                 </p>
             </div>
         </div>
@@ -444,45 +478,54 @@
 
             <div class="intro-text" style="margin-top: 30px;">
                 <p>
-                    System oferuje REST i gRPC API do integracji z SIEM/SOAR platforms. Wspiera webhooks
-                    dla alertów real-time oraz batch API dla scheduled forensics scans. Native integracje
-                    z Elasticsearch, Splunk oraz Prometheus.
+                    The system exposes REST (a standard web API style using HTTP requests) and gRPC (a high-performance
+                    remote procedure call framework developed by Google) APIs for integration with SIEM/SOAR platforms
+                    (Security Information and Event Management / Security Orchestration, Automation and Response —
+                    tools used by security teams to collect alerts and automate responses). It supports webhooks
+                    (HTTP callbacks triggered by events) for real-time alerts and a batch API for scheduled forensics
+                    scans. Native integrations with Elasticsearch, Splunk, and Prometheus are included.
                 </p>
             </div>
         </div>
 
         <div class="section">
-            <h2 class="section-title">Wnioski i Przyszłe Kierunki</h2>
+            <h2 class="section-title">Conclusions & Future Directions</h2>
             
             <div class="intro-text">
                 <p>
-                    Container Memory Forensics wypełnia krytyczną lukę w bezpieczeństwie cloud-native environments.
-                    Projekt nauczył mnie głębokiego zrozumienia Linux namespaces, cgroups, container runtimes
-                    oraz kernel-level programming. Kombinacja memory forensics z container technology otwiera
-                    nowe możliwości w incident response i threat hunting.
+                    Container Memory Forensics fills a critical security gap in cloud-native environments
+                    (systems built and run in the cloud using containers and microservices). This project gave me
+                    a deep understanding of Linux namespaces (kernel features that isolate processes), cgroups
+                    (control groups — resource-limiting features), container runtimes, and kernel-level programming.
+                    Combining memory forensics with container technology opens new possibilities in incident response
+                    (the process of identifying, containing, and recovering from a security breach) and threat hunting
+                    (proactively searching for hidden threats inside a network).
                 </p>
             </div>
 
             <div class="intro-text" style="margin-top: 20px;">
                 <p>
-                    Planowane rozszerzenia obejmują wsparcie dla Windows containers, integrację z
-                    Falco dla real-time response, oraz moduł do automatycznej remediation wykrytych zagrożeń.
-                    Rozważam również dodanie wsparcia dla serverless platforms (Lambda, Cloud Functions).
+                    Planned extensions include support for Windows containers, integration with Falco (an
+                    open-source runtime security tool for cloud-native environments) for real-time response,
+                    and a module for automated remediation (automatically fixing or isolating detected threats)
+                    of discovered threats. I am also considering adding support for serverless platforms
+                    (Lambda, Cloud Functions — services that run code without managing servers).
                 </p>
             </div>
 
             <div class="alert-box alert-success" style="margin-top: 30px;">
                 <div class="alert-title">✓ Production Deployment</div>
                 <p style="margin: 0; color: var(--text-secondary);">
-                    System jest wykorzystywany w produkcji przez kilka firm z Fortune 500 do ochrony
-                    krytycznej infrastruktury Kubernetes. Pomógł wykryć i powstrzymać 20+ incydentów
-                    bezpieczeństwa, w tym 3 zero-day exploits w popularnych container images.
+                    The system is used in production by several Fortune 500 companies to protect critical
+                    Kubernetes infrastructure. It has helped detect and stop 20+ security incidents, including
+                    3 zero-day exploits (previously unknown vulnerabilities that attackers discover and use before
+                    a patch is available) in popular container images.
                 </p>
             </div>
         </div>
 
         <div style="text-align: center; padding: 40px 0;">
-            <a href="../../index.html" class="project-link">← Powrót do Portfolio</a>
+            <a href="../../index.html" class="project-link">← Back to Portfolio</a>
         </div>
     </div>
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
+        <a href="../../index.html" class="back-link">← Back to Portfolio</a>
 
         <div class="header">
             <h1 class="hero-title">Advanced Steganography Detection</h1>
@@ -19,13 +19,14 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Przegląd Projektu</h2>
+            <h2 class="section-title">Project Overview</h2>
             <div class="intro-text">
                 <p>
-                    Advanced Steganography Detection to zaawansowany system wykrywania ukrytych danych w plikach multimedialnych.
-                    Wykorzystuje kombinację analizy statystycznej, machine learning oraz technik wizji komputerowej do identyfikacji
-                    nawet najbardziej wyrafinowanych metod steganograficznych. System potrafi wykryć ukryte dane w obrazach,
-                    plikach audio, wideo, a nawet w protokołach sieciowych.
+                    Advanced Steganography Detection is an advanced system for detecting hidden data in multimedia files
+                    (steganography — the practice of concealing secret information inside ordinary files like images or audio).
+                    It combines statistical analysis, machine learning (algorithms that learn patterns from data), and computer
+                    vision techniques to identify even the most sophisticated steganographic methods. The system can detect
+                    hidden data in images, audio files, video, and even inside network protocols.
                 </p>
             </div>
 
@@ -42,7 +43,7 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Wykrywane Techniki Steganograficzne</h2>
+            <h2 class="section-title">Detected Steganographic Techniques</h2>
             
             <div class="skills-container">
                 <div class="skill-card">
@@ -79,7 +80,7 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Instalacja i Podstawowe Użycie</h2>
+            <h2 class="section-title">Installation &amp; Basic Usage</h2>
             
             <div class="terminal-section">
                 <div class="terminal-line">
@@ -105,9 +106,9 @@
 
             <div class="intro-text" style="margin-top: 30px;">
                 <p>
-                    System oferuje różne poziomy analizy: quick scan dla szybkiego wykrywania podstawowych technik,
-                    standard analysis dla większości przypadków oraz deep analysis wykorzystującą machine learning
-                    dla wykrycia zaawansowanych metod steganograficznych.
+                    The system offers different levels of analysis: <em>quick scan</em> for rapid detection of basic techniques,
+                    <em>standard analysis</em> for most common cases, and <em>deep analysis</em> which uses machine learning
+                    (pattern-recognition algorithms trained on thousands of samples) to detect advanced steganographic methods.
                 </p>
             </div>
         </div>
@@ -116,14 +117,14 @@
             <h2 class="section-title">LSB Steganography Detection</h2>
             
             <div class="screenshot-placeholder">
-                <!-- Screenshot: Wizualizacja LSB analysis pokazująca ukryte dane w obrazie -->
+                <!-- Screenshot: LSB analysis visualization showing hidden data in an image -->
             </div>
 
             <div class="intro-text" style="margin: 30px 0;">
                 <p>
-                    System wykrył modyfikacje w najmniej znaczących bitach pikseli obrazu. Wizualizacja pokazuje
-                    obszary, gdzie dane zostały ukryte przy użyciu techniki LSB. Czerwone obszary wskazują na
-                    wysokie prawdopodobieństwo ukrytych danych.
+                    The system detected modifications in the least significant bits (LSB — the smallest, least impactful
+                    bits of each pixel's colour value) of image pixels. The visualization highlights areas where data was
+                    hidden using the LSB technique. Red regions indicate a high probability of concealed data.
                 </p>
             </div>
 
@@ -162,14 +163,16 @@
 
             <div class="intro-text">
                 <p>
-                    Moduł analizy statystycznej wykorzystuje testy chi-square, RS analysis oraz inne metody
-                    matematyczne do wykrywania anomalii w rozkładzie danych. Te techniki są szczególnie
-                    skuteczne w wykrywaniu steganografii nawet gdy dane są zaszyfrowane.
+                    The statistical analysis module uses chi-square tests (a method that checks whether the distribution
+                    of values looks natural or has been tampered with), RS analysis (Regular-Singular — a test that
+                    measures pixel-group irregularities), and other mathematical methods to detect anomalies in data
+                    distributions. These techniques are especially effective at finding steganography even when the
+                    hidden data is also encrypted.
                 </p>
             </div>
 
             <div class="screenshot-placeholder" style="margin-top: 30px;">
-                <!-- Screenshot: Wykresy pokazujące statistical anomalies -->
+                <!-- Screenshot: Charts showing statistical anomalies -->
             </div>
         </div>
 
@@ -178,27 +181,31 @@
             
             <div class="intro-text">
                 <p>
-                    Analiza w dziedzinie częstotliwości pozwala wykryć ukryte dane w transformatach DCT i DWT.
-                    System analizuje współczynniki transformaty w poszukiwaniu nietypowych wzorców charakterystycznych
-                    dla różnych narzędzi steganograficznych.
+                    Frequency domain analysis (examining how often certain patterns repeat in a file, rather than looking
+                    at raw pixel values) makes it possible to detect hidden data inside DCT and DWT transforms. The system
+                    scans transform coefficients (mathematical numbers produced during image compression) for unusual
+                    patterns characteristic of known steganographic tools.
                 </p>
             </div>
 
             <div class="skills-container">
                 <div class="skill-card">
                     <div class="skill-title">DCT Analysis</div>
-                    <p>Wykrywanie modyfikacji w współczynnikach DCT typowych dla JPEG steganography.
-                    System identyfikuje popularne narzędzia jak F5, OutGuess, JSteg.</p>
+                    <p>Detects modifications in DCT (Discrete Cosine Transform — a mathematical method used in JPEG
+                    compression to represent image data) coefficients typical of JPEG steganography.
+                    Identifies popular tools such as F5, OutGuess, and JSteg.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-title">DWT Analysis</div>
-                    <p>Analiza falkowa do wykrywania ukrytych danych w domenach wysokich częstotliwości.
-                    Skuteczna przeciwko zaawansowanym technikom adaptive steganography.</p>
+                    <p>Wavelet analysis (DWT — Discrete Wavelet Transform — breaks an image into layers of detail at
+                    different scales) to detect hidden data in high-frequency domains.
+                    Effective against advanced adaptive steganography techniques.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-title">FFT Analysis</div>
-                    <p>Fast Fourier Transform do analizy periodycznych wzorców w danych.
-                    Wykrywa spread spectrum steganography i podobne techniki.</p>
+                    <p>Fast Fourier Transform (FFT — converts data from the time/space domain into the frequency domain
+                    to reveal repeating patterns) for analysing periodic patterns in data.
+                    Detects spread spectrum steganography and similar techniques.</p>
                 </div>
             </div>
         </div>
@@ -245,14 +252,16 @@
             
             <div class="intro-text">
                 <p>
-                    Moduł audio analizuje pliki dźwiękowe w poszukiwaniu ukrytych danych. System wykrywa
-                    modyfikacje w fazie, echo hiding, LSB w próbkach audio oraz bardziej zaawansowane
-                    techniki wykorzystujące psychoakustykę.
+                    The audio module analyses sound files for hidden data. It detects modifications in the phase
+                    (phase coding — shifting the phase of audio segments to encode bits), echo hiding (inserting
+                    a faint artificial echo to carry hidden bits), LSB modifications in audio samples, and more
+                    advanced techniques that exploit psychoacoustics (the limits of human hearing to mask changes
+                    that are inaudible to people but detectable by software).
                 </p>
             </div>
 
             <div class="screenshot-placeholder">
-                <!-- Screenshot: Spektrogram pokazujący ukryte dane w audio -->
+                <!-- Screenshot: Spectrogram showing hidden data in audio -->
             </div>
 
             <div class="terminal-section" style="margin-top: 30px;">
@@ -328,9 +337,11 @@
             <h3 style="color: var(--accent-yellow); margin-bottom: 20px;">Case 1: Corporate Espionage via Image Sharing</h3>
             <div class="intro-text">
                 <p>
-                    System wykrył skomplikowaną operację wycieku danych gdzie pracownik ukrywał poufne dokumenty
-                    w pozornie niewinnych zdjęciach z firmowych eventów publikowanych na social media.
-                    Wykorzystywał kombinację LSB i DCT steganography z szyfrowaniem AES-256.
+                    The system detected a sophisticated data-exfiltration operation in which an employee was hiding
+                    confidential documents inside seemingly innocent photos from company events posted on social media.
+                    They used a combination of LSB (Least Significant Bit — hiding data in the smallest bits of each pixel)
+                    and DCT (Discrete Cosine Transform — embedding data in JPEG compression coefficients) steganography,
+                    further protected with AES-256 encryption.
                 </p>
             </div>
 
@@ -347,14 +358,15 @@
             <h3 style="color: var(--accent-yellow); margin: 40px 0 20px 0;">Case 2: Malware C2 Communication</h3>
             <div class="intro-text">
                 <p>
-                    Odkrycie zaawansowanego malware wykorzystującego steganografię w obrazach PNG do komunikacji
-                    z serwerem Command & Control. Malware pobierał instrukcje ukryte w obrazach z legitnych
-                    serwisów hostingowych.
+                    Discovery of advanced malware (malicious software) using steganography in PNG images to communicate
+                    with its Command &amp; Control (C2) server — the remote server that sends instructions to infected machines.
+                    The malware downloaded its commands hidden inside images hosted on legitimate file-sharing services,
+                    making the traffic look normal to network monitors.
                 </p>
             </div>
 
             <div class="screenshot-placeholder">
-                <!-- Screenshot: Network traffic pokazujący steganographic C2 -->
+                <!-- Screenshot: Network traffic showing steganographic C2 -->
             </div>
         </div>
 
@@ -364,18 +376,19 @@
             <div class="skills-container">
                 <div class="skill-card">
                     <div class="skill-title">Blind Steganalysis</div>
-                    <p>Wykrywanie steganografii bez znajomości użytej metody. Wykorzystuje ensemble
-                    różnych klasyfikatorów ML trenowanych na tysiącach próbek.</p>
+                    <p>Detects steganography without prior knowledge of which method was used (blind — no assumptions
+                    about the hiding technique). Uses an ensemble (a combination) of different ML classifiers
+                    trained on thousands of sample files.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-title">Tool Fingerprinting</div>
-                    <p>Identyfikacja konkretnych narzędzi steganograficznych na podstawie charakterystycznych
-                    śladów pozostawianych w plikach.</p>
+                    <p>Identifies the specific steganographic tool used, based on characteristic traces
+                    (small, unique patterns or artefacts) left behind in modified files.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-title">Capacity Estimation</div>
-                    <p>Szacowanie ilości ukrytych danych oraz maksymalnej pojemności pliku dla różnych
-                    metod steganograficznych.</p>
+                    <p>Estimates how much data has been hidden and calculates the maximum hiding capacity of a file
+                    for various steganographic methods — useful for understanding the scale of a potential breach.</p>
                 </div>
             </div>
         </div>
@@ -385,9 +398,9 @@
             
             <div class="intro-text">
                 <p>
-                    System został przetestowany na datasecie zawierającym ponad 100,000 obrazów z różnymi
-                    typami steganografii. Osiągnięto wysoką skuteczność detekcji przy zachowaniu niskiego
-                    poziomu false positives.
+                    The system was benchmarked on a dataset of over 100,000 images covering a wide range of
+                    steganographic types. High detection accuracy was achieved while keeping the false positive
+                    rate (incorrect alerts on clean files) very low — making it reliable enough for production use.
                 </p>
             </div>
 
@@ -462,37 +475,39 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">Wnioski i Przyszłe Rozszerzenia</h2>
+            <h2 class="section-title">Conclusions &amp; Future Extensions</h2>
             
             <div class="intro-text">
                 <p>
-                    Advanced Steganography Detection System skutecznie wykrywa szeroką gamę technik ukrywania danych,
-                    od prostych metod LSB po zaawansowane adaptive steganography. Projekt nauczył mnie głębokiego
-                    zrozumienia różnych technik steganograficznych, analizy statystycznej oraz zastosowania
-                    machine learning w cybersecurity.
+                    The Advanced Steganography Detection System effectively detects a wide range of data-hiding techniques,
+                    from simple LSB (Least Significant Bit — hiding data in the smallest bits of pixel values) methods to
+                    sophisticated adaptive steganography (techniques that adjust to the image content to avoid detection).
+                    Building this project gave me a deep understanding of steganographic techniques, statistical analysis,
+                    and the application of machine learning in cybersecurity.
                 </p>
             </div>
 
             <div class="intro-text" style="margin-top: 20px;">
                 <p>
-                    Planowane rozszerzenia obejmują wsparcie dla video steganography, network steganography
-                    (ukrywanie danych w protokołach sieciowych), oraz integrację z systemami DLP (Data Loss Prevention)
-                    do real-time monitoringu wycieku danych.
+                    Planned extensions include support for video steganography, network steganography
+                    (hiding data inside network protocol headers and traffic), and integration with DLP
+                    (Data Loss Prevention — systems that monitor and block unauthorised data transfers)
+                    platforms for real-time data-exfiltration monitoring.
                 </p>
             </div>
 
             <div class="alert-box alert-success" style="margin-top: 30px;">
                 <div class="alert-title">✓ Deployment Status</div>
                 <p style="margin: 0; color: var(--text-secondary);">
-                    System jest wdrożony w kilku organizacjach jako część infrastruktury bezpieczeństwa.
-                    Pomógł wykryć i powstrzymać 15+ prób nieautoryzowanego wycieku danych oraz
-                    zidentyfikować kilka kampanii malware wykorzystujących steganografię.
+                    The system is deployed in several organisations as part of their security infrastructure.
+                    It has helped detect and stop 15+ unauthorised data-exfiltration attempts and identified
+                    several malware campaigns that used steganography to hide their command-and-control traffic.
                 </p>
             </div>
         </div>
 
         <div style="text-align: center; padding: 40px 0;">
-            <a href="../../index.html" class="project-link">← Powrót do Portfolio</a>
+            <a href="../../index.html" class="project-link">← Back to Portfolio</a>
         </div>
     </div>
 </body>
