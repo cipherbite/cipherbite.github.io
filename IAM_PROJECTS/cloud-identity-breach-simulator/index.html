@@ -1,19 +1,187 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Identity Breach Simulator</title>
+    <title>Cloud Identity Breach Simulator | David Dylag</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Cloud Identity Breach Simulator</h1>
-        <div class="card">
-            <p>Multi-cloud security testing platform that simulates identity breaches across AWS IAM, Azure AD, and GCP IAM to identify misconfigurations.</p>
-            <div class="terminal">
-                <div>$ cloud-breach simulate --provider aws --scenario privilege-escalation --report pdf</div>
+        <a href="../../index.html" class="back-link">← Back to Portfolio</a>
+
+        <div class="header">
+            <h1 class="hero-title">Cloud Identity Breach Simulator</h1>
+            <p class="hero-subtitle">Multi-Cloud Attack Simulation — AWS IAM, Azure AD, GCP IAM</p>
+        </div>
+
+        <!-- OVERVIEW -->
+        <div class="section">
+            <h2 class="section-title">Overview</h2>
+            <div class="intro-text">
+                <p>
+                    Python framework for simulating identity-based attacks against cloud environments.
+                    Tests privilege escalation paths, credential exposure scenarios, and IAM misconfiguration
+                    across AWS, Azure, and GCP — without touching production resources.
+                    Uses isolated Terraform-provisioned lab environments for each test run.
+                </p>
             </div>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">AWS IAM</span>
+                <span class="tech-tag">Azure AD</span>
+                <span class="tech-tag">GCP IAM</span>
+                <span class="tech-tag">boto3</span>
+            </div>
+        </div>
+
+        <!-- ATTACK SCENARIOS -->
+        <div class="section">
+            <h2 class="section-title">Attack Scenarios</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">AWS IAM</div>
+                    <ul class="skill-list">
+                        <li>Privilege escalation via policy attachment</li>
+                        <li>Role chaining to gain admin access</li>
+                        <li>Instance profile abuse (SSRF → IMDS)</li>
+                        <li>Cross-account trust exploitation</li>
+                        <li>Lambda execution role abuse</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Azure AD</div>
+                    <ul class="skill-list">
+                        <li>Service principal secret exposure</li>
+                        <li>Managed identity token theft</li>
+                        <li>Consent grant phishing simulation</li>
+                        <li>Guest account privilege escalation</li>
+                        <li>PIM role activation abuse</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">GCP IAM</div>
+                    <ul class="skill-list">
+                        <li>Service account key exposure</li>
+                        <li>Workload identity federation bypass</li>
+                        <li>Domain-wide delegation abuse</li>
+                        <li>Organization policy misconfiguration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- USAGE -->
+        <div class="section">
+            <h2 class="section-title">Usage</h2>
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="comment"># Provision isolated lab environment</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">terraform init && terraform apply -var="scenario=priv-escalation-aws"</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Apply complete! Resources: 14 added.</span>
+                </div>
+                <div class="terminal-line" style="margin-top:10px;">
+                    <span class="comment"># Run attack simulation</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">python3 simulate.py --provider aws --scenario privilege-escalation --report pdf</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[*] Cloud Identity Breach Simulator v1.3</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[*] Provider: AWS — Scenario: privilege-escalation</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[+] Starting with: arn:aws:iam::123456789:user/low-priv-user</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[*] Testing 23 escalation paths...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[!] Path found: iam:AttachUserPolicy → iam:CreatePolicyVersion → admin</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[+] PDF report: breach_report_20240115.pdf</span>
+                </div>
+            </div>
+
+            <!-- Screenshot: simulation output showing found escalation path -->
+            <div class="screenshot-placeholder">
+                [ screenshot: terminal — simulate.py output with escalation path found ]
+            </div>
+        </div>
+
+        <!-- PRIVILEGE ESCALATION PATHS -->
+        <div class="section">
+            <h2 class="section-title">Privilege Escalation Path Analysis</h2>
+            <p class="text-secondary mb-20">
+                The simulator enumerates all IAM permissions and graphs potential escalation chains
+                using a directed graph traversal from the starting identity to Administrator/Owner.
+            </p>
+
+            <!-- Screenshot: escalation path graph or table -->
+            <div class="screenshot-placeholder">
+                [ screenshot: graph visualization of AWS IAM privilege escalation paths ]
+            </div>
+
+            <div class="alert-box mt-20">
+                <div class="alert-title">Common Findings in Test Environments</div>
+                <ul>
+                    <li>iam:CreatePolicyVersion allows instant privilege escalation in 73% of tested envs</li>
+                    <li>Lambda execution roles with iam:PassRole frequently grant indirect admin access</li>
+                    <li>Azure AD guest accounts inherit excessive permissions via group membership</li>
+                    <li>GCP service account keys often remain valid 90+ days after rotation policy expires</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- REPORT -->
+        <div class="section">
+            <h2 class="section-title">Report Output</h2>
+            <p class="text-secondary mb-20">PDF and JSON reports map each finding to CIS Benchmarks and MITRE ATT&CK for Cloud.</p>
+
+            <!-- Screenshot: PDF report cover page or findings table -->
+            <div class="screenshot-placeholder">
+                [ screenshot: PDF report — findings table with severity, affected policy, and remediation ]
+            </div>
+        </div>
+
+        <!-- CLEANUP -->
+        <div class="section">
+            <h2 class="section-title">Safe by Design</h2>
+            <div class="intro-text">
+                <p>
+                    All simulations run inside isolated Terraform-managed environments with no access
+                    to production accounts. Lab infrastructure is destroyed after each test run.
+                    Every cloud API call is logged for audit purposes.
+                </p>
+            </div>
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">terraform destroy -auto-approve</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Destroy complete! Resources: 14 destroyed.</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center; padding: 40px 0;">
+            <a href="https://github.com/cipherbite/cloud-identity-breach-simulator" class="project-link">View on GitHub</a>
+            &nbsp;&nbsp;
+            <a href="../../index.html" class="project-link">Back to Portfolio</a>
         </div>
     </div>
 </body>

@@ -1,19 +1,205 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Active Directory Compromise Lab</title>
+    <title>Active Directory Compromise Lab | David Dylag</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Active Directory Compromise Lab</h1>
-        <div class="card">
-            <p>Virtual lab environment for simulating and defending against Active Directory attacks including Kerberoasting, Pass-the-Hash, and Golden Ticket attacks.</p>
-            <div class="terminal">
-                <div>$ ad-lab deploy --attack kerberoast --difficulty expert --monitor true</div>
+        <a href="../../index.html" class="back-link">← Back to Portfolio</a>
+
+        <div class="header">
+            <h1 class="hero-title">Active Directory Compromise Lab</h1>
+            <p class="hero-subtitle">Controlled AD Attack Simulation with Built-in Detection & Logging</p>
+        </div>
+
+        <!-- OVERVIEW -->
+        <div class="section">
+            <h2 class="section-title">Overview</h2>
+            <div class="intro-text">
+                <p>
+                    A self-contained Windows Server lab environment for researching Active Directory attack techniques.
+                    Simulates real-world attack paths — Kerberoasting, Pass-the-Hash, DCSync, Golden Ticket — while
+                    simultaneously capturing and analyzing the security events generated, so you can study both
+                    the attack and its detection signature side by side.
+                </p>
             </div>
+            <div class="tech-tags">
+                <span class="tech-tag">PowerShell</span>
+                <span class="tech-tag">Windows Server 2022</span>
+                <span class="tech-tag">Kerberos</span>
+                <span class="tech-tag">Mimikatz</span>
+                <span class="tech-tag">Impacket</span>
+                <span class="tech-tag">Bloodhound</span>
+            </div>
+        </div>
+
+        <!-- LAB SETUP -->
+        <div class="section">
+            <h2 class="section-title">Lab Setup</h2>
+            <p class="text-secondary mb-20">
+                Three VMs: Domain Controller, member server, and attacker workstation.
+                Deployed via PowerShell DSC — fully reproducible.
+            </p>
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">PS C:\&gt;</span>
+                    <span class="command">.\Deploy-ADLab.ps1 -DomainName "corp.lab" -Scenario "full"</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Deploying Domain Controller (DC01)...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Promoting to AD DS...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Creating vulnerable accounts and SPNs...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Configuring audit policy (Advanced Audit)...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Lab ready. Domain: corp.lab</span>
+                </div>
+            </div>
+
+            <!-- Screenshot: VM overview or network diagram -->
+            <div class="screenshot-placeholder">
+                [ screenshot: VirtualBox/VMware — three VMs running (DC01, SRV01, ATTACKER) ]
+            </div>
+        </div>
+
+        <!-- ATTACK SCENARIOS -->
+        <div class="section">
+            <h2 class="section-title">Attack Scenarios</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Kerberoasting</div>
+                    <ul class="skill-list">
+                        <li>Request TGS for service accounts</li>
+                        <li>Extract RC4-encrypted ticket hashes</li>
+                        <li>Offline cracking with Hashcat</li>
+                        <li>Detection: Event ID 4769</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Pass-the-Hash</div>
+                    <ul class="skill-list">
+                        <li>Dump NTLM hashes with Mimikatz</li>
+                        <li>Lateral movement via WMI / PSExec</li>
+                        <li>No password needed</li>
+                        <li>Detection: Event ID 4624 (Type 3)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Golden Ticket</div>
+                    <ul class="skill-list">
+                        <li>Extract KRBTGT hash (DCSync)</li>
+                        <li>Forge Kerberos TGT offline</li>
+                        <li>Persist for years without password reset</li>
+                        <li>Detection: Event ID 4768 anomalies</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">DCSync</div>
+                    <ul class="skill-list">
+                        <li>Impersonate DC replication</li>
+                        <li>Pull all password hashes from DC</li>
+                        <li>No local access to DC required</li>
+                        <li>Detection: Event ID 4662</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- KERBEROASTING WALKTHROUGH -->
+        <div class="section">
+            <h2 class="section-title">Kerberoasting — Step by Step</h2>
+            <p class="text-secondary mb-20">Complete attack chain from enumeration to credential cracking.</p>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="comment"># Step 1: Enumerate Kerberoastable accounts</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">PS C:\&gt;</span>
+                    <span class="command">Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties *</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">SamAccountName: svc_sql  SPN: MSSQLSvc/srv01.corp.lab:1433</span>
+                </div>
+                <div class="terminal-line" style="margin-top:10px;">
+                    <span class="comment"># Step 2: Request TGS and export hash</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">PS C:\&gt;</span>
+                    <span class="command">Invoke-Kerberoast -OutputFormat Hashcat | Out-File hashes.txt</span>
+                </div>
+                <div class="terminal-line" style="margin-top:10px;">
+                    <span class="comment"># Step 3: Crack offline</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">hashcat -m 13100 hashes.txt rockyou.txt --force</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">$krb5tgs$23$*svc_sql*... : Summer2023!</span>
+                </div>
+            </div>
+
+            <!-- Screenshot: Kerberoasting output or Bloodhound path -->
+            <div class="screenshot-placeholder">
+                [ screenshot: Invoke-Kerberoast output or Hashcat cracking svc_sql hash ]
+            </div>
+        </div>
+
+        <!-- DETECTION ANALYSIS -->
+        <div class="section">
+            <h2 class="section-title">Detection Analysis</h2>
+            <p class="text-secondary mb-20">Windows Security Event Log analysis for each attack scenario.</p>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="comment"># Kerberoasting detection — bulk TGS requests</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">PS C:\&gt;</span>
+                    <span class="command">Get-WinEvent -FilterHashtable @{LogName='Security';Id=4769} | Where {$_.Message -match "0x17"}</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">TimeCreated: 2024-01-15 14:32:11 — Account: attacker — Service: svc_sql</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">TicketEncType: 0x17 (RC4) — suspicious, modern accounts use AES</span>
+                </div>
+            </div>
+
+            <!-- Screenshot: Event Viewer or Splunk showing 4769 event -->
+            <div class="screenshot-placeholder">
+                [ screenshot: Windows Event Viewer — Event ID 4769 with RC4 encryption flag ]
+            </div>
+        </div>
+
+        <!-- BLOODHOUND -->
+        <div class="section">
+            <h2 class="section-title">Attack Path Visualization</h2>
+            <p class="text-secondary mb-20">Bloodhound maps privilege escalation paths through the domain.</p>
+
+            <!-- Screenshot: Bloodhound graph showing path from user to Domain Admin -->
+            <div class="screenshot-placeholder">
+                [ screenshot: Bloodhound — shortest path from compromised user to Domain Admin ]
+            </div>
+        </div>
+
+        <div style="text-align:center; padding: 40px 0;">
+            <a href="https://github.com/cipherbite/active-directory-compromise-lab" class="project-link">View on GitHub</a>
+            &nbsp;&nbsp;
+            <a href="../../index.html" class="project-link">Back to Portfolio</a>
         </div>
     </div>
 </body>
