@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>David Dylag | Cybersecurity Portfolio</title>
-    <meta name="description" content="IT Security Specialist with 3+ years experience. Pursuing Master of Engineering in Cybersecurity. Focus on SOC operations, forensics, and IAM security.">
-    <meta name="keywords" content="cybersecurity, SOC analyst, security operations, forensics, penetration testing, David Dylag">
+    <meta name="description" content="IT Security Specialist — SOC operations, digital forensics, IAM security. MSc Cybersecurity student.">
     <meta name="author" content="David Dylag">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,41 +13,19 @@
 </head>
 <body>
     <div class="container">
+
         <!-- Header -->
         <header class="header">
             <h1 class="hero-title">David Dylag</h1>
-            <p class="hero-subtitle">Cybersecurity Portfolio</p>
-            <p class="hero-subtitle">SOC Operations • Digital Forensics • Identity Security</p>
-            
-            <div class="terminal-section">
-                <div class="terminal-line">
-                    <span class="prompt">$</span>
-                    <span class="command">whoami</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="output">IT Security Specialist | 5+ Years Experience | MSc Cybersecurity Student</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="prompt">$</span>
-                    <span class="command">cat skills.txt | head -3</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="output">• Active Directory Security & Incident Response</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="output">• Digital Forensics & Threat Detection</span>
-                </div>
-                <div class="terminal-line">
-                    <span class="output">• Cloud Security & Zero Trust Architecture</span>
-                </div>
-            </div>
+            <p class="hero-subtitle">IT Security Specialist &nbsp;·&nbsp; SOC Operations &nbsp;·&nbsp; Digital Forensics &nbsp;·&nbsp; IAM Security</p>
+            <p class="hero-subtitle">MSc Cybersecurity &nbsp;·&nbsp; 5+ Years Experience</p>
         </header>
 
-        <!-- Introduction -->
+        <!-- About -->
         <section class="section">
             <h2 class="section-title">About</h2>
             <div class="intro-text">
-                <p>IT Security Specialist with 5+ years in system administration and endpoint security. Currently pursuing Master of Engineering in Cybersecurity at WSIiZ Rzeszów while working as Senior Desktop Support at Infosys. Passionate about transitioning to SOC operations, with hands-on experience in security incident response, Active Directory hardening, and threat detection. Active participant on HackTheBox platform and preparing for CompTIA Security+ certification.</p>
+                <p>IT Security Specialist with 5+ years in system administration and endpoint security. Currently pursuing Master of Engineering in Cybersecurity at WSIiZ Rzeszów while working as Senior Desktop Support at Infosys. Focus on SOC operations, Active Directory hardening, digital forensics, and threat detection. Active on HackTheBox. Preparing for CompTIA Security+.</p>
             </div>
         </section>
 
@@ -61,9 +38,9 @@
                     <ul class="skill-list">
                         <li>Windows Event Log Analysis</li>
                         <li>Network Traffic Analysis (Wireshark)</li>
-                        <li>Incident Response Procedures</li>
+                        <li>Incident Response</li>
                         <li>Vulnerability Assessment</li>
-                        <li>SIEM Fundamentals (Splunk)</li>
+                        <li>SIEM — Splunk</li>
                         <li>Threat Intelligence</li>
                     </ul>
                 </div>
@@ -71,11 +48,11 @@
                     <h3 class="skill-title">System Security</h3>
                     <ul class="skill-list">
                         <li>Active Directory Hardening</li>
-                        <li>Windows Server 2016/2019/2022</li>
+                        <li>Windows Server 2016 / 2019 / 2022</li>
                         <li>Group Policy Management</li>
                         <li>Linux Security (iptables, auditd)</li>
                         <li>Endpoint Protection</li>
-                        <li>PowerShell Security</li>
+                        <li>PowerShell Scripting</li>
                     </ul>
                 </div>
                 <div class="skill-card">
@@ -96,65 +73,67 @@
         <section class="section">
             <h2 class="section-title">Forensic Security Projects</h2>
             <div class="projects-grid">
+
                 <div class="project-card">
                     <h3 class="project-title">Advanced Steganography Detection</h3>
-                    <p class="project-description">Machine learning-based system for detecting hidden data in multimedia files. Analyzes statistical patterns and anomalies to identify potential data exfiltration attempts through steganography.</p>
+                    <p class="project-description">ML-based system for detecting hidden data in multimedia files. Analyzes statistical patterns to identify LSB, DCT, and spread-spectrum steganography.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">OpenCV</span>
-                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">scikit-learn</span>
                         <span class="tech-tag">NumPy</span>
                     </div>
                     <div class="project-links">
-                        <a href="FORENSIC_PROJECTS/advanced-steganography-detection/index.html" class="project-link">View Demo</a>
+                        <a href="FORENSIC_PROJECTS/advanced-steganography-detection/index.html" class="project-link">View Project</a>
                         <span class="status-indicator status-active"></span>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3 class="project-title">Container Memory Forensics</h3>
-                    <p class="project-description">Tool for analyzing Docker container memory in production environments. Detects anomalies, potential attacks, and unauthorized processes running within containers.</p>
+                    <p class="project-description">Live memory analysis tool for Docker and Kubernetes containers. Detects cryptominers, rootkits, container escapes, and memory injection without stopping services.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">Volatility</span>
-                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Volatility3</span>
+                        <span class="tech-tag">eBPF</span>
                         <span class="tech-tag">Python</span>
                     </div>
                     <div class="project-links">
-                        <a href="FORENSIC_PROJECTS/container-memory-forensics/index.html" class="project-link">View Demo</a>
+                        <a href="FORENSIC_PROJECTS/container-memory-forensics/index.html" class="project-link">View Project</a>
                         <span class="status-indicator status-active"></span>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3 class="project-title">DNS Exfiltration Detector</h3>
-                    <p class="project-description">Real-time detection system for data exfiltration via DNS. Analyzes DNS traffic patterns and identifies anomalies indicating potential data theft attempts.</p>
+                    <p class="project-description">Real-time detection of data exfiltration via DNS. Identifies high-entropy domains, Base64-encoded subdomains, and abnormal query rates indicative of DNS tunneling.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Scapy</span>
-                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Pandas</span>
                         <span class="tech-tag">Wireshark</span>
                     </div>
                     <div class="project-links">
-                        <a href="FORENSIC_PROJECTS/dns-exfiltration-detector/index.html" class="project-link">View Demo</a>
+                        <a href="FORENSIC_PROJECTS/dns-exfiltration-detector/index.html" class="project-link">View Project</a>
                         <span class="status-indicator status-active"></span>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3 class="project-title">Post-Breach Identity Forensics</h3>
-                    <p class="project-description">Framework for analyzing identity compromise after security incidents. Tracks lateral movement, analyzes authentication logs, and identifies compromised accounts.</p>
+                    <p class="project-description">PowerShell and Python framework for post-incident identity analysis in Active Directory. Detects lateral movement, privilege escalation, and Golden Ticket attacks.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">PowerShell</span>
+                        <span class="tech-tag">Active Directory</span>
                         <span class="tech-tag">Azure AD</span>
                         <span class="tech-tag">SIEM</span>
-                        <span class="tech-tag">Python</span>
                     </div>
                     <div class="project-links">
-                        <a href="FORENSIC_PROJECTS/post-breach-identity-forensics/index.html" class="project-link">View Demo</a>
+                        <a href="FORENSIC_PROJECTS/post-breach-identity-forensics/index.html" class="project-link">View Project</a>
                         <span class="status-indicator status-active"></span>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -164,39 +143,40 @@
         <section class="section">
             <h2 class="section-title">Identity & Access Security Projects</h2>
             <div class="projects-grid">
+
                 <div class="project-card">
                     <h3 class="project-title">Active Directory Compromise Lab</h3>
-                    <p class="project-description">Testing environment for researching Active Directory attacks. Simulates Golden Ticket, Silver Ticket, and DCSync attacks with detection mechanisms.</p>
+                    <p class="project-description">Virtual lab for researching AD attack paths — Kerberoasting, Pass-the-Hash, Golden Ticket, DCSync — with built-in detection and logging.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">PowerShell</span>
-                        <span class="tech-tag">AD</span>
                         <span class="tech-tag">Kerberos</span>
-                        <span class="tech-tag">Windows</span>
+                        <span class="tech-tag">Mimikatz</span>
+                        <span class="tech-tag">Windows Server</span>
                     </div>
                     <div class="project-links">
-                        <a href="IAM_PROJECTS/active-directory-compromise-lab/index.html" class="project-link">View Demo</a>
+                        <a href="IAM_PROJECTS/active-directory-compromise-lab/index.html" class="project-link">View Project</a>
                         <span class="status-indicator status-active"></span>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3 class="project-title">Behavioral Web Application Firewall</h3>
-                    <p class="project-description">WAF using behavioral analysis to detect attacks. Implements machine learning for real-time anomaly detection based on user behavior patterns.</p>
+                    <p class="project-description">WAF using machine learning to build per-user behavior baselines and detect anomalous requests — SQLi, XSS, path traversal — in real time.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">scikit-learn</span>
                         <span class="tech-tag">Redis</span>
                     </div>
                     <div class="project-links">
-                        <a href="IAM_PROJECTS/behavioral-web-application-firewall/index.html" class="project-link">View Demo</a>
+                        <a href="IAM_PROJECTS/behavioral-web-application-firewall/index.html" class="project-link">View Project</a>
                         <span class="status-indicator status-active"></span>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3 class="project-title">Cloud Identity Breach Simulator</h3>
-                    <p class="project-description">Attack simulation tool for cloud identity systems (AWS, Azure, GCP). Tests defense mechanisms and identifies weaknesses in cloud security architecture.</p>
+                    <p class="project-description">Multi-cloud attack simulation platform targeting AWS IAM, Azure AD, and GCP IAM. Tests privilege escalation paths and misconfiguration scenarios.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">AWS</span>
@@ -204,32 +184,33 @@
                         <span class="tech-tag">Terraform</span>
                     </div>
                     <div class="project-links">
-                        <a href="IAM_PROJECTS/cloud-identity-breach-simulator/index.html" class="project-link">View Demo</a>
+                        <a href="IAM_PROJECTS/cloud-identity-breach-simulator/index.html" class="project-link">View Project</a>
                         <span class="status-indicator status-active"></span>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3 class="project-title">Zero Trust Bypass Research</h3>
-                    <p class="project-description">Research on bypassing Zero Trust architecture implementations. Analyzes weak points and identifies potential attack vectors in Zero Trust systems.</p>
+                    <p class="project-description">Research into implementation weaknesses in Zero Trust architectures. Analyzes certificate validation, device trust, and session hijacking vectors.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Networking</span>
                         <span class="tech-tag">PKI</span>
                         <span class="tech-tag">TLS</span>
+                        <span class="tech-tag">mTLS</span>
                     </div>
                     <div class="project-links">
-                        <a href="IAM_PROJECTS/zero-trust-bypass-research/index.html" class="project-link">View Research</a>
+                        <a href="IAM_PROJECTS/zero-trust-bypass-research/index.html" class="project-link">View Project</a>
                         <span class="status-indicator status-active"></span>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <!-- Contact -->
         <footer class="contact-section">
             <h2 class="contact-title">Contact</h2>
-            <p class="contact-description">Open to SOC Analyst and Security Operations opportunities. Let's connect!</p>
+            <p class="contact-description">Open to SOC Analyst and Security Operations roles.</p>
             <div class="contact-links">
                 <a href="mailto:david.dylag.work@gmail.com" class="contact-link">Email</a>
                 <a href="https://linkedin.com/in/david-dylag" class="contact-link">LinkedIn</a>
@@ -237,6 +218,8 @@
                 <a href="https://app.hackthebox.com/profile/1520801" class="contact-link">HackTheBox</a>
             </div>
         </footer>
+
     </div>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

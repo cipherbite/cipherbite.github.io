@@ -1,19 +1,212 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zero Trust Bypass Research</title>
+    <title>Zero Trust Bypass Research | David Dylag</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Zero Trust Bypass Research</h1>
-        <div class="card">
-            <p>Research framework for testing zero trust architecture implementations and discovering potential bypass techniques in modern security models.</p>
-            <div class="terminal">
-                <div>$ zt-bypass analyze --architecture beyondcorp --test-suite comprehensive</div>
+        <a href="../../index.html" class="back-link">← Back to Portfolio</a>
+
+        <div class="header">
+            <h1 class="hero-title">Zero Trust Bypass Research</h1>
+            <p class="hero-subtitle">Implementation Weaknesses in Modern Zero Trust Architectures</p>
+        </div>
+
+        <!-- OVERVIEW -->
+        <div class="section">
+            <h2 class="section-title">Overview</h2>
+            <div class="intro-text">
+                <p>
+                    Research and tooling for identifying bypass techniques in Zero Trust implementations.
+                    Focuses on certificate validation gaps, device trust misconfigurations,
+                    session token weaknesses, and policy enforcement inconsistencies across
+                    common ZT platforms (BeyondCorp, Zscaler, Cloudflare Access).
+                    All findings are from controlled lab environments and responsible disclosure.
+                </p>
             </div>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">mTLS</span>
+                <span class="tech-tag">PKI</span>
+                <span class="tech-tag">TLS 1.3</span>
+                <span class="tech-tag">OIDC</span>
+                <span class="tech-tag">Burp Suite</span>
+            </div>
+        </div>
+
+        <!-- RESEARCH AREAS -->
+        <div class="section">
+            <h2 class="section-title">Research Areas</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Certificate & mTLS</div>
+                    <ul class="skill-list">
+                        <li>Certificate pinning bypass techniques</li>
+                        <li>Weak client certificate validation</li>
+                        <li>CA trust chain manipulation</li>
+                        <li>Certificate expiry handling gaps</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Device Trust</div>
+                    <ul class="skill-list">
+                        <li>Device identity token theft</li>
+                        <li>MDM enrollment bypass</li>
+                        <li>Compliance check evasion</li>
+                        <li>Managed/unmanaged device confusion</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Session & Token</div>
+                    <ul class="skill-list">
+                        <li>Session token fixation</li>
+                        <li>OIDC token reuse across contexts</li>
+                        <li>Access token scope escalation</li>
+                        <li>Refresh token persistence abuse</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Policy Enforcement</div>
+                    <ul class="skill-list">
+                        <li>Policy evaluation race conditions</li>
+                        <li>Conditional access bypass via legacy auth</li>
+                        <li>Geographic restriction bypass</li>
+                        <li>Application-level ZT policy gaps</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- METHODOLOGY -->
+        <div class="section">
+            <h2 class="section-title">Research Methodology</h2>
+            <p class="text-secondary mb-20">Systematic testing framework for ZT bypass scenarios.</p>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">python3 zt-bypass.py --architecture beyondcorp --test-suite comprehensive</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[*] Zero Trust Bypass Research Framework v1.1</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[*] Target architecture: BeyondCorp-style</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[*] Running 48 test cases across 6 categories...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[!] FINDING: Certificate validation accepts wildcard SAN on device cert</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[!] FINDING: Session token not bound to device fingerprint — token reuse possible</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="output">[+] Report: zt_bypass_findings_20240115.pdf</span>
+                </div>
+            </div>
+
+            <!-- Screenshot: test framework output or findings table -->
+            <div class="screenshot-placeholder">
+                [ screenshot: zt-bypass.py terminal output showing test results and findings ]
+            </div>
+        </div>
+
+        <!-- FINDING: CERTIFICATE BYPASS -->
+        <div class="section">
+            <h2 class="section-title">Finding: Weak Certificate Validation</h2>
+            <div class="intro-text">
+                <p>
+                    Several ZT gateway implementations accept device certificates with wildcard Subject Alternative Names,
+                    allowing a forged certificate covering multiple device identities.
+                    Combined with access to an intermediate CA (via a compromised internal system),
+                    this bypasses device trust verification entirely.
+                </p>
+            </div>
+
+            <div class="terminal-section">
+                <div class="terminal-line">
+                    <span class="comment"># Generate forged device certificate with wildcard SAN</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">openssl req -new -key device.key -out device.csr -subj "/CN=corp-device-001"</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">openssl x509 -req -in device.csr -CA internal-ca.crt -extfile san_wildcard.cnf -out forged.crt</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment"># SAN: DNS:*.corp-device-*.internal</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">curl --cert forged.crt --key device.key https://zt-gateway.corp.com/protected</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="comment">HTTP/2 200 — access granted (expected: 403)</span>
+                </div>
+            </div>
+
+            <!-- Screenshot: Burp Suite or curl showing bypass success -->
+            <div class="screenshot-placeholder">
+                [ screenshot: Burp Suite — ZT gateway returning 200 with forged device certificate ]
+            </div>
+        </div>
+
+        <!-- FINDING: SESSION TOKEN -->
+        <div class="section">
+            <h2 class="section-title">Finding: Session Token Not Bound to Device</h2>
+            <div class="intro-text">
+                <p>
+                    ZT access tokens that are not cryptographically bound to the requesting device
+                    can be extracted and reused from a different device.
+                    This undermines the core ZT principle of continuous device verification.
+                </p>
+            </div>
+
+            <!-- Screenshot: token extraction and reuse demonstration -->
+            <div class="screenshot-placeholder">
+                [ screenshot: Burp Repeater — captured ZT session token replayed from attacker machine, access granted ]
+            </div>
+        </div>
+
+        <!-- MITIGATIONS -->
+        <div class="section">
+            <h2 class="section-title">Recommended Mitigations</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-title">Certificate Hardening</div>
+                    <ul class="skill-list">
+                        <li>Reject wildcard SANs in device certs</li>
+                        <li>Pin certificates to hardware TPM</li>
+                        <li>Short-lived certificates (24h max)</li>
+                        <li>OCSP stapling for revocation</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-title">Token Binding</div>
+                    <ul class="skill-list">
+                        <li>Bind tokens to device fingerprint</li>
+                        <li>Include device attestation in token claims</li>
+                        <li>Short token TTL with re-verification</li>
+                        <li>Continuous contextual re-evaluation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center; padding: 40px 0;">
+            <a href="https://github.com/cipherbite/zero-trust-bypass-research" class="project-link">View on GitHub</a>
+            &nbsp;&nbsp;
+            <a href="../../index.html" class="project-link">Back to Portfolio</a>
         </div>
     </div>
 </body>
